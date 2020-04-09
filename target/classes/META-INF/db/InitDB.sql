@@ -354,6 +354,6 @@ CREATE TABLE Notice (
 	AdminId       VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
 );
 
-
+select * from tab;
 
 
