@@ -1,8 +1,8 @@
 package com.tp.funding.dto;
 
 import java.sql.Date;
- //투자상품 질문 >> 회사상품문의 
-	public class FundingQuestion {
+
+public class FundingQuestion {
 	private int fundingQuestionNumber;        
 	private String fundingQuestionContent;    
 	private Date fundingQuestionDate;                 

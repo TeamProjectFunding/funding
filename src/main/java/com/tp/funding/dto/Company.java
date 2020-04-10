@@ -19,7 +19,7 @@ public class Company {
 	private int companyOutSite;	
 	
 	
-	// join해서 쓸 것 //회사 마이페이지 알림
+	// join해서 쓸 것
 	private int notificationCount;
 
 }

@@ -1,7 +1,7 @@
 package com.tp.funding.dto;
 
 import java.sql.Date;
-//알림 뿌릴거 
+
 public class Notification {
 	
 	private int notificationNumber;    
@@ -10,6 +10,7 @@ public class Notification {
 	private int notificationRead;     
 	private String userId;                
 	private String adminId;              
+	private String companyId;              
 	private int fundingCode;           
 	
 	//Users join

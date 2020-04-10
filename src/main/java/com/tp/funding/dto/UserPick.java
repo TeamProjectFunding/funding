@@ -2,7 +2,6 @@ package com.tp.funding.dto;
 
 import java.sql.Date;
 
-//찜기능 
 public class UserPick {
 
 	private int userPickNumber;     

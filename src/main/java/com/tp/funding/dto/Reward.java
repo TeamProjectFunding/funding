@@ -1,7 +1,7 @@
 package com.tp.funding.dto;
 
 import java.sql.Date;
-//투자상품 리워드 방식 
+
 public class Reward {
 	
 	private int rewardCode;                  
@@ -16,7 +16,6 @@ public class Reward {
 	private int fundingCode;               
 	// join해서 출력
 	private String fundingName;
-	private String fundingTargetDate;
-	private String fundingThumbnailImage;  
-	
+	private Date fundingTargetDate;
+	private String fundingThumbnailImage;            
 }

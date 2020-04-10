@@ -23,10 +23,11 @@ public class Users {
 	private int userGradeNo;
 	
 	
-	// join해서 출력
-	private int notificationCount; 
-	private int userPickCount; 
-	private String userGradeName; 
+	// join해서 쓸 것
+	private int notificationCount;
+	private int userPickCount;
+	private String userGradeName;    
+	
 	
 	
 	
