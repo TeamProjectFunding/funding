@@ -17,16 +17,16 @@ public class Users {
 	private Date userJoinDate;                   
 	private int userAdPhone;             
 	private int userAdEmail;             
-	private int userInvermentAmount; 
+	private int userInvestmentAmount; 
 	private int userInterestAmount;     
 	private int userOutSite;             
 	private int userGradeNo;
 	
 	
 	// join해서 출력
-	private int notificationCount;
-	private int userPickCount;
-	
+	private int notificationCount; 
+	private int userPickCount; 
+	private String userGradeName; 
 	
 	
 	

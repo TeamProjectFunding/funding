@@ -3,7 +3,7 @@ package com.tp.funding.dto;
 import java.sql.Date;
 
 public class FundingGoodsCommentsReply {
-	
+	//상품의 대한 댓글 답글
 	private int fgCommentsReplyNumber;        
 	private String fgCommentsReplyContent; 
     private Date fgCommentsReplyDate;            

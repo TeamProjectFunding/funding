@@ -1,7 +1,7 @@
 package com.tp.funding.dto;
 
 import java.sql.Date;
-
+//투자상품 
 public class FundingGoods {
 	
 	private int fundingCode;                  

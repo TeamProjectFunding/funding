@@ -1,40 +1,40 @@
 -- DROP TABLE
 
-DROP TABLE Notice;
+DROP TABLE Notice CASCADE CONSTRAINTS;
 
-DROP TABLE UserPick;
+DROP TABLE UserPick CASCADE CONSTRAINTS;
 
-DROP TABLE EventPrize;
+DROP TABLE EventPrize CASCADE CONSTRAINTS;
 
-DROP TABLE EventReply;
+DROP TABLE EventReply CASCADE CONSTRAINTS;
 
-DROP TABLE FundingGoodsCommentsReply;
+DROP TABLE FundingGoodsCommentsReply CASCADE CONSTRAINTS;
 
-DROP TABLE FundingGoodsComments;
+DROP TABLE FundingGoodsComments CASCADE CONSTRAINTS;
 
-DROP TABLE FundingQuestionReply;
+DROP TABLE FundingQuestionReply CASCADE CONSTRAINTS;
 
-DROP TABLE FundingQuestion;
+DROP TABLE FundingQuestion CASCADE CONSTRAINTS;
 
-DROP TABLE FundingGoodsDetail;
+DROP TABLE FundingGoodsDetail CASCADE CONSTRAINTS;
 
-DROP TABLE Notification;
+DROP TABLE Notification CASCADE CONSTRAINTS;
 
-DROP TABLE Reward;
+DROP TABLE Reward CASCADE CONSTRAINTS;
 
-DROP TABLE Event;
+DROP TABLE Event CASCADE CONSTRAINTS;
 
-DROP TABLE FundingNews;
+DROP TABLE FundingNews CASCADE CONSTRAINTS;
 
-DROP TABLE FundingGoods;
+DROP TABLE FundingGoods CASCADE CONSTRAINTS;
 
-DROP TABLE Users;
+DROP TABLE Users CASCADE CONSTRAINTS;
 
-DROP TABLE Admin;
+DROP TABLE Admin CASCADE CONSTRAINTS;
 
-DROP TABLE UserGrade;
+DROP TABLE UserGrade CASCADE CONSTRAINTS;
 
-DROP TABLE Company;
+DROP TABLE Company CASCADE CONSTRAINTS;
 
 -- SEQUENCE DROP
 
@@ -270,7 +270,8 @@ CREATE TABLE Notification (
 	NotificationRead    NUMBER(1)    NULL,     -- 알림 읽은지 여부
 	UserId              VARCHAR2(100)  REFERENCES Users(UserId),     -- 유저ID
 	AdminId             VARCHAR2(100)  REFERENCES Admin(AdminId),     -- 관리자ID
-	FundingCode               NUMBER(12)   REFERENCES FundingGoods(FundingCode)      -- 펀딩상품코드
+	FundingCode               NUMBER(12)   REFERENCES FundingGoods(FundingCode),      -- 펀딩상품코드
+    CompanyId          VARCHAR2(100)  REFERENCES Company(CompanyId)      -- 회사Id
 );
 
 CREATE TABLE FundingGoodsDetail (

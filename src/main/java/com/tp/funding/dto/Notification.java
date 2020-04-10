@@ -1,7 +1,7 @@
 package com.tp.funding.dto;
 
 import java.sql.Date;
-
+//알림 뿌릴거 
 public class Notification {
 	
 	private int notificationNumber;    
