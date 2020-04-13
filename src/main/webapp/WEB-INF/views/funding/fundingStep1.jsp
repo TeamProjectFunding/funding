@@ -13,7 +13,7 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
-	
+	<div id="contentWrap" class="fundingWrap">
 	<section id="fundingWrap">
 		<div id="fundingStep" class="fundingStep1">
 			<ul id="fundingStep">
@@ -22,8 +22,8 @@
 				<li>투자 내역 확인 및 완료</li>
 			</ul>
 			
-			<h2>투자 위험 안내</h2>
-			<form action="">
+			<h1>투자 위험 안내</h1>
+			<form action="fundingStep2.do">
 				<table>
 					<tr>
 						<th>
@@ -59,7 +59,7 @@
 						<td>
 							<p>
 								비상장기업에 대한 투자는 환금성이 낮습니다. 
-								와디즈의 중개를 통한 증권은 6개월 이내 전매가 제한되며, 
+								중개를 통한 증권은 6개월 이내 전매가 제한되며, 
 								매매가 가능한 시점이 되더라도 현금으로의 전환이 보장되지는 않습니다. 
 								투자금을 회수하기 위하여 주식의 경우 스타트업 주식거래시장(KSM)에서 거래하거나, 
 								기업의 M&A 또는 주식시장 상장 등이 있을 때까지 기다려야 할 수 있습니다. 
@@ -79,7 +79,7 @@
 					<tr>
 						<td>
 							<p>
-								와디즈를 통해 증권을 발행하는 비상장기업은 성장 초기 단계에 있는 경우가 많기 때문에 
+								증권을 발행하는 비상장기업은 성장 초기 단계에 있는 경우가 많기 때문에 
 								정기 배당을 실시하는 경우가 매우 드뭅니다. 
 								따라서 배당수익을 기대하고 투자를 할 경우 기대한 만큼의 수익을 얻지 못할 수 있습니다.
 							</p>
@@ -97,7 +97,7 @@
 					<tr>
 						<td>
 							<p>
-								와디즈를 통해 증권을 발행하는 비상장기업은 지속적인 성장이 필요한 단계임으로 
+								증권을 발행하는 비상장기업은 지속적인 성장이 필요한 단계임으로 
 								해당 기업의 정관에 근거하여 유상증자를 실시할 가능성이 일반 기업보다 높습니다. 
 								유상증자로 인하여 투자자가 보유한 지분율은 감소될 수 있습니다.
 							</p>
@@ -109,23 +109,27 @@
 					<tr>
 						<td>
 							<p>
+								<span>
 								모든 투자에는 기대수익에 상응하는 투자위험이 있음을 유의하셔야 합니다.
 								투자자는 투자결과에 따라 높은 수익을 얻을 수도 있지만, 원금의 100%를 손실할 가능성도 있습니다. 
 								와디즈는 온라인소액투자중개서비스를 중개하는 회사로서 투자에 따른 손실 또는 그 위험을 보전해 드리지 못하며, 
 								투자에 따른 모든 책임은 각 투자자에게 귀속됩니다.
 								 따라서 투자자가 직접 습득한 정보와 자체적인 투자의 의사결정에 따라 투자에 임하실 것을 당부 드립니다.
+								 </span>
 							</p>
 						<td>
 					</tr>
 					<tr >
-						<td class="fundingButtonWrap">
-							<input type="submit" value="NEXT STEP">
-							<input type="button" value="BACK">
-						</td>
+						<th id="buttonWrap">
+							<input type="submit" value="NEXT STEP" class="button">
+							<input type="button" value="BACK" class='button'>
+						</th>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</section>
+	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

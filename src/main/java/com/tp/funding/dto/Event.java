@@ -19,6 +19,7 @@ public class Event {
 	private Date eventProductDeliveryDate;           
 	private String adminId;
 	
+	private int eventReplyCount; //이벤트 답글 갯수
 	// paging
 	private int startRow;
 	private int endRow;
@@ -106,6 +107,12 @@ public class Event {
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
+	public int getEventReplyCount() {
+		return eventReplyCount;
+	}
+	public void setEventReplyCount(int eventReplyCount) {
+		this.eventReplyCount = eventReplyCount;
+	}
 	public int getStartRow() {
 		return startRow;
 	}
@@ -121,7 +128,7 @@ public class Event {
 	public Event(int eventNumber, String eventTilte, String eventContent, String eventThumbnailImage,
 			String eventDetailImage, String eventProductName, String eventProductImage, int eventPrizeCount,
 			int eventParticipateCount, int eventHit, Date eventStartDate, Date eventEndDate,
-			Date eventProductDeliveryDate, String adminId, int startRow, int endRow) {
+			Date eventProductDeliveryDate, String adminId, int eventReplyCount, int startRow, int endRow) {
 		super();
 		this.eventNumber = eventNumber;
 		this.eventTilte = eventTilte;
@@ -137,6 +144,7 @@ public class Event {
 		this.eventEndDate = eventEndDate;
 		this.eventProductDeliveryDate = eventProductDeliveryDate;
 		this.adminId = adminId;
+		this.eventReplyCount = eventReplyCount;
 		this.startRow = startRow;
 		this.endRow = endRow;
 	}
@@ -150,9 +158,10 @@ public class Event {
 				+ ", eventProductName=" + eventProductName + ", eventProductImage=" + eventProductImage
 				+ ", eventPrizeCount=" + eventPrizeCount + ", eventParticipateCount=" + eventParticipateCount
 				+ ", eventHit=" + eventHit + ", eventStartDate=" + eventStartDate + ", eventEndDate=" + eventEndDate
-				+ ", eventProductDeliveryDate=" + eventProductDeliveryDate + ", adminId=" + adminId + ", startRow="
-				+ startRow + ", endRow=" + endRow + "]";
+				+ ", eventProductDeliveryDate=" + eventProductDeliveryDate + ", adminId=" + adminId
+				+ ", eventReplyCount=" + eventReplyCount + ", startRow=" + startRow + ", endRow=" + endRow + "]";
 	}
+	
 	
 	
 	

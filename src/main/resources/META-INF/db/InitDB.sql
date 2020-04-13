@@ -174,7 +174,8 @@ CREATE TABLE UserGrade (
 CREATE TABLE Admin (
 	AdminId       VARCHAR2(100) PRIMARY KEY, -- 관리자ID
 	AdminPassword VARCHAR2(100) NOT NULL,     -- 관리자비번
-	AdminName     VARCHAR2(100) NOT NULL      -- 관리자이름
+	AdminName     VARCHAR2(100) NOT NULL,      -- 관리자이름
+    AdminProfileImage VARCHAR2(100) NOT NULL
 );
 
 
@@ -194,7 +195,7 @@ CREATE TABLE Users (
 	UserJoinDate        DATE          DEFAULT SYSDATE,     -- 유저가입일
 	UserAdPhone         NUMBER(1)    NULL,     -- 유저핸드폰광고
 	UserAdEmail         NUMBER(1)    NULL,     -- 유저이메일광고
-	UserInvermentAmount NUMBER(12)   NULL,     -- 유저누적투자금액
+	UserInvestmentAmount NUMBER(12)   NULL,     -- 유저누적투자금액
 	UserInterestAmount  NUMBER(12)   NULL,     -- 유저누적이자금액
 	UserOutSite         NUMBER(1)    NULL,     -- 탈퇴여부
 	UserGradeNo         NUMBER(1)    REFERENCES UserGrade(UserGradeNo)      -- 등급번호
@@ -271,9 +272,8 @@ CREATE TABLE Reward (
 CREATE TABLE Notification (
 	NotificationNumber    NUMBER(12)   PRIMARY KEY, -- 알림번호
 	NotificationContent VARCHAR2(100)  NULL,     -- 알림내용
-	NotificationDate    DATE          NULL,     -- 유지기간
+	NotificationDate    DATE          NULL,     -- 알림 작성날짜
 	NotificationRead    NUMBER(1)    NULL,     -- 알림 읽은지 여부
-	FundingCode         NUMBER(12)   REFERENCES FundingGoods(FundingCode),      -- 펀딩상품코드
     AdminId             VARCHAR2(100) REFERENCES Admin(AdminId),    -- 관리자ID
     CompanyId          VARCHAR2(100),      -- 회사Id
     UserId              VARCHAR2(100)     -- 유저ID

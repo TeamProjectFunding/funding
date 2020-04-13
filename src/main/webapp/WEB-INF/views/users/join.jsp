@@ -9,19 +9,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
-		<section id="userWrap">
+	<div id="contentWrap" class="userWrap">
+		<section class="joinSelectWrap">
 			<table>
-				<tr>
-					<td><a href="${conPath }/joinForm.do?method=user" class="btn">USER JOIN</a></td>
-					<td><a href="${conPath }/joinForm.do?method=company" class="btn">COMPANY JOIN</a></td>
+				<tr >
+					<th id="buttonWrap">
+						<a href="${conPath }/joinForm.do?method=user" class="button">USER JOIN</a>
+						<a href="${conPath }/joinForm.do?method=company" class="button">COMPANY JOIN</a>
+					</th>
 				</tr>
 			</table>
 			
 		</section>
+	</div>
 	<jsp:include page="../main/footer.jsp" />	
 </body>
 </html>

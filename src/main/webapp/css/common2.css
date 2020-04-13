@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+*{margin:0 auto; padding:0; text-decoration: none; list-style: none; box-sizing:border-box; font-family: 'Nanum Gothic', sans-serif; color:#3a434c;}
+html,body{width:100%; height:100%;}
+
+/* width */
+::-webkit-scrollbar {width: 5px;}
+/* Track */
+::-webkit-scrollbar-track {border-radius: 50%;}
+/* Handle */
+::-webkit-scrollbar-thumb {background: #ccc; border-radius: 2.5px;}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {background: #fff; }
+
+/* 공통 */
+header{position:fixed; width:100%; border-bottom:1px solid #ffffff6b; z-index: 9999; background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
+header h1{line-height: 30px;  text-align:center;}
+header h1, header a{font-family: 'Oswald', sans-serif; color:#fff;}
+header #headerWrap{position:relative; width:90%; height:80px; }
+header #headerWrap .headerLogo{position:relative; float:left; width:150px; height:60px; top:10px;}
+header #headerWrap #menuWrap{position:relative; float:right; height:80px;}
+header #headerWrap #menuWrap ul{position:relative; float:right; height:40px; clear: both;}
+header #headerWrap #menuWrap ul li{float:left; line-height: 40px;}
+header #headerWrap #menuWrap ul li a{padding:5px; color:#fff;}
+
+section{position:relative; width:80%; height:55%;}
+section h2{width: 100%; line-height: 150px; font-family: 'Oswald', sans-serif; text-align: center; color: #3a434c; font-size: 30px;}
+
+.button{color:#034e84; border:2px solid #034e84;}
+
+/* main/main.jsp style */
+#mainVisual{ width:100%; height:100%; background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
+#mainVisual h1{top:35%; position: relative; width:100%; font-size: 7vw; text-align: center; color:#fff; font-family: 'Oswald', sans-serif;}
+
+#fundingWrap #fundingList { width: 100%;}
+#fundingWrap #fundingList .funding{position:relative; margin-top:3%; width: 25%; float: left; padding:5px;}
+#fundingWrap #fundingList .funding .hoverLink{position:absolute; width:0; height:100%; top:0; left:50%; transition:.5s; opacity: 0;}
+#fundingWrap #fundingList .funding .hoverLink span{display:block; position:absolute; width:100%; line-height:50px; top:50%; margin-top:-25px;  color:#444; font-family: 'Oswald', sans-serif; text-align: center; font-size: 16px;}
+#fundingWrap #fundingList .funding:hover .hoverLink{width:100%; background:#fff; left:0; transition:.3s; opacity: .7;}
+#fundingWrap #fundingList .funding ul{ width: 100%;}
+#fundingWrap #fundingList .funding ul li { padding: 0px 0px 5px; magin-top:5%; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
+#fundingWrap #fundingList .funding ul li.thum {position: relative; overflow: hidden;}
+#fundingWrap #fundingList .funding ul li.thum img{width: 100%;}
+#fundingWrap #fundingList .funding ul li:nth-child(2) span{padding: 5px 10px 5px; margin-right: 10px; font-size: 11px; background: #3c81ff; font-weight: bold; color: #fff; border-radius: 15px; position: absolute; top: 0; left: 15px; font-family: 'Oswald', sans-serif;}
+#fundingWrap #fundingList .funding ul li.fundingTitle {font-weight: bold; text-align: center; font-size:14px;}
+#fundingWrap #fundingList .funding ul li:last-child span{font-size: 12px; font-weight: bold; color: #3c81ff;}  
+
+#rewardWrap #rewardList { width: 100%;}
+#rewardWrap #rewardList .reward{position:relative; margin-top:3%; width: 25%; float: left; padding:5px;}
+#rewardWrap #rewardList .reward .hoverLink{position:absolute; width:0; height:100%; background: #fff; top:0; left:50%; transition:.5s; opacity: 0;}
+#rewardWrap #rewardList .reward .hoverLink span{display:block; position:absolute; width:100%; line-height:50px; top:50%; left:0; margin-top:-25px;  color:#444; font-family: 'Oswald', sans-serif; text-align: center; font-size: 16px;}
+#rewardWrap #rewardList .reward:hover .hoverLink{width:100%; background:#fff; left:0; transition:.3s; opacity: .7;}
+#rewardWrap #rewardList .reward ul{ width: 100%;}
+#rewardWrap #rewardList .reward ul li { padding: 0 0 5px; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
+#rewardWrap #rewardList .reward ul li.thum {position: relative; overflow: hidden;}
+#rewardWrap #rewardList .reward ul li.thum img{width: 100%;}
+#rewardWrap #rewardList .reward ul li:nth-child(2) span{padding: 5px 10px 5px; margin-right: 10px; font-size: 11px; background: #44cebb; font-weight: bold; color: #fff; border-radius: 15px; position: absolute; top: 0; left: 15px; font-family: 'Oswald', sans-serif;}
+#rewardWrap #rewardList .reward ul li.rewardTitle {font-weight: bold; text-align: center; font-size:14px;}
+#rewardWrap #rewardList .reward ul li:last-child span{font-size: 12px; font-weight: bold; color: #44cebb;}
+
+.fundingOpenBanner{position:relative; width:100%; background:url(https://static.wadiz.kr/main/media/img-fundingopen-pc.51ce91c1.jpg); background-size: cover; text-align: center; padding:10%; margin:2.5% 0 2.5%;  }
+.fundingOpenBanner h1{font-family: 'Oswald', sans-serif; font-size: 3vw; }
+.fundingOpenBanner h1, .fundingOpenBanner p { width:100%; color:#fff;}
+.fundingOpenBanner button{padding: 5px 40px 5px; margin-top: 20px; background: none; border: 3px solid #fff; color: #fff; font-weight: bold; font-size: 20px; border-radius: 15px; font-family: 'Oswald', sans-serif;}
+
+#newsWrap #newList{ width: 100%;}
+#newsWrap #newList .news{width: 33.33%; float: left; padding:5px;}
+#newsWrap #newList .news li { padding: 5px 15px 5px; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
+#newsWrap #newList .news li.thum {position: relative; overflow: hidden; padding:0;}
+#newsWrap #newList .news li.thum img{width: 100%; transform:scale(1); transition:.3s; float:left;}
+#newsWrap #newList .news li.thum:hover img{transform:scale(1.3); transition:1s;}
+#newsWrap #newList .news li.newsTitle {font-weight: bold; text-align: center; font-size:14px;}
+
+#bottomWrap >div{float:left;}
+#bottomWrap #noticeWrap{position: relative; top: 5%; width: 30%; box-shadow: -1px 1px 1px #efefef; padding: 0 1% 1%; transition:.3s;}
+#bottomWrap #noticeWrap:hover{position: relative; top: 5%; width: 30%; box-shadow: -5px 5px 15px #b9b9b9; padding: 0 1% 1%; transition:.5s;}
+#bottomWrap #noticeWrap h2{line-height: 100px;}
+#bottomWrap #noticeWrap ul{width:100%; height:300px; padding:0 10% 10%; overflow-y: scroll;}
+
+#bottomWrap #noticeWrap ul li{width: 100%; padding: 3% 0 3%; font-size: 14px; border-bottom: 1px solid #f1f1f1; font-weight: bold;}
+#bottomWrap #noticeWrap ul li a{color: #3a434c;}
+#bottomWrap #noticeWrap ul li a span{font-size: 12px; float: left; margin-right:10px; line-height: 20px;}
+#bottomWrap #bannerWrap{width:70%;}
+
+/* users style */
+#userWrap{padding:10% 0 0; width:50%; max-width:500px; height:100%; font-family: 'Nanum Gothic', sans-serif; font-size:12px;}
+#userWrap table{width:100%;}
+#userWrap th{font-size:14px; padding:5%; text-align: center;}
+#userWrap td{padding:1%; text-align: center;}
+#userWrap input{width:100%; padding:3%; text-align: center; border:1px solid #ccc; background:none; border-radius: 10px} 
+#userWrap .buttonWrap{text-align: center;}
+#userWrap .button{width:20%; padding:3%; font-family: 'Oswald', sans-serif; cursor:pointer; font-size:14px; }
+#userWrap .naverButton{color:#00ab33; border:2px solid #00ab33;}
+
+#userWrap.joinWrap{height:auto;}
+#userWrap.joinWrap #sample4_postcode{width:60%;}
+#userWrap.joinWrap .postBtn{width:39%; color:#1289de; font-weight: bold;}
+#userWrap.joinWrap .btnWrap .button{width:20%; padding:10px 20px 10px; }
+#userWrap.joinWrap .checkBoxWrap{text-align: center;}
+#userWrap.joinWrap input[type="checkbox"]{width:20px;}
+
+#userWrap.joinWrap p span{font-weight:bold;}
+#userWrap.joinWrap .danger{color:#da7474;}
+#userWrap.joinWrap .normal{color:#e2a51a;}
+#userWrap.joinWrap .safety{color:#3aa3cc;}
+
+#userWrap.joinSuccessWrap{height:auto;}
+#userWrap.joinSuccessWrap td{padding:5%; text-align: left; }
+#userWrap.joinSuccessWrap .buttonWrap{text-align: center;}
+
+/* funding style*/
+/* funding list */
+#fundingWrap.fundingListWrap{top:10%; height:100%;}
+#rewardWrap.rewardListWrap{top:10%; height:100%;}
+
+/* funding view */
+#fundingWrap.fundingViewWrap{max-width:1000px; padding-top:10%;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap{position: relative; width: 100%; height:250px; color:}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .thum{width:50%; height:100%; float:left; background: #ccc;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection {position:relative; width: 50%; float:left; height:100%; font-size:14px; font-weight:bold;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection h1 { padding: 2%;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection span{font-size:12px;color:#9c9c9c;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection ul li { float: left; width: 100%; padding: 2%; }
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection .fundingButtonWrap{position:absolute; width:100%; bottom:0; right:0;}
+#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection .fundingButtonWrap .button {color: #1289de; padding: 2% 3%; margin-left: 2%; border: 2px solid #1289de; border-radius: 5px; float:left; font-family: 'Oswald', sans-serif; }
+#investmentRiskNotice { width: 100%; font-size: 12px; line-height: 25px; float: left; text-align: center; padding: 2%;}
+.fundingInfoNavigation {width: 100%; height: 40px; float: left; padding: 4% 19%; text-align: center;}
+.fundingInfoNavigation li {float: left; width: 20%; text}
+
+/* funding view coreInfomation */
+#fundingViewContentWrap { padding: 5% 10%; width: 100%; float: left;}
+#fundingViewContentWrap h3{padding:2%; width: 100%; border-bottom: 2px solid #d2d2d2;}
+#fundingViewContentWrap h4{padding:3%;}
+#fundingViewContentWrap p{padding:3%;}
+
+ul.newsList {position: relative; margin-top: 2%; padding: 1%; border-bottom: 1px solid #eaeaea;}
+i.newsTitle {font-size: 20px; font-weight: bold;}
+.newsList li:last-child {font-size: 16px; padding: 1% 0 0; color: #6f6f6f;}
+.newsList span {font-size: 14px; position: absolute; right: 0; color: #6f6f6f;}
+
+
+/* funding step */
+#fundingStep .fundingButtonWrap {text-align:center;}
+#fundingStep .fundingButtonWrap .button {padding: 1% 2%; margin: 2% 1% 2%; border-radius: 5px; font-family: 'Oswald', sans-serif;}
+
+footer{margin-top:50px; width:100%; height:300px;  background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
+footer #footerBackgroundColor{position: relative; width:100%; height:100%; color:#fff; background:#041423d1; }
+footer #footerBackgroundColor #footerWrap{width:80%; padding: 5%; font-family: 'Nanum Gothic', sans-serif; font-size: 12px; line-height: 20px;}
+
+
+
+

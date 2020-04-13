@@ -14,38 +14,15 @@
 --	CompanyInFunding      NUMBER(1)      NULL,     -- 회사에서투자중인지
 --	CompanyOutSite        NUMBER(1)      NULL      -- 탈퇴여부
 
+SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=1;
 
-INSERT INTO COMPANY VALUES ('fff', '123', null, '앵무새 회사입니다.', 'wogur698@naver.com', 
-    '크라운산도', '02-2254-5498', '서울시 양천구', '3층', null, null, null, null, 0, 1);
+UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=1;
 
-INSERT INTO COMPANY VALUES ('bbb', '123', null, '자동차 회사입니다.', 'wogur698@naver.com', 
-    '삼성전자', '02-2254-5498', '서울시 양천구', '3층', null, null, null, null, 0, 1);
-    
-INSERT INTO COMPANY VALUES ('ccc', '123', null, '애견 회사입니다.', 'wogur698@naver.com', 
-    'sk이노베이션', '02-2254-5498', '서울시 양천구', '3층', null, null, null, null, 0, 1);
-    
-INSERT INTO COMPANY VALUES ('ddd', '123', null, '프론트는 나처럼', 'wogur698@naver.com', 
-    'sk하이닉스', '02-2254-5498', '서울시 양천구', '3층', null, null, null, null, 0, 1);
-    
-INSERT INTO COMPANY VALUES ('eee', '123', null, '앵무새 회사입니다.', 'wogur698@naver.com', 
-    '유령회사', '02-2254-5498', '서울시 양천구', '3층', null, null, null, null, 0, 1);
-
-
-
-
-
-
-SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID) NOTIFICATIONCOUNT, 
-    (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
-        FROM USERS U, USERGRADE UG 
-            WHERE U.USERGRADENO = UG.USERGRADENO; 
-
-
---company.xml(신규순list, 도서등록, 도서보기(페이징), 책 갯수, 상세보기, 도서등록, 도서정보 수정)
-
---company.xml id=
-SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-    (SELECT * FROM COMPANY ORDER BY COMPANYNAME) A) 
-        WHERE RN BETWEEN 2 AND 4;
-
-
+select * from qna;
+COMMIT;
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM
+(SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID ORDER BY FUNDINGQUESTIONDATE DESC) A)
+ WHERE RN BETWEEN 1 AND 5;
+ SELECT Q.*,U.USERNAME,U.userProfileImage FROM QNA Q, USERS U WHERE Q.USERID=U.USERID AND q.qnanumber=1 ORDER BY Q.QNADATE DESC;
+ SELECT Q.*,C.COMPANYNAME,C.COMPANYProfileImage FROM QNA Q, COMPANY C WHERE Q.COMPANYID=C.COMPANYID AND q.qnanumber=1 ORDER BY Q.QNADATE DESC; 
+SELECT Q.*,A.ADMINNAME,A.ADMINProfileImage FROM QNA Q, ADMIN A WHERE Q.ADMINID=A.ADMINID AND q.qnanumber=1 ORDER BY Q.QNADATE DESC; 

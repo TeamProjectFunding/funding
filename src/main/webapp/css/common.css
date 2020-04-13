@@ -1,144 +1,179 @@
 @charset "UTF-8";
 
-*{margin:0 auto; padding:0; text-decoration: none; list-style: none; box-sizing:border-box; font-family: 'Nanum Gothic', sans-serif; color:#3a434c;}
-html,body{width:100%; height:100%;}
+*{margin:0 auto; padding:0; text-decoration: none; list-style: none; box-sizing:border-box; font-family: 'Nanum Gothic', sans-serif; color:#131a23; }
+html,body{width:100%; min-width:1200px; height:100%;}
+input{background:none; border:none;}
+table{width:100%;}
+h1,h2,h3,h4{width:100%;}
+h1,h2,h3,h4,a,span{font-family: 'Oswald', sans-serif;}
+h1{padding:2% 0; width:100%; float:left;}
+#contentWrap{max-width:1200px; height:100%; position:relative;}
+section{width:100%; float:left;}
+#buttonWrap{float:left; width:100%; padding:2%; text-align: center;}
+.button{ padding:1% 2% 1%; width:20%; background: #131a23; color:#fff; font-family: 'Oswald', sans-serif;}
+.button:hover{color:#f1bf04;}
+.button:active{background:#f1bf04; color:#fff;}
 
-/* width */
-::-webkit-scrollbar {width: 5px;}
-/* Track */
+::-webkit-scrollbar {width: 5px; background: none;}
 ::-webkit-scrollbar-track {border-radius: 50%;}
-/* Handle */
 ::-webkit-scrollbar-thumb {background: #ccc; border-radius: 2.5px;}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {background: #fff; }
+::-webkit-scrollbar-thumb:hover {background: #fff; background: none; }
 
-/* 공통 */
-header{position:fixed; width:100%; border-bottom:1px solid #ffffff6b; z-index: 9999; background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
-header h1{line-height: 30px;  text-align:center;}
-header h1, header a{font-family: 'Oswald', sans-serif; color:#fff;}
-header #headerWrap{position:relative; width:90%; height:80px; }
-header #headerWrap .headerLogo{position:relative; float:left; width:150px; height:60px; top:10px;}
-header #headerWrap #menuWrap{position:relative; float:right; height:80px;}
-header #headerWrap #menuWrap ul{position:relative; float:right; height:40px; clear: both;}
-header #headerWrap #menuWrap ul li{float:left; line-height: 40px;}
-header #headerWrap #menuWrap ul li a{padding:5px; color:#fff;}
+/** main **/
+/* header */
 
-section{position:relative; width:80%; height:55%;}
-section h2{width: 100%; line-height: 150px; font-family: 'Oswald', sans-serif; text-align: center; color: #3a434c; font-size: 30px;}
+header{position:relative; float:left; width:100%; height:auto; top:0; left:0; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover; border-bottom: 1px solid #ffffff2e; z-index: 9999; }
+header.scroll{position:fixed; transition:.3s;}
+header #messageWrap{position:relative; float:left; top:0; left:0; width:100%; height:30px; background:#131a23; color:#f1bf04; line-height: 30px; text-align: center; font-size: 12px; font-weight: bold;}
+header #headerWrap{width:100%; max-width:1200px; height:100%; }
+#headerWrap .headerLogo{float:left; font-size:30px; line-height:30px; padding:10px; font-weight:bold; color:#fff; text-align: center;}
+#headerWrap .menuWrap{float:right; height:100%; }
+#headerWrap .menuWrap ul{float:right; width:100%; height:50%; }
+#headerWrap .menuWrap ul li{float:left; line-height:35px; padding:0 2%; text-align: center;}
+#headerWrap .menuWrap ul li a{position:relative; color:#fff; }
+#headerWrap .menuWrap ul li a:hover{color:#f1bf04;}
+#headerWrap .menuWrap .util .alarm{display:block; position:absolute; top:-1px; right:-1px; width:7px; height:7px; border-radius:50%; color:#fff; background: #f1bf04; font-size: 8px;}
 
-/* main/main.jsp style */
-#mainVisual{ width:100%; height:100%; background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
-#mainVisual h1{top:35%; position: relative; width:100%; font-size: 7vw; text-align: center; color:#fff; font-family: 'Oswald', sans-serif;}
+.popupWrap{display:none;}
+.popupWrap{position:fixed; z-index:99999; width:100%; height:100%; background:#131a23fc;}
+.popupWrap .closeButton{position:absolute; top:5%; right:5%; width:30px; height:30px; cursor: pointer;}
+.popupWrap .closeButton span{display:block; position:absolute; top:14px; width:100%; height:2px; border-radius: 1px; transform:rotate(45deg); background:#f1bf04;}
+.popupWrap .closeButton span:last-child{transform:rotate(-45deg);}
 
-#fundingWrap #fundingList { width: 100%;}
-#fundingWrap #fundingList .funding{position:relative; margin-top:3%; width: 25%; float: left; padding:5px;}
-#fundingWrap #fundingList .funding .hoverLink{position:absolute; width:0; height:100%; background: #fff; top:0; left:50%; transition:.5s; opacity: 0;}
-#fundingWrap #fundingList .funding .hoverLink span{display:block; position:absolute; width:100%; line-height:50px; top:50%; margin-top:-25px;  color:#444; font-family: 'Oswald', sans-serif; text-align: center; font-size: 16px;}
-#fundingWrap #fundingList .funding:hover .hoverLink{width:100%; background:#fff; left:0; transition:.3s; opacity: .7;}
-#fundingWrap #fundingList .funding ul{ width: 100%;}
-#fundingWrap #fundingList .funding ul li { padding: 0px 0px 5px; magin-top:5%; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
-#fundingWrap #fundingList .funding ul li.thum {position: relative; overflow: hidden;}
-#fundingWrap #fundingList .funding ul li.thum img{width: 100%;}
-#fundingWrap #fundingList .funding ul li:nth-child(2) span{padding: 5px 10px 5px; margin-right: 10px; font-size: 11px; background: #3c81ff; font-weight: bold; color: #fff; border-radius: 15px; position: absolute; top: 0; left: 15px; font-family: 'Oswald', sans-serif;}
-#fundingWrap #fundingList .funding ul li.fundingTitle {font-weight: bold; text-align: center; font-size:14px;}
-#fundingWrap #fundingList .funding ul li:last-child span{font-size: 12px; font-weight: bold; color: #3c81ff;}  
+#searchWrap  #contentWrap form{width:100%; padding:15%;}
+#searchWrap  #contentWrap table th{width:70%;}
+#searchWrap  #contentWrap table th input{width:100%; padding:2%; border-bottom:1px solid #f1bf04; text-align: center; font-size: 25px;}
+#searchWrap  #contentWrap table td .button{ padding:7%; width:100%; background:#f1bf04; color:#fff; text-align: center;}
+#searchWrap  #contentWrap .searchResualt{padding:0;}
+#searchWrap  #contentWrap .goodsWrap{width:1250px; height:350px; overflow: scroll;}
+#searchWrap  #contentWrap .goodsWrap .goodsName{color:#fff;}
 
-#rewardWrap #rewardList { width: 100%;}
-#rewardWrap #rewardList .reward{position:relative; margin-top:3%; width: 25%; float: left;}
-#rewardWrap #rewardList .reward .hoverLink{position:absolute; width:0; height:100%; background: #fff; top:0; left:50%; transition:.5s; opacity: 0;}
-#rewardWrap #rewardList .reward .hoverLink span{display:block; position:absolute; width:100%; line-height:50px; top:50%; left:0; margin-top:-25px;  color:#444; font-family: 'Oswald', sans-serif; text-align: center; font-size: 16px;}
-#rewardWrap #rewardList .reward:hover .hoverLink{width:100%; background:#fff; left:0; transition:.3s; opacity: .7;}
-#rewardWrap #rewardList .reward ul{ width: 100%;}
-#rewardWrap #rewardList .reward ul li { padding: 5px 15px 5px; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
-#rewardWrap #rewardList .reward ul li.thum {position: relative; overflow: hidden;}
-#rewardWrap #rewardList .reward ul li.thum img{width: 100%;}
-#rewardWrap #rewardList .reward ul li:nth-child(2) span{padding: 5px 10px 5px; margin-right: 10px; font-size: 11px; background: #44cebb; font-weight: bold; color: #fff; border-radius: 15px; position: absolute; top: 0; left: 15px; font-family: 'Oswald', sans-serif;}
-#rewardWrap #rewardList .reward ul li.rewardTitle {font-weight: bold; text-align: center; font-size:14px;}
-#rewardWrap #rewardList .reward ul li:last-child span{font-size: 12px; font-weight: bold; color: #44cebb;}
+#alarmWrap #contentWrap{padding:10% 20% 0;}
+#alarmWrap #contentWrap h1{color:#fff;}
+#alarmWrap #contentWrap h4{color:#f1bf04;}
+#alarmWrap #contentWrap .alarmListWrap{width:100%; margin-top:50px; padding:0 5% 0;  height:350px; overflow:scroll;}
+#alarmWrap #contentWrap .alarmListWrap ul{ width:100%; margin-bottom:3%; margin-bottom: 3%; border-bottom: 1px solid #ffffff0d;}
+#alarmWrap #contentWrap .alarmListWrap ul li{color:#fff; font-size: 16px; padding:1% 0; font-weight: bold;}
+#alarmWrap #contentWrap .alarmListWrap ul li:last-child{ font-size:12px; color:#eebd07a1;}
 
-.fundingOpenBanner{position:relative; width:100%; background:url(https://static.wadiz.kr/main/media/img-fundingopen-pc.51ce91c1.jpg); background-size: cover; text-align: center; padding:10%; margin:2.5% 0 2.5%;  }
-.fundingOpenBanner h1{font-family: 'Oswald', sans-serif; font-size: 3vw; }
-.fundingOpenBanner h1, .fundingOpenBanner p { width:100%; color:#fff;}
-.fundingOpenBanner button{padding: 5px 40px 5px; margin-top: 20px; background: none; border: 3px solid #fff; color: #fff; font-weight: bold; font-size: 20px; border-radius: 15px; font-family: 'Oswald', sans-serif;}
 
-#newsWrap #newList{ width: 100%;}
-#newsWrap #newList .news{width: 33.33%; float: left; padding:5px;}
-#newsWrap #newList .news li { padding: 5px 15px 5px; text-align: center; position: relative; font-size: 12px; font-weight: bold;}
-#newsWrap #newList .news li.thum {position: relative; overflow: hidden; padding:0;}
-#newsWrap #newList .news li.thum img{width: 100%; transform:scale(1); transition:.3s; float:left;}
-#newsWrap #newList .news li.thum:hover img{transform:scale(1.3); transition:1s;}
-#newsWrap #newList .news li.newsTitle {font-weight: bold; text-align: center; font-size:14px;}
+/* footer.jsp */
+footer{position:relative; float:left; width:100%;  height:auto; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover;}
+footer #footerBackground{width:100%; height:100%; background:#00060e96;}
+#footerBackground h3{text-align: center; color:#fff; padding:2.5% 5% 2.5%; }
+#footerBackground p{text-align: center; color:#fff; padding:2.5% 5% 2.5%; font-size: 12px;}
 
-#bottomWrap >div{float:left;}
-#bottomWrap #noticeWrap{position: relative; top: 5%; width: 30%; box-shadow: -1px 1px 5px #b9b9b9; padding: 0 1% 1%; transition:.3s;}
-#bottomWrap #noticeWrap:hover{position: relative; top: 5%; width: 30%; box-shadow: -5px 5px 15px #b9b9b9; padding: 0 1% 1%; transition:.5s;}
-#bottomWrap #noticeWrap h2{line-height: 100px;}
-#bottomWrap #noticeWrap ul{width:100%; height:300px; padding:0 10% 10%; overflow-y: scroll;}
+/* main.jsp */
+#mainVisual{position:relative; width:100%; height:100%; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover;}
+#mainVisual h1{position:relative; top:20%; width:100%; font-size: 100px; color:#fff; text-align: center; }
 
-#bottomWrap #noticeWrap ul li{width: 100%; padding: 3% 0 3%; font-size: 14px; border-bottom: 1px solid #f1f1f1; font-weight: bold;}
-#bottomWrap #noticeWrap ul li a{color: #3a434c;}
-#bottomWrap #noticeWrap ul li a span{font-size: 12px; float: left; margin-right:10px; line-height: 20px;}
-#bottomWrap #bannerWrap{width:70%;}
+.mainWrap .goodsWrap{width:100%; height:auto; float: left;}
+.goodsWrap .goodsListWrap{width:100%; height:auto; padding:100px 0 0;}
+.goods{width:400px; padding:1%; float:left;}
+.goods ul li {position:relative; width:100%; overflow: hidden; text-align: center; font-weight:bold; padding:1%;}
+.goods ul .thumnail{height:250px; cursor: pointer; padding:0;}
+.goods ul .thumnail img{width: 100%; height:100%; transition:.5s;  transform:scale(1);}
+.goods ul .thumnail:hover img{transform:scale(1.2); transition:.5s;}
+.goods ul .thumnail span{position:absolute; top:0; left:0; float:left;  padding:5px; color:#fff; background: #f1bf04;}
+.goods ul .companyName{color:#808080; font-size:14px;}
+.goods ul .goodsName{font-size: 20px; }
+.goods ul .deadline{font-size: 12px; color:#f1bf04; overflow: hidden;}
 
-/* users style */
-#userWrap{padding:10% 0 0; width:50%; max-width:500px; height:100%; font-family: 'Nanum Gothic', sans-serif; font-size:12px;}
-#userWrap table{width:100%;}
-#userWrap th{font-size:14px; padding:5%; text-align: center;}
-#userWrap td{padding:1%; text-align: center;}
-#userWrap input{width:100%; padding:3%; text-align: center; border:1px solid #ccc; background:none; border-radius: 10px} 
-#userWrap .btnWrap{text-align: center;}
-#userWrap .btn{width:20%; padding:3%; border:none; font-family: 'Oswald', sans-serif; cursor:pointer; font-size:14px; color:#1289de;}
-#userWrap .naverBtn{color:#00ab33;}
+.mainWrap .bannerWrap{width:100%; height:auto; padding:100px 0; float:left;} 
+.bannerWrap .lineBannerWrap{float:left; width:100%; padding:5%; margin:50px 0 10px; height:300px; background:url(../images/bannerImg_01.jpg); background-size: cover;}
+.lineBannerWrap h1{width:100%; color:#fff; text-align: center; font-size: 40px;}
+.lineBannerWrap h4{width:100%; color:#fff; text-align: center;}
 
-#userWrap.joinWrap{height:auto;}
-#userWrap.joinWrap #sample4_postcode{width:60%;}
-#userWrap.joinWrap .postBtn{width:39%; color:#1289de; font-weight: bold;}
-#userWrap.joinWrap .btnWrap input{width:20%; padding:10px 20px 10px; }
-#userWrap.joinWrap .checkBoxWrap{text-align: center;}
-#userWrap.joinWrap input[type="checkbox"]{width:20px;}
+.bannerWrap .bannerList{float:left; margin:0 0 50px; width:100%; height:auto; }
+.bannerList >li{width:390px; margin:0 5px 0; padding:1%; height:300px; float:left; background: #ccc; box-shadow: 0 0 0 #000;}
+.bannerList .banner:hover{box-shadow:-5px 5px 15px #000; transition:.5s; cursor: pointer;}
+.bannerList .event{background:url(../images/event.jpeg); background-size: cover;} 
+.bannerList .memberShip{background:url(../images/memberShipBanner.jpg); background-size: cover;}
+.bannerList h1{text-align: left; color:#fff; padding:10%; font-size: 40px;}
+.bannerList .noticeList {background: #131a23; }
+.bannerList .noticeList h3{text-align: center; color:#f1bf05; }
+.bannerList .noticeList ul{width:100%; height:220px; overflow: scroll; }
+.bannerList .noticeList li{width:90%; margin:0 5px 0; padding:1%; color:#fff;  line-height:50px; float:left;  font-size:12px; font-weight:bold; opacity: 1; border-bottom: 1px solid #1e2938; box-shadow: 0 0 0 #fff;}
+.bannerList .noticeList li:hover{color:#f1bf05; transition:.3s; box-shadow:-1px 1px 5px #fff;}
+.bannerList .noticeList li span{font-size: 10px; color:#ffffffb8;  float:right;}
 
-#userWrap.joinWrap p span{font-weight:bold;}
-#userWrap.joinWrap .danger{color:#da7474;}
-#userWrap.joinWrap .normal{color:#e2a51a;}
-#userWrap.joinWrap .safety{color:#3aa3cc;}
+/** user **/
 
-#userWrap.joinSuccessWrap{height:auto;}
-#userWrap.joinSuccessWrap td{padding:5%; text-align: left; }
-#userWrap.joinSuccessWrap .btnWrap{text-align: center;}
+#contentWrap.userWrap{padding:10% 20%;  }
+#contentWrap.userWrap h1{text-align: center; padding:50px 0;}
+#contentWrap.userWrap table{width:100%; font-size: 12px;}
+#contentWrap.userWrap td{padding:2%;}
+#contentWrap.userWrap td input{width:100%; padding:2%; text-align: center; border:1px solid #f7f7f7; font-size:12px;}
+#contentWrap.userWrap th .button{ width:20%;}
 
-/* funding style*/
-/* funding list */
-#fundingWrap.fundingListWrap{top:10%; height:100%;}
-#rewardWrap.rewardListWrap{top:10%; height:100%;}
+/* login *
+#contentWrap.userWrap th .naverButton{background:#04cf5c;}
 
-/* funding view */
-#fundingWrap.fundingViewWrap{max-width:1000px; padding-top:10%;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap{position: relative; width: 100%; height:250px; color:}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .thum{width:50%; height:100%; float:left; background: #ccc;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection {position:relative; width: 50%; float:left; height:100%; font-size:14px; font-weight:bold;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection h1 { padding: 2%;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection span{font-size:12px;color:#9c9c9c;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection ul li { float: left; width: 100%; padding: 2%; }
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection .fundingButtonWrap{position:absolute; width:100%; bottom:0; right:0;}
-#fundingWrap.fundingViewWrap #fundingBasicInfomationWrap .infomationTextSection .fundingButtonWrap a {color: #1289de; padding: 2% 3%; margin-left: 2%; border: 2px solid #1289de; border-radius: 5px; float:left; font-family: 'Oswald', sans-serif; }
-#investmentRiskNotice { width: 100%; font-size: 12px; line-height: 25px; float: left; text-align: center; padding: 2%;}
-.fundingInfoNavigation {width: 100%; height: 40px; float: left; padding: 4% 19%; text-align: center;}
-.fundingInfoNavigation li {float: left; width: 20%; text}
+/* joinSelect */
+#contentWrap.userWrap .joinSelectWrap{padding:40% 15%;}
+#contentWrap.userWrap .joinSelectWrap .button{width:48%; line-height:150px; margin:0 1%; display: block; float:left; font-size: 16px;}
 
-/* funding view coreInfomation */
-#fundingViewContentWrap {padding-top:5%; float:left;}
-#fundingViewContentWrap h3{padding:2%;}
-#fundingViewContentWrap h4{padding:3%;}
-#fundingViewContentWrap p{padding:3%;}
+/* joinForm */
+#contentWrap.userWrap .joinFormWrap table {margin:50px 0 ;}
+#contentWrap.userWrap .joinFormWrap table th{padding:5%;}
+#contentWrap.userWrap .joinFormWrap table td {text-align: center; font-size: 12px; text-align: center;}
+#contentWrap.userWrap .joinFormWrap table td input{width:100%; padding:2%; text-align: center; border:1px solid #f7f7f7; font-size:12px;}
+#contentWrap.userWrap .joinFormWrap table td .postBox{width:69%;}
+#contentWrap.userWrap .joinFormWrap table td .postButton{width:30%}
+#contentWrap.userWrap .joinFormWrap table td input[type='checkbox']{width:10px;}
 
-/* funding step */
-#fundingStep .fundingButtonWrap {text-align:center;}
-#fundingStep .fundingButtonWrap input {color: #1289de; padding: 1% 2%; margin: 2% 1% 2%; border: 2px solid #1289de; border-radius: 5px; font-family: 'Oswald', sans-serif;}
-#fundingStep
+#contentWrap.userWrap .danger{color:#ca5109;}
+#contentWrap.userWrap .normal{color:#f1bf04;}
+#contentWrap.userWrap .safety{color:#016c86;}
 
-footer{margin-top:50px; width:100%; height:300px;  background:url(http://localhost:8181/funding/images/main.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;}
-footer #footerBackgroundColor{position: relative; width:100%; height:100%; color:#fff; background:#041423d1; }
-footer #footerBackgroundColor #footerWrap{width:80%; padding: 5%; font-family: 'Nanum Gothic', sans-serif; font-size: 12px; line-height: 20px;}
+/** goods **/
+/* goodsView */
+.goodsViewWrap{margin-bottom:100px;}
+#goodsBasicInfomationWrap {position:relative; width:100%; padding:10% 0 5%; float:left;}
+#goodsBasicInfomationWrap .thumnail{width:50%; float:left;}
+#goodsBasicInfomationWrap .thumnail img{width:100%;}
+#goodsBasicInfomationWrap .infomationTextSection {position:relative; width:50%; padding:2% 5% 0; float:left;}
+.infomationTextSection h1{width:100%;}
+.infomationTextSection h1 span{font-size:14px; color:#808080;}
+.infomationTextSection ul{width:100%; float:left;}
+.infomationTextSection li{float:left; width:100%; padding:2% 0; font-weight: bold;}
+.infomationTextSection li p {float:left; width:100%;}
+.infomationTextSection li p span{font-size:12px; color:#808080; float:right;}
+.infomationTextSection #buttonWrap{padding:10% 0 0;}
+
+#investmentRiskNotice {width:100%; float:left; text-align: center; font-size: 12px; background:#808080; padding:3%;}
+#investmentRiskNotice p{color:#fff; float:}
+#investmentRiskNotice p a{color:#f1bf04;}
+
+.goodsInfoNavigation {width:100%; float:left; padding:3%;}
+.goodsInfoNavigation li{float:left; width:20%; text-align: center;}
+.goodsInfoNavigation li a{ font-weight: bold; }
+.goodsInfoNavigation li a span{color:#f1bf04;}
+
+#goodsViewContentWrap{width:100%; float: left; padding:5%;}
+#goodsViewContentWrap h3{padding:0 0 5%; float:left;}
+#goodsViewContentWrap h4{padding:0 0 1%; float:left;}
+#goodsViewContentWrap p{padding:0 0 5%; font-size: 14px; float:left;}
+
+#goodsViewContentWrap.newsWrap{width:100%; float: left; padding:10% 30%;}
+#goodsViewContentWrap.newsWrap ul{float:left; width:100%; padding:3% 0 3%; border-bottom:1px solid #f7f7f7;}
+#goodsViewContentWrap.newsWrap ul .newsTitle{font-size: 16px; font-weight: bold;}
+#goodsViewContentWrap.newsWrap ul li {font-size: 14px; padding:1%;}
+#goodsViewContentWrap.newsWrap ul li span{color:#808080; float:right; font-size: 12px;}
+
+/** funding **/
+#contentWrap.fundingWrap{width:800px;}
+#contentWrap.fundingWrap #fundingStep{width:100%;}
+#contentWrap.fundingWrap #fundingStep li{padding:6%;float:left; font-size: 12px;}
+#contentWrap.fundingWrap #fundingStep li span{color:#f1bf04; font-weight: bold;}
+#contentWrap.fundingWrap table{mwidth:100%; text-align: left;}
+#contentWrap.fundingWrap table td{padding:2%; font-size: 12px;}
+#contentWrap.fundingWrap table td span{font-size:10px; font-weight:bold;}
+#contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
+#contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
+
+
+
 
 
 

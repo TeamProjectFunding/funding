@@ -37,45 +37,45 @@ public class HomeController {
 	}
 	
 	//펀드 리스트
-	@RequestMapping(value ="fundingList")
-	public String fundingList() {
-		return "funding/fundingList";
+	@RequestMapping(value ="fundList")
+	public String fundList() {
+		return "goods/fundList";
 	}
 	
 	//리워드 리스트
 	@RequestMapping(value ="rewardList")
 	public String rewardList() {
-		return "funding/rewardList";
+		return "goods/rewardList";
 	}
 	
 	//펀드, 리워드 상세보기(정보)
-	@RequestMapping(value ="fundingViewCoreInfomation")
-	public String fundingViewCoreInfomation() {
-		return "funding/fundingViewCoreInfomation";
+	@RequestMapping(value ="goodsViewCoreInfomation")
+	public String goodsViewCoreInfomation() {
+		return "goods/goodsViewCoreInfomation";
 	}
 	
 	//펀드, 리워드 상세보기(투자위험)
-	@RequestMapping(value ="fundingViewRisk")
-	public String fundingViewRisk() {
-		return "funding/fundingViewRisk";
+	@RequestMapping(value ="goodsViewRisk")
+	public String fundViewRisk() {
+		return "goods/goodsViewRisk";
 	}
 	
 	//펀드, 리워드 상세보기(새소식)
-	@RequestMapping(value ="fundingViewNews")
-	public String fundingViewNews() {
-		return "funding/fundingViewNews";
+	@RequestMapping(value ="goodsViewNews")
+	public String goodsViewNews() {
+		return "goods/goodsViewNews";
 	}
 	
 	//펀드, 리워드 상세보기(토론)
-	@RequestMapping(value ="fundingViewDebate")
-	public String fundingViewDebate() {
-		return "funding/fundingViewDebate";
+	@RequestMapping(value ="goodsViewDebate")
+	public String goodsViewDebate() {
+		return "goods/goodsViewDebate";
 	}
 	
 	//펀드, 리워드 상세보기(투자자)
-	@RequestMapping(value ="fundingViewInvestor")
-	public String fundingViewInvestor() {
-		return "funding/fundingViewInvestor";
+	@RequestMapping(value ="goodsViewInvestor")
+	public String goodsViewInvestor() {
+		return "goods/goodsViewInvestor";
 	}
 	
 	//펀딩하기 Step1
@@ -91,8 +91,8 @@ public class HomeController {
 	}
 		
 	//펀딩하기 Step3
-	@RequestMapping(value ="fundingStep3")
-	public String fundingStep3() {
-		return "funding/fundingStep3";
+	@RequestMapping(value ="fundingComplate")
+	public String fundingComplate() {
+		return "funding/fundingComplate";
 	}
 }

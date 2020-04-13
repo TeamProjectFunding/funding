@@ -5,15 +5,7 @@ public class Admin {
 	private String adminId;       
 	private String adminPassword; 
 	private String adminName;
-	public Admin(String adminId, String adminPassword, String adminName) {
-		super();
-		this.adminId = adminId;
-		this.adminPassword = adminPassword;
-		this.adminName = adminName;
-	}
-	public Admin() {
-		super();
-	}
+	private String adminProfileImage;
 	public String getAdminId() {
 		return adminId;
 	}
@@ -32,10 +24,28 @@ public class Admin {
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
+	public String getAdminProfileImage() {
+		return adminProfileImage;
+	}
+	public void setAdminProfileImage(String adminProfileImage) {
+		this.adminProfileImage = adminProfileImage;
+	}
+	public Admin(String adminId, String adminPassword, String adminName, String adminProfileImage) {
+		super();
+		this.adminId = adminId;
+		this.adminPassword = adminPassword;
+		this.adminName = adminName;
+		this.adminProfileImage = adminProfileImage;
+	}
+	public Admin() {
+		super();
+	}
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminPassword=" + adminPassword + ", adminName=" + adminName + "]";
-	}  
+		return "Admin [adminId=" + adminId + ", adminPassword=" + adminPassword + ", adminName=" + adminName
+				+ ", adminProfileImage=" + adminProfileImage + "]";
+	}
+	
 	
 	
 }

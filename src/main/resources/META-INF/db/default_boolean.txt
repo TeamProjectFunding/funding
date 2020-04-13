@@ -39,8 +39,8 @@ FundingPeopleCount(펀딩한 사람 수)	0
 FundingAdminPermit(관리자승인여부)	0
   
 Boolean : 
-  FundingCategory	펀딩상품카테고리	NUMERIC(1)
-  FundingSuccessOrFailure(펀딩성공여부) 0 성공 1 실패
+  FundingCategory	펀딩상품카테고리	0 투자 1 리워드
+  FundingSuccessOrFailure(펀딩성공여부) 0 진행중 1 성공 2 실패
   FundingAdminPermit(관리자승인여부)	0 대기 중 1 승인 2 반려
   
   

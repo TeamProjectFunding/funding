@@ -10,6 +10,9 @@ public class FundingGoodsCommentsReply {
 	private int fgCommentsNumber;               
     private String userId;               
     
+    private int startRow;
+    private int endRow;
+    
     //user join
 	private String userProfileImage;      
 	private String userName;
@@ -43,6 +46,18 @@ public class FundingGoodsCommentsReply {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+	public int getEndRow() {
+		return endRow;
+	}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
 	public String getUserProfileImage() {
 		return userProfileImage;
 	}
@@ -56,13 +71,15 @@ public class FundingGoodsCommentsReply {
 		this.userName = userName;
 	}
 	public FundingGoodsCommentsReply(int fgCommentsReplyNumber, String fgCommentsReplyContent, Date fgCommentsReplyDate,
-			int fgCommentsNumber, String userId, String userProfileImage, String userName) {
+			int fgCommentsNumber, String userId, int startRow, int endRow, String userProfileImage, String userName) {
 		super();
 		this.fgCommentsReplyNumber = fgCommentsReplyNumber;
 		this.fgCommentsReplyContent = fgCommentsReplyContent;
 		this.fgCommentsReplyDate = fgCommentsReplyDate;
 		this.fgCommentsNumber = fgCommentsNumber;
 		this.userId = userId;
+		this.startRow = startRow;
+		this.endRow = endRow;
 		this.userProfileImage = userProfileImage;
 		this.userName = userName;
 	}
@@ -73,9 +90,10 @@ public class FundingGoodsCommentsReply {
 	public String toString() {
 		return "FundingGoodsCommentsReply [fgCommentsReplyNumber=" + fgCommentsReplyNumber + ", fgCommentsReplyContent="
 				+ fgCommentsReplyContent + ", fgCommentsReplyDate=" + fgCommentsReplyDate + ", fgCommentsNumber="
-				+ fgCommentsNumber + ", userId=" + userId + ", userProfileImage=" + userProfileImage + ", userName="
-				+ userName + "]";
-	}   
+				+ fgCommentsNumber + ", userId=" + userId + ", startRow=" + startRow + ", endRow=" + endRow
+				+ ", userProfileImage=" + userProfileImage + ", userName=" + userName + "]";
+	}
+	
 	
 	
 }

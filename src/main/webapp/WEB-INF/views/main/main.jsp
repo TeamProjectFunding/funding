@@ -1,179 +1,130 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="conPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CROWDFUND : MAIN</title>
+</head>
+<body>
 
 <jsp:include page="header.jsp" />
 	<section id="mainVisual">
-		<h1>CROWD FUNDING</h1>
+		<h1>CROWD FUND</h1>
 	</section>
-	<section id="fundingWrap">
-		<h2>BEST FUNDING</h2>
-		<div id="fundingList">
+	<div id="contentWrap" class="mainWrap">
 		
-			<!-- list -->
-			
-			<div class="funding">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >Funding</span>company name</li>
-					<li class="fundingTitle">Funding Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
+		<section class="goodsWrap">
+			<div class="goodsListWrap fund">
+				<h1>FUND</h1>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>FUND</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>FUND</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div id="buttonWrap">
+					<a href='fundList.do' class='button'>MORE +</a>
+				</div>
 			</div>
-			
-			<div class="funding">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >Funding</span>company name</li>
-					<li class="fundingTitle">Funding Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
+			<div class="goodsListWrap reward">
+				<h1>REWARD</h1>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_04.jpeg "><span>REWARD</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>REWARD</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div class="goods">
+					<ul>
+						<li class="thumnail">
+							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>REWARD</span></a>
+						</li>
+						<li class="companyName">company name</li>
+						<li class="goodsName">goods name</li>
+						<li class="deadline">deadline after 10 days</li>
+					</ul>
+				</div>
+				<div id="buttonWrap">
+					<a href='rewardList.do' class='button'>MORE +</a>
+				</div>
 			</div>
-			
-			
-			<div class="funding">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >Funding</span>company name</li>
-					<li class="fundingTitle">Funding Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
+		</section>
+		<section class="bannerWrap">
+			<div class="lineBannerWrap">
+				<h1>OPEN FUNDING</h1>
+				<h4>Introduce your story and meet investors and supporters</h4>
+				<div id="buttonWrap">
+					<a href="#none" class="button">Do it</a>
+				</div>
 			</div>
-			
-			
-			<div class="funding">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >Funding</span>company name</li>
-					<li class="fundingTitle">Funding Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-		</div>
-	</section>
-	<section id="rewardWrap" >
-		<h2>REWARD</h2>
-		<div id="rewardList">
-		
-			<!-- list -->
-			
-			<div class="reward">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0318/20200318203419771_60560.png/wadiz/format/jpg/quality/80/optimize" alt="rewardThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >reward</span>company name</li>
-					<li class="rewardTitle">Reward Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-			<div class="reward">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0318/20200318203419771_60560.png/wadiz/format/jpg/quality/80/optimize" alt="rewardThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >reward</span>company name</li>
-					<li class="rewardTitle">Reward Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-			
-			<div class="reward">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0318/20200318203419771_60560.png/wadiz/format/jpg/quality/80/optimize" alt="rewardThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >reward</span>company name</li>
-					<li class="rewardTitle">Reward Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-			
-			<div class="reward">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0318/20200318203419771_60560.png/wadiz/format/jpg/quality/80/optimize" alt="rewardThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >reward</span>company name</li>
-					<li class="rewardTitle">Reward Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-		</div>
-	</section>
-	<div class="fundingOpenBanner">
-		<h1>CROWD FUNDING OPEN</h1>
-		<p>Introduce your story and meet investor and supporters</p>
-		<button>Do it</button>
+			<ul class="bannerList">
+				<li class="event banner">
+					<h1>EVENT</h1>
+				</li>
+				<li class="memberShip banner">
+					<h1>MEMBERS</h1>
+				</li>
+				
+				<li class="noticeList">
+					<h3>NOTICE</h3>
+					<ul>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+						<li>noticeTitle<span>2020-04-12</span></li>
+					</ul>
+					<div id="buttonWrap">
+						<a href="#none" class="button">MORE +</a>
+					</div>
+				</li>
+			</ul>
+		</section>
 	</div>
-	<section id="newsWrap">
-		<h2>NEWS & PRESS</h2>
-		<div id="newList">
-		
-			<ul class="news">
-				<li class="thum">
-					<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0323/20200323113035051_60304.jpg" alt="newThum">
-				</li>
-				<li class="companyName">companyName</li>
-				<li class="newsTitle">[글로벌 5억] 6만원대로 시작하는 음파전동칫솔 | 오클린 X pro |</li>
-			</ul>
-			
-			<ul class="news">
-				<li class="thum">
-					<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0323/20200323113035051_60304.jpg" alt="newThum">
-				</li>
-				<li class="companyName">companyName</li>
-				<li class="newsTitle">[글로벌 5억] 6만원대로 시작하는 음파전동칫솔 | 오클린 X pro |</li>
-			</ul>
-			
-			<ul class="news">
-				<li class="thum">
-					<img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0323/20200323113035051_60304.jpg" alt="newThum">
-				</li>
-				<li class="companyName">companyName</li>
-				<li class="newsTitle">[글로벌 5억] 6만원대로 시작하는 음파전동칫솔 | 오클린 X pro |</li>
-			</ul>
-		</div>
-	</section>
-	
-	<section id="bottomWrap">
-		<div id="noticeWrap">
-			<h2>NOTICE</h2>
-			<ul>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-				<li><a href=""><span>[headline]</span> notice title</a></li>
-			</ul>
-		</div>
-		<div id="bannaWrap">
-		</div>
-	</section>
-	
 <jsp:include page="footer.jsp" />

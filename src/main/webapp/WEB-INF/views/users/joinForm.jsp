@@ -13,13 +13,14 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
-		<section id="userWrap" class="joinWrap">
+	<div id="contentWrap" class="userWrap">
+		<section class="joinFormWrap">
 			<form action="">
 			
 				<!-- user join form -->
 				<table class="user">
 					<tr>
-						<th>회원 기본 정보</th>
+						<th><h2>회원 기본 정보</h2></th>
 					</tr>
 					<tr>
 						<td><input type="email" name="userId" value="아이디(이메일)를 입력하세요" required="required"></td>
@@ -63,7 +64,7 @@
 						<td><input type="text" name="userPhone" value="연락처를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
-						<th>추가정보</th>
+						<th><h2>추가정보</h2></th>
 					</tr>
 					<tr>
 						<td><input type="file" name="userProfileImage"></td>
@@ -75,8 +76,8 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" id="sample4_postcode" name="userPost" class="text_box"  placeholder="우편번호">
-							<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn postBtn">
+							<input type="text" id="sample4_postcode" name="userPost" class="postBox"  placeholder="우편번호">
+							<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="button postButton">
 						</td>
 					</tr>
 					<tr>
@@ -96,18 +97,18 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="btnWrap">
-							<input type="submit" value="JOIN" class="btn">
-							<input type="reset" value="RESET" class="btn">
-							<input type="button" value="BACK" class="btn">
-						</td>
+						<th id="buttonWrap">
+							<input type="submit" value="JOIN" class="button">
+							<input type="reset" value="RESET" class="button">
+							<input type="button" value="BACK" class="button">
+						</th>
 					</tr>
 				</table>
 				
 				<!-- company join form -->
 				<table class="company">
 					<tr>
-						<th>기업 기본 정보</th>
+						<th><h2>기업 기본 정보</h2></th>
 					</tr>
 					<tr>
 						<td><input type="email" name="companyId" value="아이디(이메일)를 입력하세요" required="required"></td>
@@ -154,15 +155,15 @@
 						<td><input type="text" name="companyPhone" value="연락처를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
-						<th>추가정보</th>
+						<th><h2>추가정보</h2></th>
 					</tr>
 					<tr>
 						<td><input type="file" name="companyProfileImage"></td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" id="sample4_postcode" name="companyPost" class="text_box"  placeholder="우편번호">
-							<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn postBtn">
+							<input type="text" id="sample4_postcode" name="companyPost" class="postBox"  placeholder="우편번호">
+							<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="button postButton">
 						</td>
 					</tr>
 					<tr>
@@ -182,15 +183,16 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="btnWrap">
-							<input type="submit" value="JOIN" class="btn">
-							<input type="reset" value="RESET" class="btn">
-							<input type="button" value="BACK" class="btn">
-						</td>
+						<th id="buttonWrap">
+							<input type="submit" value="JOIN" class="button">
+							<input type="reset" value="RESET" class="button">
+							<input type="button" value="BACK" class="button">
+						</th>
 					</tr>
 				</table>
 			</form>
 		</section>
+	</div>
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

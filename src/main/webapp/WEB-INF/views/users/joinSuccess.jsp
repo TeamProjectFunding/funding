@@ -13,7 +13,8 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
-	<section id="userWrap" class="joinSuccessWrap">
+	<div id="contentWrap" class="userWrap">
+		<section class="joinSuccessWrap">
 			
 				<!-- user join success -->
 				<table>
@@ -46,9 +47,9 @@
 						<td>userAdPhone ok / userAdEmail ok</td>
 					</tr>
 					<tr>
-						<td class="btnWrap" colspan="2">
-							<input type="button" value="LOGIN" class="btn" onClick="location.href='${conPath}/login.do'">
-							<input type="button" value="HOME" class="btn" onClick="location.href='${conPath}/main.do'">
+						<td class="buttonWrap" colspan="2">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
+							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
@@ -84,13 +85,14 @@
 						<td>companyAdPhone ok / companyAdEmail ok</td>
 					</tr>
 					<tr>
-						<td class="btnWrap" colspan="2">
-							<input type="button" value="LOGIN" class="btn" onClick="location.href='${conPath}/login.do'">
-							<input type="button" value="HOME" class="btn" onClick="location.href='${conPath}/main.do'">
+						<td class="buttonnWrap" colspan="2">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
+							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
 		</section>
+		</div>
 		<jsp:include page="../main/footer.jsp" />
 </body>
 </html>
