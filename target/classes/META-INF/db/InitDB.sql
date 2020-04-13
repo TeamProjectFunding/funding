@@ -215,6 +215,7 @@ CREATE TABLE FundingGoods (
 	FundingAccountBalance       NUMBER(12)   NULL,     -- 펀딩계좌잔액
 	FundingTargetAmount         NUMBER(12)   NULL,     -- 펀딩목표금액
 	FundingTargetRate           NUMBER(12)   NULL,     -- 펀딩목표달성율
+    FundingStartDate	     	DATE         NULL,    -- 펀딩시작일
 	FundingTargetDate           DATE          NULL,     -- 펀딩목표달성일(결제일)
 	FundingRewardDeliveryDate   DATE          NULL,     -- 펀딩리워드배송일
 	FundingInvestmentProfitRate NUMBER(3)    NULL,     -- 투자이익비율
@@ -370,6 +371,7 @@ CREATE TABLE QnA (
     QnAGroup	NUMBER(12),
     QnARef	NUMBER(12),
     QnAIndent	NUMBER(12),
+    QnASecret	NUMBER(1), -- 비밀글여부	
     QnADate	DATE DEFAULT SYSDATE,
     UserId            VARCHAR2(100),      -- 유저ID 3중 한명만 쓰기때문에 ref는 안함
     CompanyId          VARCHAR2(100), -- 회사 ID
