@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="Company">
+    	<resultMap type="Company" id="CompanyList">
+    		<result property="companyId" column="companyId"/>
+    		<result property="companyProfileImage" column="companyProfileImage"/>
+    		<result property="companyIntroduction" column="companyIntroduction"/>
+    		<result property="companyEmail" column="companyEmail"/>
+    		<result property="companyName" column="companyName"/>
+    		<result property="companyPhone" column="companyPhone"/>
+    		<result property="companyAddressBasic" column="companyAddressBasic"/>
+    		<result property="companyAddressDetail" column="companyAddressDetail"/>
+    		<result property="companyBankName" column="companyBankName"/>
+    		<result property="companyBankDepositor" column="companyBankDepositor"/>
+    		<result property="companyAccountNumber" column="companyAccountNumber"/>
+    		<result property="companyAccountBalance" column="companyAccountBalance"/>
+    		<result property="companyInFunding" column="companyInFunding"/>
+    		<result property="companyOutSite" column="companyOutSite"/>
+    		<result property="startRow" column="startRow"/>
+    		<result property="endRow" column="endRow"/>
+    		<result property="notificationCount" column="notificationCount"/>
+    	</resultMap>
+    	  <select id="companyList" resultMap="CompanyList">
+    	  SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT COM.*, (SELECT count(*) FROM Company C, notification N where c.companyid=n.companyid and n.notificationread=0 NotificationCount 
+		  FROM COMPANY COM ORDER BY COMPANYID) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+    	  </select>
+    </mapper>

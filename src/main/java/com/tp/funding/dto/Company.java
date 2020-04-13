@@ -18,12 +18,44 @@ public class Company {
 	private int companyInFunding;           
 	private int companyOutSite;	
 	
+	private int changeAccountBalance;
 	// 페이징
 	private int startRow;
 	private int endRow;
 	
 	// join해서 쓸 것
 	private int notificationCount;
+	
+	public Company() {
+	}
+	
+	public Company(String companyId, String companyPassword, String companyProfileImage, String companyIntroduction,
+			String companyEmail, String companyName, String companyPhone, String companyAddressBasic,
+			String companyAddressDetail, String companyBankName, String companyBankDepositor,
+			String companyAccountNumber, int companyAccountBalance, int companyInFunding, int companyOutSite,
+			int changeAccountBalance, int startRow, int endRow, int notificationCount) {
+		this.companyId = companyId;
+		this.companyPassword = companyPassword;
+		this.companyProfileImage = companyProfileImage;
+		this.companyIntroduction = companyIntroduction;
+		this.companyEmail = companyEmail;
+		this.companyName = companyName;
+		this.companyPhone = companyPhone;
+		this.companyAddressBasic = companyAddressBasic;
+		this.companyAddressDetail = companyAddressDetail;
+		this.companyBankName = companyBankName;
+		this.companyBankDepositor = companyBankDepositor;
+		this.companyAccountNumber = companyAccountNumber;
+		this.companyAccountBalance = companyAccountBalance;
+		this.companyInFunding = companyInFunding;
+		this.companyOutSite = companyOutSite;
+		this.changeAccountBalance = changeAccountBalance;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.notificationCount = notificationCount;
+	}
+
+
 
 	public String getCompanyId() {
 		return companyId;
@@ -145,6 +177,14 @@ public class Company {
 		this.companyOutSite = companyOutSite;
 	}
 
+	public int getChangeAccountBalance() {
+		return changeAccountBalance;
+	}
+
+	public void setChangeAccountBalance(int changeAccountBalance) {
+		this.changeAccountBalance = changeAccountBalance;
+	}
+
 	public int getStartRow() {
 		return startRow;
 	}
@@ -169,36 +209,6 @@ public class Company {
 		this.notificationCount = notificationCount;
 	}
 
-	public Company(String companyId, String companyPassword, String companyProfileImage, String companyIntroduction,
-			String companyEmail, String companyName, String companyPhone, String companyAddressBasic,
-			String companyAddressDetail, String companyBankName, String companyBankDepositor,
-			String companyAccountNumber, int companyAccountBalance, int companyInFunding, int companyOutSite,
-			int startRow, int endRow, int notificationCount) {
-		super();
-		this.companyId = companyId;
-		this.companyPassword = companyPassword;
-		this.companyProfileImage = companyProfileImage;
-		this.companyIntroduction = companyIntroduction;
-		this.companyEmail = companyEmail;
-		this.companyName = companyName;
-		this.companyPhone = companyPhone;
-		this.companyAddressBasic = companyAddressBasic;
-		this.companyAddressDetail = companyAddressDetail;
-		this.companyBankName = companyBankName;
-		this.companyBankDepositor = companyBankDepositor;
-		this.companyAccountNumber = companyAccountNumber;
-		this.companyAccountBalance = companyAccountBalance;
-		this.companyInFunding = companyInFunding;
-		this.companyOutSite = companyOutSite;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.notificationCount = notificationCount;
-	}
-
-	public Company() {
-		super();
-	}
-
 	@Override
 	public String toString() {
 		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyProfileImage="
@@ -207,14 +217,8 @@ public class Company {
 				+ ", companyAddressBasic=" + companyAddressBasic + ", companyAddressDetail=" + companyAddressDetail
 				+ ", companyBankName=" + companyBankName + ", companyBankDepositor=" + companyBankDepositor
 				+ ", companyAccountNumber=" + companyAccountNumber + ", companyAccountBalance=" + companyAccountBalance
-				+ ", companyInFunding=" + companyInFunding + ", companyOutSite=" + companyOutSite + ", startRow="
-				+ startRow + ", endRow=" + endRow + ", notificationCount=" + notificationCount + "]";
+				+ ", companyInFunding=" + companyInFunding + ", companyOutSite=" + companyOutSite
+				+ ", changeAccountBalance=" + changeAccountBalance + ", startRow=" + startRow + ", endRow=" + endRow
+				+ ", notificationCount=" + notificationCount + "]";
 	}
-	
-	
-
-	
-	
-	
-	
 }
