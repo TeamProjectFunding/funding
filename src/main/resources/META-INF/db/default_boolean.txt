@@ -5,7 +5,7 @@ Default :
   CompanyOutSite(탈퇴여부) 0
 Boolean : 
   CompanyOutSite(탈퇴여부)  0 가입 1 탈퇴
-  CompanyInFunding(투자중인지)  0 투자신청X 1 투자중 2 투자 거절 or 실패
+  CompanyInFunding(투자중인지)  0. 펀딩신청X 1. 펀딩심사중  2. 펀딩 중  3. 펀딩 거절  4. 펀딩 실패
   
   
 //////////////

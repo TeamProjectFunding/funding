@@ -1,44 +1,45 @@
 -- DROP TABLE
+DROP TABLE QnA;
 
-DROP TABLE Notice CASCADE CONSTRAINTS;
+DROP TABLE Notice;
 
-DROP TABLE UserPick CASCADE CONSTRAINTS;
+DROP TABLE UserPick;
 
-DROP TABLE EventPrize CASCADE CONSTRAINTS;
+DROP TABLE EventPrize;
 
-DROP TABLE EventReply CASCADE CONSTRAINTS;
+DROP TABLE EventReply;
 
-DROP TABLE FundingGoodsCommentsReply CASCADE CONSTRAINTS;
+DROP TABLE FundingGoodsCommentsReply;
 
-DROP TABLE FundingGoodsComments CASCADE CONSTRAINTS;
+DROP TABLE FundingGoodsComments;
 
-DROP TABLE FundingQuestionReply CASCADE CONSTRAINTS;
+DROP TABLE FundingQuestionReply;
 
-DROP TABLE FundingQuestion CASCADE CONSTRAINTS;
+DROP TABLE FundingQuestion;
 
-DROP TABLE FundingGoodsDetail CASCADE CONSTRAINTS;
+DROP TABLE FundingGoodsDetail;
 
-DROP TABLE Notification CASCADE CONSTRAINTS;
+DROP TABLE Notification;
 
-DROP TABLE Reward CASCADE CONSTRAINTS;
+DROP TABLE Reward;
 
-DROP TABLE Event CASCADE CONSTRAINTS;
+DROP TABLE Event;
 
-DROP TABLE FundingNews CASCADE CONSTRAINTS;
+DROP TABLE FundingNews;
 
-DROP TABLE FundingGoods CASCADE CONSTRAINTS;
+DROP TABLE FundingGoods;
 
-DROP TABLE Users CASCADE CONSTRAINTS;
+DROP TABLE Users;
 
-DROP TABLE Admin CASCADE CONSTRAINTS;
+DROP TABLE Admin;
 
-DROP TABLE UserGrade CASCADE CONSTRAINTS;
+DROP TABLE UserGrade;
 
-DROP TABLE Company CASCADE CONSTRAINTS;
+DROP TABLE Company;
 
 -- SEQUENCE DROP
 
-
+DROP SEQUENCE QnANumber;
 
 DROP SEQUENCE NoticeNumber;
 
@@ -140,6 +141,10 @@ CREATE SEQUENCE FundingCode
     NOCYCLE
     NOCACHE;
 
+CREATE SEQUENCE QnANumber
+    MAXVALUE 9999999
+    NOCYCLE
+    NOCACHE;
 
 CREATE TABLE Company (
 	CompanyId             VARCHAR2(100)  PRIMARY KEY, -- 회사Id
@@ -268,10 +273,11 @@ CREATE TABLE Notification (
 	NotificationContent VARCHAR2(100)  NULL,     -- 알림내용
 	NotificationDate    DATE          NULL,     -- 유지기간
 	NotificationRead    NUMBER(1)    NULL,     -- 알림 읽은지 여부
-	UserId              VARCHAR2(100)  REFERENCES Users(UserId),     -- 유저ID
-	AdminId             VARCHAR2(100)  REFERENCES Admin(AdminId),     -- 관리자ID
-	FundingCode               NUMBER(12)   REFERENCES FundingGoods(FundingCode),      -- 펀딩상품코드
-    CompanyId          VARCHAR2(100)  REFERENCES Company(CompanyId)      -- 회사Id
+	FundingCode         NUMBER(12)   REFERENCES FundingGoods(FundingCode),      -- 펀딩상품코드
+    AdminId             VARCHAR2(100) REFERENCES Admin(AdminId),    -- 관리자ID
+    CompanyId          VARCHAR2(100),      -- 회사Id
+    UserId              VARCHAR2(100)     -- 유저ID
+	
 );
 
 CREATE TABLE FundingGoodsDetail (
@@ -308,7 +314,7 @@ CREATE TABLE FundingGoodsComments (
 	FGCommentsNumber        NUMBER(12)   PRIMARY KEY, -- 코멘트번호
 	FGCommentsContent    VARCHAR2(4000) NULL,     -- 코멘트내용
     FGCommentsDate		 DATE         DEFAULT SYSDATE,        --코멘트작성일
-	FGcommentsExistReply NUMBER(1)    NULL,     -- 코멘트 댓글 존재여부
+	FGcommentsReplyCount NUMBER(12)    DEFAULT 0,     -- 코멘트 댓글 갯수
 	FundingCode          NUMBER(12)    REFERENCES FundingGoods(FundingCode),     -- 펀딩상품코드
 	UserId               VARCHAR2(100)  REFERENCES Users(UserId)      -- 유저ID
 );
@@ -355,5 +361,19 @@ CREATE TABLE Notice (
 	AdminId       VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
 );
 
+CREATE TABLE QnA (
+    QnANumber	NUMBER(12) PRIMARY KEY,
+    QnATilte	VARCHAR2(1000) NOT NULL,
+    QnAContent	VARCHAR2(4000) NOT NULL,
+    QnAHit	    NUMBER(12) DEFAULT 0,
+    QnAOriginalWriter	NUMBER(1),
+    QnAGroup	NUMBER(12),
+    QnARef	NUMBER(12),
+    QnAIndent	NUMBER(12),
+    QnADate	DATE DEFAULT SYSDATE,
+    UserId            VARCHAR2(100),      -- 유저ID 3중 한명만 쓰기때문에 ref는 안함
+    CompanyId          VARCHAR2(100), -- 회사 ID
+    AdminId       VARCHAR2(100)      -- 관리자ID
 
+);
 

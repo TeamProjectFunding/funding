@@ -27,6 +27,7 @@ public class FundingGoods {
 	private String adminId;                     
 	private String companyId;     
 	
+	private int commentCount; //코멘트 갯수
 	//paging
 	private int startRow;
 	private int endRow;
@@ -167,6 +168,12 @@ public class FundingGoods {
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
 	public int getStartRow() {
 		return startRow;
 	}
@@ -202,8 +209,8 @@ public class FundingGoods {
 			String fundingBankName, String fundingBankDepositor, String fundingAccountNumber, int fundingAccountBalance,
 			int fundingTargetAmount, int fundingTargetRate, Date fundingTargetDate, Date fundingRewardDeliveryDate,
 			int fundingInvestmentProfitRate, int fundingInvestmentPeriod, int fundingSuccessOrFailure,
-			int fundingPeopleCount, int fundingAdminPermit, String adminId, String companyId, int startRow, int endRow,
-			String companyProfileImage, String companyIntroduction, String companyName) {
+			int fundingPeopleCount, int fundingAdminPermit, String adminId, String companyId, int commentCount,
+			int startRow, int endRow, String companyProfileImage, String companyIntroduction, String companyName) {
 		super();
 		this.fundingCode = fundingCode;
 		this.fundingCategory = fundingCategory;
@@ -227,6 +234,7 @@ public class FundingGoods {
 		this.fundingAdminPermit = fundingAdminPermit;
 		this.adminId = adminId;
 		this.companyId = companyId;
+		this.commentCount = commentCount;
 		this.startRow = startRow;
 		this.endRow = endRow;
 		this.companyProfileImage = companyProfileImage;
@@ -248,10 +256,12 @@ public class FundingGoods {
 				+ fundingRewardDeliveryDate + ", fundingInvestmentProfitRate=" + fundingInvestmentProfitRate
 				+ ", fundingInvestmentPeriod=" + fundingInvestmentPeriod + ", fundingSuccessOrFailure="
 				+ fundingSuccessOrFailure + ", fundingPeopleCount=" + fundingPeopleCount + ", fundingAdminPermit="
-				+ fundingAdminPermit + ", adminId=" + adminId + ", companyId=" + companyId + ", startRow=" + startRow
-				+ ", endRow=" + endRow + ", companyProfileImage=" + companyProfileImage + ", companyIntroduction="
-				+ companyIntroduction + ", companyName=" + companyName + "]";
+				+ fundingAdminPermit + ", adminId=" + adminId + ", companyId=" + companyId + ", commentCount="
+				+ commentCount + ", startRow=" + startRow + ", endRow=" + endRow + ", companyProfileImage="
+				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyName=" + companyName
+				+ "]";
 	}
+	
 	
 	
 	

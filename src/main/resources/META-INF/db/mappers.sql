@@ -35,6 +35,10 @@ INSERT INTO COMPANY VALUES ('eee', '123', null, '앵무새 회사입니다.', 'w
 
 
 
+SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID) NOTIFICATIONCOUNT, 
+    (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
+        FROM USERS U, USERGRADE UG 
+            WHERE U.USERGRADENO = UG.USERGRADENO; 
 
 
 --company.xml(신규순list, 도서등록, 도서보기(페이징), 책 갯수, 상세보기, 도서등록, 도서정보 수정)
@@ -45,39 +49,3 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
         WHERE RN BETWEEN 2 AND 4;
 
 
-
---Book.xml id=mainList(신규도서순으로 list 가져오기)
-SELECT * FROM BOOK ORDER BY BRDATE DESC;
---Book.xml id=bookList(paging처리해서 도서이름 순으로 list가져오기)
-SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-                (SELECT * FROM BOOK ORDER BY BTITLE) A)
-    WHERE RN BETWEEN 2 AND 4;
---Book.xml id=cntBook (등록된 책 갯수가져오기)
-SELECT COUNT(*) FROM BOOK;
---Book.xml id=getBook(책번호로 bnum으로 dto가져오기)
-SELECT * FROM BOOK WHERE BNUM = 3;
---Book.xml id=registerBook (책 등록하기)
-INSERT INTO BOOK VALUES
-    (BOOK_SEQ.NEXTVAL, 'CSS의전설', '김얄루', SYSDATE, 'noImg.png', 'noImg.png', 'CSS만세');
---Book.xml id = modifyBook (책 정보 수정하기)
-UPDATE BOOK SET BIMG1 = '101.jpg', BIMG2 = '102.jpg', BINFO='좋은spring책' WHERE BNUM = 1;
-
-
-
---member.xml(ID중복체크, 가입, ID로 DTO가져오기, 정보수정)
-
-
--- Member.xml id=idConfirm (해당 id가 몇개인지)
-SELECT COUNT(*) FROM MEMBER WHERE MID='bbb';
-
--- Member.xml id=joinMember(회원가입)
-INSERT INTO MEMBER VALUES
-    ('aaa', '123', '홍길동', 'wogur698@naver.com', '03245', '서울시 종로구');
-    
--- Member.xml id = getMember(mid로 dto 가져오기)
-SELECT * FROM MEMBER WHERE MID = 'aaa';
-
--- Member.xml id = modifyMember(회원정보 수정)
-UPDATE MEMBER SET MID = 'aaa', MPW = '123', MNAME = '임재혁', MPOST='65848', MADDR='서울시 양천구' WHERE MID = 'bbb';
-
-commit;

@@ -27,8 +27,8 @@ public class Users {
 		private int endRow;
 	
 	// join해서 쓸 것
-	private int notificationCount;
-	private int userPickCount;
+	private int notificationCount; //알림갯수
+	private int userPickCount; //찜갯수
 	private String userGradeName;
 	public String getUserId() {
 		return userId;

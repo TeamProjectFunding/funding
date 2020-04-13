@@ -314,7 +314,7 @@ CREATE TABLE FundingGoodsComments (
 	FGCommentsNumber        NUMBER(12)   PRIMARY KEY, -- 코멘트번호
 	FGCommentsContent    VARCHAR2(4000) NULL,     -- 코멘트내용
     FGCommentsDate		 DATE         DEFAULT SYSDATE,        --코멘트작성일
-	FGcommentsExistReply NUMBER(1)    NULL,     -- 코멘트 댓글 존재여부
+	FGcommentsReplyCount NUMBER(12)    DEFAULT 0,     -- 코멘트 댓글 갯수
 	FundingCode          NUMBER(12)    REFERENCES FundingGoods(FundingCode),     -- 펀딩상품코드
 	UserId               VARCHAR2(100)  REFERENCES Users(UserId)      -- 유저ID
 );

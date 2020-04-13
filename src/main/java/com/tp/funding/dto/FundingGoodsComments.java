@@ -7,10 +7,9 @@ public class FundingGoodsComments {
 	private int fgCommentsNumber;        
 	private String fgCommentsContent ;    
     private Date fgCommentsDate;		   
-	private int fgcommentsExistReply;    
+	private int fgcommentsReplyCount;    
 	private int fundingCode;             
 	private String userId;               
-	
 	//paging
 	private int startRow;
 	private int endRow;
@@ -36,11 +35,11 @@ public class FundingGoodsComments {
 	public void setFgCommentsDate(Date fgCommentsDate) {
 		this.fgCommentsDate = fgCommentsDate;
 	}
-	public int getFgcommentsExistReply() {
-		return fgcommentsExistReply;
+	public int getFgcommentsReplyCount() {
+		return fgcommentsReplyCount;
 	}
-	public void setFgcommentsExistReply(int fgcommentsExistReply) {
-		this.fgcommentsExistReply = fgcommentsExistReply;
+	public void setFgcommentsReplyCount(int fgcommentsReplyCount) {
+		this.fgcommentsReplyCount = fgcommentsReplyCount;
 	}
 	public int getFundingCode() {
 		return fundingCode;
@@ -78,14 +77,17 @@ public class FundingGoodsComments {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public FundingGoodsComments() {
+		super();
+	}
 	public FundingGoodsComments(int fgCommentsNumber, String fgCommentsContent, Date fgCommentsDate,
-			int fgcommentsExistReply, int fundingCode, String userId, int startRow, int endRow, String userProfileImage,
+			int fgcommentsReplyCount, int fundingCode, String userId, int startRow, int endRow, String userProfileImage,
 			String userName) {
 		super();
 		this.fgCommentsNumber = fgCommentsNumber;
 		this.fgCommentsContent = fgCommentsContent;
 		this.fgCommentsDate = fgCommentsDate;
-		this.fgcommentsExistReply = fgcommentsExistReply;
+		this.fgcommentsReplyCount = fgcommentsReplyCount;
 		this.fundingCode = fundingCode;
 		this.userId = userId;
 		this.startRow = startRow;
@@ -93,16 +95,17 @@ public class FundingGoodsComments {
 		this.userProfileImage = userProfileImage;
 		this.userName = userName;
 	}
-	public FundingGoodsComments() {
-		super();
-	}
 	@Override
 	public String toString() {
 		return "FundingGoodsComments [fgCommentsNumber=" + fgCommentsNumber + ", fgCommentsContent=" + fgCommentsContent
-				+ ", fgCommentsDate=" + fgCommentsDate + ", fgcommentsExistReply=" + fgcommentsExistReply
+				+ ", fgCommentsDate=" + fgCommentsDate + ", fgcommentsReplyCount=" + fgcommentsReplyCount
 				+ ", fundingCode=" + fundingCode + ", userId=" + userId + ", startRow=" + startRow + ", endRow="
 				+ endRow + ", userProfileImage=" + userProfileImage + ", userName=" + userName + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

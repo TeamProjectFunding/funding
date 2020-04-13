@@ -1,3 +1,147 @@
 1. Company
-Default :
+Default : 
+  CompanyAccountBalance(계좌잔액) 0
+  CompanyInFunding(투자중인지) 0
+  CompanyOutSite(탈퇴여부) 0
 Boolean : 
+  CompanyOutSite(탈퇴여부)  0 가입 1 탈퇴
+  CompanyInFunding(투자중인지)  0. 펀딩신청X 1. 펀딩심사중  2. 펀딩 중  3. 펀딩 거절  4. 펀딩 실패
+  
+  
+//////////////
+2. UserGrade
+없음
+
+//////////////
+3. Admin
+없음
+
+//////////////
+4. Users
+Default : 
+  UserAccountBalance(계좌잔액) 0
+  UserJoinDate(가입일) SYSDATE
+  UserInvermentAmount(누적투자금액) 0
+  UserInterestAmount(누적이자금액) 0
+  UserOutSite(탈퇴여부) 0
+  UserGradeNo(유저등급) 1
+Boolean : 
+  UserOutSite(탈퇴여부) 0 가입 1 탈퇴
+  
+  
+//////////////
+5. FundingGoods
+Default : 
+
+FundingAccountBalance(펀딩계좌잔액) 0
+FundingSuccessOrFailure(펀딩성공여부) 0
+FundingPeopleCount(펀딩한 사람 수)	0
+FundingAdminPermit(관리자승인여부)	0
+  
+Boolean : 
+  FundingCategory	펀딩상품카테고리	NUMERIC(1)
+  FundingSuccessOrFailure(펀딩성공여부) 0 성공 1 실패
+  FundingAdminPermit(관리자승인여부)	0 대기 중 1 승인 2 반려
+  
+  
+//////////////
+6. FundingNews
+Default : 
+  FundingNewsDate(새소식작성일)	SYSDATE
+  
+  
+//////////////
+7. Event
+Default : 
+  EventPrizeCount(이벤트당첨사람수)	0
+  EventParticipateCount(이벤트참여사람수) 0
+  EventHit(이벤트조회수) 0
+  EventStartDate(이벤트시작일)	SYSDATE
+  
+
+//////////////
+8. Reward
+Default : 
+  InvestmentReceiveCount(이자 받은 횟수) 0
+    
+
+//////////////
+9. Notification
+Default : 
+  NotificationRead(알림 읽은지 여부)	0
+  
+Boolean : 
+    NotificationRead(알림 읽은지 여부)	0 안읽음 1 읽음
+    
+    
+//////////////
+10. FundingGoodsDetail
+없음
+
+//////////////
+11. FundingQuestion
+Default : 
+  FundingQuestionDate(문의날짜) SYSDATE
+  FundingQuestionExistReply(답급존재여부) 0
+  
+Boolean : 
+  FundingQuestionExistReply(답급존재여부) 0 없음 1 있음
+
+
+//////////////
+12. FundingQuestionReply
+Default : 
+  FundingQuestionReplyDate(문의답글날짜) SYSDATE
+
+
+//////////////
+13. FundingGoodsComments
+Default : 
+  FGCommentsDate(코멘트작성일) SYSDATE
+  FGcommentsExistReply(코멘트 댓글 존재여부) 0
+
+Boolean : 
+  FGcommentsExistReply(코멘트 댓글 존재여부) 0 없음 1 있음
+
+//////////////
+14. FundingGoodsCommentsReply
+Default : 
+  FGCommentsReplyDate(코멘트답글작성일) SYSDATE
+ 
+ 
+//////////////
+15. EventReply
+Default : 
+  EventReplyDate(이벤트작성일) SYSDATE
+  
+
+//////////////
+16. EventPrize
+없음
+
+//////////////
+17. UserPick
+없음
+
+//////////////
+18. Notice
+Default : 
+  NoticeDate(공지날짜)	SYSDATE
+  NoticeHit(공지조회수) 0
+
+
+
+//////////////
+19. QnA
+Default :
+  QnAHit(조회수)	0
+  QnADate(작성일) SYSDATE
+  
+ Boolean :
+   QnAOriginalWriter(원글쓴이) 0 유저 1 회사 2 관리자
+   // 첫 글은 유저 or 회사 답글은 관리자 답답글은 유저 or 회사 답답답글은 관리자
+   
+  
+  
+
+
