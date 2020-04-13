@@ -3,11 +3,29 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <typeAliases>
-		<typeAlias type="com.tp.funding.Users" alias="Users"/>
+	<typeAliases>
+		<typeAlias type="com.tp.funding.dto.Admin" alias="Admin"/>
+		<typeAlias type="com.tp.funding.dto.Company" alias="Company"/>
+		<typeAlias type="com.tp.funding.dto.Event" alias="Event"/>
+		<typeAlias type="com.tp.funding.dto.EventPrize" alias="EventPrize"/>
+		<typeAlias type="com.tp.funding.dto.EventReply" alias="EventReply"/>
+		<typeAlias type="com.tp.funding.dto.FundingGoods" alias="FundingGoods"/>
+		<typeAlias type="com.tp.funding.dto.FundingGoodsComments" alias="FundingGoodsComments"/>
+		<typeAlias type="com.tp.funding.dto.FundingGoodsCommentsReply" alias="FundingGoodsCommentsReply"/>
+		<typeAlias type="com.tp.funding.dto.FundingGoodsDetail" alias="FundingGoodsDetail"/>
+		<typeAlias type="com.tp.funding.dto.FundingNews" alias="FundingNews"/>
+		<typeAlias type="com.tp.funding.dto.FundingQuestion" alias="FundingQuestion"/>
+		<typeAlias type="com.tp.funding.dto.FundingQuestionReply" alias="FundingQuestionReply"/>
+		<typeAlias type="com.tp.funding.dto.Notice" alias="Notice"/>
+		<typeAlias type="com.tp.funding.dto.Notification" alias="Notification"/>
+		<typeAlias type="com.tp.funding.dto.QnA" alias="QnA"/>
+		<typeAlias type="com.tp.funding.dto.Reward" alias="Reward"/>
+		<typeAlias type="com.tp.funding.dto.UserGrade" alias="UserGrade"/>
+		<typeAlias type="com.tp.funding.dto.UserPick" alias="UserPick"/>
+		<typeAlias type="com.tp.funding.dto.Users" alias="Users"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Member.xml"/>
-	</mappers> -->
+	</mappers>
 </configuration>

@@ -136,8 +136,9 @@ Default :
 Default :
   QnAHit(조회수)	0
   QnADate(작성일) SYSDATE
-  
+  QnASecret(비밀글) 0
  Boolean :
+   QnASecret(비밀글) 0 공개 1 비공개
    QnAOriginalWriter(원글쓴이) 0 유저 1 회사 2 관리자
    // 첫 글은 유저 or 회사 답글은 관리자 답답글은 유저 or 회사 답답답글은 관리자
    
