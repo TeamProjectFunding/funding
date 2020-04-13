@@ -44,5 +44,30 @@ SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERI
 UPDATE USERS SET userBankName='신한은행', userAccountNumber='110-278-848987'
 WHERE USERID = 'bbb'; 
 COMMIT;
+<<<<<<< HEAD
 SELECT Q.*,WRITER FROM QNA Q, (SELECT WRITER WHERE Q.USERID=U.USERID AND q.qnanumber=1 ORDER BY Q.QNADATE DESC;
 
+=======
+SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+(SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+(SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+WRITER FROM QNA Q ORDER BY Q.QNAGROUP DESC, Q.QNAREF;
+UPDATE QNA SET QNAHIT=QNAHIT+1 WHERE QnANumber=1;
+COMMIT;
+SELECT * FROM QNA;
+
+SELECT E.*,(SELECT COUNT(*) FROM EventReply ER WHERE ER.eventnumber=E.EVENTNUMBER) eventReplyCount FROM EVENT E;
+
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EventReply ER WHERE ER.eventnumber=E.EVENTNUMBER) eventReplyCount FROM EVENT E WHERE E.EventEndDate < SYSDATE ORDER BY E.eventStartDate DESC) A) WHERE RN BETWEEN 1 AND 5;
+
+SELECT * FROM fundinggoods;
+
+
+SELECT * FROM notification;
+SELECT N.* FROM notification N,company C WHERE n.companyid=c.companyid AND n.notificationread=0 ORDER BY n.notificationdate DESC;
+SELECT N.* FROM notification N,USERS U WHERE n.userid=U.userid AND n.notificationread=0;
+SELECT N.* FROM notification N,company C WHERE n.companyid=c.companyid AND n.notificationread=1;
+
+select * from admin where adminid='admin';
+select * from admin where adminid='admin' and adminpassword='11';
+>>>>>>> 8e6dc3e196233406d5b7b285baacdf59e565b8a9

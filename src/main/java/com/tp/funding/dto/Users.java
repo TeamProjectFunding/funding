@@ -22,9 +22,12 @@ public class Users {
 	private int userOutSite;             
 	private int userGradeNo;
 	
+	
+	//누적 투자금,누적 이자금, 계좌 잔액+or
+	private int changeMoneyAmount;
 	//paging
-		private int startRow;
-		private int endRow;
+	private int startRow;
+	private int endRow;
 	
 	// join해서 쓸 것
 	private int notificationCount; //안 읽은 알림갯수
@@ -138,6 +141,12 @@ public class Users {
 	public void setUserGradeNo(int userGradeNo) {
 		this.userGradeNo = userGradeNo;
 	}
+	public int getChangeMoneyAmount() {
+		return changeMoneyAmount;
+	}
+	public void setChangeMoneyAmount(int changeMoneyAmount) {
+		this.changeMoneyAmount = changeMoneyAmount;
+	}
 	public int getStartRow() {
 		return startRow;
 	}
@@ -168,14 +177,11 @@ public class Users {
 	public void setUserGradeName(String userGradeName) {
 		this.userGradeName = userGradeName;
 	}
-	public Users() {
-		super();
-	}
 	public Users(String userId, String userPassword, String userProfileImage, String userName, String userPhone,
 			String userAddressBasic, String userAddressDetail, String userBankName, String userAccountNumber,
 			int userAccountBalance, Date userBirthday, Date userJoinDate, int userAdPhone, int userAdEmail,
-			int userInvestmentAmount, int userInterestAmount, int userOutSite, int userGradeNo, int startRow,
-			int endRow, int notificationCount, int userPickCount, String userGradeName) {
+			int userInvestmentAmount, int userInterestAmount, int userOutSite, int userGradeNo, int changeMoneyAmount,
+			int startRow, int endRow, int notificationCount, int userPickCount, String userGradeName) {
 		super();
 		this.userId = userId;
 		this.userPassword = userPassword;
@@ -195,11 +201,15 @@ public class Users {
 		this.userInterestAmount = userInterestAmount;
 		this.userOutSite = userOutSite;
 		this.userGradeNo = userGradeNo;
+		this.changeMoneyAmount = changeMoneyAmount;
 		this.startRow = startRow;
 		this.endRow = endRow;
 		this.notificationCount = notificationCount;
 		this.userPickCount = userPickCount;
 		this.userGradeName = userGradeName;
+	}
+	public Users() {
+		super();
 	}
 	@Override
 	public String toString() {
@@ -209,10 +219,10 @@ public class Users {
 				+ userAccountNumber + ", userAccountBalance=" + userAccountBalance + ", userBirthday=" + userBirthday
 				+ ", userJoinDate=" + userJoinDate + ", userAdPhone=" + userAdPhone + ", userAdEmail=" + userAdEmail
 				+ ", userInvestmentAmount=" + userInvestmentAmount + ", userInterestAmount=" + userInterestAmount
-				+ ", userOutSite=" + userOutSite + ", userGradeNo=" + userGradeNo + ", startRow=" + startRow
-				+ ", endRow=" + endRow + ", notificationCount=" + notificationCount + ", userPickCount=" + userPickCount
-				+ ", userGradeName=" + userGradeName + "]";
-	}    
+				+ ", userOutSite=" + userOutSite + ", userGradeNo=" + userGradeNo + ", changeMoneyAmount="
+				+ changeMoneyAmount + ", startRow=" + startRow + ", endRow=" + endRow + ", notificationCount="
+				+ notificationCount + ", userPickCount=" + userPickCount + ", userGradeName=" + userGradeName + "]";
+	}
 	
 	
 	
