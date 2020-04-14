@@ -13,9 +13,6 @@ public class UserPick {
 	private int fundingCategory;
 	private Date fundingTargetDate;
 	private String fundingThumbnailImage;
-	
-	private int startRow;
-	private int endRow;
 	public int getUserPickNumber() {
 		return userPickNumber;
 	}
@@ -58,31 +55,7 @@ public class UserPick {
 	public void setFundingThumbnailImage(String fundingThumbnailImage) {
 		this.fundingThumbnailImage = fundingThumbnailImage;
 	}
-	public int getStartRow() {
-		return startRow;
-	}
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
-	}
-	public int getEndRow() {
-		return endRow;
-	}
-	public void setEndRow(int endRow) {
-		this.endRow = endRow;
-	}
-	public UserPick(int userPickNumber, String userId, int fundingCode, String fundingName, int fundingCategory,
-			Date fundingTargetDate, String fundingThumbnailImage, int startRow, int endRow) {
-		super();
-		this.userPickNumber = userPickNumber;
-		this.userId = userId;
-		this.fundingCode = fundingCode;
-		this.fundingName = fundingName;
-		this.fundingCategory = fundingCategory;
-		this.fundingTargetDate = fundingTargetDate;
-		this.fundingThumbnailImage = fundingThumbnailImage;
-		this.startRow = startRow;
-		this.endRow = endRow;
-	}
+
 	public UserPick() {
 		super();
 	}
@@ -90,9 +63,9 @@ public class UserPick {
 	public String toString() {
 		return "UserPick [userPickNumber=" + userPickNumber + ", userId=" + userId + ", fundingCode=" + fundingCode
 				+ ", fundingName=" + fundingName + ", fundingCategory=" + fundingCategory + ", fundingTargetDate="
-				+ fundingTargetDate + ", fundingThumbnailImage=" + fundingThumbnailImage + ", startRow=" + startRow
-				+ ", endRow=" + endRow + "]";
+				+ fundingTargetDate + ", fundingThumbnailImage=" + fundingThumbnailImage + "]";
 	}
+	
 	
 	
 	

@@ -26,10 +26,23 @@
 	</typeAliases>
 	
 	<mappers>
-<<<<<<< HEAD
-		<mapper resource="META-INF/sqlmap/mappers/Users.xml"/>
-=======
+		<mapper resource="META-INF/sqlmap/mappers/admin.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/company.xml"/>
->>>>>>> a
+		<mapper resource="META-INF/sqlmap/mappers/event.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/eventPrize.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/eventReply.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fgComments.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fgCommentsReply.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fgDetail.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fundingGoods.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fundingNews.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fundingQuestion.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/fundingQuestionReply.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/notice.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/notification.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/qnA.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/reward.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/userPick.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/users.xml"/>
 	</mappers>
 </configuration>

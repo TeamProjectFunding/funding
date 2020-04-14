@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingQuestion">
+
+<select id="fundingQuestionList" parameterType="FundingQuestion" resultType="FundingQuestion">
+SELECT * FROM (SELECT ROWNUM RN, A.* 
+	FROM (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID ORDER BY FUNDINGQUESTIONDATE DESC) A)
+ 		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+<select id="fundingQuestionDetail" parameterType="int" resultType="FundingQuestion">
+SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE 
+	FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID AND FUNDINGQUESTIONNUMBER=#{fundingQuestionNumber} ORDER BY FUNDINGQUESTIONDATE DESC
+</select>
+
+<insert id="fundingQuestionWrite" parameterType="FundingQuestion">
+INSERT INTO FundingQuestion VALUES 
+	(FUNDINGQUESTIONNUMBER.nextval,#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
+</insert>
+
+</mapper>

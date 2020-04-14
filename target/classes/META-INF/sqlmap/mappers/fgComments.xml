@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingGoodsComments">
+
+<insert id="fundingCommentWrite" parameterType="FundingGoodsComments">
+INSERT INTO FundingGoodsComments VALUES 
+	(FGCOMMENTSNUMBER.nextval, #{fgCommentsContent}, SYSDATE, 0, #{fundingCode}, #{userId});	
+</insert>
+
+<select id="fundingCommentList" parameterType="FundingGoodsComments" resultType="FundingGoodsComments">
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+	(SELECT f.*,(SELECT COUNT(*) FROM FUNDINGGOODSCOMMENTS FGC, FUNDINGGOODSCOMMENTSREPLY FGCR WHERE FGC.fgCommentsNumber=FGCR.fgCommentsNumber) fundingCommentsReplyCount 
+		FROM FUNDINGGOODSCOMMENTS f ORDER BY f.FGCOMMENTSDATE DESC) A) 
+			WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+<select id="fundingCommentDetail" parameterType="int" resultType="FundingGoodsComments">
+SELECT FGC.*,U.USERNAME, U.USERPROFILEIMAGE FROM 
+	FundingGoodsComments FGC, USERS U WHERE FGC.FGCOMMENTSNUMBER=#{fgCommentsNumber} AND U.USERID=FGC.USERID
+</select>
+
+</mapper>

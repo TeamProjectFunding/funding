@@ -7,6 +7,31 @@ INSERT INTO UserGrade VALUES (2,'GOLD',1000001,100000000);
 INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
 INSERT INTO Admin VALUES ('admin','11','adn','ADMINIMAGE');
 INSERT INTO Users VALUES ('user','11','PRO','이','12','서울','ㅈ','ㅇ','기',0,NULL,SYSDATE,0,0,0,0,0,1);
+INSERT INTO Users VALUES ('user2','11','PRO2','이2','12','서울','ㅈ','ㅇ','기',0,NULL,SYSDATE,0,0,0,0,1,1);
+INSERT INTO Users VALUES ('user3','11','PRO3','이3','12','서울','ㅈ','ㅇ','기',0,NULL,SYSDATE,0,0,0,0,0,1);
+INSERT INTO Users VALUES ('user4','123','profile.jpg','박지영이','010-4898-8848','서울시 목동','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+    
+INSERT INTO Users VALUES ('user5','123','profile.jpg','지단','010-4898-8848','서울시 동대문','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+    
+INSERT INTO Users VALUES ('user6','123','profile.jpg','오유석','010-4898-8848','일산시','유석빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);    
+
+INSERT INTO Users VALUES ('user7','123','profile.jpg','제라드','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);
+
+INSERT INTO Users VALUES ('user8','123','profile.jpg','손흥민','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+
+INSERT INTO Users VALUES ('user9','123','profile.jpg','차범근','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+    
+INSERT INTO Users VALUES ('user10','123','profile.jpg','김병지','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);    
+    
+INSERT INTO Users VALUES ('user11','123','profile.jpg','전일환','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,1,'펀딩상품','펀딩상품설명','상품이미지썸','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com');
 INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목','새소식내용','2020-05-05','이미지',1,'com');
 INSERT INTO Event VALUES (EVENTNUMBER.nextval,'제목','내용','이벤트이미지썸','이벤트이미지상세','이벤트상품이름','이벤트상품이미지',2,500,300,'2020-03-05','2020-04-05','2020-05-05','admin');

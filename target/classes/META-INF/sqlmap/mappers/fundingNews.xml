@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingNews">
+<insert id="fundingNewsWrite" parameterType="FundingNews">
+	INSERT INTO FundingNews VALUES 
+		(FundingNewsNumber.NEXTVAL, #{fundingNewsTitle} , #{fundingNewsContent}, SYSDATE , #{fundingNewsImage} , #{fundingCode}, #{companyId});	
+</insert>
+
+<select id="fundingNewsList" parameterType="FundingNews" resultType="FundingNews">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM FUNDINGNEWS ORDER BY FUNDINGNEWSDATE DESC) A) 
+		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+<select id="fundingNewsDetail" parameterType="int" resultType="FundingNews">
+	SELECT * FROM FUNDINGNEWS WHERE FUNDINGNEWSNUMBER=#{fundingNewsNumber}
+</select>
+
+</mapper>

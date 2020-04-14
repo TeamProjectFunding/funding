@@ -14,74 +14,62 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Override
 	public List<Users> userList() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.userList();
 	}
 
 	@Override
 	public List<Users> userSearchList(String searchUserName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.userSearchList(searchUserName);
 	}
 
 	@Override
 	public int userJoin(Users user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userJoin(user);
 	}
 
 	@Override
 	public int userLoginCheck(Users user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userLoginCheck(user);
 	}
 
 	@Override
 	public Users userDetail(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.userDetail(userId);
 	}
 
 	@Override
 	public int userInfoModify(Users user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userInfoModify(user);
 	}
 
 	@Override
 	public int userOutSite(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userOutSite(userId);
 	}
 
 	@Override
 	public int userAccountModify(Users user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userAccountModify(user);
 	}
 
 	@Override
 	public int userBalanceModify(Users user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userBalanceModify(user);
 	}
 
 	@Override
 	public int userGradeUp(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userGradeUp(userId);
 	}
 
 	@Override
 	public int userInvestmentAmountModify(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userInvestmentAmountModify(userId);
 	}
 
 	@Override
 	public int userInterestAmountModify(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userDao.userInterestAmountModify(userId);
 	}
 
 }

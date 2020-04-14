@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reward">
+	<insert id="rewardWrite" parameterType="Reward">
+		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{fundingCode})
+	</insert>
+	<update id="rewardInvestmentReceiveCountUp" parameterType="int">
+		UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=#{rewardCode}
+	</update>
+	<select id="rewardDetail" parameterType="int">
+		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, 
+		FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=#{rewardCode}
+	</select>
+	<select id="fundingRewardList" parameterType="int">
+		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingcode}
+	</select>
+</mapper>

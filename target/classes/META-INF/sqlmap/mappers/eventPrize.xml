@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="EventPrize">
+    <resultMap type="EventPrize" id="EventPrizeList">
+    <result property="eventPrizeNumber" column="eventPrizeNumber"/>
+    <result property="userId" column="userId"/>
+    <result property="eventNumber" column="eventNumber"/>
+    <result property="userProfileImage" column="userProfileImage"/>
+    <result property="userName" column="userName"/>
+    </resultMap>
+    <select id="eventPrizeList" resultMap="EventPrizeList">
+    SELECT EP.*, U.USERPROFILEIMAGE, U.USERNAME FROM EVENTPRIZE EP, USERS U, EVENT E WHERE EP.USERID=U.USERID AND E.EVENTNUMBER=EP.EVENTNUMBER ORDER BY EVENTPRIZENUMBER
+    </select>
+    <insert id="eventPrizeRegist" parameterType="EventPrize">
+    INSERT INTO EVENTPRIZE VALUES (EVENTPRIZENUMBER.NEXTVAL, #{userId}, #{eventNumber});
+    </insert>
+    </mapper>

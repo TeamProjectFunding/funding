@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="Notification">
+    	<resultMap type="Notification" id="NotificationList">
+    		<result property="notificationNumber" column="notificationNumber"/>
+    		<result property="notificationContent" column="notificationContent"/>
+    		<result property="notificationDate" column="notificationDate"/>
+    		<result property="notificationRead" column="notificationRead"/>
+    		<result property="userId" column="userId"/>
+    		<result property="adminId" column="adminId"/>
+    		<result property="companyId" column="companyId"/>
+    	</resultMap>
+    	<insert id="notificationWrite" parameterType="Notification">
+	    	<if test="userId != null and userId!=''">
+	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0,#{userId},#{adminId},null)
+	    	</if>
+	    	<if test="companyId != null and companyId''">
+	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0,null,#{adminId},#{companyId})
+	    	</if>
+    	</insert>
+    	<update id="notificationRead" parameterType="int">
+    			UPDATE NOTIFICATION SET NOTIFICATIONREAD = 1 WHERE NOTIFICATIONNUMBER = #{notificationNumber}
+    	</update>
+    	<select id="notificationUnReadCompanyList" parameterType="Notification" resultMap="Notification">
+    	SELECT N.* FROM NOTIFICATION N,COMPANY C WHERE N.COMPANYID=C.COMPANYID AND N.NOTIFICATIONREAD=0 
+    	AND C.COMPANYID=#{companyId} ORDER BY N.NOTIFICATIONDATE DESC
+    	</select>
+    	<select id="notificationUnReadUserList" parameterType="Notification" resultMap="Notification">
+    	SELECT N.* FROM NOTIFICATION N,USERS U WHERE N.USERID=U.USERID AND N.NOTIFICATIONREAD=0 
+    	AND U.USERID=#{userId} ORDER BY N.NOTIFICATIONDATE DESC
+    	</select>
+    	<select id="notificationReadCompanyList" parameterType="Notification" resultMap="Notification">
+    	SELECT N.* FROM NOTIFICATION N,COMPANY C WHERE N.COMPANYID=C.COMPANYID AND N.NOTIFICATIONREAD=1 
+    	AND C.COMPANYID=#{companyId} ORDER BY N.NOTIFICATIONDATE DESC
+    	</select>
+    	<select id="notificationReadUserList" parameterType="Notification" resultMap="Notification">
+    	SELECT N.* FROM NOTIFICATION N,USERS U WHERE N.USERID=U.USERID AND N.NOTIFICATIONREAD=1 
+    	AND U.USERID=#{userId}  ORDER BY N.NOTIFICATIONDATE DESC
+    	</select>
+    </mapper>

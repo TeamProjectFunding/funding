@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingGoods">
+	<select id="fundingOpenList" parameterType="FundingGoods" resultType="FundingGoods">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
+		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount,     C.companyProfileImage, C.companyIntroduction, C.companyName 
+        	FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND SYSDATE &lt; FundingTargetDate) A)
+            	WHERE RN BETWEEN #{startRow} AND #{endRow}		
+	</select>
+	
+	<select id="fundingCloseList" parameterType="FundingGoods" resultType="FundingGoods">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
+		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
+       		FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND SYSDATE &gt; FundingTargetDate) A)
+            	WHERE RN BETWEEN #{startRow} AND #{endRow}	
+	</select>
+	
+	<select id="fundingSearchList" parameterType="String" resultType="FundingGoods">
+	SELECT * FROM FundingGoods 
+		WHERE FUNDINGNAME LIKE '%'||#{FundingName}||'%' AND SYSDATE &lt; FundingTargetDate
+	</select>
+	
+	<select id="searchFundingKeyUpTop5" resultType="FundingGoods">
+	SELECT FUNDINGNAME FROM FUNDINGGOODS 
+    	WHERE SYSDATE &lt; FundingTargetDate ORDER BY FundingPeopleCount DESC		
+	</select>
+	
+	<select id="investmentAllList" parameterType="FundingGoods" resultType="FundingGoods">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
+		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
+        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 0) A)
+            WHERE RN BETWEEN #{startRow} AND #{endRow}	
+	</select>
+	
+	<select id="rewardAllList" parameterType="FundingGoods" resultType="FundingGoods">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
+		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
+        	FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 1) A)
+            	WHERE RN BETWEEN #{startRow} AND #{endRow}	
+	</select>
+	
+	<select id="fundingDetail" parameterType="int" resultType="FundingGoods">
+	SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, 
+    C.companyProfileImage, C.companyIntroduction, C.companyName 
+        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FUNDINGCODE = #{fundingCode}	
+	</select>
+	
+	<insert id="fundingRegist" parameterType="FundingGoods">
+	INSERT INTO FundingGoods VALUES (FundingCode.nextval, 0, #{fundingName}, #{fundingDescription},
+    #{fundingThumbnailImage}, #{fundingDetailImage}, #{fundingExplanationFile}, null, null, null, 0, #{fundingTargetAmount}, 0, SYSDATE, #{fundingTargetDate},
+        #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, 'admin', #{companyId})	
+	</insert>
+	
+	<update id="fundingAccountAdd" parameterType="FundingGoods">
+	UPDATE FUNDINGGOODS SET FundingBankName =#{fundingBankName}, FundingBankDepositor=#{fundingBankDepositor}, FundingAccountNumber=#{fundingAccountNumber}
+    	WHERE FUNDINGCODE = #{fundingCode};		
+	</update>
+	
+	<update id="fundingAdminPermitYes" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingAdminPermit = 1 WHERE FUNDINGCODE = #{fundingCode}	
+	</update>
+	
+	<update id="fundingAdminPermitNo" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingAdminPermit = 2 WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	<update id="fundingPeopleCountUp" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingPeopleCount = FundingPeopleCount + 1 WHERE FUNDINGCODE = #{fundingCode}	
+	</update>
+	
+	<update id="fundingBalancePlus" parameterType="FundingGoods">
+	UPDATE FUNDINGGOODS SET FundingAccountBalance = FundingAccountBalance + #{changeAccountBalance}  WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	<update id="fundingTargetRateModify" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingTargetRate = ROUND((FundingAccountBalance/FundingTargetAmount)*100) 
+		WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	<update id="fundingSuccess" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingSuccessOrFailure = 1 WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	<update id="fundingFailure" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingSuccessOrFailure = 2 WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	<update id="fundingBalanceMove" parameterType="int">
+	UPDATE FUNDINGGOODS SET FundingAccountBalance = 0 WHERE FUNDINGCODE = #{fundingCode}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>

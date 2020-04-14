@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingGoodsCommentsReply">
+<insert id="fundingCommentsReplyWrite" parameterType="FundingGoodsCommentsReply">
+INSERT INTO FundingGoodsCommentsReply VALUES 
+	(FGCOMMENTSNUMBER.nextval, #{fgCommentsReplyContent}, SYSDATE , #{fgCommentsNumber}, #{userId})
+</insert>
+
+<select id="fundingCommentReplyDetail" parameterType="int" resultType="FundingGoodsCommentsReply">
+SELECT FGCR.*,u.username,u.userprofileimage FROM 
+	FundingGoodsCommentsReply FGCR, USERS U 
+		WHERE fgcr.fgcommentsnumber=#{fgCommentsNumber} AND U.USERID=FGCR.USERID
+</select>
+
+<select id="fundingCommentReplyList" resultType="FundingGoodsCommentsReply">
+SELECT F.*, U.userProfileImage, U.userName FROM 
+	FundingGoodsCommentsReply F, USERS U 
+		WHERE F.USERID=U.USERID ORDER BY f.fgcommentsreplydate DESC
+</select>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FundingGoodsDetail">
+
+<insert id="fundingGoodsDetailWrite" parameterType="FundingGoodsDetail">
+INSERT INTO FundingGoodsDetail VALUES 
+	(FUNDINGGOODSDETAILNUMBER.nextval,#{fundingAmount}, #{fundingRewardAddDonation}, SYSDATE, #{fundingTargetDate}, #{fundingCode}, #{userId})
+</insert>
+
+<select id="userFundingList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT * FROM FUNDINGGOODSDETAIL WHERE USERID=#{userId} ORDER BY FUNDINGDATE DESC) A)
+			WHERE RN BETWEEN #{startRow} AND #{endRow}	
+</select>
+
+<select id="doFundingUserList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT FGD.*,U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGGOODSDETAIL FGD, USERS U WHERE FGD.USERID=U.USERID ORDER BY FGD.FUNDINGDATE DESC) A)
+			WHERE RN BETWEEN #{startRow} AND #{endRow}	
+</select>
+
+<select id="userInvestmentList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT FG.* FROM FUNDINGGOODSDETAIL FG, fundinggoods F WHERE f.fundingcode=fg.fundingcode AND f.fundingcategory=0 AND FG.USERID=#{userId} ORDER BY FG.FUNDINGDATE DESC) A)
+			WHERE RN BETWEEN #{startRow} AND #{endRow}	
+</select>
+
+<select id="userFundingList ">
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+	(SELECT FG.* FROM FUNDINGGOODSDETAIL FG, fundinggoods F WHERE f.fundingcode=fg.fundingcode AND f.fundingcategory=1 AND FG.USERID=#{userId} ORDER BY FG.FUNDINGDATE DESC) A)
+		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+</mapper>

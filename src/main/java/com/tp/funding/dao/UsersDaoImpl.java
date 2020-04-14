@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.tp.funding.dto.Users;
 
 @Repository
-public class UserDaoImpl implements UsersDao{
+public class UsersDaoImpl implements UsersDao{
 	@Autowired
 	private SqlSession sessionTemplate;
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserPick">
+	<insert id="userPickAdd" parameterType="UserPick">
+		INSERT INTO UserPick VALUES (USERPICKNUMBER.nextval,#{userId},#{fundingCode})
+	</insert>
+	<insert id="userPickDelete" parameterType="int">
+		DELETE FROM UserPick where userPickNumber=#{userPickNumber}
+	</insert>
+	<select id="userPickList" parameterType="UserPick" resultType="UserPick">
+		SELECT UP.*,F.fundingName,F.fundingCategory,F.fundingTargetDate,F.fundingThumbnailImage 
+		FROM UserPick UP, FundingGoods F WHERE UP.fundingCode = F.fundingCode AND UP.UserId = #{userId})
+		ORDER BY userPickNumber DESC
+	</select>
+</mapper>

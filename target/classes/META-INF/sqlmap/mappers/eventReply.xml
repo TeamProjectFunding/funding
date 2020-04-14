@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="EventReply">
+    <resultMap type="EventReply" id="EventReplyList">
+    	<result property="eventReplyNumber" column="eventReplyNumber"/>
+    	<result property="eventReplyContent" column="eventReplyContent"/>
+    	<result property="eventReplyDate" column="eventReplyDate"/>
+    	<result property="eventNumber" column="eventNumber"/>
+    	<result property="userId" column="userId"/>
+    	<result property="startRow" column="startRow"/>
+    	<result property="endRow" column="endRow"/>
+    	<result property="userProfileImage" column="userProfileImage"/>
+    	<result property="userName" column="userName"/>
+    </resultMap>
+    <select id="totEventReply" resultType="int">
+    SELECT COUNT(*) FROM EVENTREPLY
+    </select>
+    <select id="eventReplyList" parameterType="EventReply" resultMap="EventReplyList">
+    SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+    (SELECT ER.*, U.USERPROFILEIMAGE, U.USERNAME FROM EVENTREPLY ER, USERS U, EVENT E WHERE ER.USERID=U.USERID AND E.EVENTNUMBER=ER.EVENTNUMBER ORDER BY EVENTREPLYNUMBER DESC) A) 
+    WHERE RN BETWEEN #{startRow} AND #{endRow}
+    </select>
+    <insert id="eventReplyWrite" parameterType="EventReply">
+    INSERT INTO EVENTREPLY VALUES (EVENTREPLYNUMBER.NEXTVAL,#{eventReplyContent}, SYSDATE, #{eventNumber} , #{userId})
+    </insert>
+    <select id="eventReplyDetail" parameterType="int" resultType="EventReply">
+    SELECT ER.*, U.USERPROFILEIMAGE, U.USERNAME FROM EVENTREPLY ER, USERS U WHERE ER.USERID=U.USERID AND EVENTNUMBER=#{eventNumber}
+    </select>
+    </mapper>

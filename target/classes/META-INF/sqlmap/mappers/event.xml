@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="Event">
+    <resultMap type="Event" id="EventList">
+    <result property="eventNumber" column="eventNumber"/>
+    <result property="eventTilte" column="eventTilte"/>
+    <result property="eventContent" column="eventContent"/>
+    <result property="eventThumbnailImage" column="eventThumbnailImage"/>
+    <result property="eventDetailImage" column="eventDetailImage"/>
+    <result property="eventProductName" column="eventProductName"/>
+    <result property="eventProductImage" column="eventProductImage"/>
+    <result property="eventPrizeCount" column="eventPrizeCount"/>
+    <result property="eventParticipateCount" column="eventParticipateCount"/>
+    <result property="eventHit" column="eventHit"/>
+    <result property="eventStartDate" column="eventStartDate"/>
+    <result property="eventEndDate" column="eventEndDate"/>
+    <result property="eventProductDeliveryDate" column="eventProductDeliveryDate"/>
+    <result property="adminId" column="adminId"/>
+    <result property="eventReplyCount" column="eventReplyCount"/>
+    <result property="startRow" column="startRow"/>
+    <result property="endRow" column="endRow"/>
+    </resultMap>
+    <select id="eventDoingList" parameterType="Event" resultMap="EventList">
+ 	<![CDATA[
+    SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE > SYSDATE ORDER BY E.EVENTSTARTDATE DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+    ]]>
+    </select>
+    <select id="eventEndList" parameterType="Event" resultMap="EventList">
+    <![CDATA[
+    SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE < SYSDATE ORDER BY E.EVENTSTARTDATE DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+    ]]>
+    </select>
+    <select id="eventDetail" parameterType="int" resultType="Event">
+    SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTNUMBER=#{eventNumber}
+    </select>
+    <insert id="eventWrite" parameterType="Event">
+    INSERT INTO EVENT VALUES (EVENTNUMBER.NEXTVAL,#{eventTilte},#{eventContent},#{eventThumbnailImage},#{eventDetailImage},#{eventProductName},
+    #{eventProductImage},0,0,0,SYSDATE,#{eventEndDate},#{eventProductDeliveryDate},#{adminId});
+    </insert>
+    <select id="totEvent" resultType="int">
+    SELECT COUNT(*) FROM EVENT
+    </select>
+    </mapper>

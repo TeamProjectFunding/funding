@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="Notice">
+    <resultMap type="Notice" id="NoticeList">
+    	<result property="noticeNumber" column="noticeNumber"/>
+    	<result property="noticeTilte" column="noticeTilte"/>
+    	<result property="noticeContent" column="noticeContent"/>
+    	<result property="noticeDate" column="noticeDate"/>
+    	<result property="noticeHit" column="noticeHit"/>
+    	<result property="adminId" column="adminId"/>
+    	<result property="startRow" column="startRow"/>
+    	<result property="endRow" column="endRow"/>
+	</resultMap>
+	<select id="totNotice" resultType="int">
+	SELECT COUNT(*) FROM NOTICE
+	</select>
+	<insert id="noticeWrite" parameterType="Notice">
+	INSERT INTO NOTICE VALUES (NOTICENUMBER.NEXTVAL,#{noticeTilte}, #{noticeContent}, SYSDATE, 0, #{adminId})
+	</insert>
+	<select id="noticeDetail" parameterType="int" resultType="Notice" >
+	SELECT * FROM NOTICE WHERE NOTICENUMBER=#{noticeNumber}
+	</select>
+	<update id="noticeModify" parameterType="Notice" >
+	UPDATE NOTICE SET NOTICETILTE=#{noticeTilte} , NOTICECONTENT=#{noticeContent}, NOTICEDATE=SYSDATE WHERE NOTICENUMBER=#{noticeNumber}
+	</update>
+	<update id="noticeHitUp" parameterType="Notice">
+	UPDATE NOTICE SET NOTICEHIT=#{noticeHit}+1 WHERE NOTICENUMBER=#{noticeNumber}
+	</update>
+	<delete id="noticeDelete" parameterType="int">
+	DELETE FROM NOTICE WHERE NOTICENUMBER=#{noticeNumber}
+	</delete>
+	</mapper>

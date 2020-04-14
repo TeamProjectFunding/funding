@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QnA">
+	<insert id="qnAWrite" parameterType="QnA">
+		<if test="userId != null and userId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,#{userId},null,null)
+		</if>
+		<if test="companyId != null and companyId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,null,#{companyId},null)
+		</if>
+		<if test="adminId != null and adminId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,null,null,#{adminId})
+		</if>
+	</insert>
+	<insert id="qnAReplyWrite" parameterType="QnA">
+		<if test="userId != null and userId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,#{userId},null,null)
+		</if>
+		<if test="companyId != null and companyId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,#{companyId},null)
+		</if>
+		<if test="adminId != null and adminId != ''">
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,null,#{adminId})
+		</if>
+	</insert>
+	<select id="qnADetail" parameterType="int">
+		SELECT * FROM QnA WHERE QnANumber=${QnANumber};
+	</select>
+	<select id="qnAList" parameterType="QnA" resultType="QnA">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+	(SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+	(SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+	WRITER FROM QNA Q ORDER BY Q.QNAGROUP DESC, Q.QNAREF) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<update id="qnAHitUp" parameterType="int">
+		UPDATE QnA SET QnAHit=QnAHit+1 WHERE QnANumber=#{qnANumber}
+	</update>
+			
+</mapper>

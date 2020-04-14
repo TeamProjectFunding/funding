@@ -2,7 +2,10 @@ package com.tp.funding.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.tp.funding.dto.Users;
+
 
 public interface UsersDao {
 	public List<Users> userList();
