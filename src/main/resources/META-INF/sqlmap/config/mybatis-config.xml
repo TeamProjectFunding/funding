@@ -26,6 +26,6 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="META-INF/sqlmap/mappers/Member.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/company.xml"/>
 	</mappers>
 </configuration>
