@@ -26,6 +26,10 @@
 	</typeAliases>
 	
 	<mappers>
+<<<<<<< HEAD
 		<mapper resource="META-INF/sqlmap/mappers/Users.xml"/>
+=======
+		<mapper resource="META-INF/sqlmap/mappers/company.xml"/>
+>>>>>>> a
 	</mappers>
 </configuration>

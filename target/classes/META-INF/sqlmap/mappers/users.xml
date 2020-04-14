@@ -6,57 +6,12 @@
 <mapper namespace="Users">
 	
 	<select id="userList" resultType="Users">
-	SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID) NOTIFICATIONCOUNT, 
+		SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID) NOTIFICATIONCOUNT, 
     (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
         FROM USERS U, USERGRADE UG 
-            WHERE U.USERGRADENO = UG.USERGRADENO
-
+            WHERE U.USERGRADENO = UG.USERGRADENO; 
 	</select>
 	
-	<select id="userSearchList" parameterType="String" resultType="Users">
-SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID and n.notificationread=0) NOTIFICATIONCOUNT, 
-    (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
-        FROM USERS U, USERGRADE UG 
-            WHERE U.USERGRADENO = UG.USERGRADENO AND u.USERNAME LIKE '%'||#{searchUserName}||'%'
-	</select>
-	<insert id="userJoin" parameterType="Users">
-		INSERT INTO Users VALUES (#{userId},#{userPassword},#{userProfileImage},#{userName},#{userPhone},#{userAddressBasic},
-		#{userAddressDetail},null,null,0,#{userBirthday},SYSDATE,#{userAdPhone},#{userAdEmail},0,0,0,1)
-	</insert>
-	<select id="userLoginCheck" parameterType="Users" resultType="int">
-		SELECT COUNT(*) FROM USERS WHERE USERID = #{userId} AND USERPASSWORD = #{userPassword}
-	</select>
-	<select id="userDetail" parameterType="String" resultType="Users">
-		SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID and n.notificationread=0) NOTIFICATIONCOUNT, 
-    (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME FROM USERS U, USERGRADE UG 
-            WHERE U.USERGRADENO = UG.USERGRADENO AND USERID = #{userId}
-	</select>
-	<update id="userInfoModify" parameterType="Users">
-		UPDATE USERS SET userPassword = #{userPassword}, userProfileImage=#{userProfileImage}, userPhone=#{userPhone},
-userAddressBasic=#{userAddressBasic}, userAddressDetail=#{userAddressDetail}, userBirthday=#{userBirthday},
-userAdPhone=#{userAdPhone}, userAdEmail=#{userAdEmail} WHERE USERID = #{userId}
-	</update>
-	<update id="userOutSite" parameterType="Users">
-		UPDATE USERS SET userOutSite = #{userOutSite} WHERE USERID = #{userId}
-	</update>
-	<update id="userAccountModify" parameterType="Users">
-		UPDATE USERS SET userBankName=#{userBankName}, userAccountNumber=#{userAccountNumber}
-WHERE USERID = #{userId}
-	</update>
 	
-	<update id="userBalanceModify" parameterType="Users">
-		UPDATE USERS SET userAccountBalance = userAccountBalance + #{changeMoneyAmount} WHERE USERID = #{userId}
-	</update>
-	
-	<update id="userGradeUp" parameterType="String">
-		UPDATE USERS SET USERGRADENO = USERGRADENO + 1 WHERE USERID = #{userId}
-	</update>
-	
-	<update id="userInvestmentAmountModify" parameterType="Users">
-		UPDATE USERS SET UserInvestmentAmount = UserInvestmentAmount + #{changeMoneyAmount} WHERE USERID = #{userId}
-	</update>
-	
-	<update id="userInterestAmountModify" parameterType="Users">
-		UPDATE USERS SET userInterestAmount = userInterestAmount + #{changeMoneyAmount} WHERE USERID = #{userId}
-	</update>
+		
 </mapper>
