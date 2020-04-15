@@ -29,12 +29,30 @@
 							<input type="button" value="NAVER" class="button naverButton">
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
+						<!-- 영롱 네이버로그인 -->
+						  <div id="naver_id_login"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
 					</tr>
 					
 				</table>
 			</form>
 		</section>
 	</div>
+	                
+
+
+<!-- JQuery 생략 네이버 로그인 script -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script>
+
+     var naver_id_login = new naver_id_login("LsBPexGeKhecQjzWoxFD", "http://localhost:8181/funding/naverCallback.do");
+     var state = naver_id_login.getUniqState();
+     naver_id_login.setButton("white", 2,40);
+     naver_id_login.setDomain("http://127.0.0.1:8181/funding/login");
+     naver_id_login.setState(state);
+     naver_id_login.setPopup();
+     naver_id_login.init_naver_id_login();
+  </script>
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

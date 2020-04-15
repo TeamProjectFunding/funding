@@ -13,7 +13,7 @@
 --	CompanyAccountBalance NUMBER(12)     NULL,     -- 회사계좌잔액
 --	CompanyInFunding      NUMBER(1)      NULL,     -- 회사에서투자중인지
 --	CompanyOutSite        NUMBER(1)      NULL      -- 탈퇴여부
-
+select * from users;
 SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=1;
 
 UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=1;
@@ -63,6 +63,7 @@ SELECT * FROM notification;
 SELECT N.* FROM notification N,company C WHERE n.companyid=c.companyid AND n.notificationread=0 ORDER BY n.notificationdate DESC;
 SELECT N.* FROM notification N,USERS U WHERE n.userid=U.userid AND n.notificationread=0;
 SELECT N.* FROM notification N,company C WHERE n.companyid=c.companyid AND n.notificationread=1;
+select * from qna where qnanumber=1;
 
 select * from admin where adminid='admin';
 select * from admin where adminid='admin' and adminpassword='11';
