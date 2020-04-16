@@ -8,7 +8,7 @@ public interface FundingDetailService {
 
 public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	
-	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail);
+//	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode);
 	

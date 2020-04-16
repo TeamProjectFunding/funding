@@ -20,10 +20,10 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 		return fundingDetailDao.fundingGoodsDetailWrite(fundingGoodsDetail);
 	}
 
-	@Override
-	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail) {
-		return fundingDetailDao.userFundingList(fundingGoodsDetail);
-	}
+//	@Override
+//	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail) {
+//		return fundingDetailDao.userFundingList(fundingGoodsDetail);
+//	}
 
 	@Override
 	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode) {
