@@ -23,12 +23,13 @@
 
 	<div id="contentWrap" class="goodsWrap">
 		<section id="fundingWrap" class="fundingListWrap">
-			<h1>FUND</h1>
+			<h1>${category }</h1>
 			<c:forEach var="fund" items="${fundList}">
 				<div class="goods">
 					<ul>
-						<li class="thumnail"><a href='goodsViewCoreInfomation.do'><img
-								src="${conPath}/images/goods/${fund.fundingThumbnailImage}"><span>FUND</span></a>
+						<li class="thumnail"><a href='goodsViewCoreInfomation.do?fundingCode=${fund.fundingCode }'><img
+								src="${conPath}/images/goods/${fund.fundingThumbnailImage}">
+								<span><c:if test="${fund.fundingCategory eq 0 }">FUND</c:if><c:if test="${fund.fundingCategory eq 1 }">REWARD</c:if></span></a>
 						</li>
 						<li class="companyName">${fund.companyName }</li>
 						<li class="goodsName">${fund.fundingName }</li>
