@@ -17,7 +17,7 @@
 SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERID and n.notificationread=0) NOTIFICATIONCOUNT, 
     (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
         FROM USERS U, USERGRADE UG 
-            WHERE U.USERGRADENO = UG.USERGRADENO AND u.USERNAME LIKE '%'||#{searchUserName}||'%'
+            WHERE U.USERGRADENO = UG.USERGRADENO AND u.USERNAME LIKE '%'||#{searchUserName, jdbcType = VARCHAR}||'%'
 	</select>
 	<insert id="userJoin" parameterType="Users">
 		INSERT INTO Users VALUES (#{userId},#{userPassword},#{userProfileImage},#{userName},#{userPhone},#{userAddressBasic},

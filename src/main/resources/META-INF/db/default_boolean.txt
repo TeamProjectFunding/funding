@@ -25,9 +25,12 @@ Default :
   UserInterestAmount(누적이자금액) 0
   UserOutSite(탈퇴여부) 0
   UserGradeNo(유저등급) 1
+  UserAdPhone(폰 광고) 0
+  UserAdPhone(메일 광고) 0
 Boolean : 
   UserOutSite(탈퇴여부) 0 가입 1 탈퇴
-  
+  UserAdPhone(폰 광고) 0 거부 1 수락
+  UserAdPhone(메일 광고) 0 거부 1 수락
   
 //////////////
 5. FundingGoods

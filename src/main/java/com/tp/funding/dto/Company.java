@@ -1,9 +1,13 @@
 package com.tp.funding.dto;
 
+import java.sql.Date;
+
 public class Company {
 	
 	private String companyId;             
-	private String companyPassword;       
+	private String companyPassword;
+	private String companyBusinessNumber;
+	private Date companyJoinDate;
 	private String companyProfileImage;    
 	private String companyIntroduction;     
 	private String companyEmail;           
@@ -25,17 +29,18 @@ public class Company {
 	
 	// join해서 쓸 것
 	private int notificationCount;
-	
+
 	public Company() {
 	}
-	
-	public Company(String companyId, String companyPassword, String companyProfileImage, String companyIntroduction,
-			String companyEmail, String companyName, String companyPhone, String companyAddressBasic,
-			String companyAddressDetail, String companyBankName, String companyBankDepositor,
-			String companyAccountNumber, int companyAccountBalance, int companyInFunding, int companyOutSite,
-			int changeAccountBalance, int startRow, int endRow, int notificationCount) {
+	public Company(String companyId, String companyPassword, String companyBusinessNumber, Date companyJoinDate,
+			String companyProfileImage, String companyIntroduction, String companyEmail, String companyName,
+			String companyPhone, String companyAddressBasic, String companyAddressDetail, String companyBankName,
+			String companyBankDepositor, String companyAccountNumber, int companyAccountBalance, int companyInFunding,
+			int companyOutSite, int changeAccountBalance, int startRow, int endRow, int notificationCount) {
 		this.companyId = companyId;
 		this.companyPassword = companyPassword;
+		this.companyBusinessNumber = companyBusinessNumber;
+		this.companyJoinDate = companyJoinDate;
 		this.companyProfileImage = companyProfileImage;
 		this.companyIntroduction = companyIntroduction;
 		this.companyEmail = companyEmail;
@@ -55,8 +60,6 @@ public class Company {
 		this.notificationCount = notificationCount;
 	}
 
-
-
 	public String getCompanyId() {
 		return companyId;
 	}
@@ -71,6 +74,22 @@ public class Company {
 
 	public void setCompanyPassword(String companyPassword) {
 		this.companyPassword = companyPassword;
+	}
+
+	public String getCompanyBusinessNumber() {
+		return companyBusinessNumber;
+	}
+
+	public void setCompanyBusinessNumber(String companyBusinessNumber) {
+		this.companyBusinessNumber = companyBusinessNumber;
+	}
+
+	public Date getCompanyJoinDate() {
+		return companyJoinDate;
+	}
+
+	public void setCompanyJoinDate(Date companyJoinDate) {
+		this.companyJoinDate = companyJoinDate;
 	}
 
 	public String getCompanyProfileImage() {
@@ -211,7 +230,8 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyProfileImage="
+		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyBusinessNumber="
+				+ companyBusinessNumber + ", companyJoinDate=" + companyJoinDate + ", companyProfileImage="
 				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyEmail="
 				+ companyEmail + ", companyName=" + companyName + ", companyPhone=" + companyPhone
 				+ ", companyAddressBasic=" + companyAddressBasic + ", companyAddressDetail=" + companyAddressDetail
