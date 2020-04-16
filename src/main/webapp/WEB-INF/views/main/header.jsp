@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Insert title here</title>
 	<link href="${conPath}/css/common.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +20,7 @@
 		<a href="main.do" class='headerLogo'>CROWD<br>FUND</a>
 		<div class='menuWrap'>
 			<ul class="util">
+				<li><a href="adminMain.do">ADMIN</a></li>
 				<li><a href="login.do">LOG-IN</a></li>
 				<li><a href="join.do">JOIN</a></li>
 				
