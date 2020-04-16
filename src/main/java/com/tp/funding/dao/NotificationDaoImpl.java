@@ -22,23 +22,23 @@ public class NotificationDaoImpl implements NotificationDao {
 	}
 
 	@Override
-	public List<Notification> notificationUnReadCompanyList(Notification notification) {
-		return sessionTemplate.selectList("notificationUnReadCompanyList", notification);
+	public List<Notification> notificationUnReadCompanyList(String companyId) {
+		return sessionTemplate.selectList("notificationUnReadCompanyList", companyId);
 	}
 
 	@Override
-	public List<Notification> notificationUnReadUserList(Notification notification) {
-		return sessionTemplate.selectList("notificationUnReadUserList", notification);
+	public List<Notification> notificationUnReadUserList(String userId) {
+		return sessionTemplate.selectList("notificationUnReadUserList", userId);
 	}
 
 	@Override
-	public List<Notification> notificationReadCompanyList(Notification notification) {
-		return sessionTemplate.selectList("notificationReadCompanyList", notification);
+	public List<Notification> notificationReadCompanyList(String companyId) {
+		return sessionTemplate.selectList("notificationReadCompanyList", companyId);
 	}
 
 	@Override
-	public List<Notification> notificationReadUserList(Notification notification) {
-		return sessionTemplate.selectList("notificationReadUserList", notification);
+	public List<Notification> notificationReadUserList(String userId) {
+		return sessionTemplate.selectList("notificationReadUserList", userId);
 	}
 
 }

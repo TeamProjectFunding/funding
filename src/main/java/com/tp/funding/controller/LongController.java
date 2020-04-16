@@ -5,12 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 
 @Controller
 public class LongController {
 	@Autowired
 	private FundingGoodsService fundingGoodsService;
+	private FundingDetailService fundingDetailService;
 	
 	//펀드 리스트
 	@RequestMapping(value ="fundList")
@@ -18,8 +20,10 @@ public class LongController {
 		//startRow endRow
 		if(category.equals("fund")) {
 			model.addAttribute("fundList", fundingGoodsService.investmentAllList(pageNum));
+			model.addAttribute("category", "FUND");
 		}else if(category.equals("reward")) {
 			model.addAttribute("fundList", fundingGoodsService.rewardAllList(pageNum));
+			model.addAttribute("category", "REWARD");
 		}
 		return "goods/fundList";
 	}
@@ -31,6 +35,7 @@ public class LongController {
 	}
 	@RequestMapping(value ="goodsViewCoreInfomation")
 	public String goodsViewCoreInfomation(Model model,int fundingCode) {
+		model.addAttribute("userList", fundingDetailService.)
 		model.addAttribute("good",fundingGoodsService.fundingDetail(fundingCode));
 		return "goods/goodsViewCoreInfomation";
 	}
