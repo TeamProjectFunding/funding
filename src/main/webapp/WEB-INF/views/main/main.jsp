@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,6 +10,7 @@
 <title>CROWDFUND : MAIN</title>
 </head>
 <body>
+
 <c:if test="${not empty errorMessage}">
 	<script>
 		alert('${errorMessage}');
@@ -17,6 +18,11 @@
 	</script>
 </c:if>
 
+
+<!-- 현재 날짜 -->
+	<jsp:useBean id="today" class="java.util.Date" />
+	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"
+		integerOnly="true" var="nowDate" />
 
 <jsp:include page="header.jsp" />
 	<section id="mainVisual">
@@ -27,74 +33,48 @@
 		<section class="goodsWrap">
 			<div class="goodsListWrap fund">
 				<h1>FUND</h1>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>FUND</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>FUND</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
+				<c:forEach var="fund" items="#{investmentTop3}" begin="0" end="2">
+					<div class="goods">
+						<ul>
+							<li class="thumnail">
+								<a href='${conPath }/goodsViewCoreInfomation.do?fundingCode=${fund.fundingCode }'><img src="${conPath}/images/goods/${fund.fundingThumbnailImage}"><span>FUND</span></a>
+							</li>
+							<li class="companyName">${fund.companyName }</li>
+							<li class="goodsName">${fund.fundingName }</li>
+							<!-- endDate 설정 -->
+							<fmt:parseNumber
+							value="${fund.fundingTargetDate.time / (1000*60*60*24)}"
+							integerOnly="true" var="endDate" />
+							<li class="deadline">deadline after ${endDate-nowDate } days</li>
+						</ul>
+					</div>
+				</c:forEach>
+			
 				<div id="buttonWrap">
-					<a href='fundList.do' class='button'>MORE +</a>
+					<a href='fundList.do?category=fund' class='button'>MORE +</a>
 				</div>
 			</div>
 			<div class="goodsListWrap reward">
 				<h1>REWARD</h1>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_04.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
+				<c:forEach var="fund" items="#{rewardTop3}" begin="0" end="2">
+					<div class="goods">
+						<ul>
+							<li class="thumnail">
+								<a href='${conPath }/goodsViewCoreInfomation.do?fundingCode=${fund.fundingCode }'><img src="${conPath}/images/goods/${fund.fundingThumbnailImage}">
+								<span>REWARD</span></a>
+							</li>
+							<li class="companyName">${fund.companyName }</li>
+							<li class="goodsName">${fund.fundingName }</li>
+							<!-- endDate 설정 -->
+							<fmt:parseNumber
+							value="${fund.fundingTargetDate.time / (1000*60*60*24)}"
+							integerOnly="true" var="endDate" />
+							<li class="deadline">deadline after ${endDate-nowDate } days</li>
+						</ul>
+					</div>
+				</c:forEach>
 				<div id="buttonWrap">
-					<a href='rewardList.do' class='button'>MORE +</a>
+					<a href='fundList.do?category=reward' class='button'>MORE +</a>
 				</div>
 			</div>
 		</section>

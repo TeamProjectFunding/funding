@@ -19,26 +19,34 @@
 	</select>
 	
 	<select id="fundingSearchList" parameterType="String" resultType="FundingGoods">
-	SELECT * FROM FundingGoods 
-		WHERE FUNDINGNAME LIKE '%'||#{FundingName}||'%' AND SYSDATE &lt; FundingTargetDate
+	SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
+		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
+       		FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FG.FUNDINGNAME LIKE '%'||#{FundingName}||'%' AND SYSDATE &lt; FG.FundingTargetDate
 	</select>
 	
 	<select id="searchFundingKeyUpTop5" resultType="FundingGoods">
 	SELECT FUNDINGNAME FROM FUNDINGGOODS 
     	WHERE SYSDATE &lt; FundingTargetDate ORDER BY FundingPeopleCount DESC		
 	</select>
-	
+	<select id="investmentTotalCount" resultType="int">
+	SELECT COUNT(*)
+        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 0 AND FundingTargetDate &gt; SYSDATE
+	</select>
+	<select id="rewardTotalCount" resultType="int">
+	SELECT COUNT(*)
+        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 1 AND FundingTargetDate &gt; SYSDATE
+	</select>
 	<select id="investmentAllList" parameterType="FundingGoods" resultType="FundingGoods">
 	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
 		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
-        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 0) A)
+        FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 0 AND FundingTargetDate &gt; SYSDATE) A)
             WHERE RN BETWEEN #{startRow} AND #{endRow}	
 	</select>
 	
 	<select id="rewardAllList" parameterType="FundingGoods" resultType="FundingGoods">
 	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT FG.*, (SELECT COUNT(*) FROM FundingGoodsComments FGC 
 		WHERE FGC.FUNDINGCODE = FG.FUNDINGCODE) commentCount, C.companyProfileImage, C.companyIntroduction, C.companyName 
-        	FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 1) A)
+        	FROM FundingGoods FG, COMPANY C WHERE FG.COMPANYID = C.COMPANYID AND FundingCategory = 1 AND FundingTargetDate &gt; SYSDATE) A)
             	WHERE RN BETWEEN #{startRow} AND #{endRow}	
 	</select>
 	

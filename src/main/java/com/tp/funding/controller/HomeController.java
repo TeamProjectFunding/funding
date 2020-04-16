@@ -15,43 +15,43 @@ public class HomeController {
 			return "admin/adminLogin";
 		}
 			
-		//admin main
-		@RequestMapping(value ="adminMain")
-		public String adminMain() {
-			return "admin/adminMain";
-		}
+		//admin main   *****AdminController로 이동 *****
+//		@RequestMapping(value ="adminMain")
+//		public String adminMain() {
+//			return "admin/adminMain";
+//		}
 		
-		//admin users list
-		@RequestMapping(value="adminUserList")
-		public String adminUserList() {
-			return "admin/users/list";
-		}
+		//admin users list 
+//		@RequestMapping(value="adminUserList")
+//		public String adminUserList() {
+//			return "admin/users/list";
+//		}
 		
 		//admin users view
-		@RequestMapping(value="adminUserView")
-		public String adminUserView() {
-			return "admin/users/view";
-		}
+//		@RequestMapping(value="adminUserView")
+//		public String adminUserView() {
+//			return "admin/users/view";
+//		}
 		
 		//admin company list
-		@RequestMapping(value="adminCompanyList")
-		public String adminCompanyList() {
-			return "admin/company/list";
-		}
+//		@RequestMapping(value="adminCompanyList")
+//		public String adminCompanyList() {
+//			return "admin/company/list";
+//		}
 			
 		//admin company view
-		@RequestMapping(value="adminCompanyView")
-		public String adminCompanyView() {
-			return "admin/company/view";
-		}
+//		@RequestMapping(value="adminCompanyView")
+//		public String adminCompanyView() {
+//			return "admin/company/view";
+//		}
+		//****************************************
 		
-		
-		
-		//메인
-		@RequestMapping(value = "main")
-		public String home() {
-			return "main/main";
-		}
+//	 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 영롱이	3개씩 최근순 뿌리기	
+//		//메인
+//		@RequestMapping(value = "main")
+//		public String home() {
+//			return "main/main";
+//		}
 		
 		//로그인
 		@RequestMapping(value = "login")
@@ -78,24 +78,24 @@ public class HomeController {
 		public String joinSuccess() {
 			return "users/joinSuccess";
 		}
-		
-		//펀드 리스트
-		@RequestMapping(value ="fundList")
-		public String fundList() {
-			return "goods/fundList";
-		}
-		
-		//리워드 리스트
-		@RequestMapping(value ="rewardList")
-		public String rewardList() {
-			return "goods/rewardList";
-		}
-		
-		//펀드, 리워드 상세보기(정보)
-		@RequestMapping(value ="goodsViewCoreInfomation")
-		public String goodsViewCoreInfomation() {
-			return "goods/goodsViewCoreInfomation";
-		}
+// ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 영롱이
+//		//펀드 리스트
+//		@RequestMapping(value ="fundList")
+//		public String fundList() {
+//			return "goods/fundList";
+//		}
+//		
+//		//리워드 리스트
+//		@RequestMapping(value ="rewardList")
+//		public String rewardList() {
+//			return "goods/rewardList";
+//		}
+//		
+//		//펀드, 리워드 상세보기(정보)
+//		@RequestMapping(value ="goodsViewCoreInfomation")
+//		public String goodsViewCoreInfomation() {
+//			return "goods/goodsViewCoreInfomation";
+//		}
 		
 		//펀드, 리워드 상세보기(투자위험)
 		@RequestMapping(value ="goodsViewRisk")

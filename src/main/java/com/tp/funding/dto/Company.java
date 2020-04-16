@@ -1,12 +1,14 @@
 package com.tp.funding.dto;
 
+import java.sql.Date;
+
 public class Company {
 	
 	private String companyId;             
-	private String companyPassword;       
+	private String companyPassword;
 	private String companyProfileImage;    
 	private String companyIntroduction;     
-	private String companyEmail;           
+	private Date companyJoinDate;           
 	private String companyName;           
 	private String companyPhone;          
 	private String companyAddressBasic;    
@@ -17,6 +19,7 @@ public class Company {
 	private int companyAccountBalance;   
 	private int companyInFunding;           
 	private int companyOutSite;	
+	private String companyBusinessNumber;
 	
 	private int changeAccountBalance;
 	// 페이징
@@ -25,37 +28,9 @@ public class Company {
 	
 	// join해서 쓸 것
 	private int notificationCount;
-	
+
 	public Company() {
 	}
-	
-	public Company(String companyId, String companyPassword, String companyProfileImage, String companyIntroduction,
-			String companyEmail, String companyName, String companyPhone, String companyAddressBasic,
-			String companyAddressDetail, String companyBankName, String companyBankDepositor,
-			String companyAccountNumber, int companyAccountBalance, int companyInFunding, int companyOutSite,
-			int changeAccountBalance, int startRow, int endRow, int notificationCount) {
-		this.companyId = companyId;
-		this.companyPassword = companyPassword;
-		this.companyProfileImage = companyProfileImage;
-		this.companyIntroduction = companyIntroduction;
-		this.companyEmail = companyEmail;
-		this.companyName = companyName;
-		this.companyPhone = companyPhone;
-		this.companyAddressBasic = companyAddressBasic;
-		this.companyAddressDetail = companyAddressDetail;
-		this.companyBankName = companyBankName;
-		this.companyBankDepositor = companyBankDepositor;
-		this.companyAccountNumber = companyAccountNumber;
-		this.companyAccountBalance = companyAccountBalance;
-		this.companyInFunding = companyInFunding;
-		this.companyOutSite = companyOutSite;
-		this.changeAccountBalance = changeAccountBalance;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.notificationCount = notificationCount;
-	}
-
-
 
 	public String getCompanyId() {
 		return companyId;
@@ -89,12 +64,12 @@ public class Company {
 		this.companyIntroduction = companyIntroduction;
 	}
 
-	public String getCompanyEmail() {
-		return companyEmail;
+	public Date getCompanyJoinDate() {
+		return companyJoinDate;
 	}
 
-	public void setCompanyEmail(String companyEmail) {
-		this.companyEmail = companyEmail;
+	public void setCompanyJoinDate(Date companyJoinDate) {
+		this.companyJoinDate = companyJoinDate;
 	}
 
 	public String getCompanyName() {
@@ -177,6 +152,14 @@ public class Company {
 		this.companyOutSite = companyOutSite;
 	}
 
+	public String getCompanyBusinessNumber() {
+		return companyBusinessNumber;
+	}
+
+	public void setCompanyBusinessNumber(String companyBusinessNumber) {
+		this.companyBusinessNumber = companyBusinessNumber;
+	}
+
 	public int getChangeAccountBalance() {
 		return changeAccountBalance;
 	}
@@ -212,13 +195,15 @@ public class Company {
 	@Override
 	public String toString() {
 		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyProfileImage="
-				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyEmail="
-				+ companyEmail + ", companyName=" + companyName + ", companyPhone=" + companyPhone
+				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyJoinDate="
+				+ companyJoinDate + ", companyName=" + companyName + ", companyPhone=" + companyPhone
 				+ ", companyAddressBasic=" + companyAddressBasic + ", companyAddressDetail=" + companyAddressDetail
 				+ ", companyBankName=" + companyBankName + ", companyBankDepositor=" + companyBankDepositor
 				+ ", companyAccountNumber=" + companyAccountNumber + ", companyAccountBalance=" + companyAccountBalance
 				+ ", companyInFunding=" + companyInFunding + ", companyOutSite=" + companyOutSite
-				+ ", changeAccountBalance=" + changeAccountBalance + ", startRow=" + startRow + ", endRow=" + endRow
-				+ ", notificationCount=" + notificationCount + "]";
+				+ ", companyBusinessNumber=" + companyBusinessNumber + ", changeAccountBalance=" + changeAccountBalance
+				+ ", startRow=" + startRow + ", endRow=" + endRow + ", notificationCount=" + notificationCount + "]";
 	}
+
+	
 }
