@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -20,7 +19,7 @@
 				<img src="${conPath }/images/fundingProduct_01.jpeg" alt="fundingThumnail">
 			</div>
 			<div class="infomationTextSection">
-				<h1><span>[companyName]</span> <br/>funding Title</h1>
+				<h1><span>[${good.companyName}]</span> <br/>${good.companyName}</h1>
 				<ul>
 					<li>
 						<p>159,086,576원  <span>달성목표금액 30,032,574원30%</span></p>
@@ -40,7 +39,7 @@
 		</div>
 		
 		<div id="investmentRiskNotice">
-			<p clsss="riskNotice">투자 위험 고지비상장기업 투자는 원금 손실의 가능성이 크니 <a href="">투자 위험 안내</a>를 꼭 확인하세요.</p>
+			<p class="riskNotice">투자 위험 고지비상장기업 투자는 원금 손실의 가능성이 크니 <a href="">투자 위험 안내</a>를 꼭 확인하세요.</p>
 			<p class="serviceInfomation">서비스 안내개인 일반 투자자의 연간 투자 한도가 동일 발행인 기준 200만원→500만원, 누적 투자 금액 500만원→1,000만원으로 확대되었습니다.</p>
 		</div>
 		
