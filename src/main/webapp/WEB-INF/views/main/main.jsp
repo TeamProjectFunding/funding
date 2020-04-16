@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,10 +10,20 @@
 <title>CROWDFUND : MAIN</title>
 </head>
 <body>
+
+<c:if test="${not empty errorMessage}">
+	<script>
+		alert('${errorMessage}');
+		history.back();
+	</script>
+</c:if>
+
+
 <!-- 현재 날짜 -->
 	<jsp:useBean id="today" class="java.util.Date" />
 	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"
 		integerOnly="true" var="nowDate" />
+
 <jsp:include page="header.jsp" />
 	<section id="mainVisual">
 		<h1>CROWD FUND</h1>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,15 +14,15 @@
 	<div id="contentWrap" class="userWrap">
 		<section class="loginWrap">
 			<h1>LOG-IN</h1>
-			<form action="" method="post">
+			<form action="${conPath}/hyuck/login.do" method="post">
 				<table>
 					<tr>
-						<td><input type="text" name="id" placeholder="아이디를 입려하세요"></td>
+						<td><input type="text" name="id" placeholder="아이디를 입력하세요" value="${param.userId}${param.companyId}"></td>
 					</tr>
 					<tr>
 						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></td>
 					</tr>
-					<tr>
+					<tr>					
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
@@ -30,6 +30,7 @@
 							<div id="naver_id_login"><a href="${url}" class="button naverButton">NAVER</a></div>
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
+
 					</tr>
 				</table>
 						  

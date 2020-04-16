@@ -3,6 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<settings>
+        	<setting name="cacheEnabled" value="false" />
+        	<setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+
 	<typeAliases>
 		<typeAlias type="com.tp.funding.dto.Admin" alias="Admin"/>
 		<typeAlias type="com.tp.funding.dto.Company" alias="Company"/>
@@ -44,5 +50,6 @@
 		<mapper resource="META-INF/sqlmap/mappers/reward.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/userPick.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/users.xml"/>
-	</mappers>
+	</mappers>	
+
 </configuration>
