@@ -3,6 +3,7 @@ package com.tp.funding.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -61,12 +62,14 @@ public class HomeController {
 		//회원가입 유형선택
 		@RequestMapping(value ="join")
 		public String join() {
-			return "users/join";
+						
+			return "users/join";			
 		}
 		
 		//회원가입 입력 폼
 		@RequestMapping(value ="joinForm")
-		public String joinForm() {
+		public String joinForm(String method, Model model) {			
+			model.addAttribute("method", method);
 			return "users/joinForm";
 		}
 		

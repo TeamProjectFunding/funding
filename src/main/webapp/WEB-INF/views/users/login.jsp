@@ -14,24 +14,25 @@
 	<div id="contentWrap" class="userWrap">
 		<section class="loginWrap">
 			<h1>LOG-IN</h1>
-			<form action="" method="post">
+			<form action="${conPath}/hyuck/login.do" method="post">
 				<table>
 					<tr>
-						<td><input type="text" name="id" placeholder="아이디를 입려하세요"></td>
+						<td><input type="text" name="id" placeholder="아이디를 입력하세요" value="${param.userId}${param.companyId}"></td>
 					</tr>
 					<tr>
 						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></td>
 					</tr>
-					<tr>
+					<tr>					
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
 							<input type="button" value="NAVER" class="button naverButton">
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
+						
 						<!-- 영롱 네이버로그인 -->
-						  <div id="naver_id_login"><a href="${url}">
-<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+						  <div id="naver_id_login">
+						  <a href="${url}"><img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
 					</tr>
 					
 				</table>

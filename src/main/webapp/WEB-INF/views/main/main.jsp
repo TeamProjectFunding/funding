@@ -10,6 +10,13 @@
 <title>CROWDFUND : MAIN</title>
 </head>
 <body>
+<c:if test="${not empty errorMessage}">
+	<script>
+		alert('${errorMessage}');
+		history.back();
+	</script>
+</c:if>
+
 
 <jsp:include page="header.jsp" />
 	<section id="mainVisual">
