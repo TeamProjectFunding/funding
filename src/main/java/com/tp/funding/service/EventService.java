@@ -1,10 +1,11 @@
-package com.tp.funding.dao;
+package com.tp.funding.service;
 
 import java.util.List;
 
 import com.tp.funding.dto.Event;
 
-public interface EventDao {
+
+public interface EventService {
 	public List<Event> eventDoingList();
 	public List<Event> eventEndList();
 	public Event eventDetail(int eventNumber);
