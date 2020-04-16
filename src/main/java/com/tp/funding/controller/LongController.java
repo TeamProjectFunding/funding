@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 
@@ -34,8 +35,10 @@ public class LongController {
 		return "message/fundSearchList";
 	}
 	@RequestMapping(value ="goodsViewCoreInfomation")
-	public String goodsViewCoreInfomation(Model model,int fundingCode) {
-		model.addAttribute("userList", fundingDetailService.)
+	public String goodsViewCoreInfomation(Model model,int fundingCode,String pageNum) {
+		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+		fundingGoodsDetail.setFundingCode(fundingCode);
+		model.addAttribute("userList", fundingDetailService.doFundingUserList(pageNum, fundingCode));
 		model.addAttribute("good",fundingGoodsService.fundingDetail(fundingCode));
 		return "goods/goodsViewCoreInfomation";
 	}

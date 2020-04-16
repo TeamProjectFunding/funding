@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tp.funding.dao.FundingDetailDao;
+import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.util.Paging;
 @Service
 public class FundingDetailServiceImpl implements FundingDetailService {
 
@@ -24,7 +26,14 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 	}
 
 	@Override
-	public List<FundingGoodsDetail> doFundingUserList(FundingGoodsDetail fundingGoodsDetail) {
+	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode) {
+		// pageSize = 30, BlockSize = 1
+				int doFundingGoodTotalCount = doFundingGoodTotalCount(fundingCode);
+				Paging paging = new Paging(doFundingGoodTotalCount, pageNum, 30, 1);
+				// 페이징 처리
+				FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+				fundingGoodsDetail.setStartRow(paging.getStartRow());
+				fundingGoodsDetail.setEndRow(paging.getEndRow());
 		return fundingDetailDao.doFundingUserList(fundingGoodsDetail);
 	}
 
@@ -36,6 +45,11 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 	@Override
 	public List<FundingGoodsDetail> userRewardList(FundingGoodsDetail fundingGoodsDetail) {
 		return fundingDetailDao.userRewardList(fundingGoodsDetail);
+	}
+
+	@Override
+	public int doFundingGoodTotalCount(int fundingCode) {
+		return fundingDetailDao.doFundingGoodTotalCount(fundingCode);
 	}
 
 }

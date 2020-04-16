@@ -38,4 +38,9 @@ public class FundingDetailDaoImpl implements FundingDetailDao {
 		return sessionTemplate.selectList("userRewardList", fundingGoodsDetail);
 	}
 
+	@Override
+	public int doFundingGoodTotalCount(int fundingCode) {
+		return sessionTemplate.selectOne("doFundingGoodTotalCount", fundingCode);
+	}
+
 }

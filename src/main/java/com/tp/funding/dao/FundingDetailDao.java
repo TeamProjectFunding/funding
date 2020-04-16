@@ -15,4 +15,6 @@ public interface FundingDetailDao {
 	public List<FundingGoodsDetail> userInvestmentList(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> userRewardList(FundingGoodsDetail fundingGoodsDetail);
+	
+	public int doFundingGoodTotalCount(int fundingCode);
 }

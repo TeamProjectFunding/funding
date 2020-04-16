@@ -10,10 +10,12 @@ public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail);
 	
-	public List<FundingGoodsDetail> doFundingUserList(FundingGoodsDetail fundingGoodsDetail);
+	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode);
 	
 	public List<FundingGoodsDetail> userInvestmentList(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> userRewardList(FundingGoodsDetail fundingGoodsDetail);
+	
+	public int doFundingGoodTotalCount(int fundingCode);
 	
 }
