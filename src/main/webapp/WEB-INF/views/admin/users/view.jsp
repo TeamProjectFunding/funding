@@ -19,46 +19,54 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="userViewWrap">
 			<h1>USERS INFOMATION</h1>
-			<table>
+			 <table>
 				<tr>
-					<th><img src="" alt="userProfie"></th>
-					<td><span>GRADE</span> userName</td>
+					<th><img src="${conPath}/images/Profile/${user.userProfileImage}" alt="userProfie"></th>
+					<td><span>${user.userGradeName}</span> ${user.userName}</td>
 				</tr>
 				<tr>
 					<th>ID :</th>
-					<td>USERID</td>
+					<td>${user.userId}</td>
 				</tr>
 				<tr>
 					<th>PHONE :</th>
-					<td>000-0000-0000</td>
+					<td>${user.userPhone}</td>
 				</tr>
 				<tr>
 					<th>ADDRESS :</th>
-					<td>xx도 xx시 xx동</td>
-				</tr>
-				<tr>
-					<th>PHONE :</th>
-					<td>000-0000-0000</td>
+					<td>${user.userAddressBasic}&nbsp;${user.userAddressDetail} </td>
 				</tr>
 				<tr>
 					<th>BIRTH DAY :</th>
-					<td>1987-03-16</td>
+					<td>${user.userBirthday} </td>
 				</tr>
 				<tr>
 					<th>BANK :</th>
-					<td>BANKNAME</td>
+					<td>${user.userBankName}</td>
 				</tr>
 				<tr>
 					<th>ACCOUNT NUMBER :</th>
-					<td>00-0000-0000-000</td>
+					<td>${user.userAccountNumber}</td>
 				</tr>
 				<tr>
 					<th>ADVERTISING RECEIVED :</th>
-					<td>[PHONE] O [EMAIL] X </td>
+					<td><c:if test="${user.userAdPhone eq 1}"> 
+							 전화광고 동의
+							</c:if>  
+							<c:if test="${user.userAdPhone eq 0}"> 
+							 전화광고 비동의
+							</c:if>,
+							<c:if test="${user.userAdEmail eq 1}"> 
+							 이메일수신 동의
+							</c:if>  
+							<c:if test="${user.userAdEmail eq 0}"> 
+							 이메일수신 비동의
+							</c:if>
+						</td>
 				</tr>
 				<tr>
 					<th colspan="2" id="buttomWrap">
-						<input type="button" value="DELETE" class="button">
+						<input type="button" class="button" value="DELETE" onclick="location.href='${conPath}/adminUserOutSite.do?userId=${user.userId}'">
 					</th>
 				</tr>
 			</table>

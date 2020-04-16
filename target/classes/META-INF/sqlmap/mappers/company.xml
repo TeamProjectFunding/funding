@@ -48,7 +48,7 @@
 		resultMap="CompanyList">
 		SELECT COM.*, (SELECT count(*) FROM Company C, notification N where
 		c.companyid=n.companyid and n.notificationread=0) NotificationCount
-		FROM COMPANY COM WHERE COM.COMPANYNAME LIKE '%'||#{companyName}||'%'
+		FROM COMPANY COM WHERE COM.COMPANYNAME LIKE '%'||#{companyName, jdbcType = VARCHAR}||'%'
 		ORDER BY COMPANYID
 	</select>
 	<select id="companyDetail" parameterType="String"

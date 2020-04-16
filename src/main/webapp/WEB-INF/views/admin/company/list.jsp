@@ -17,13 +17,23 @@
 <body>
 	<jsp:include page="../adminMenu.jsp"/>
 	<div id="contentWrap" class="adminMainWrap">
+	<c:if test="${companyOutSiteResult eq 1}">
+		<script>
+			alert('회사 비활성화 성공');
+		</script>
+	</c:if>
+	<c:if test="${companyOutSiteResult eq 0}">
+			<script>
+			alert('회사 비활성화 실패');
+		</script>
+	</c:if>
 		<section id="userListWrap">
 			<h1>COMPANY LIST</h1>
-			<form action="">
+			<form action="adminCompanyList.do">
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="userName" placeholder="기업명을 입력하세요.">
+							<input type ="text" name="companyName" placeholder="기업명을 입력하세요.">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
@@ -31,21 +41,21 @@
 			</form>
 			<table>
 				<tr>
-					<th>GRADE</th>
+					<th>BusinessNumber</th>
 					<th>ID</th>
 					<th>NAME</th>
 					<th>PHONE</th>
 					<th>ADDRESS</th>
-					<th>JOIN DATE</th>
 				</tr>
+				<c:forEach var="company" items="${companySearchList}">
 				<tr class="userInfo">
-					<td>COMPANYGRADE</td>
-					<td><a href="${conPath }/adminCompanyView.do">COMPANYID</a></td>
-					<td>COMPANYNAME</td>
-					<td>COMPANYPHONE</td>
-					<td>COMPANYADDRESS</td>
-					<td>COMPANYJOINDATE</td>
+					<td>${company.companyBusinessNumber }</td>
+					<td><a href="${conPath }/adminCompanyDetailView.do?&companyId=${company.companyId}">${company.companyId}</a></td>
+					<td>${company.companyName }</td>
+					<td>${company.companyPhone }</td>
+					<td>${company.companyAddressBasic}&nbsp;${company.companyAddressDetail}</td>
 				</tr>
+				</c:forEach>
 			</table>
 		</section>
 	</div>
