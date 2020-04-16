@@ -26,6 +26,16 @@
 		});
 		
 		
+		$('.pwchk').keyup(function(){
+			var pw = $('.pw').val();
+			var pwchk = $('.pwchk').val();
+			if(pw == pwchk){
+				$('.passwordConfirm').html('<span class="safety">일치</span>');
+			}else{
+				$('.passwordConfirm').html('<span class="danger">불일치</span>');				
+			}			
+		});
+		
 		
 	});
 </script>
@@ -53,7 +63,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="password" name="userPassword" placeholder="비밀번호을 입력하세요." required="required"></td>
+							<td><input type="password" name="userPassword" placeholder="비밀번호을 입력하세요." required="required" class="pw"></td>
 						</tr>
 						<tr>
 							<td>
@@ -66,13 +76,12 @@
 						</tr>
 						<tr>
 						
-							<td><input type="password" name="userPasswordCheck" placeholder="다시한번 비밀번호를 입력하세요" required="required"></td>
+							<td><input type="password" name="userPasswordCheck" placeholder="다시한번 비밀번호를 입력하세요" required="required" class="pwchk"></td>
 						</tr>
 						<tr>
 							<td>
-								<p class="passwordConfirm">
-									<span class="danger">불일치</span>
-									<span class="safety">일치</span>
+								<p class="passwordConfirm">									
+									
 								</p>
 							</td>
 						</tr>
@@ -144,7 +153,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="password" name="companyPassword" placeholder="비밀번호을 입력하세요." required="required"></td>
+							<td><input type="password" name="companyPassword" placeholder="비밀번호을 입력하세요." required="required" class="pw"></td>
 						</tr>
 						<tr>
 							<td>
@@ -157,7 +166,7 @@
 						</tr>
 						<tr>
 						
-							<td><input type="password" name="companyPasswordCheck" placeholder="다시한번 비밀번호를 입력하세요" required="required"></td>
+							<td><input type="password" name="companyPasswordCheck" placeholder="다시한번 비밀번호를 입력하세요" required="required" class="pwchk"></td>
 						</tr>
 						<tr>
 							<td>

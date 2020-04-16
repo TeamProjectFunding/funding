@@ -22,23 +22,23 @@ public class NotificationServiceImpl implements NotificationService {
 	}
 
 	@Override
-	public List<Notification> notificationUnReadCompanyList(Notification notification) {
-		return notificationDao.notificationUnReadCompanyList(notification);
+	public List<Notification> notificationUnReadCompanyList(String companyId) {
+		return notificationDao.notificationUnReadCompanyList(companyId);
 	}
 
 	@Override
-	public List<Notification> notificationUnReadUserList(Notification notification) {
-		return notificationDao.notificationUnReadUserList(notification);
+	public List<Notification> notificationUnReadUserList(String userId) {
+		return notificationDao.notificationUnReadUserList(userId);
 	}
 
 	@Override
-	public List<Notification> notificationReadCompanyList(Notification notification) {
-		return notificationDao.notificationReadCompanyList(notification);
+	public List<Notification> notificationReadCompanyList(String companyId) {
+		return notificationDao.notificationReadCompanyList(companyId);
 	}
 
 	@Override
-	public List<Notification> notificationReadUserList(Notification notification) {
-		return notificationDao.notificationReadUserList(notification);
+	public List<Notification> notificationReadUserList(String userId) {
+		return notificationDao.notificationReadUserList(userId);
 	}
 
 }

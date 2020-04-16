@@ -23,19 +23,19 @@
     	<update id="notificationRead" parameterType="int">
     			UPDATE NOTIFICATION SET NOTIFICATIONREAD = 1 WHERE NOTIFICATIONNUMBER = #{notificationNumber}
     	</update>
-    	<select id="notificationUnReadCompanyList" parameterType="Notification" resultMap="NotificationList">
+    	<select id="notificationUnReadCompanyList" parameterType="String" resultMap="NotificationList">
     	SELECT N.* FROM NOTIFICATION N,COMPANY C WHERE N.COMPANYID=C.COMPANYID AND N.NOTIFICATIONREAD=0 
     	AND C.COMPANYID=#{companyId} ORDER BY N.NOTIFICATIONDATE DESC
     	</select>
-    	<select id="notificationUnReadUserList" parameterType="Notification" resultMap="NotificationList">
+    	<select id="notificationUnReadUserList" parameterType="String" resultMap="NotificationList">
     	SELECT N.* FROM NOTIFICATION N,USERS U WHERE N.USERID=U.USERID AND N.NOTIFICATIONREAD=0 
     	AND U.USERID=#{userId} ORDER BY N.NOTIFICATIONDATE DESC
     	</select>
-    	<select id="notificationReadCompanyList" parameterType="Notification" resultMap="NotificationList">
+    	<select id="notificationReadCompanyList" parameterType="String" resultMap="NotificationList">
     	SELECT N.* FROM NOTIFICATION N,COMPANY C WHERE N.COMPANYID=C.COMPANYID AND N.NOTIFICATIONREAD=1 
     	AND C.COMPANYID=#{companyId} ORDER BY N.NOTIFICATIONDATE DESC
     	</select>
-    	<select id="notificationReadUserList" parameterType="Notification" resultMap="NotificationList">
+    	<select id="notificationReadUserList" parameterType="String" resultMap="NotificationList">
     	SELECT N.* FROM NOTIFICATION N,USERS U WHERE N.USERID=U.USERID AND N.NOTIFICATIONREAD=1 
     	AND U.USERID=#{userId}  ORDER BY N.NOTIFICATIONDATE DESC
     	</select>
