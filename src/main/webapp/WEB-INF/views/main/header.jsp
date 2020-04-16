@@ -28,8 +28,15 @@
 				<li><a href="mypage.do" class="mypageButton"><img src="" alt="profile"><span>userName</span></a></li>
 				<li><a href="login.do">LOG-OUT</a></li>
 				-->
-				
-				<li><a href="#none" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				<!--여기 테스트 해보려고 이렇게 둠  -->
+				<c:set var="userId" value="user7"/><!-- 여기테스트 했다 -->
+				<%-- <c:set var="companyId" value="테스트용회사"/> --%>
+				<c:if test="${not empty userId && empty companyId}">
+				<li><a href="userAlarmCheck.do?userId=${userId}" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				</c:if>
+				<c:if test="${not empty companyId && empty userId}">
+				<li><a href="companyAlarmCheck.do?companyId=${companyId }" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				</c:if>
 				<li><a href="#none" class="searchButton"><!-- img src="" alt="search" -->search</a></li>
 			</ul>
 			<script>
