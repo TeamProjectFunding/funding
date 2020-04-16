@@ -23,7 +23,7 @@
 						<th><h2>회원 기본 정보</h2></th>
 					</tr>
 					<tr>
-						<td><input type="email" name="userId" value="아이디(이메일)를 입력하세요" required="required"></td>
+						<td><input type="email" name="userId" placeholder="아이디(이메일)를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
 						<td>
@@ -58,10 +58,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="text" name="userName" value="이름을 입력하세요." required="required"></td>
+						<td><input type="text" name="userName" placeholder="이름을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="userPhone" value="연락처를 입력하세요" required="required"></td>
+						<td><input type="text" name="userPhone" placeholder="연락처를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
 						<th><h2>추가정보</h2></th>
@@ -88,7 +88,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="text" name="userAdderssDetail" value="상세주소를 입력하세요" required="required"></td>
+						<td><input type="text" name="userAdderssDetail" placeholder="상세주소를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
 						<td class="checkBoxWrap">
@@ -111,7 +111,7 @@
 						<th><h2>기업 기본 정보</h2></th>
 					</tr>
 					<tr>
-						<td><input type="email" name="companyId" value="아이디(이메일)를 입력하세요" required="required"></td>
+						<td><input type="email" name="companyId" placeholder="아이디(이메일)를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
 						<td>
@@ -146,13 +146,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="text" name="companyNumber" value="사업자 번호를 입력하세요" required="required"></td>
+						<td><input type="text" name="companyNumber" placeholder="사업자 번호를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="companyName" value="이름을 입력하세요." required="required"></td>
+						<td><input type="text" name="companyName" placeholder="이름을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="companyPhone" value="연락처를 입력하세요" required="required"></td>
+						<td><input type="text" name="companyPhone" placeholder="연락처를 입력하세요" required="required"></td>
 					</tr>
 					<tr>
 						<th><h2>추가정보</h2></th>

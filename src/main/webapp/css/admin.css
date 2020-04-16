@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+*{margin:0 auto; padding:0; text-decoration: none; list-style: none; box-sizing:border-box; font-family: 'Nanum Gothic', sans-serif; color:#131a23; }
+html,body{width:100%; min-width:1200px; height:100%;}
+input{background:none; border:none; color:#131a23;}
+input:focus{background:#131a23; color:#f1bf04;}
+table{width:100%;}
+h1,h2,h3,h4{width:100%;}
+h1,h2,h3,h4,a,span{font-family: 'Oswald', sans-serif;}
+h1{padding:2% 0; width:100%; float:left;}
+#contentWrap{max-width:1200px; height:100%; position:relative;}
+section{width:100%; float:left;}
+#buttonWrap{position:relative; float:left; width:100%; padding:2%; text-align: center;}
+.button{ padding:1% 2% 1%; width:20%; background: #131a23; color:#fff; font-family: 'Oswald', sans-serif;}
+.button:hover{color:#f1bf04;}
+.button:active{background:#f1bf04; color:#fff;}
+
+::-webkit-scrollbar {width: 5px; background: none;}
+::-webkit-scrollbar-track {border-radius: 50%;}
+::-webkit-scrollbar-thumb {background: #ccc; border-radius: 2.5px;}
+::-webkit-scrollbar-thumb:hover {background: #fff; background: none; }
+
+/** admin login**/
+
+#contentWrap.adminLoginWrap {padding:10% 20%; overflow: hidden;}
+#contentWrap.adminLoginWrap h1{text-align: center; padding:50px 0;}
+#contentWrap.adminLoginWrap table{width:100%; font-size: 12px;}
+#contentWrap.adminLoginWrap td{padding:2%;}
+#contentWrap.adminLoginWrap td input{width:100%; padding:2%; text-align: center; border:1px solid #f7f7f7; font-size:12px;}
+
+/** menu **/
+aside{position:fixed; width:25%; min-width:300px; height:100%; left:0; top:0; padding:5px; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover; border-right: 1px solid #ffffff2e; z-index: 9999; }
+aside .headerLogo{float:left; width:100%; font-size:30px; line-height:30px; padding:10px; font-weight:bold; color:#fff; text-align: center;}
+#adminMenuWrap ul{ position:relative; margin-top:25%; width:100%; float:left; height:auto; }
+#adminMenuWrap ul li{float:left; width:100%; line-height:35px; margin:1% 0; padding:2%; text-align: center; background: #051526f5;}
+#adminMenuWrap ul li a{position:relative; color:#fff; }
+#adminMenuWrap ul li a:hover{color:#f1bf04;}
+
+/** admin main **/
+#contentWrap.adminMainWrap{position:relative; float:left;   width:75%; padding:2% ; margin-left:25%;}
+#contentWrap.adminMainWrap #dashBoardWrap{position:relative; float:left; width:100%; }
+#dashBoardWrap .dashBoard{position:relative; float:left; width:95%; height:350px; padding:5px; margin:2.5%; box-shadow: 1px 1px 5px #ccc; } 
+#dashBoardWrap .dashBoard h3{position:relative;  width:100%; height:20%; padding:2% 10px;  border-bottom:1px solid #f7f7f7;}
+#dashBoardWrap .dashBoard .dashBoardList{width:100%; height:80%; padding:5%; overflow: scroll; }
+.dashBoardList ul{width:100%; float:left; margin:1% 0; background:#fff; margin-bottom: 1%; background:#f7f7f7;}
+.dashBoardList ul li{float:left; width:70%;padding:2% 5%; font-size: 12px; }
+.dashBoardList ul li:first-child a{color:#131a23; font-size: 14px;}
+.dashBoardList ul li span{float:right; font-size: 12px; color:#ccc; }
+.dashBoardList ul #buttonWrap{width:30%; }
+.dashBoardList ul #buttonWrap .button{ position:relative; top:5px; padding:3% 15%; font-size:10px;}
+
+/** admin user **/
+#contentWrap.adminMainWrap table{float:left; margin-top:50px; text-align: center; font-size: 12px; }
+table #buttonWrap{background: none;}
+.adminMainWrap th,.adminMainWrap td{padding:2%;	background: #f7f7f7; }
+.adminMainWrap th input[type="text"]{ width:50%; padding:1%; text-align: center; border-bottom: 1px solid #131a23;}
+.adminMainWrap .userInfo{background: #fff; color:#131a23;}
+.adminMainWrap .userInfo:hover{background:#ccc;}
+
+
+
+
+

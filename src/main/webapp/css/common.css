@@ -2,7 +2,8 @@
 
 *{margin:0 auto; padding:0; text-decoration: none; list-style: none; box-sizing:border-box; font-family: 'Nanum Gothic', sans-serif; color:#131a23; }
 html,body{width:100%; min-width:1200px; height:100%;}
-input{background:none; border:none;}
+input{background:none; border:none; color:#131a23;}
+input:focus{background:#131a23; color:#f1bf04;}
 table{width:100%;}
 h1,h2,h3,h4{width:100%;}
 h1,h2,h3,h4,a,span{font-family: 'Oswald', sans-serif;}
@@ -106,7 +107,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060e96;}
 #contentWrap.userWrap td input{width:100%; padding:2%; text-align: center; border:1px solid #f7f7f7; font-size:12px;}
 #contentWrap.userWrap th .button{ width:20%;}
 
-/* login *
+/* login */
 #contentWrap.userWrap th .naverButton{background:#04cf5c;}
 
 /* joinSelect */
