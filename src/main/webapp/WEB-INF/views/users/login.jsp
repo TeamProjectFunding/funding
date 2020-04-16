@@ -26,14 +26,13 @@
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="button" value="NAVER" class="button naverButton">
+							<!-- 영롱 네이버로그인 -->
+							<div id="naver_id_login"><a href="${url}" class="button naverButton">NAVER</a></div>
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
-						<!-- 영롱 네이버로그인 -->
 					</tr>
 				</table>
-						  <div id="naver_id_login"><a href="${url}">
-<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+						  
 					
 			</form>
 		</section>

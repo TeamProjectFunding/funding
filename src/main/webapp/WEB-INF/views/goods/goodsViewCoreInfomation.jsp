@@ -19,7 +19,7 @@
 				<img src="${conPath }/images/fundingProduct_01.jpeg" alt="fundingThumnail">
 			</div>
 			<div class="infomationTextSection">
-				<h1><span>[${good.companyName}]</span> <br/>${good.companyName}</h1>
+				<h1><span>[${good.companyName}]</span> <br/>${good.fundingName}</h1>
 				<ul>
 					<li>
 						<p>159,086,576원  <span>달성목표금액 30,032,574원30%</span></p>

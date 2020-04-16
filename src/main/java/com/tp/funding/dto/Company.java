@@ -6,8 +6,6 @@ public class Company {
 	
 	private String companyId;             
 	private String companyPassword;
-	private String companyBusinessNumber;
-	private Date companyJoinDate;
 	private String companyProfileImage;    
 	private String companyIntroduction;     
 	private Date companyJoinDate;           
@@ -48,22 +46,6 @@ public class Company {
 
 	public void setCompanyPassword(String companyPassword) {
 		this.companyPassword = companyPassword;
-	}
-
-	public String getCompanyBusinessNumber() {
-		return companyBusinessNumber;
-	}
-
-	public void setCompanyBusinessNumber(String companyBusinessNumber) {
-		this.companyBusinessNumber = companyBusinessNumber;
-	}
-
-	public Date getCompanyJoinDate() {
-		return companyJoinDate;
-	}
-
-	public void setCompanyJoinDate(Date companyJoinDate) {
-		this.companyJoinDate = companyJoinDate;
 	}
 
 	public String getCompanyProfileImage() {
@@ -210,18 +192,18 @@ public class Company {
 		this.notificationCount = notificationCount;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyBusinessNumber="
-				+ companyBusinessNumber + ", companyJoinDate=" + companyJoinDate + ", companyProfileImage="
-				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyEmail="
-				+ companyEmail + ", companyName=" + companyName + ", companyPhone=" + companyPhone
+		return "Company [companyId=" + companyId + ", companyPassword=" + companyPassword + ", companyProfileImage="
+				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyJoinDate="
+				+ companyJoinDate + ", companyName=" + companyName + ", companyPhone=" + companyPhone
 				+ ", companyAddressBasic=" + companyAddressBasic + ", companyAddressDetail=" + companyAddressDetail
 				+ ", companyBankName=" + companyBankName + ", companyBankDepositor=" + companyBankDepositor
 				+ ", companyAccountNumber=" + companyAccountNumber + ", companyAccountBalance=" + companyAccountBalance
 				+ ", companyInFunding=" + companyInFunding + ", companyOutSite=" + companyOutSite
-				+ ", changeAccountBalance=" + changeAccountBalance + ", startRow=" + startRow + ", endRow=" + endRow
-				+ ", notificationCount=" + notificationCount + "]";
+				+ ", companyBusinessNumber=" + companyBusinessNumber + ", changeAccountBalance=" + changeAccountBalance
+				+ ", startRow=" + startRow + ", endRow=" + endRow + ", notificationCount=" + notificationCount + "]";
 	}
+
+	
 }
