@@ -9,27 +9,33 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<!-- 현재 날짜 -->
+	<jsp:useBean id="today" class="java.util.Date" />
+	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"
+		integerOnly="true" var="nowDate" />
+	<!-- endDate 설정 -->
+	<fmt:parseNumber value="${good.fundingTargetDate.time / (1000*60*60*24)}"
+		integerOnly="true" var="endDate" />
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="goodsWrap">
 	<section class="goodsViewWrap">
 		<div id="goodsBasicInfomationWrap">
 			<div class="thumnail">
-				<img src="${conPath }/images/fundingProduct_01.jpeg" alt="fundingThumnail">
+				<img src="${conPath }/images/goods/${good.fundingThumbnailImage}" alt="fundingThumnail">
 			</div>
 			<div class="infomationTextSection">
-				<h1><span>[companyName]</span> <br/>funding Title</h1>
+				<h1><span>[${good.companyName}]</span> <br/>${good.fundingName}</h1>
 				<ul>
 					<li>
-						<p>159,086,576원  <span>달성목표금액 30,032,574원30%</span></p>
+						<p><fmt:formatNumber value="${good.fundingAccountBalance }" currencySymbol="true"/>원  <span>달성목표금액 <fmt:formatNumber value="${good.fundingTargetAmount }" currencySymbol="true"/> 원 ${good.fundingTargetRate }%</span></p>
 					</li>
 					<li>
-						<p>13일 남음 <span>2020.04.21 15:00 마감</span></p>
+						<p>${endDate-nowDate }일 남음 <span><fmt:formatDate value="${good.fundingTargetDate }" pattern="yyyy.MM.dd"/> 00:00 마감</span></p>
 					</li>
 					<li>
-						<p><img src="" alt="investorProfile"><span>+20 투자성공</span></p>
+						<p><img src="" alt="investorProfile"><span>${good.fundingPeopleCount }명 참여</span></p>
 					</li>
 				</ul>
 				 <div id="buttonWrap">
@@ -40,7 +46,7 @@
 		</div>
 		
 		<div id="investmentRiskNotice">
-			<p clsss="riskNotice">투자 위험 고지비상장기업 투자는 원금 손실의 가능성이 크니 <a href="">투자 위험 안내</a>를 꼭 확인하세요.</p>
+			<p class="riskNotice">투자 위험 고지비상장기업 투자는 원금 손실의 가능성이 크니 <a href="">투자 위험 안내</a>를 꼭 확인하세요.</p>
 			<p class="serviceInfomation">서비스 안내개인 일반 투자자의 연간 투자 한도가 동일 발행인 기준 200만원→500만원, 누적 투자 금액 500만원→1,000만원으로 확대되었습니다.</p>
 		</div>
 		

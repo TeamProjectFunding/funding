@@ -147,11 +147,11 @@ CREATE SEQUENCE QnANumber
     NOCACHE;
 
 CREATE TABLE Company (
-	CompanyId             VARCHAR2(100)  PRIMARY KEY, -- 회사Id
+	CompanyId             VARCHAR2(100)  PRIMARY KEY, -- 회사 id==email
 	CompanyPassword       VARCHAR2(100)  NOT NULL,     -- 회사비번
 	CompanyProfileImage   VARCHAR2(100)  NULL,     -- 회사프로필
 	CompanyIntroduction   VARCHAR2(1000) NULL,     -- 회사소개
-	CompanyEmail          VARCHAR2(100)  NULL,     -- 회사이메일
+	CompanyJoinDate       DATE,     -- 회사가입일
 	CompanyName           VARCHAR2(100)  NULL,     -- 회사이름
 	CompanyPhone          VARCHAR2(100)  NULL,     -- 회사전화번호
 	CompanyAddressBasic   VARCHAR2(1000) NULL,     -- 회사주소
@@ -161,7 +161,8 @@ CREATE TABLE Company (
 	CompanyAccountNumber  VARCHAR2(100)  NULL,     -- 회사계좌번호
 	CompanyAccountBalance NUMBER(12)     NULL,     -- 회사계좌잔액
 	CompanyInFunding      NUMBER(1)      NULL,     -- 회사에서투자중인지
-	CompanyOutSite        NUMBER(1)      NULL      -- 탈퇴여부
+	CompanyOutSite        NUMBER(1)      NULL,      -- 탈퇴여부
+    CompanyBusinessNumber VARCHAR2(100) NULL -- 사업자 번호
 );
 
 CREATE TABLE UserGrade (

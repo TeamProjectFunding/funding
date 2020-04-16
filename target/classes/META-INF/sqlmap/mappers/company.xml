@@ -10,7 +10,7 @@
 			column="companyProfileImage" />
 		<result property="companyIntroduction"
 			column="companyIntroduction" />
-		<result property="companyEmail" column="companyEmail" />
+		<result property="companyJoinDate" column="companyJoinDate" />
 		<result property="companyName" column="companyName" />
 		<result property="companyPhone" column="companyPhone" />
 		<result property="companyAddressBasic"
@@ -26,6 +26,7 @@
 			column="companyAccountBalance" />
 		<result property="companyInFunding" column="companyInFunding" />
 		<result property="companyOutSite" column="companyOutSite" />
+		<result property="companyBusinessNumber" column="companyBusinessNumber" />
 		<result property="changeAccountBalance"
 			column="changeAccountBalance" />
 		<result property="startRow" column="startRow" />

@@ -3,6 +3,7 @@ package com.tp.funding.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -45,12 +46,12 @@ public class HomeController {
 //		}
 		//****************************************
 		
-		
-		//메인
-		@RequestMapping(value = "main")
-		public String home() {
-			return "main/main";
-		}
+//	 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 영롱이	3개씩 최근순 뿌리기	
+//		//메인
+//		@RequestMapping(value = "main")
+//		public String home() {
+//			return "main/main";
+//		}
 		
 		//로그인
 		@RequestMapping(value = "login")
@@ -61,12 +62,14 @@ public class HomeController {
 		//회원가입 유형선택
 		@RequestMapping(value ="join")
 		public String join() {
-			return "users/join";
+						
+			return "users/join";			
 		}
 		
 		//회원가입 입력 폼
 		@RequestMapping(value ="joinForm")
-		public String joinForm() {
+		public String joinForm(String method, Model model) {			
+			model.addAttribute("method", method);
 			return "users/joinForm";
 		}
 		
@@ -75,24 +78,24 @@ public class HomeController {
 		public String joinSuccess() {
 			return "users/joinSuccess";
 		}
-		
-		//펀드 리스트
-		@RequestMapping(value ="fundList")
-		public String fundList() {
-			return "goods/fundList";
-		}
-		
-		//리워드 리스트
-		@RequestMapping(value ="rewardList")
-		public String rewardList() {
-			return "goods/rewardList";
-		}
-		
-		//펀드, 리워드 상세보기(정보)
-		@RequestMapping(value ="goodsViewCoreInfomation")
-		public String goodsViewCoreInfomation() {
-			return "goods/goodsViewCoreInfomation";
-		}
+// ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 영롱이
+//		//펀드 리스트
+//		@RequestMapping(value ="fundList")
+//		public String fundList() {
+//			return "goods/fundList";
+//		}
+//		
+//		//리워드 리스트
+//		@RequestMapping(value ="rewardList")
+//		public String rewardList() {
+//			return "goods/rewardList";
+//		}
+//		
+//		//펀드, 리워드 상세보기(정보)
+//		@RequestMapping(value ="goodsViewCoreInfomation")
+//		public String goodsViewCoreInfomation() {
+//			return "goods/goodsViewCoreInfomation";
+//		}
 		
 		//펀드, 리워드 상세보기(투자위험)
 		@RequestMapping(value ="goodsViewRisk")

@@ -15,82 +15,102 @@
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="userWrap">
 		<section class="joinSuccessWrap">
+		
+		<c:if test="${not empty userJoinResult}">
+			<script>
+				alert('${userJoinResult}');
+			</script>
+		</c:if>
+		
+		<c:if test="${not empty companyJoinResult}">
+			<script>
+				alert('${companyJoinResult}')
+			</script>
+		</c:if>
+		
+			
+			
+			<c:if test="${not empty user.userId}">	
 			
 				<!-- user join success -->
 				<table>
 					<tr>
-						<th colspan='2'>userName 님 가입 성공하였습니다.</th>
+						<th colspan='2'>${user.userName}님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="userProfileImage" alt="userProfileImage"></td>
-					</tr>
+						<td colspan='2'><img src="${conpath}/usersProfileUpload/${user.userProfileImage}" alt="userProfileImage"></td>
+					</tr>						
 					<tr>
 						<td>ID</td>
-						<td>userId</td>
+						<td>${user.userId}</td>
 					</tr>
 					<tr>
 						<td>PHONE</td>
-						<td>userPhone</td>
+						<td>${user.userPhone}</td>
 					</tr>
-					<tr>
-						<td>BIRTH DAY</td>
-						<td>userBirthDay</td>
-					</tr>
+					<c:if test="${not empty user.userBirthday}">
+						<tr>
+							<td>BIRTH DAY</td>
+							<td>${user.userBirthday}</td>
+						</tr>
+					</c:if>
+					<c:if test="${not empty user.userAddressBasic}">
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							userAddressBasic + userAdderssDetail
+							${user.userAddressBasic} ${user.userAddressDetail}
 						</td>
 					</tr>
+					</c:if>
 					<tr>
 						<td>AD</td>
-						<td>userAdPhone ok / userAdEmail ok</td>
+						<td><c:if test="${user.userAdPhone == 1}">전화광고 수신 동의</c:if> / <c:if test="${user.userAdEmail == 1}">메일광고 수신 동의</c:if></td>
 					</tr>
 					<tr>
 						<td class="buttonWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?userId=${user.userId}'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
 				
+			</c:if>	
+			
+			<c:if test="${not empty company.companyId}">			
+			
 				<!-- company join success -->
 				<table >
 					<tr>
-						<th colspan='2'>companyName 님 가입 성공하였습니다.</th>
+						<th colspan='2'>${company.companyName}님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="userProfileImage" alt="userProfileImage"></td>
+						<td colspan='2'><img src="${conpath}/companyProfileUpload/${company.companyProfileImage}" alt="userProfileImage"></td>
 					</tr>
 					<tr>
 						<td>ID</td>
-						<td>companyId</td>
+						<td>${company.companyId}</td>
 					</tr>
 					<tr>
 						<td>PHONE</td>
-						<td>companyPhone</td>
+						<td>${company.companyPhone}</td>
 					</tr>
-					<tr>
-						<td>COMPANY NUMBER</td>
-						<td>companyNumber</td>
-					</tr>
+					<c:if test="${not empty company.companyAddressBasic}">
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							companyAddressBasic + companyAdderssDetail
+							${company.companyAddressBasic} ${company.companyAdderssDetail}
 						</td>
 					</tr>
-					<tr>
-						<td>AD</td>
-						<td>companyAdPhone ok / companyAdEmail ok</td>
-					</tr>
+					</c:if>					
 					<tr>
 						<td class="buttonnWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?companyId=${company.companyId}'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
+				
+			</c:if>
 		</section>
 		</div>
 		<jsp:include page="../main/footer.jsp" />

@@ -26,56 +26,7 @@
 						<li class="deadline">deadline after 10 days</li>
 					</ul>
 				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_04.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_03.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
-				<div class="goods">
-					<ul>
-						<li class="thumnail">
-							<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_02.jpeg "><span>REWARD</span></a>
-						</li>
-						<li class="companyName">company name</li>
-						<li class="goodsName">goods name</li>
-						<li class="deadline">deadline after 10 days</li>
-					</ul>
-				</div>
+				
 		</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.tp.funding.dto.FundingGoods;
 @Repository
 public class FundingGoodsDaoImpl implements FundingGoodsDao {
 
@@ -13,12 +15,12 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	
 	
 	@Override
-	public List<FundingGoodsDao> fundingOpenList(FundingGoodsDao fundingGoods) {
+	public List<FundingGoodsDao> fundingOpenList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("fundingOpenList", fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> fundingCloseList(FundingGoodsDao fundingGoods) {
+	public List<FundingGoodsDao> fundingCloseList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("fundingCloseList", fundingGoods);
 	}
 
@@ -33,27 +35,27 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	}
 
 	@Override
-	public List<FundingGoodsDao> investmentAllList(FundingGoodsDao fundingGoods) {
+	public List<FundingGoodsDao> investmentAllList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("investmentAllList", fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> rewardAllList(FundingGoodsDao fundingGoods) {
+	public List<FundingGoodsDao> rewardAllList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("rewardAllList", fundingGoods);
 	}
 
 	@Override
-	public FundingGoodsDao fundingDetail(int fundingCode) {
+	public FundingGoods fundingDetail(int fundingCode) {
 		return sessionTemplate.selectOne("fundingDetail", fundingCode);
 	}
 
 	@Override
-	public int fundingRegist(FundingGoodsDao fundingGoods) {
+	public int fundingRegist(FundingGoods fundingGoods) {
 		return sessionTemplate.insert("fundingRegist", fundingGoods);
 	}
 
 	@Override
-	public int fundingAccountAdd(FundingGoodsDao fundingGoods) {
+	public int fundingAccountAdd(FundingGoods fundingGoods) {
 		return sessionTemplate.update("fundingAccountAdd", fundingGoods);
 	}
 
@@ -73,7 +75,7 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	}
 
 	@Override
-	public int fundingBalancePlus(FundingGoodsDao fundingGoods) {
+	public int fundingBalancePlus(FundingGoods fundingGoods) {
 		return sessionTemplate.update("fundingBalancePlus", fundingGoods);
 	}
 
@@ -95,6 +97,16 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	@Override
 	public int fundingBalanceMove(int fundingCode) {
 		return sessionTemplate.update("fundingBalanceMove", fundingCode);
+	}
+
+	@Override
+	public int investmentTotalCount() {
+		return sessionTemplate.selectOne("investmentTotalCount");
+	}
+
+	@Override
+	public int rewardTotalCount() {
+		return sessionTemplate.selectOne("rewardTotalCount");
 	}
 
 }
