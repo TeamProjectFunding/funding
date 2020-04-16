@@ -18,8 +18,21 @@
 		<div id="fundingList">
 		
 			<!-- list -->
+			<c:forEach var="fund" items="fundList">
+				<div class="funding">
+					<ul>
+						<li class="thum">
+							<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
+							<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
+						</li>
+						<li><span >Funding</span>company name</li>
+						<li class="fundingTitle">Funding Title</li>
+						<li><span>10 days later</span></li>
+					</ul>
+				</div>
+			</c:forEach>
 			
-			<div class="funding">
+			<!-- <div class="funding">
 				<ul>
 					<li class="thum">
 						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
@@ -100,20 +113,8 @@
 					<li><span >Funding</span>company name</li>
 					<li class="fundingTitle">Funding Title</li>
 					<li><span>10 days later</span></li>
-				</ul>
-			</div>
-			
-			<div class="funding">
-				<ul>
-					<li class="thum">
-						<img src="https://cdn.wadiz.kr/ft/images/green001/2020/0311/20200311111408598_2745.png/wadiz/format/jpg/quality/80/optimize" alt="fundingThum">
-						<a href="fundingViewCoreInfomation.do" class="hoverLink"><span>+ VIEW</span></a>
-					</li>
-					<li><span >Funding</span>company name</li>
-					<li class="fundingTitle">Funding Title</li>
-					<li><span>10 days later</span></li>
-				</ul>
-			</div>		
+				</ul> -->
+			</div> 		
 		<div id="paging">
 			
 		</div>
