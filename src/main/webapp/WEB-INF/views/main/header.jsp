@@ -55,8 +55,8 @@
 				});
 			</script>
 			<ul class="gnb">
-				<li><a href="fundList.do">FUND</a></li>
-				<li><a href="rewardList.do">REWARD</a></li>
+				<li><a href="fundList2.do">FUND</a></li>
+				<li><a href="rewardList2.do">REWARD</a></li>
 				<li><a href="eventList.do">EVENT</a></li>
 				<li><a href="qnaList.do">Q&A</a></li>
 				<li><a href="noticeList.do">NOTICE</a></li>
