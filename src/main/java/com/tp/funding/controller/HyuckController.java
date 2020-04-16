@@ -81,8 +81,8 @@ public class HyuckController {
 	}
 	
 	@RequestMapping(value="idConfirm")
-	public String idConfirm(String userId, String companyId, Model model) {
-		System.out.println("userId: "+userId+", companyId : "+companyId);
+	public String idConfirm(String userId, String companyId, Model model) {	
+		
 		boolean idResult = true; // 사용가능
 			if(usersService.userDetail(userId) != null || companyService.companyDetail(companyId) != null) {
 				idResult = false;
