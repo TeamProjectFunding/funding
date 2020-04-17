@@ -39,7 +39,7 @@
     </select>
     <insert id="eventWrite" parameterType="Event">
     INSERT INTO EVENT VALUES (EVENTNUMBER.NEXTVAL,#{eventTilte},#{eventContent},#{eventThumbnailImage},#{eventDetailImage},#{eventProductName},
-    #{eventProductImage},0,0,0,SYSDATE,#{eventEndDate},#{eventProductDeliveryDate},#{adminId});
+    #{eventProductImage},0,0,0,SYSDATE,#{eventEndDate},#{eventProductDeliveryDate},#{adminId})
     </insert>
     <select id="totEvent" resultType="int">
     SELECT COUNT(*) FROM EVENT

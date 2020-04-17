@@ -11,7 +11,7 @@
 
 <insert id="fundingQuestionReplyWrite" parameterType="fundingQuestionReply">
 INSERT INTO FundingQuestionReply VALUES 
-	(FUNDINGQUESTIONREPLYNUMBER.nextval, #{fundingQuestionReplyContent} , SYSDATE , #{fundingQuestionNumber} , #{adminId});
+	(FUNDINGQUESTIONREPLYNUMBER.nextval, #{fundingQuestionReplyContent} , SYSDATE , #{fundingQuestionNumber} , #{adminId})
 </insert>
 
 </mapper>

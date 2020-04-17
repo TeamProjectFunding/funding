@@ -20,10 +20,10 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 		return fundingDetailDao.fundingGoodsDetailWrite(fundingGoodsDetail);
 	}
 
-//	@Override
-//	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail) {
-//		return fundingDetailDao.userFundingList(fundingGoodsDetail);
-//	}
+	@Override
+	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail) {
+		return fundingDetailDao.userFundingList(fundingGoodsDetail);
+	}
 
 	@Override
 	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode) {
@@ -32,6 +32,7 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 				Paging paging = new Paging(doFundingGoodTotalCount, pageNum, 30, 1);
 				// 페이징 처리
 				FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+				fundingGoodsDetail.setFundingCode(fundingCode);
 				fundingGoodsDetail.setStartRow(paging.getStartRow());
 				fundingGoodsDetail.setEndRow(paging.getEndRow());
 		return fundingDetailDao.doFundingUserList(fundingGoodsDetail);
