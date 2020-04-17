@@ -27,7 +27,7 @@
 			var birthday = naver_id_login.getProfileData('birthday');
 			var profile_image = naver_id_login.getProfileData('profile_image');
 			function goNaverLogin(id){
-				opener.location.href='${conPath}/naverLogin.do?naverId='+id;
+				opener.location.href='${conPath}/naverLogin.do?naverId='+email;
 			}
 			goNaverLogin(id);
 			window.close();

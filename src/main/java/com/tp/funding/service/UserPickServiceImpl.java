@@ -14,18 +14,32 @@ public class UserPickServiceImpl implements UserPickService {
 	UserPickDao userPickdao;
 	
 	@Override
-	public int userPickAdd(UserPick userPick) {
+	public int userPickAdd(String userId,int fundingCode) {
+		UserPick userPick = new UserPick();
+		userPick.setUserId(userId);
+		userPick.setFundingCode(fundingCode);
 		return userPickdao.userPickAdd(userPick);
 	}
 
 	@Override
-	public int userPickDelete(int userPickNumber) {
-		return userPickdao.userPickDelete(userPickNumber);
+	public int userPickDelete(String userId,int fundingCode) {
+		UserPick userPick = new UserPick();
+		userPick.setUserId(userId);
+		userPick.setFundingCode(fundingCode);
+		return userPickdao.userPickDelete(userPick);
 	}
 
 	@Override
 	public List<UserPick> userPickList(UserPick userPick) {
 		return userPickdao.userPickList(userPick);
+	}
+
+	@Override
+	public int userPickCheck(String userId, int fundingCode) {
+		UserPick userPick = new UserPick();
+		userPick.setUserId(userId);
+		userPick.setFundingCode(fundingCode);
+		return userPickdao.userPickCheck(userPick);
 	}
 
 }

@@ -9,6 +9,35 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		//로그인 안 한 유저 찜
+		$('#userNotPickDo').click(function(){
+			alert('찜은 로그인 이후에 가능합니다.');
+		});
+		// 로그인 한 유저 찜
+		$('#userPickDo').click(function(){
+			var pick = $(this).html();
+			var userId = '${user.userId}';
+			var fundingCode = ${param.fundingCode};
+			
+			if(pick == '♥'){
+				$(this).html('♡');
+			}else if(pick == '♡'){
+				$(this).html('♥');
+			}
+			$.ajax({
+				url : '${conPath}/userPick.do',
+				datatype : 'html',
+				data : "userId="+userId+"&fundingCode="+fundingCode,
+				success : function(data, status){
+					$('#userPickResult').html(data);
+				}
+			});
+		});
+	});
+	
+</script>
 </head>
 <body>
 	<!-- 현재 날짜 -->
@@ -44,7 +73,15 @@
 				</ul>
 				 <div id="buttonWrap">
 					<a href="fundingStep1.do" class="button">FUNDING</a>
-					<a href="pick.do" class="button">♡</a>
+					<c:if test="${empty sessionScope.user && empty sessionScope.company }">
+					<a href="#none" class="button" id="userNotPickDo">♡</a>
+					</c:if>
+					<!-- userAlreadyPick이 있으면 색칠 -->
+					<c:if test="${not empty sessionScope.user }">
+					<a href="#none" class="button" id="userPickDo"><c:if test="${not empty userAlreadyPick }">♥</c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
+					</c:if>
+					<!-- userPick 결과값 ajax로 출력 -->
+					<span id="userPickResult"></span>
 				</div>
 			</div>
 		</div>
