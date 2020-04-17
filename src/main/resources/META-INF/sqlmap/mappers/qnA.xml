@@ -27,7 +27,7 @@
 		</if>
 	</insert>
 	<select id="qnADetail" parameterType="int">
-		SELECT * FROM QnA WHERE QnANumber=${QnANumber};
+		SELECT * FROM QnA WHERE QnANumber=${QnANumber}
 	</select>
 	<select id="qnAList" parameterType="QnA" resultType="QnA">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 

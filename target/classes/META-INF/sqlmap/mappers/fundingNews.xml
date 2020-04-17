@@ -6,7 +6,7 @@
 <mapper namespace="FundingNews">
 <insert id="fundingNewsWrite" parameterType="FundingNews">
 	INSERT INTO FundingNews VALUES 
-		(FundingNewsNumber.NEXTVAL, #{fundingNewsTitle} , #{fundingNewsContent}, SYSDATE , #{fundingNewsImage} , #{fundingCode}, #{companyId});	
+		(FundingNewsNumber.NEXTVAL, #{fundingNewsTitle} , #{fundingNewsContent}, SYSDATE , #{fundingNewsImage} , #{fundingCode}, #{companyId})
 </insert>
 
 <select id="fundingNewsList" parameterType="FundingNews" resultType="FundingNews">

@@ -13,6 +13,7 @@ import com.tp.funding.service.FundingGoodsService;
 public class LongController {
 	@Autowired
 	private FundingGoodsService fundingGoodsService;
+	@Autowired
 	private FundingDetailService fundingDetailService;
 	
 	//펀드 리스트
