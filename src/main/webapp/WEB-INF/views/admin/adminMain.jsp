@@ -22,41 +22,15 @@
 			<div class="dashBoard">
 				<h3>투자신청내역</h3>
 				<div class="dashBoardList">
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
-						</li>
-					</ul>
+					<c:forEach var="fundingReadyList" items="${fundingReadyList}">					
+						<ul>
+							<li><a href="#none">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
+							<li id="buttonWrap">
+								<a href="#none" class="button">승인</a>
+								<a href="#none" class="button">반려</a>
+							</li>
+						</ul>	
+					</c:forEach>				
 				</div>
 			</div>
 			<div class="dashBoard">

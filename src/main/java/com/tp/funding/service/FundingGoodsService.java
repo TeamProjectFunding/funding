@@ -7,12 +7,12 @@ import com.tp.funding.dto.FundingGoods;
 
 public interface FundingGoodsService {
 	
-	public List<FundingGoodsDao> fundingOpenList(FundingGoods fundingGoods);
-	public List<FundingGoodsDao> fundingCloseList(FundingGoods fundingGoods);
-	public List<FundingGoodsDao> fundingSearchList(String FundingName);
-	public List<FundingGoodsDao> searchFundingKeyUpTop5();
-	public List<FundingGoodsDao> investmentAllList(String pageNum);
-	public List<FundingGoodsDao> rewardAllList(String pageNum);
+	public List<FundingGoods> fundingOpenList(FundingGoods fundingGoods);
+	public List<FundingGoods> fundingCloseList(FundingGoods fundingGoods);
+	public List<FundingGoods> fundingSearchList(String FundingName);
+	public List<FundingGoods> searchFundingKeyUpTop5();
+	public List<FundingGoods> investmentAllList(String pageNum);
+	public List<FundingGoods> rewardAllList(String pageNum);
 	public FundingGoods fundingDetail(int fundingCode);
 	public int fundingRegist(FundingGoods fundingGoods);
 	public int fundingAccountAdd(FundingGoods fundingGoods);
@@ -26,4 +26,6 @@ public interface FundingGoodsService {
 	public int fundingBalanceMove(int fundingCode);
 	public int investmentTotalCount();
 	public int rewardTotalCount();
+	public List<FundingGoods> fundingReadyList();
+	
 }

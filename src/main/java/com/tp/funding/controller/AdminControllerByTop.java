@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.tp.funding.dto.QnA;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
+import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NoticeService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.UsersService;
@@ -24,6 +25,9 @@ public class AdminControllerByTop {
 	EventService eService;
 	@Autowired
 	QnAService qService;
+	@Autowired
+	FundingGoodsService fService;
+	
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
 	public String adminMain(Model model) {
@@ -38,6 +42,8 @@ public class AdminControllerByTop {
 		model.addAttribute("qnAAdminList", qService.qnAAdminList());
 		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
 		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
+		model.addAttribute("fundingReadyList", fService.fundingReadyList()); // 승인 대기중인 리스트
+		
 		return "admin/adminMain";
 	}
 	//관리자 페이지 user
