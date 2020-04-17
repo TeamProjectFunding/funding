@@ -16,7 +16,8 @@ public class FundingGoods {
 	private String fundingAccountNumber;            
 	private int fundingAccountBalance;            
 	private int fundingTargetAmount;             
-	private int fundingTargetRate;                
+	private int fundingTargetRate;        
+	private Date fundingStartDate;
 	private Date fundingTargetDate;            
 	private Date fundingRewardDeliveryDate;            
 	private int fundingInvestmentProfitRate; 
@@ -114,6 +115,12 @@ public class FundingGoods {
 	public void setFundingTargetRate(int fundingTargetRate) {
 		this.fundingTargetRate = fundingTargetRate;
 	}
+	public Date getFundingStartDate() {
+		return fundingStartDate;
+	}
+	public void setFundingStartDate(Date fundingStartDate) {
+		this.fundingStartDate = fundingStartDate;
+	}
 	public Date getFundingTargetDate() {
 		return fundingTargetDate;
 	}
@@ -204,43 +211,6 @@ public class FundingGoods {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	public FundingGoods(int fundingCode, int fundingCategory, String fundingName, String fundingDescription,
-			String fundingThumbnailImage, String fundingDetailImage, String fundingExplanationFile,
-			String fundingBankName, String fundingBankDepositor, String fundingAccountNumber, int fundingAccountBalance,
-			int fundingTargetAmount, int fundingTargetRate, Date fundingTargetDate, Date fundingRewardDeliveryDate,
-			int fundingInvestmentProfitRate, int fundingInvestmentPeriod, int fundingSuccessOrFailure,
-			int fundingPeopleCount, int fundingAdminPermit, String adminId, String companyId, int commentCount,
-			int startRow, int endRow, String companyProfileImage, String companyIntroduction, String companyName) {
-		super();
-		this.fundingCode = fundingCode;
-		this.fundingCategory = fundingCategory;
-		this.fundingName = fundingName;
-		this.fundingDescription = fundingDescription;
-		this.fundingThumbnailImage = fundingThumbnailImage;
-		this.fundingDetailImage = fundingDetailImage;
-		this.fundingExplanationFile = fundingExplanationFile;
-		this.fundingBankName = fundingBankName;
-		this.fundingBankDepositor = fundingBankDepositor;
-		this.fundingAccountNumber = fundingAccountNumber;
-		this.fundingAccountBalance = fundingAccountBalance;
-		this.fundingTargetAmount = fundingTargetAmount;
-		this.fundingTargetRate = fundingTargetRate;
-		this.fundingTargetDate = fundingTargetDate;
-		this.fundingRewardDeliveryDate = fundingRewardDeliveryDate;
-		this.fundingInvestmentProfitRate = fundingInvestmentProfitRate;
-		this.fundingInvestmentPeriod = fundingInvestmentPeriod;
-		this.fundingSuccessOrFailure = fundingSuccessOrFailure;
-		this.fundingPeopleCount = fundingPeopleCount;
-		this.fundingAdminPermit = fundingAdminPermit;
-		this.adminId = adminId;
-		this.companyId = companyId;
-		this.commentCount = commentCount;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.companyProfileImage = companyProfileImage;
-		this.companyIntroduction = companyIntroduction;
-		this.companyName = companyName;
-	}
 	public FundingGoods() {
 		super();
 	}
@@ -252,18 +222,15 @@ public class FundingGoods {
 				+ fundingExplanationFile + ", fundingBankName=" + fundingBankName + ", fundingBankDepositor="
 				+ fundingBankDepositor + ", fundingAccountNumber=" + fundingAccountNumber + ", fundingAccountBalance="
 				+ fundingAccountBalance + ", fundingTargetAmount=" + fundingTargetAmount + ", fundingTargetRate="
-				+ fundingTargetRate + ", fundingTargetDate=" + fundingTargetDate + ", fundingRewardDeliveryDate="
-				+ fundingRewardDeliveryDate + ", fundingInvestmentProfitRate=" + fundingInvestmentProfitRate
-				+ ", fundingInvestmentPeriod=" + fundingInvestmentPeriod + ", fundingSuccessOrFailure="
-				+ fundingSuccessOrFailure + ", fundingPeopleCount=" + fundingPeopleCount + ", fundingAdminPermit="
-				+ fundingAdminPermit + ", adminId=" + adminId + ", companyId=" + companyId + ", commentCount="
-				+ commentCount + ", startRow=" + startRow + ", endRow=" + endRow + ", companyProfileImage="
-				+ companyProfileImage + ", companyIntroduction=" + companyIntroduction + ", companyName=" + companyName
-				+ "]";
+				+ fundingTargetRate + ", fundingStartDate=" + fundingStartDate + ", fundingTargetDate="
+				+ fundingTargetDate + ", fundingRewardDeliveryDate=" + fundingRewardDeliveryDate
+				+ ", fundingInvestmentProfitRate=" + fundingInvestmentProfitRate + ", fundingInvestmentPeriod="
+				+ fundingInvestmentPeriod + ", fundingSuccessOrFailure=" + fundingSuccessOrFailure
+				+ ", fundingPeopleCount=" + fundingPeopleCount + ", fundingAdminPermit=" + fundingAdminPermit
+				+ ", adminId=" + adminId + ", companyId=" + companyId + ", commentCount=" + commentCount + ", startRow="
+				+ startRow + ", endRow=" + endRow + ", companyProfileImage=" + companyProfileImage
+				+ ", companyIntroduction=" + companyIntroduction + ", companyName=" + companyName + "]";
 	}
-	
-	
-	
 	
 	
 

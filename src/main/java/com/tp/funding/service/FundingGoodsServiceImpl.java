@@ -1,4 +1,4 @@
-package com.tp.funding.service;
+﻿package com.tp.funding.service;
 
 import java.util.List;
 
@@ -125,6 +125,11 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	@Override
 	public List<FundingGoods> fundingReadyList() {
 		return fundingGoodsDao.fundingReadyList();
+	}
+	
+	@Override
+	public List<FundingGoods> fundingDeadlineList() {
+		return fundingGoodsDao.fundingDeadlineList();
 	}
 
 }

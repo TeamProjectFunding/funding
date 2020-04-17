@@ -42,6 +42,7 @@ INSERT INTO FundingGoods VALUES (FundingCode.nextval,1,'펀딩상품','펀딩상
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_02.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com2');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_03.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com3');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_04.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-10','2020-10-20',30,12,1,200,1,'admin','com4');
+INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_04.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-04-17','2020-10-20',30,12,1,200,1,'admin','com4');
 INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목','새소식내용','2020-05-05','이미지',1,'com');
 INSERT INTO Event VALUES (EVENTNUMBER.nextval,'제목','내용','이벤트이미지썸','이벤트이미지상세','이벤트상품이름','이벤트상품이미지',2,500,300,'2020-03-05','2020-04-05','2020-05-05','admin');
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드이름',3,1,'리워드이미지','2020-03-02',5,12,2,1);

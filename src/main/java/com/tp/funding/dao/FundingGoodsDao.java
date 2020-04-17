@@ -26,8 +26,8 @@ public interface FundingGoodsDao {
 	public List<FundingGoods> fundingReadyList();
 		
 	
-	// 0416 add
 	public int investmentTotalCount();
 	public int rewardTotalCount();
+	public List<FundingGoods> fundingDeadlineList();// 마감 5일전 안의 것 뿌리기
 	
 }

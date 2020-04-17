@@ -77,4 +77,5 @@ public class LongController {
 		}
 		return "message/userPickResult";
 	}
+	
 }	
