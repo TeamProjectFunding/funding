@@ -35,7 +35,11 @@
 						<p>${endDate-nowDate }일 남음 <span><fmt:formatDate value="${good.fundingTargetDate }" pattern="yyyy.MM.dd"/> 00:00 마감</span></p>
 					</li>
 					<li>
-						<p><img src="" alt="investorProfile"><span>${good.fundingPeopleCount }명 참여</span></p>
+						<p>
+						<c:forEach var="user" items="${userList }">
+							<img src="${conPath }/image/user/${user.userProfileImage}" alt="userProfile">
+						</c:forEach>
+						<span>${good.fundingPeopleCount }명 참여</span></p>
 					</li>
 				</ul>
 				 <div id="buttonWrap">

@@ -13,12 +13,12 @@ INSERT INTO FundingGoodsDetail VALUES
 <select id="userFundingList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
 	SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
 		(SELECT * FROM FUNDINGGOODSDETAIL WHERE USERID=#{userId} ORDER BY FUNDINGDATE DESC) A)
-			WHERE RN BETWEEN #{startRow} AND #{endRow}	
+			WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 
 <select id="doFundingUserList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
 	SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-		(SELECT FGD.*,U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGGOODSDETAIL FGD, USERS U WHERE FGD.USERID=U.USERID ORDER BY FGD.FUNDINGDATE DESC) A)
+		(SELECT FGD.*,U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGGOODSDETAIL FGD, USERS U WHERE FGD.USERID=U.USERID AND FGD.FUNDINGCODE=#{fundingCode} ORDER BY FGD.FUNDINGDATE DESC) A)
 			WHERE RN BETWEEN #{startRow} AND #{endRow}	
 </select>
 
@@ -28,10 +28,14 @@ INSERT INTO FundingGoodsDetail VALUES
 			WHERE RN BETWEEN #{startRow} AND #{endRow}	
 </select>
 
-<select id="userFundingList ">
+<select id="userRewardList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
 	(SELECT FG.* FROM FUNDINGGOODSDETAIL FG, fundinggoods F WHERE f.fundingcode=fg.fundingcode AND f.fundingcategory=1 AND FG.USERID=#{userId} ORDER BY FG.FUNDINGDATE DESC) A)
 		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+<select id="doFundingGoodTotalCount" parameterType="int" resultType="int">
+SELECT COUNT(*) FROM FUNDINGGOODSDETAIL FGD, USERS U WHERE FGD.USERID=U.USERID AND fgd.fundingcode=#{fundingCode}
 </select>
 
 </mapper>

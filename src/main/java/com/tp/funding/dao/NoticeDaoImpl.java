@@ -1,5 +1,7 @@
 package com.tp.funding.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,6 +39,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public int noticeDelete(int noticeNumber) {
 		return sessionTemplate.delete("noticeDelete", noticeNumber);
+	}
+
+	@Override
+	public List<Notice> noticeList() {
+		return sessionTemplate.selectList("noticeList");
 	}
 
 }

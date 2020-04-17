@@ -7,18 +7,39 @@ import org.springframework.stereotype.Service;
 
 import com.tp.funding.dao.EventDao;
 import com.tp.funding.dto.Event;
+import com.tp.funding.util.Paging;
 @Service
 public class EventServiceImpl implements EventService {
 	@Autowired
 	private EventDao eventDao;
 	@Override
-	public List<Event> eventDoingList() {
-		return eventDao.eventDoingList();
+	public List<Event> eventAllList() {
+		return eventDao.eventAllList();
+	}
+	@Override
+	public List<Event> eventDoingList(String pageNum) {
+		int eventTotalCount = eventDao.totDoingEvent();
+		//pageSize = 5 , BlockSize =5
+		Paging paging = new Paging(eventTotalCount, pageNum, 5, 5);
+		int startRow = paging.getStartRow();
+		int endRow = paging.getEndRow();
+		Event event = new Event();
+		event.setStartRow(startRow);
+		event.setEndRow(endRow);
+		return eventDao.eventDoingList(event);
 	}
 
 	@Override
-	public List<Event> eventEndList() {
-		return eventDao.eventEndList();
+	public List<Event> eventEndingList(String pageNum) {
+		int eventTotalCount = eventDao.totEndingEvent();
+		//pageSize = 5 , BlockSize =5
+		Paging paging = new Paging(eventTotalCount, pageNum, 5, 5);
+		int startRow = paging.getStartRow();
+		int endRow = paging.getEndRow();
+		Event event = new Event();
+		event.setStartRow(startRow);
+		event.setEndRow(endRow);
+		return eventDao.eventEndingList(event);
 	}
 
 	@Override
@@ -34,6 +55,17 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public int totEvent() {
 		return eventDao.totEvent();
+	}
+
+
+	@Override
+	public int totDoingEvent() {
+		return eventDao.totDoingEvent();
+	}
+
+	@Override
+	public int totEndingEvent() {
+		return eventDao.totEndingEvent();
 	}
 
 }

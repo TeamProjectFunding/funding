@@ -1,5 +1,7 @@
 package com.tp.funding.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int noticeDelete(int noticeNumber) {
 		return noticeDao.noticeDelete(noticeNumber);
+	}
+
+	@Override
+	public List<Notice> noticeList() {
+		return noticeDao.noticeList();
 	}
 
 }

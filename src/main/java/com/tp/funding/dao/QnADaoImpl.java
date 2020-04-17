@@ -36,4 +36,9 @@ public class QnADaoImpl implements QnADao {
 		return sessionTemplate.update("qnAHitUp", qnANumber);
 	}
 
+	@Override
+	public List<QnA> qnAAdminList() {
+		return sessionTemplate.selectList("qnAAdminList");
+	}
+
 }

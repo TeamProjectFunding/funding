@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class QnA {
 	private int qnANumber;
-	private String qnATilte;
+	private String qnATitle;
 	private String qnAContent;
 	private int qnAHit;
 	private int qnAOriginalWriter;
@@ -41,12 +41,12 @@ public class QnA {
 		this.qnANumber = qnANumber;
 	}
 
-	public String getQnATilte() {
-		return qnATilte;
+	public String getqnATitle() {
+		return qnATitle;
 	}
 
-	public void setQnATilte(String qnATilte) {
-		this.qnATilte = qnATilte;
+	public void setqnATitle(String qnATitle) {
+		this.qnATitle = qnATitle;
 	}
 
 	public String getQnAContent() {
@@ -185,13 +185,13 @@ public class QnA {
 		this.adminName = adminName;
 	}
 
-	public QnA(int qnANumber, String qnATilte, String qnAContent, int qnAHit, int qnAOriginalWriter, int qnAGroup,
+	public QnA(int qnANumber, String qnATitle, String qnAContent, int qnAHit, int qnAOriginalWriter, int qnAGroup,
 			int qnARef, int qnAIndent, Date qnADate, String userId, String companyId, String adminId, int startRow,
 			int endRow, String userName, String userProfileImage, String companyProfileImage, String companyName,
 			String adminName) {
 		super();
 		this.qnANumber = qnANumber;
-		this.qnATilte = qnATilte;
+		this.qnATitle = qnATitle;
 		this.qnAContent = qnAContent;
 		this.qnAHit = qnAHit;
 		this.qnAOriginalWriter = qnAOriginalWriter;
@@ -217,7 +217,7 @@ public class QnA {
 
 	@Override
 	public String toString() {
-		return "QnA [qnANumber=" + qnANumber + ", qnATilte=" + qnATilte + ", qnAContent=" + qnAContent + ", qnAHit="
+		return "QnA [qnANumber=" + qnANumber + ", qnATitle=" + qnATitle + ", qnAContent=" + qnAContent + ", qnAHit="
 				+ qnAHit + ", qnAOriginalWriter=" + qnAOriginalWriter + ", qnAGroup=" + qnAGroup + ", qnARef=" + qnARef
 				+ ", qnAIndent=" + qnAIndent + ", qnADate=" + qnADate + ", userId=" + userId + ", companyId="
 				+ companyId + ", adminId=" + adminId + ", startRow=" + startRow + ", endRow=" + endRow + ", userName="

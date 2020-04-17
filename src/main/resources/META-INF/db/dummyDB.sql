@@ -1,27 +1,17 @@
-
+select * from company;
 -- 회사등록
-INSERT INTO COMPANY VALUES ('com', '123', null, '영롱한 스타트업입니다.', 'com@naver.com', '영롱회사', '02-2066-5849', 
-    '서울시 용산구', '대장빌딩 301호', null, null, null, 0, 0, 0);
-    
-INSERT INTO COMPANY VALUES ('aaa', '123', null, '유석한 스타트업입니다.', 'com@naver.com', '유석회사', '02-2066-5849', 
-    '서울시 종로구', '아기빌딩 301호', null, null, null, 0, 0, 0);
-    
-INSERT INTO COMPANY VALUES ('bbb', '123', null, '재혁한 스타트업입니다.', 'com@naver.com', '앵무새회사', '02-2066-5849', 
-    '서울시 용산구', '짱구빌딩 301호', null, null, null, 0, 0, 0);
-
-INSERT INTO COMPANY VALUES ('ccc', '123', null, '상훈한 스타트업입니다.', 'com@naver.com', '가구회사', '02-2066-5849', 
-    '서울시 양천구', '배스빌딩 301호', null, null, null, 0, 0, 0);
-
-INSERT INTO COMPANY VALUES ('ddd', '123', null, '영롱한 스타트업입니다.', 'com@naver.com', '장난감회사', '02-2066-5849', 
-    '서울시 구로구', '우럭빌딩 301호', null, null, null, 0, 0, 0);
-
-INSERT INTO COMPANY VALUES ('eee', '123', null, '영롱한 스타트업입니다.', 'com@naver.com', '상훈회사', '02-2066-5849', 
-    '서울시 노원구', '앵무빌딩 301호', null, null, null, 0, 0, 0);
-
-INSERT INTO COMPANY VALUES ('fff', '123', null, '영롱한 스타트업입니다.', 'com@naver.com', '바보회사', '02-2066-5849', 
-    '서울시 영등포구', '영롱빌딩 301호', null, null, null, 0, 0, 0);
-
-
+INSERT INTO COMPANY VALUES ('com', '123', null, '영롱한 스타트업입니다.', SYSDATE, '영롱회사', '02-2066-5849', 
+    '서울시 용산구', '대장빌딩 301호', null, null, null, 0, 0, 0,'191-38-65342');
+INSERT INTO COMPANY VALUES ('com1', '123', null, '몽롱한 스타트업입니다.', SYSDATE, '몽롱회사', '02-2066-5849', 
+    '서울시 강남구', '강남빌딩 301호', null, null, null, 0, 0, 0,'172-28-78312');
+INSERT INTO COMPANY VALUES ('com2', '123', null, '상큼한 스타트업입니다.', SYSDATE, '상큼회사', '02-2066-5849', 
+    '서울시 성북구', '성북빌딩 301호', null, null, null, 0, 0, 0,'168-18-57122');
+INSERT INTO COMPANY VALUES ('com3', '123', null, '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
+    '서울시 강북구', '강북빌딩 301호', null, null, null, 0, 0, 0,'158-18-44642');
+INSERT INTO COMPANY VALUES ('com4', '123', null, '매콤한 스타트업입니다.', SYSDATE, '매콤회사', '02-2066-5849', 
+    '서울시 강서구', '강서빌딩 301호', null, null, null, 0, 0, 0,'109-18-77342');
+INSERT INTO COMPANY VALUES ('com5', '123', null, '시큼한 스타트업입니다.', SYSDATE, '시큼회사', '02-2066-5849', 
+    '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-88342');
 
 -- 유저 등급 설정
 INSERT INTO UserGrade VALUES (1,'NORMAL',0,1000000);
@@ -100,11 +90,25 @@ INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용17', SYSDATE,
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용18', SYSDATE, 0 , 'admin', null, 'user7');
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용19', SYSDATE, 0 , 'admin', null, 'user7');
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용20', SYSDATE, 0 , 'admin', null, 'user7');
-SELECT * FROM NOTICE;
-SELECT * FROM ADMIN;
---공지사항 관리자단에 뿌릴 더미데이터
+
+--공지사항 관리자단에 뿌릴 공지사항더미데이터
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다', '불꽃가능', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다', '포기는 습니다', SYSDATE, 0 ,'admin');
+SELECT * FROM NOTICE ORDER BY NOTICEDATE DESC;
+--이벤트 관리자단에 뿌릴 이벤트더미데이터
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가10배SALE', '금주이벤트는 엔화의10배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '폭탄SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '왕창SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-04-04', '2019-05-05',NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-03-03', '2019-03-03',NULL,'admin');
+--이벤트 관지자단에 뿌릴 Q&A더미데이터
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'user8', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com2',null);
+SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC;
+SELECT * FROM QNA;
+SELECT * FROM QNA Q,USERS U,COMPANY C,ADMIN A WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC;
 commit;

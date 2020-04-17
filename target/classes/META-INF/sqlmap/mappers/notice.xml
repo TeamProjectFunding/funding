@@ -16,6 +16,9 @@
 	<select id="totNotice" resultType="int">
 	SELECT COUNT(*) FROM NOTICE
 	</select>
+	<select id="noticeList" resultMap="NoticeList">
+	SELECT * FROM NOTICE ORDER BY NOTICEDATE DESC
+	</select>
 	<insert id="noticeWrite" parameterType="Notice">
 	INSERT INTO NOTICE VALUES (NOTICENUMBER.NEXTVAL,#{noticeTilte}, #{noticeContent}, SYSDATE, 0, #{adminId})
 	</insert>

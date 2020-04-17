@@ -3,21 +3,41 @@ package com.tp.funding.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.QnA;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.EventService;
+import com.tp.funding.service.NoticeService;
+import com.tp.funding.service.QnAService;
 import com.tp.funding.service.UsersService;
 
 @Controller
 public class AdminControllerByTop {
 	@Autowired
-	UsersService uService;
+	UsersService uService;   //유저 리스트뿌리려고
 	@Autowired
-	CompanyService cService;
+	CompanyService cService; //회사 리스트뿌리려고
+	@Autowired
+	NoticeService nService;
+	@Autowired
+	EventService eService;
+	@Autowired
+	QnAService qService;
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
-	public String adminMain() {
+	public String adminMain(Model model) {
+		/*이벤트 페이징 처리  ServiceImpl 이랑 Dao랑 같이보셈!!
+		 * Paging eventPaging = new Paging(eService.totEvent(), pageNum, 5, 5);
+		 * model.addAttribute("paging", eventPaging);
+		 * model.addAttribute("eventDoingList", eService.eventDoingList(pageNum));
+		 */
+		for(QnA q:qService.qnAAdminList()) {
+			System.out.println(q);
+		}
+		model.addAttribute("qnAAdminList", qService.qnAAdminList());
+		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
+		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
 		return "admin/adminMain";
 	}
 	//관리자 페이지 user

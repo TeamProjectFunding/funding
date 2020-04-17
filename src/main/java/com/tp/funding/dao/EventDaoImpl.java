@@ -12,13 +12,17 @@ public class EventDaoImpl implements EventDao {
 	@Autowired
 	private SqlSession sessionTemplate;
 	@Override
-	public List<Event> eventDoingList() {
-		return sessionTemplate.selectList("eventDoingList");
+	public List<Event> eventAllList() {
+		return sessionTemplate.selectList("eventAllList");
+	}
+	@Override
+	public List<Event> eventDoingList(Event event) {
+		return sessionTemplate.selectList("eventDoingList", event);
 	}
 
 	@Override
-	public List<Event> eventEndList() {
-		return sessionTemplate.selectList("eventEndList");
+	public List<Event> eventEndingList(Event event) {
+		return sessionTemplate.selectList("eventEndingList", event);
 	}
 
 	@Override
@@ -36,4 +40,13 @@ public class EventDaoImpl implements EventDao {
 		return sessionTemplate.selectOne("totEvent");
 	}
 
+	@Override
+	public int totDoingEvent() {
+		return sessionTemplate.selectOne("totDoingEvent");
+	}
+
+	@Override
+	public int totEndingEvent() {
+		return sessionTemplate.selectOne("totEndingEvent");
+	}
 }

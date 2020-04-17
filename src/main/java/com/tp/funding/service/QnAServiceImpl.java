@@ -36,4 +36,9 @@ public class QnAServiceImpl implements QnAService {
 		return qnADao.qnAHitUp(qnANumber);
 	}
 
+	@Override
+	public List<QnA> qnAAdminList() {
+		return qnADao.qnAAdminList();
+	}
+
 }

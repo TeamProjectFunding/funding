@@ -22,13 +22,17 @@
     <result property="startRow" column="startRow"/>
     <result property="endRow" column="endRow"/>
     </resultMap>
+    <select id="eventAllList" resultMap="EventList">
+    SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E ORDER BY E.EVENTSTARTDATE DESC
+    </select>
     <select id="eventDoingList" parameterType="Event" resultMap="EventList">
  	<![CDATA[
     SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
     EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE > SYSDATE ORDER BY E.EVENTSTARTDATE DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
     ]]>
     </select>
-    <select id="eventEndList" parameterType="Event" resultMap="EventList">
+    <select id="eventEndingList" parameterType="Event" resultMap="EventList">
     <![CDATA[
     SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
     EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE < SYSDATE ORDER BY E.EVENTSTARTDATE DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
@@ -39,9 +43,21 @@
     </select>
     <insert id="eventWrite" parameterType="Event">
     INSERT INTO EVENT VALUES (EVENTNUMBER.NEXTVAL,#{eventTilte},#{eventContent},#{eventThumbnailImage},#{eventDetailImage},#{eventProductName},
-    #{eventProductImage},0,0,0,SYSDATE,#{eventEndDate},#{eventProductDeliveryDate},#{adminId});
+    #{eventProductImage},0,0,0,SYSDATE,#{eventEndDate},#{eventProductDeliveryDate},#{adminId})
     </insert>
     <select id="totEvent" resultType="int">
     SELECT COUNT(*) FROM EVENT
+    </select>
+    <select id="totDoingEvent" resultType="int">
+    <![CDATA[
+    SELECT COUNT(*) FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE > SYSDATE ORDER BY E.EVENTSTARTDATE DESC)
+    ]]>
+    </select>
+    <select id="totEndingEvent" resultType="int">
+    <![CDATA[
+    SELECT COUNT(*) FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE < SYSDATE ORDER BY E.EVENTSTARTDATE DESC)
+    ]]>
     </select>
     </mapper>

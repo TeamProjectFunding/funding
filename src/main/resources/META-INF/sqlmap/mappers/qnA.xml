@@ -27,7 +27,7 @@
 		</if>
 	</insert>
 	<select id="qnADetail" parameterType="int">
-		SELECT * FROM QnA WHERE QnANumber=${QnANumber};
+		SELECT * FROM QnA WHERE QnANumber=${QnANumber}
 	</select>
 	<select id="qnAList" parameterType="QnA" resultType="QnA">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
@@ -35,9 +35,10 @@
 	(SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
 	WRITER FROM QNA Q ORDER BY Q.QNAGROUP DESC, Q.QNAREF) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
-	
 	<update id="qnAHitUp" parameterType="int">
 		UPDATE QnA SET QnAHit=QnAHit+1 WHERE QnANumber=#{qnANumber}
 	</update>
-			
+	<select id="qnAAdminList" resultType="QnA">
+	SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC
+	</select>	
 </mapper>

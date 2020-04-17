@@ -12,10 +12,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.UsersService;
 
 @Controller
-@RequestMapping("hyuck")
 public class HyuckController {
 
 	@Autowired
@@ -23,6 +23,9 @@ public class HyuckController {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	private NotificationService notificationService;
 
 	@RequestMapping(value = "joinResult", method = RequestMethod.POST)
 	public String joinResult(Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {		
@@ -66,10 +69,12 @@ public class HyuckController {
 		if(usersService.userLoginCheck(user) == 1) {
 			
 			session.setAttribute("user", usersService.userDetail(id));
+			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
 			
 		}else if(companyService.companyLoginCheck(company) == 1) {
 			
 			session.setAttribute("company", companyService.companyDetail(id));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(id));
 			
 		}else {		
 					
@@ -77,12 +82,12 @@ public class HyuckController {
 			
 		}	
 		
-		return "main/main";
+		return "forward:main.do";
 	}
 	
 	@RequestMapping(value="idConfirm")
-	public String idConfirm(String userId, String companyId, Model model) {
-		System.out.println("userId: "+userId+", companyId : "+companyId);
+	public String idConfirm(String userId, String companyId, Model model) {	
+		
 		boolean idResult = true; // 사용가능
 			if(usersService.userDetail(userId) != null || companyService.companyDetail(companyId) != null) {
 				idResult = false;
