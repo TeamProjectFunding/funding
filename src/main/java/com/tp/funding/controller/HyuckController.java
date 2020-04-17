@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.UsersService;
 
 @Controller
@@ -22,6 +23,9 @@ public class HyuckController {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	private NotificationService notificationService;
 
 	@RequestMapping(value = "joinResult", method = RequestMethod.POST)
 	public String joinResult(Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {		
@@ -65,10 +69,12 @@ public class HyuckController {
 		if(usersService.userLoginCheck(user) == 1) {
 			
 			session.setAttribute("user", usersService.userDetail(id));
+			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
 			
 		}else if(companyService.companyLoginCheck(company) == 1) {
 			
 			session.setAttribute("company", companyService.companyDetail(id));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(id));
 			
 		}else {		
 					
@@ -96,6 +102,7 @@ public class HyuckController {
 		return "message/idConfirm";
 	}
 	
+
 	@RequestMapping(value = "naverLogin")
 	public String naverLogin(Model model,String naverId,HttpSession session) {
 		if(usersService.userDetail(naverId) != null) {//이미 네이버 유저인 경우 로그인
@@ -109,5 +116,15 @@ public class HyuckController {
 		}
 		return "forward:join.do";
 	}
+
+	@RequestMapping(value="logout")
+	public String logout(HttpSession session, Model model) {
+			session.invalidate();
+			model.addAttribute("logoutResult", "로그아웃 완료");
+			
+		return "forward:main.do";
+	}
+	
+
 
 }
