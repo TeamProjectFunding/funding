@@ -27,7 +27,7 @@
 			<h1>알림</h1>
 			<h4>모든알림 ${user.notificationCount}</h4>
 			<div class="alarmListWrap">
-				<c:if test="${not empty userId && empty companyId}">
+				<c:if test="${not empty user && empty company}">
 					<c:forEach var="notification" items="${notificationUnReadUserList}">
 						<ul >
 							<li class="alarmContent">${notification.notificationContent}</li>
@@ -35,15 +35,16 @@
 						</ul>
 					</c:forEach>
 				</c:if>
-				<h4>모든알림 ${company.notificationCount}</h4>
+				
+			<h4>모든알림 ${company.notificationCount}</h4>
 			<div class="alarmListWrap">
 				<c:if test="${not empty companyId && empty userId}">
-				<c:forEach var="notification" items="${notificationUnReadCompanyList }">
-					<ul >
-						<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
-						<li class="date">2020 -04-12 일요일</li>
-					</ul>
-				</c:forEach>
+					<c:forEach var="notification" items="${notificationUnReadCompanyList}">
+						<ul >
+							<li class="alarmContent">${notification.notificationContent}</li>
+							<li class="date">${notification.notificationDate}</li>
+						</ul>
+					</c:forEach>
 				</c:if>
 			</div>
 		</div>

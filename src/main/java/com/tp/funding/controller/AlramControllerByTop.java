@@ -15,13 +15,12 @@ public class AlramControllerByTop {
 	
 	@RequestMapping(value="userAlarmCheck")
 		public String userAlarmCheck(Model model, String userId){
-		model.addAttribute("notificationUnReadUserList", nService.notificationUnReadUserList(userId));
-		model.addAttribute("userId", "user7");
+		model.addAttribute("notificationUnReadUserList", nService.notificationUnReadUserList(userId));		
 		return "main/alarm";
 	}
 	@RequestMapping(value="companyAlarmCheck")
 	public String companyAlarmCheck(Model model, String companyId) {
-		model.addAttribute("otificationUnReadCompanyList", nService.notificationUnReadCompanyList(companyId));
+		model.addAttribute("notificationUnReadCompanyList", nService.notificationUnReadCompanyList(companyId));
 		return "main/alarm";
 	}
 }

@@ -102,6 +102,14 @@ public class HyuckController {
 		return "message/idConfirm";
 	}
 	
+	@RequestMapping(value="logout")
+	public String logout(HttpSession session, Model model) {
+			session.invalidate();
+			model.addAttribute("logoutResult", "로그아웃 완료");
+			
+		return "forward:main.do";
+	}
+	
 	
 
 }
