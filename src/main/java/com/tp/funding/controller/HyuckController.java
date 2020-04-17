@@ -76,7 +76,7 @@ public class HyuckController {
 			
 		}	
 		
-		return "main/main";
+		return "forward:main.do";
 	}
 	
 	@RequestMapping(value="idConfirm")
@@ -96,6 +96,18 @@ public class HyuckController {
 		return "message/idConfirm";
 	}
 	
-	
+	@RequestMapping(value = "naverLogin")
+	public String naverLogin(Model model,String naverId,HttpSession session) {
+		if(usersService.userDetail(naverId) != null) {//이미 네이버 유저인 경우 로그인
+			session.setAttribute("user", usersService.userDetail(naverId));
+			return "forward:main.do";
+		}else if(companyService.companyDetail(naverId) != null) {//이미 회사 유저인 경우 로그인
+			session.setAttribute("company", companyService.companyDetail(naverId));
+			return "forward:main.do";
+		}else {// 네이버 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
+			model.addAttribute("naverId",naverId);
+		}
+		return "forward:join.do";
+	}
 
 }

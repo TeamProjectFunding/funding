@@ -156,4 +156,5 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userInterestAmountModify(userId);
 	}
 
+
 }

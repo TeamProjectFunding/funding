@@ -36,7 +36,7 @@
 					</li>
 					<li>
 						<p>
-						<c:forEach var="user" items="${userList }">
+						<c:forEach var="user" items="${userList }" begin="0" end="5">
 							<img src="${conPath }/image/user/${user.userProfileImage}" alt="userProfile">
 						</c:forEach>
 						<span>${good.fundingPeopleCount }명 참여</span></p>
