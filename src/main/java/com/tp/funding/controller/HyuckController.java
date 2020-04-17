@@ -17,7 +17,9 @@ import com.tp.funding.service.UsersService;
 
 @Controller
 public class HyuckController {
-
+	
+	private boolean repeatF5 = false;
+	
 	@Autowired
 	private UsersService usersService;
 
@@ -26,37 +28,48 @@ public class HyuckController {
 	
 	@Autowired
 	private NotificationService notificationService;
-
+	
+	//회원가입 입력 폼
+	@RequestMapping(value ="joinForm")
+	public String joinForm(String method, Model model) {
+		repeatF5 = true;
+		model.addAttribute("method", method);
+		return "users/joinForm";
+	}
+	
 	@RequestMapping(value = "joinResult", method = RequestMethod.POST)
 	public String joinResult(Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {		
-		System.out.println(user);
-		System.out.println(company);
-		if (user.getUserId() != null && company.getCompanyId() == null) {
-			System.out.println("1번");
-			int result = usersService.userJoin(mRequest, user);
-			if (result == 1) {
-				model.addAttribute("userJoinResult", "고객(일반) 가입 성공");				
-				model.addAttribute("user", user);
-				System.out.println(user);
-			} else {
-				model.addAttribute("userJoinResult", "유저(일반) 가입 실패");
-			}
-			
-		} else if (user.getUserId() == null && company.getCompanyId() != null) {
-			System.out.println("2번");
-			int result = companyService.companyJoin(mRequest, company);
-			if (result == 1) {
-				model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
-				model.addAttribute("company", company);
-			} else {
-				model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
-			}
+		
+		if(repeatF5) {
+			if (user.getUserId() != null && company.getCompanyId() == null) {
+				
+				int result = usersService.userJoin(mRequest, user);
+				
+				if (result == 1) {
+					model.addAttribute("userJoinResult", "고객(일반) 가입 성공");				
+					model.addAttribute("user", usersService.userDetail(user.getUserId()));
+					System.out.println(user);
+				} else {
+					model.addAttribute("userJoinResult", "유저(일반) 가입 실패");
+				}
+				
+			} else if (user.getUserId() == null && company.getCompanyId() != null) {			
+				int result = companyService.companyJoin(mRequest, company);
+				if (result == 1) {
+					model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
+					model.addAttribute("company", companyService.companyDetail(company.getCompanyId()));
+				} else {
+					model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
+				}
 
+			}
 		}
+		
+		repeatF5 = false; 
 
 		return "users/joinSuccess";
 	}
-	
+		
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw, Model model) {
 		Users user = new Users();

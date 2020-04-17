@@ -66,12 +66,12 @@ public class HomeController {
 			return "users/join";			
 		}
 		
-		//회원가입 입력 폼
-		@RequestMapping(value ="joinForm")
-		public String joinForm(String method, Model model) {			
-			model.addAttribute("method", method);
-			return "users/joinForm";
-		}
+//		//회원가입 입력 폼
+//		@RequestMapping(value ="joinForm")
+//		public String joinForm(String method, Model model) {			
+//			model.addAttribute("method", method);
+//			return "users/joinForm";
+//		}
 		
 		//회원가입 완료
 		@RequestMapping(value ="joinSuccess")
