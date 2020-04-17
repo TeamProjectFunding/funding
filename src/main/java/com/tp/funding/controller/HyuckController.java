@@ -15,7 +15,6 @@ import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.UsersService;
 
 @Controller
-@RequestMapping("hyuck")
 public class HyuckController {
 
 	@Autowired

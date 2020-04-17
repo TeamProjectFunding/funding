@@ -47,7 +47,6 @@ public class LongController {
 	public String main(Model model) {
 		model.addAttribute("investmentTop3", fundingGoodsService.investmentAllList(null));
 		model.addAttribute("rewardTop3", fundingGoodsService.rewardAllList(null));
-		
 		return "main/main";
 	}
 	

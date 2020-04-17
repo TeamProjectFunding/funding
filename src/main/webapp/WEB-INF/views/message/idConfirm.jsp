@@ -10,11 +10,6 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	$(document).ready(function(){
-		
-	});
-</script>
 </head>
 <body>
 	<c:if test="${idConfirmResult eq '중복'}">

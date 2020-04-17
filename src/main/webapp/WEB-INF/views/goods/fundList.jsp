@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />

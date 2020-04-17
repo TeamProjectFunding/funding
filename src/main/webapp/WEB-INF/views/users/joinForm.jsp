@@ -14,25 +14,105 @@
 <script>
 	$(document).ready(function(){
 		
+		 function check() {
+		     
+		      // 정규 표현식
+		      var pwPattern = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+		      var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		      var phonePattern = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+		 
+			  
+		      
+		 
+		      // 패스워드
+		      if(pwPattern.test(pw.value) == true){
+		        if(pwPattern.test(correctPassword.value) == true){
+		          if(pw.value == correctPassword.value){
+		            text += "PW : " + pw.value + "\n";
+		          }
+		        }
+		        else alert("패스워드가 일치 하지 않습니다.");
+		      }
+		      else alert("패스워드를 잘못 입력 하셨습니다.");
+		 
+		      // 이메일
+		      if(emailPattern.test(userEmail.value) == true){
+		        text += "EMAIL : " + userEmail.value + "\n";
+		      }
+		      else alert("이메일을 잘못 입력 하셨습니다.");
+		 
+		      // 휴대폰 번호
+		      if(phonePattern.test(cellPhone.value) == true){
+		        text += "PHONE : " + cellPhone.value + "\n";
+		      }
+		      else alert("번호를 잘못 입력 하셨습니다.");
+		 
+		      alert(text); // 입력정보출력
+		 
+		      // 이전에 입력했던 회원정보를 비우기
+		      if(count == 0+count)
+		        text = [];
+		    }
+		 
+		    // 클리어
+		    function inputClear() {
+		      document.getElementById("fm").reset();
+		    }
+
+
+		
+		
+		
+		
+		/* 아이디 중복 체크 ajax+ 정규표현식 */
 		$('.confirmKeyUp').keyup(function(){
-			$.ajax({
-				url : '${conPath}/hyuck/idConfirm.do',
-				datatype : 'html',
-				data : "userId="+$(this).val()+"&companyId="+$(this).val(),
-				success : function(data, status){
-					$('.idConfirm').html(data);
-				}
-			});
+		      var idPattern = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		      if(idPattern.test($(this).val()) == false){
+		    	  $('.idConfirm').html("<span class='danger'>이메일 형식에 맞게 입력하세요.</span>");
+		      }else{
+				$.ajax({
+					url : '${conPath}/idConfirm.do',
+					datatype : 'html',
+					data : "userId="+$(this).val()+"&companyId="+$(this).val(),
+					success : function(data, status){
+						$('.idConfirm').html(data);
+					}
+				});
+		      }
 		});
 		
-		
+		/* 비밀번호 체크 정규표현식 */
 		$('.pwchk').keyup(function(){
+			var pwDegreeSafety = 0;
+			var pwPatternNumber = /[0-9]/;
+    		var pwPatternEnglish = /[a-zA-Z]/;
+			var pwPatternSymbol = /[!@#$%^*+=-]/;
+			/* 안전도 */
+			
+			
 			var pw = $('.pw').val();
 			var pwchk = $('.pwchk').val();
-			if(pw == pwchk){
-				$('.passwordConfirm').html('<span class="safety">일치</span>');
-			}else{
+			if(pw != pwchk){
 				$('.passwordConfirm').html('<span class="danger">불일치</span>');				
+			}else{
+				if(pwPatternNumber.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwPatternEnglish.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwPatternSymbol.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwDegreeSafety < 2){
+					$('.passWordSafety').html('<span class="danger"> ■□□ 위험 </span>');					
+				}else if(pwDegreeSafety == 2){
+					$('.passWordSafety').html('<span class="normal"> ■■□ 중간 </span>');					
+				}else if(pwDegreeSafety > 2){
+					$('.passWordSafety').html('<span class="safety"> ■■■ 안전 </span>');					
+				}
+				
+				$('.passwordConfirm').html('<span class="safety">일치</span>');
 			}			
 		});
 		
@@ -68,9 +148,6 @@
 						<tr>
 							<td>
 								<p class="passWordSafety">
-									<span class="danger"> ■□□ 위험 </span>
-									<span class="normal"> ■■□ 중간 </span>
-									<span class="safety"> ■■■ 안전 </span>
 								</p>
 							</td>
 						</tr>

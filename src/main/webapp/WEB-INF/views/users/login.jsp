@@ -14,13 +14,13 @@
 	<div id="contentWrap" class="userWrap">
 		<section class="loginWrap">
 			<h1>LOG-IN</h1>
-			<form action="${conPath}/hyuck/login.do" method="post">
+			<form action="${conPath}/login.do" method="post">
 				<table>
 					<tr>
-						<td><input type="text" name="id" placeholder="아이디를 입력하세요" value="${param.userId}${param.companyId}"></td>
+						<td><input type="text" name="id" placeholder="아이디를 입력하세요" value="${param.userId}${param.companyId}" required="required"></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></td>
+						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요" required="required"></td>
 					</tr>
 					<tr>					
 						<th id="buttonWrap">
