@@ -36,6 +36,8 @@ INSERT INTO Users VALUES ('user11','123','profile.jpg','전일환','010-4898-884
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
 INSERT INTO Users VALUES ('user12','123','profile.jpg','아이유','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
+INSERT INTO Users VALUES ('kha0213@naver.com','123','profile.jpg','아이유','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,1,'펀딩상품','펀딩상품설명','fundingProduct_01.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_02.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com2');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_03.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com3');
@@ -45,6 +47,8 @@ INSERT INTO Event VALUES (EVENTNUMBER.nextval,'제목','내용','이벤트이미
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드이름',3,1,'리워드이미지','2020-03-02',5,12,2,1);
 INSERT INTO Notification VALUES (NOTIFICATIONNUMBER.nextval,'알림내용','2020-06-07',0,'admin',null,'user');
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,2000000,10000,'2020-05-06','2020-09-09',1,'user');
+INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,200000,1000,SYSDATE,'2020-09-09',1,'user2');
+INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,100000,0,SYSDATE,'2020-09-09',1,'user3');
 INSERT INTO FundingQuestion VALUES (FUNDINGQUESTIONNUMBER.nextval,'문의내용','2020-04-09',0,'1','user');
 INSERT INTO FundingQuestionReply VALUES (FUNDINGQUESTIONREPLYNUMBER.nextval,'답글내용','2020-04-09','1','admin');
 INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용','2020-04-09',0,1,'user');

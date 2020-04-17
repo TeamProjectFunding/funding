@@ -32,8 +32,8 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public int userJoin(MultipartHttpServletRequest mRequest, Users user) {
-		String uploadPath = mRequest.getRealPath("usersProfileUpload/");
-		String backupPath = "D:/mega_IT/teamProject/funding/src/main/webapp/usersProfileUpload/";
+		String uploadPath = mRequest.getRealPath("images/profile/");
+		String backupPath = "D:/mega_IT/teamProject/funding/src/main/webapp/images/profile/";
 		String userProfileImage = null;
 
 		Iterator<String> params = mRequest.getFileNames(); // file
@@ -155,5 +155,6 @@ public class UsersServiceImpl implements UsersService {
 	public int userInterestAmountModify(String userId) {
 		return userDao.userInterestAmountModify(userId);
 	}
+
 
 }

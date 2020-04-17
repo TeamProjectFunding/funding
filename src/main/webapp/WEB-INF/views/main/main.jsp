@@ -18,6 +18,11 @@
 	</script>
 </c:if>
 
+<c:if test="${not empty logoutResult }">
+	<script>
+		alert('${logoutResult}');
+	</script>
+</c:if>
 
 <!-- 현재 날짜 -->
 	<jsp:useBean id="today" class="java.util.Date" />

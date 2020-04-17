@@ -20,13 +20,18 @@ public class UserPickDaoImpl implements UserPickDao {
 	}
 
 	@Override
-	public int userPickDelete(int userPickNumber) {
-		return sessionTemplate.delete("userPickDelete", userPickNumber);
+	public int userPickDelete(UserPick userPick) {
+		return sessionTemplate.delete("userPickDelete", userPick);
 	}
 
 	@Override
 	public List<UserPick> userPickList(UserPick userPick) {
 		return sessionTemplate.selectList("userPickList", userPick);
+	}
+
+	@Override
+	public int userPickCheck(UserPick userPick) {
+		return sessionTemplate.selectOne("userPickCheck", userPick);
 	}
 
 }

@@ -17,7 +17,9 @@ import com.tp.funding.service.UsersService;
 
 @Controller
 public class HyuckController {
-
+	
+	private boolean repeatF5 = false;
+	
 	@Autowired
 	private UsersService usersService;
 
@@ -26,37 +28,48 @@ public class HyuckController {
 	
 	@Autowired
 	private NotificationService notificationService;
-
+	
+	//회원가입 입력 폼
+	@RequestMapping(value ="joinForm")
+	public String joinForm(String method, Model model) {
+		repeatF5 = true;
+		model.addAttribute("method", method);
+		return "users/joinForm";
+	}
+	
 	@RequestMapping(value = "joinResult", method = RequestMethod.POST)
 	public String joinResult(Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {		
-		System.out.println(user);
-		System.out.println(company);
-		if (user.getUserId() != null && company.getCompanyId() == null) {
-			System.out.println("1번");
-			int result = usersService.userJoin(mRequest, user);
-			if (result == 1) {
-				model.addAttribute("userJoinResult", "고객(일반) 가입 성공");				
-				model.addAttribute("user", user);
-				System.out.println(user);
-			} else {
-				model.addAttribute("userJoinResult", "유저(일반) 가입 실패");
-			}
-			
-		} else if (user.getUserId() == null && company.getCompanyId() != null) {
-			System.out.println("2번");
-			int result = companyService.companyJoin(mRequest, company);
-			if (result == 1) {
-				model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
-				model.addAttribute("company", company);
-			} else {
-				model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
-			}
+		
+		if(repeatF5) {
+			if (user.getUserId() != null && company.getCompanyId() == null) {
+				
+				int result = usersService.userJoin(mRequest, user);
+				
+				if (result == 1) {
+					model.addAttribute("userJoinResult", "고객(일반) 가입 성공");				
+					model.addAttribute("user", usersService.userDetail(user.getUserId()));
+					System.out.println(user);
+				} else {
+					model.addAttribute("userJoinResult", "유저(일반) 가입 실패");
+				}
+				
+			} else if (user.getUserId() == null && company.getCompanyId() != null) {			
+				int result = companyService.companyJoin(mRequest, company);
+				if (result == 1) {
+					model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
+					model.addAttribute("company", companyService.companyDetail(company.getCompanyId()));
+				} else {
+					model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
+				}
 
+			}
 		}
+		
+		repeatF5 = false; 
 
 		return "users/joinSuccess";
 	}
-	
+		
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw, Model model) {
 		Users user = new Users();
@@ -102,6 +115,29 @@ public class HyuckController {
 		return "message/idConfirm";
 	}
 	
+
+	@RequestMapping(value = "naverLogin")
+	public String naverLogin(Model model,String naverId,HttpSession session) {
+		if(usersService.userDetail(naverId) != null) {//이미 네이버 유저인 경우 로그인
+			session.setAttribute("user", usersService.userDetail(naverId));
+			return "forward:main.do";
+		}else if(companyService.companyDetail(naverId) != null) {//이미 회사 유저인 경우 로그인
+			session.setAttribute("company", companyService.companyDetail(naverId));
+			return "forward:main.do";
+		}else {// 네이버 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
+			model.addAttribute("naverId",naverId);
+		}
+		return "forward:join.do";
+	}
+
+	@RequestMapping(value="logout")
+	public String logout(HttpSession session, Model model) {
+			session.invalidate();
+			model.addAttribute("logoutResult", "로그아웃 완료");
+			
+		return "forward:main.do";
+	}
 	
+
 
 }

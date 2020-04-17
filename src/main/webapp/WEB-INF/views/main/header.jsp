@@ -15,10 +15,10 @@
 <body>
 
 <header>
-	<c:if test="${not empty user.userId}">
+	<c:if test="${not empty sessionScope.user}">
 		<p id="messageWrap">로그인 되었습니다</p>
 	</c:if>
-	<c:if test="${not empty company.companyId}">
+	<c:if test="${not empty sessionScope.company}">
 		<p id="messageWrap">로그인 되었습니다</p>
 	</c:if>	
 	
@@ -28,26 +28,29 @@
 			<ul class="util">				
 				<li><a href="adminMain.do">ADMIN</a></li>
 								
-				<c:if test="${empty user && empty company}">
+				<c:if test="${empty sessionScope.user && empty sessionScope.company}">
 					<li><a href="login.do">LOG-IN</a></li>
 					<li><a href="join.do">JOIN</a></li>
 				</c:if>				
 				
-				<c:if test="${not empty user || not empty company }">
-					<li><a href="${conPath}/mypage.do" class="mypageButton"><img src="" alt="profile"><span>userName</span></a></li>
-					<li><a href="${conPath}/logout.do">LOG-OUT</a></li>
-				</c:if>				
 				
-				<!--여기 테스트 해보려고 이렇게 둠  -->
-				<c:set var="userId" value="user7"/><!-- 여기테스트 했다 -->
-				<%-- <c:set var="companyId" value="테스트용회사"/> --%>
-				<c:if test="${not empty userId && empty companyId}">
-				<li><a href="userAlarmCheck.do?userId=${user.userId}" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				<!-- login 
+            <li><a href="mypage.do" class="mypageButton"><img src="" alt="profile"><span>userName</span></a></li>
+            <li><a href="login.do">LOG-OUT</a></li>
+            -->
+				
+				<c:if test="${not empty sessionScope.user || not empty sessionScope.company }">
+					<li><a href="#" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile"></a></li>
+					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
+				</c:if>							
+				
+				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
+					<li><a href="#none" class="alarmButton">alarm<c:if test="${user.notificationCount >= 1}"><span class="alarm"></span></c:if></a></li>
 				</c:if>
-				<c:if test="${not empty companyId && empty userId}">
-				<li><a href="companyAlarmCheck.do?companyId=${company.companyId}" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				<c:if test="${not empty sessionScope.company && empty sessionScope.user}">
+					<li><a href="#none" class="alarmButton">alarm<c:if test="${company.notificationCount >= 1 }"><span class="alarm"></span></c:if></a></li>
 				</c:if>
-				<li><a href="#none" class="searchButton"><!-- img src="" alt="search" -->search</a></li>
+					<li><a href="#none" class="searchButton"><!-- img src="" alt="search" -->search</a></li>
 			</ul>
 			<script>
 				$(function(){

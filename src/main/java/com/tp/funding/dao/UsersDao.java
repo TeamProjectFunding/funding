@@ -20,4 +20,5 @@ public interface UsersDao {
 	public int userGradeUp(String userId);
 	public int userInvestmentAmountModify(String userId);
 	public int userInterestAmountModify(String userId);
+
 }
