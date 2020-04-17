@@ -15,27 +15,27 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	private FundingGoodsDao fundingGoodsDao ;
 	
 	@Override
-	public List<FundingGoodsDao> fundingOpenList(FundingGoods fundingGoods) { // 페이징
+	public List<FundingGoods> fundingOpenList(FundingGoods fundingGoods) { // 페이징
 		return fundingGoodsDao.fundingOpenList(fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> fundingCloseList(FundingGoods fundingGoods) { // 페이징
+	public List<FundingGoods> fundingCloseList(FundingGoods fundingGoods) { // 페이징
 		return fundingGoodsDao.fundingCloseList(fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> fundingSearchList(String FundingName) { 
+	public List<FundingGoods> fundingSearchList(String FundingName) { 
 		return fundingGoodsDao.fundingSearchList(FundingName);
 	}
 
 	@Override
-	public List<FundingGoodsDao> searchFundingKeyUpTop5() {
+	public List<FundingGoods> searchFundingKeyUpTop5() {
 		return fundingGoodsDao.searchFundingKeyUpTop5();
 	}
 
 	@Override
-	public List<FundingGoodsDao> investmentAllList(String pageNum) {
+	public List<FundingGoods> investmentAllList(String pageNum) {
 		// pageSize = 6, BlockSize = 5
 		int investmentTotalCount = investmentTotalCount();
 		Paging paging = new Paging(investmentTotalCount, pageNum, 6, 5);
@@ -47,7 +47,7 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public List<FundingGoodsDao> rewardAllList(String pageNum) {
+	public List<FundingGoods> rewardAllList(String pageNum) {
 		int rewardTotalCount = rewardTotalCount();
 		Paging paging = new Paging(rewardTotalCount, pageNum, 6, 5);
 		// 페이징 처리
@@ -120,6 +120,11 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	@Override
 	public int rewardTotalCount() {
 		return fundingGoodsDao.rewardTotalCount();
+	}
+
+	@Override
+	public List<FundingGoods> fundingDeadlineList() {
+		return fundingGoodsDao.fundingDeadlineList();
 	}
 
 }

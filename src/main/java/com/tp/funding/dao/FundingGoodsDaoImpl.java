@@ -15,32 +15,32 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	
 	
 	@Override
-	public List<FundingGoodsDao> fundingOpenList(FundingGoods fundingGoods) {
+	public List<FundingGoods> fundingOpenList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("fundingOpenList", fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> fundingCloseList(FundingGoods fundingGoods) {
+	public List<FundingGoods> fundingCloseList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("fundingCloseList", fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> fundingSearchList(String FundingName) {
+	public List<FundingGoods> fundingSearchList(String FundingName) {
 		return sessionTemplate.selectList("fundingSearchList", FundingName);
 	}
 
 	@Override
-	public List<FundingGoodsDao> searchFundingKeyUpTop5() {
+	public List<FundingGoods> searchFundingKeyUpTop5() {
 		return sessionTemplate.selectList("searchFundingKeyUpTop5");
 	}
 
 	@Override
-	public List<FundingGoodsDao> investmentAllList(FundingGoods fundingGoods) {
+	public List<FundingGoods> investmentAllList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("investmentAllList", fundingGoods);
 	}
 
 	@Override
-	public List<FundingGoodsDao> rewardAllList(FundingGoods fundingGoods) {
+	public List<FundingGoods> rewardAllList(FundingGoods fundingGoods) {
 		return sessionTemplate.selectList("rewardAllList", fundingGoods);
 	}
 
@@ -107,6 +107,11 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	@Override
 	public int rewardTotalCount() {
 		return sessionTemplate.selectOne("rewardTotalCount");
+	}
+
+	@Override
+	public List<FundingGoods> fundingDeadlineList() {
+		return sessionTemplate.selectList("fundingDeadlineList");
 	}
 
 }
