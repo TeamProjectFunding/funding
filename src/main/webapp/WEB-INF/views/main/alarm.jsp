@@ -23,32 +23,34 @@
 			});
 		</script>
 		<div id="contentWrap">
-		<h1>테스트용 id</h1>
+		<h1>${user.userId}${company.companyId}</h1>
 			<h1>알림</h1>
-			<h4>모든알림 ${user.notificationCount}</h4>
-			<div class="alarmListWrap">
-				<c:if test="${not empty user && empty company}">
+			<h4>모든알림 : ${user.notificationCount}${company.notificationCount}</h4>
+			<c:if test="${not empty user && empty company}">
+				<div class="alarmListWrap">
+					
 					<c:forEach var="notification" items="${notificationUnReadUserList}">
 						<ul >
 							<li class="alarmContent">${notification.notificationContent}</li>
 							<li class="date">${notification.notificationDate}</li>
 						</ul>
-					</c:forEach>
-				</c:if>
-				
-			<h4>모든알림 ${company.notificationCount}</h4>
-			<div class="alarmListWrap">
-				<c:if test="${not empty companyId && empty userId}">
+					</c:forEach>				
+				</div>
+			</c:if>	
+			
+			<%-- <h4>모든알림 ${company.notificationCount}</h4> --%>
+			<c:if test="${not empty company && empty user}">
+				<div class="alarmListWrap">
 					<c:forEach var="notification" items="${notificationUnReadCompanyList}">
 						<ul >
 							<li class="alarmContent">${notification.notificationContent}</li>
 							<li class="date">${notification.notificationDate}</li>
 						</ul>
 					</c:forEach>
-				</c:if>
-			</div>
+				</div>
+			</c:if>			
 		</div>
 	</div>
-	</div>
+	
 </body>
 </html>

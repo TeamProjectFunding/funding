@@ -23,7 +23,7 @@
 		
 		<c:if test="${not empty companyJoinResult}">
 			<script>
-				alert('${companyJoinResult}')
+				alert('${companyJoinResult}');
 			</script>
 		</c:if>
 		
@@ -37,7 +37,7 @@
 						<th colspan='2'>${user.userName}님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="${conpath}/usersProfileUpload/${user.userProfileImage}" alt="userProfileImage"></td>
+						<td colspan='2'><img src="${conpath}/images/profile/${user.userProfileImage}" alt="userProfileImage"></td>
 					</tr>						
 					<tr>
 						<td>ID</td>
@@ -60,11 +60,11 @@
 							${user.userAddressBasic} ${user.userAddressDetail}
 						</td>
 					</tr>
-					</c:if>
+					</c:if>					
 					<tr>
 						<td>AD</td>
-						<td><c:if test="${user.userAdPhone == 1}">전화광고 수신 동의</c:if> / <c:if test="${user.userAdEmail == 1}">메일광고 수신 동의</c:if></td>
-					</tr>
+						<td><c:if test="${user.userAdPhone == 1}">전화광고 수신 동의</c:if>  <c:if test="${user.userAdEmail == 1}">메일광고 수신 동의</c:if></td>
+					</tr>					
 					<tr>
 						<td class="buttonWrap" colspan="2">
 							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?userId=${user.userId}'">
@@ -83,7 +83,7 @@
 						<th colspan='2'>${company.companyName}님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="${conpath}/companyProfileUpload/${company.companyProfileImage}" alt="userProfileImage"></td>
+						<td colspan='2'><img src="${conpath}/images/profile/${company.companyProfileImage}" alt="userProfileImage"></td>
 					</tr>
 					<tr>
 						<td>ID</td>
