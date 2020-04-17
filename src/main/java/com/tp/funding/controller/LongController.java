@@ -33,12 +33,14 @@ public class LongController {
 			model.addAttribute("fundList", fundingGoodsService.fundingSearchList(searchWord));
 		return "message/fundSearchList";
 	}
-	@RequestMapping(value ="goodsViewCoreInfomation")
-	public String goodsViewCoreInfomation(Model model,int fundingCode) {
-		model.addAttribute("userList", fundingDetailService.)
-		model.addAttribute("good",fundingGoodsService.fundingDetail(fundingCode));
-		return "goods/goodsViewCoreInfomation";
-	}
+	/*
+	 * @RequestMapping(value ="goodsViewCoreInfomation") public String
+	 * goodsViewCoreInfomation(Model model,int fundingCode) {
+	 * model.addAttribute("userList", fundingDetailService.)
+	 * model.addAttribute("good",fundingGoodsService.fundingDetail(fundingCode));
+	 * return "goods/goodsViewCoreInfomation"; }
+	 */
+	 
 	//메인
 	@RequestMapping(value = "main")
 	public String main(Model model) {

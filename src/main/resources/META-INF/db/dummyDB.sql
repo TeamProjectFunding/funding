@@ -100,4 +100,11 @@ INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용17', SYSDATE,
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용18', SYSDATE, 0 , 'admin', null, 'user7');
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용19', SYSDATE, 0 , 'admin', null, 'user7');
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용20', SYSDATE, 0 , 'admin', null, 'user7');
+SELECT * FROM NOTICE;
+SELECT * FROM ADMIN;
+--공지사항 관리자단에 뿌릴 더미데이터
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다', '포기는 습니다', SYSDATE, 0 ,'admin');
 commit;
