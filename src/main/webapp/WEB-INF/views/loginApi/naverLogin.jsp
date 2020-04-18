@@ -19,15 +19,8 @@
 		// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 		function naverSignInCallback() {
 			var email = naver_id_login.getProfileData('email'); 
-			var id = naver_id_login.getProfileData('id');
-			var nickname = naver_id_login.getProfileData('nickname');
-			var name = naver_id_login.getProfileData('name');
-			var gender = naver_id_login.getProfileData('gender');
-			var age = naver_id_login.getProfileData('age');
-			var birthday = naver_id_login.getProfileData('birthday');
-			var profile_image = naver_id_login.getProfileData('profile_image');
 			function goNaverLogin(id){
-				opener.location.href='${conPath}/naverLogin.do?naverId='+email;
+				opener.location.href='${conPath}/loginApi.do?loginApiId='+email;
 			}
 			goNaverLogin(id);
 			window.close();

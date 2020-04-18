@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
+
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -28,6 +29,9 @@
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
 							<!-- 영롱 네이버로그인 -->
 							<div id="naver_id_login"><a href="${url}" class="button naverButton">NAVER</a></div>
+							<!-- 영롱 카카오로그인 -->
+							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton">
+							
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
 
@@ -39,9 +43,36 @@
 		</section>
 	</div>
 	                
-
-
-<!-- JQuery 생략 네이버 로그인 script -->
+<script src="${conPath }/js/kakao.js"></script>
+<script>
+	$(function(){
+		Kakao.init('955fa574fcf92290ccab03a97378fe35');
+		/* Kakao.Auth.authorize({
+				redirectUri: '${conPath}/WEB-INF/views/loginApi/kakaoLogin.jsp'
+		}); */
+		Kakao.Auth.createLoginButton({ 
+			container: '#kakaoLoginButton', 
+			success: function(authObj) {
+			      Kakao.API.request({
+			        url: '/v2/user/me',
+			        success: function(res) {
+			        	var email = res.kakao_account['email'];
+						location.href="${conPath}/loginApi.do?loginApiId="+email;
+					},
+			        fail: function(error) {
+			          alert(
+			            'login success, but failed to request user information: ' +
+			              JSON.stringify(error)
+			          )
+			        },
+			      })
+			    },
+			    fail: function(err) {
+			      alert('failed to login: ' + JSON.stringify(err))
+			    },
+			});
+	});
+</script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script>
 

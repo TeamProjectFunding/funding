@@ -43,7 +43,8 @@
 			var pw = $('.pw').val();
 			var pwchk = $('.pwchk').val();
 			if(pw != pwchk){
-				$('.passwordConfirm').html('<span class="danger">불일치</span>');				
+				$('.passwordConfirm').html('<span class="danger">불일치</span>');	
+				$('.passWordSafety').html('');
 			}else{
 				if(pwPatternNumber.test($(this).val())){
 					pwDegreeSafety++;
@@ -185,9 +186,6 @@
 						<tr>
 							<td>
 								<p class="passWordSafety">
-									<span class="danger"> ■□□ 위험 </span>
-									<span class="normal"> ■■□ 중간 </span>
-									<span class="safety"> ■■■ 안전 </span>
 								</p>
 							</td>
 						</tr>
@@ -198,8 +196,6 @@
 						<tr>
 							<td>
 								<p class="passwordConfirm">
-									<span class="danger">불일치</span>
-									<span class="safety">일치</span>
 								</p>
 							</td>
 						</tr>

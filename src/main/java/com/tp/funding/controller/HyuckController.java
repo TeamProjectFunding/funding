@@ -116,16 +116,16 @@ public class HyuckController {
 	}
 	
 
-	@RequestMapping(value = "naverLogin")
-	public String naverLogin(Model model,String naverId,HttpSession session) {
-		if(usersService.userDetail(naverId) != null) {//이미 네이버 유저인 경우 로그인
-			session.setAttribute("user", usersService.userDetail(naverId));
+	@RequestMapping(value = "loginApi")
+	public String naverLogin(Model model,String loginApiId,HttpSession session) {
+		if(usersService.userDetail(loginApiId) != null) {//이미 가입된 ID 유저인 경우 로그인
+			session.setAttribute("user", usersService.userDetail(loginApiId));
 			return "forward:main.do";
-		}else if(companyService.companyDetail(naverId) != null) {//이미 회사 유저인 경우 로그인
-			session.setAttribute("company", companyService.companyDetail(naverId));
+		}else if(companyService.companyDetail(loginApiId) != null) {//이미 회사 유저인 경우 로그인
+			session.setAttribute("company", companyService.companyDetail(loginApiId));
 			return "forward:main.do";
-		}else {// 네이버 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
-			model.addAttribute("naverId",naverId);
+		}else {// API 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
+			model.addAttribute("loginApiId",loginApiId);
 		}
 		return "forward:join.do";
 	}

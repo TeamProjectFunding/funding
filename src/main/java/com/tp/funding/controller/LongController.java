@@ -78,4 +78,10 @@ public class LongController {
 		return "message/userPickResult";
 	}
 	
+	@RequestMapping(value = "kakaoLogin")
+	public String kakaoLogin(Model model) {
+		System.out.println("카카오 로그인 들어옴");
+		return "loginApi/kakaoLogin";
+	}
+	
 }	
