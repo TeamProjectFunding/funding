@@ -88,7 +88,7 @@
 				<h1>OPEN FUNDING</h1>
 				<h4>Introduce your story and meet investors and supporters</h4>
 				<div id="buttonWrap">
-					<a href="#none" class="button">Do it</a>
+					<a href="fundingApplyForm.do" class="button">Do it</a>
 				</div>
 			</div>
 			<ul class="bannerList">

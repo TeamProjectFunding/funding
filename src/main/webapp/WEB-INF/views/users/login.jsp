@@ -27,10 +27,10 @@
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="button" value="NAVER" class="button naverButton">
-							<div id="naver_id_login"></div>
-							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton">
 							<input type="submit" value="FIND ID/PW" class="button">
+							<input type="button" value="NAVER" class="button naverButton">
+							<div id="naver_id_login" style="display: none"></div>
+							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton" style="background-color: #FFE500">
 						</th>
 					</tr>
 					
@@ -71,7 +71,9 @@
 </script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 <script>
-
+	$('.naverButton').click(function(){
+		$('#naver_id_login_anchor').click();
+	});
      var naver_id_login = new naver_id_login("LsBPexGeKhecQjzWoxFD", "http://localhost:8181/funding/naverCallback.do");
      var state = naver_id_login.getUniqState();
      naver_id_login.setButton("white", 2,40);
