@@ -72,7 +72,7 @@
 					</li>
 				</ul>
 				 <div id="buttonWrap">
-					<a href="fundingStep1.do" class="button">FUNDING</a>
+					<a href="fundingStep1.do?fundingCode=${param.fundingCode }" class="button">FUNDING</a>
 					<c:if test="${empty sessionScope.user && empty sessionScope.company }">
 					<a href="#none" class="button" id="userNotPickDo">♡</a>
 					</c:if>

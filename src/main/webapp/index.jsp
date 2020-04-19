@@ -12,7 +12,9 @@
 <link href="${conPath}/css/common.css" rel="stylesheet">
 </head>
 <body>
+	  	<!-- jsp:forward page="main.do" / -->
 	  	<jsp:forward page="main.do" />
+	
 </body>
 </html>
 

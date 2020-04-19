@@ -22,35 +22,44 @@
 			<table>
 				<tr>
 					<th><img src="" alt="companyProfie"></th>
-					<td><span>??????grade있던자리</span> ${company.companyName }</td>
+					<td><span>GRADE</span> companyName</td>
 				</tr>
 				<tr>
 					<th>ID :</th>
-					<td>${company.companyId}</td>
+					<td>COMPANYID</td>
 				</tr>
 				<tr>
 					<th>BUSINESS NUMBER</th>
-					<td>${company.companyBusinessNumber}</td>
+					<td>000-0000-0000</td>
 				</tr>
 				<tr>
 					<th>PHONE :</th>
-					<td>${company.companyPhone}</td>
+					<td>000-0000-0000</td>
 				</tr>
 				<tr>
 					<th>ADDRESS :</th>
-					<td>${company.companyAddressBasic}&nbsp;${company.companyAddressDetail }</td>
+					<td>xx도 xx시 xx동</td>
 				</tr>
 				<tr>
+					<th>PHONE :</th>
+					<td>000-0000-0000</td>
+				</tr>
+				
+				<tr>
 					<th>BANK :</th>
-					<td>${company.companyBankName}</td>
+					<td>BANKNAME</td>
 				</tr>
 				<tr>
 					<th>ACCOUNT NUMBER :</th>
-					<td>${company.companyAccountNumber }</td>
+					<td>00-0000-0000-000</td>
+				</tr>
+				<tr>
+					<th>ADVERTISING RECEIVED :</th>
+					<td>[PHONE] O [EMAIL] X </td>
 				</tr>
 				<tr>
 					<th colspan="2" id="buttomWrap">
-						<input type="button" value="DELETE" class="button" onclick="location.href='adminCompanyOutSite.do?companyId=${company.companyId}'">
+						<input type="button" value="DELETE" class="button">
 					</th>
 				</tr>
 			</table>

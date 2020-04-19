@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link href="${conPath}/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,54 +19,46 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="userViewWrap">
 			<h1>USERS INFOMATION</h1>
-			 <table>
+			<table>
 				<tr>
-					<th><img src="${conPath}/images/Profile/${user.userProfileImage}" alt="userProfie"></th>
-					<td><span>${user.userGradeName}</span> ${user.userName}</td>
+					<th><img src="" alt="userProfie"></th>
+					<td><span>GRADE</span> userName</td>
 				</tr>
 				<tr>
 					<th>ID :</th>
-					<td>${user.userId}</td>
+					<td>USERID</td>
 				</tr>
 				<tr>
 					<th>PHONE :</th>
-					<td>${user.userPhone}</td>
+					<td>000-0000-0000</td>
 				</tr>
 				<tr>
 					<th>ADDRESS :</th>
-					<td>${user.userAddressBasic}&nbsp;${user.userAddressDetail} </td>
+					<td>xx도 xx시 xx동</td>
+				</tr>
+				<tr>
+					<th>PHONE :</th>
+					<td>000-0000-0000</td>
 				</tr>
 				<tr>
 					<th>BIRTH DAY :</th>
-					<td>${user.userBirthday} </td>
+					<td>1987-03-16</td>
 				</tr>
 				<tr>
 					<th>BANK :</th>
-					<td>${user.userBankName}</td>
+					<td>BANKNAME</td>
 				</tr>
 				<tr>
 					<th>ACCOUNT NUMBER :</th>
-					<td>${user.userAccountNumber}</td>
+					<td>00-0000-0000-000</td>
 				</tr>
 				<tr>
 					<th>ADVERTISING RECEIVED :</th>
-					<td><c:if test="${user.userAdPhone eq 1}"> 
-							 전화광고 동의
-							</c:if>  
-							<c:if test="${user.userAdPhone eq 0}"> 
-							 전화광고 비동의
-							</c:if>,
-							<c:if test="${user.userAdEmail eq 1}"> 
-							 이메일수신 동의
-							</c:if>  
-							<c:if test="${user.userAdEmail eq 0}"> 
-							 이메일수신 비동의
-							</c:if>
-						</td>
+					<td>[PHONE] O [EMAIL] X </td>
 				</tr>
 				<tr>
 					<th colspan="2" id="buttomWrap">
-						<input type="button" class="button" value="DELETE" onclick="location.href='${conPath}/adminUserOutSite.do?userId=${user.userId}'">
+						<input type="button" value="DELETE" class="button">
 					</th>
 				</tr>
 			</table>

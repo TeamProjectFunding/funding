@@ -39,7 +39,17 @@
 						<li class="deadline">deadline after ${endDate-nowDate } days</li>
 					</ul>
 				</div>
+				
 			</c:forEach>
+			<div class="paging">
+					<a href="" class="prev">PREV</a>
+					<a href="" class="current">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a href="" class="next">NEXT</a> 
+				</div>
 
 		</section>
 	</div>

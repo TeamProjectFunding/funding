@@ -14,9 +14,9 @@ public interface UsersService {
 	public Users userDetail(String userId);
 	public int userInfoModify(Users user);
 	public int userOutSite(String userId);
-	public int userAccountModify(Users user);
-	public int userBalanceModify(Users user);
+	public int userAccountModify(String userId,String userBankName,String userAccountNumber);
+	public int userBalanceModify(String userId,int changeMoneyAmount);
 	public int userGradeUp(String userId);
-	public int userInvestmentAmountModify(String userId);
-	public int userInterestAmountModify(String userId);
+	public int userInvestmentAmountModify(String userId,int changeMoneyAmount);
+	public int userInterestAmountModify(String userId,int changeMoneyAmount);
 }

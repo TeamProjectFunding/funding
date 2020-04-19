@@ -1,5 +1,7 @@
 package com.tp.funding.controller;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import com.tp.funding.dto.Users;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.UserPickService;
+import com.tp.funding.service.UsersService;
 
 @Controller
 public class LongController {
@@ -21,7 +24,8 @@ public class LongController {
 	private FundingDetailService fundingDetailService;
 	@Autowired
 	private UserPickService userPickService;
-	
+	@Autowired
+	private UsersService usersService;
 	
 	
 	//펀드 리스트
@@ -80,8 +84,23 @@ public class LongController {
 	
 	@RequestMapping(value = "kakaoLogin")
 	public String kakaoLogin(Model model) {
-		System.out.println("카카오 로그인 들어옴");
 		return "loginApi/kakaoLogin";
 	}
 	
+	
+	@RequestMapping(value = "userInvestment.do")
+	public String userInvestment(Model model,String userId,int fundingCode,Date fundingTargetDate,int fundingAmount) {
+		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+		fundingGoodsDetail.setUserId(userId);
+		fundingGoodsDetail.setFundingCode(fundingCode);
+		fundingGoodsDetail.setFundingTargetDate(fundingTargetDate);
+		fundingGoodsDetail.setFundingAmount(fundingAmount);
+		//펀딩디테일 추가
+		fundingDetailService.fundingGoodsDetailWrite(fundingGoodsDetail);
+		usersService.userBalanceModify(userId,fundingAmount*-1); //유저 계좌잔액 감소
+		usersService.userInvestmentAmountModify(userId,fundingAmount); //유저 누적투자금 증가
+		fundingGoodsService.fundingBalancePlus(fundingCode, fundingAmount); //펀딩상품 계좌에 금액증가 
+		fundingGoodsService.fundingTargetRateModify(fundingCode);
+		return "funding/fundingResult";
+	}
 }	

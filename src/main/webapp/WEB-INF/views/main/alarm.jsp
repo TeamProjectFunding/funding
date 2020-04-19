@@ -20,6 +20,10 @@
 				$('.closeButton').click(function(){
 					$('.popupWrap').slideUp();
 				});
+			
+				$('.alarmList').click(function(){
+					$(this).addClass('read');
+				});
 			});
 		</script>
 		<div id="contentWrap">

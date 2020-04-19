@@ -15,39 +15,32 @@
 
 </head>
 <body>
-	<jsp:include page="../adminMenu.jsp"/>
-	<div id="contentWrap" class="adminMainWrap">
-		<section id="userListWrap">
-			<h1>COMPANY LIST</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="userName" placeholder="기업명을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
+	<jsp:include page="../main/header.jsp" />
+	<div id="contentWrap" class="goodsWrap">
+		<section class="goodsViewWrap newsViewWrap">
+			<h1>GOODS NEWS</h1>
+			
 			<table>
 				<tr>
-					<th>GRADE</th>
-					<th>ID</th>
-					<th>NAME</th>
-					<th>PHONE</th>
-					<th>ADDRESS</th>
-					<th>JOIN DATE</th>
+					<th class="newsTitle">GOODS NEWS TITLE <span>2020-04-17</span></th>
 				</tr>
-				<tr class="userInfo">
-					<td>COMPANYGRADE</td>
-					<td><a href="${conPath }/adminCompanyView.do">COMPANYID</a></td>
-					<td>COMPANYNAME</td>
-					<td>COMPANYPHONE</td>
-					<td>COMPANYADDRESS</td>
-					<td>COMPANYJOINDATE</td>
+				<tr>
+					<td class="fundingTitle">FUNDING TITLE</td>
+				</tr>
+				<tr>
+					<td class="newsContent">
+						<img src="" alt="newsImages">
+					 	도산함 
+					</td>
+				</tr>
+				<tr>
+					<th id="buttonWrap">
+						<button class="button" onClick="history.back()">BACK</button>
+					</th>
 				</tr>
 			</table>
 		</section>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

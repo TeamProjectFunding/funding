@@ -131,15 +131,6 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userOutSite(userId);
 	}
 
-	@Override
-	public int userAccountModify(Users user) {
-		return userDao.userAccountModify(user);
-	}
-
-	@Override
-	public int userBalanceModify(Users user) {
-		return userDao.userBalanceModify(user);
-	}
 
 	@Override
 	public int userGradeUp(String userId) {
@@ -147,13 +138,36 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public int userInvestmentAmountModify(String userId) {
+	public int userBalanceModify(String userId, int changeMoneyAmount) {
+		Users user = new Users();
+		user.setUserId(userId);
+		user.setChangeMoneyAmount(changeMoneyAmount);
+		return userDao.userBalanceModify(user);
+	}
+
+	@Override
+	public int userInvestmentAmountModify(String userId, int changeMoneyAmount) {
+		Users user = new Users();
+		user.setUserId(userId);
+		user.setChangeMoneyAmount(changeMoneyAmount);
 		return userDao.userInvestmentAmountModify(userId);
 	}
 
 	@Override
-	public int userInterestAmountModify(String userId) {
+	public int userInterestAmountModify(String userId, int changeMoneyAmount) {
+		Users user = new Users();
+		user.setUserId(userId);
+		user.setChangeMoneyAmount(changeMoneyAmount);
 		return userDao.userInterestAmountModify(userId);
+	}
+
+	@Override
+	public int userAccountModify(String userId, String userBankName, String userAccountNumber) {
+		Users user = new Users();
+		user.setUserId(userId);
+		user.setUserBankName(userBankName);
+		user.setUserAccountNumber(userAccountNumber);
+		return userDao.userAccountModify(user);
 	}
 
 

@@ -55,26 +55,40 @@
 		<div id="goodsViewContentWrap" class="newsWrap">
 			<h3>새소식</h3>
 			<div class="newsListWrap">
+				
 				<ul class="newsList">
-					<li class="newsTitle">newsTitle</li>
+					<li class="newsTitle"><a href="goodsNewsView.do">newsTitle</a></li>
 					<li>fundingTitle <span>2020.04.10</span></li>
 				</ul>
 				<ul class="newsList">
-					<li class="newsTitle">newsTitle</li>
+					<li class="newsTitle"><a href="">newsTitle</a></li>
 					<li>fundingTitle <span>2020.04.10</span></li>
 				</ul>
 				<ul class="newsList">
-					<li class="newsTitle">newsTitle</li>
+					<li class="newsTitle"><a href="">newsTitle</a></li>
 					<li>fundingTitle <span>2020.04.10</span></li>
 				</ul>
 				<ul class="newsList">
-					<li class="newsTitle">newsTitle</li>
+					<li class="newsTitle"><a href="">newsTitle</a></li>
 					<li>fundingTitle <span>2020.04.10</span></li>
 				</ul>
 				<ul class="newsList">
-					<li class="newsTitle">newsTitle</li>
-					<li >fundingTitle <span>2020.04.10</span></li>
+					<li class="newsTitle"><a href="">newsTitle</a></li>
+					<li>fundingTitle <span>2020.04.10</span></li>
 				</ul>
+				<ul class="newsList">
+					<li class="newsTitle"><a href="">newsTitle</a></li>
+					<li>fundingTitle <span>2020.04.10</span></li>
+				</ul>
+			</div>
+			<div class="paging">
+					<a href="" class="prev">PREV</a>
+					<a href="" class="current">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a href="" class="next">NEXT</a> 
 			</div>
 		</div>
 	</section>

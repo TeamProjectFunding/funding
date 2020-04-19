@@ -37,7 +37,9 @@ INSERT INTO Users VALUES ('user11','123','profile.jpg','전일환','010-4898-884
 INSERT INTO Users VALUES ('user12','123','profile.jpg','아이유','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
 INSERT INTO Users VALUES ('kha0213@naver.com','123','profile.jpg','아이유','010-4898-8848','서울시','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+INSERT INTO Users VALUES ('kyl123hanmir@hanmir.com','123','profile.jpg','아이유','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,1,'펀딩상품','펀딩상품설명','fundingProduct_01.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_02.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com2');
 INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상품설명','fundingProduct_03.jpeg','상품이미지상세','펀딩설명','펀딩은행명','예금주','계좌',1000,5000,99,SYSDATE,'2020-05-09','2020-10-10',30,12,1,200,1,'admin','com3');

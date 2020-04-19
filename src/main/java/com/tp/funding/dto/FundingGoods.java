@@ -28,6 +28,9 @@ public class FundingGoods {
 	private String adminId;                     
 	private String companyId;     
 	
+	
+	//누적 투자금,누적 이자금, 계좌 잔액+or
+	private int changeMoneyAmount;
 	private int commentCount; //코멘트 갯수
 	//paging
 	private int startRow;
@@ -37,6 +40,13 @@ public class FundingGoods {
 	private String companyProfileImage;    
 	private String companyIntroduction;     
 	private String companyName;
+	
+	public int getChangeMoneyAmount() {
+		return changeMoneyAmount;
+	}
+	public void setChangeMoneyAmount(int changeMoneyAmount) {
+		this.changeMoneyAmount = changeMoneyAmount;
+	}
 	public int getFundingCode() {
 		return fundingCode;
 	}

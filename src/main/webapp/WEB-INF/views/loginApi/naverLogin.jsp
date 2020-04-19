@@ -19,10 +19,10 @@
 		// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 		function naverSignInCallback() {
 			var email = naver_id_login.getProfileData('email'); 
-			function goNaverLogin(id){
+			function goNaverLogin(email){
 				opener.location.href='${conPath}/loginApi.do?loginApiId='+email;
 			}
-			goNaverLogin(id);
+			goNaverLogin(email);
 			window.close();
 		}
 	</script>

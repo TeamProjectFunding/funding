@@ -87,11 +87,7 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.fundingPeopleCountUp(fundingCode);
 	}
 
-	@Override
-	public int fundingBalancePlus(FundingGoods fundingGoods) {
-		return fundingGoodsDao.fundingBalancePlus(fundingGoods);
-	}
-
+	
 	@Override
 	public int fundingTargetRateModify(int fundingCode) {
 		return fundingGoodsDao.fundingTargetRateModify(fundingCode);
@@ -130,6 +126,14 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	@Override
 	public List<FundingGoods> fundingDeadlineList() {
 		return fundingGoodsDao.fundingDeadlineList();
+	}
+
+	@Override
+	public int fundingBalancePlus(int fundingCode, int changeAccountBalance) {
+		FundingGoods fundingGoods = new FundingGoods();
+		fundingGoods.setFundingCode(fundingCode);
+		fundingGoods.setChangeMoneyAmount(changeAccountBalance);
+		return fundingGoodsDao.fundingBalancePlus(fundingGoods);
 	}
 
 }

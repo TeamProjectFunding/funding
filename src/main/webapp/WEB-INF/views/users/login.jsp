@@ -15,30 +15,26 @@
 	<div id="contentWrap" class="userWrap">
 		<section class="loginWrap">
 			<h1>LOG-IN</h1>
-			<form action="${conPath}/login.do" method="post">
+			<form action="" method="post">
 				<table>
 					<tr>
-						<td><input type="text" name="id" placeholder="아이디를 입력하세요" value="${param.userId}${param.companyId}" required="required"></td>
+						<td><input type="text" name="id" placeholder="아이디를 입려하세요"></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요" required="required"></td>
+						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></td>
 					</tr>
-					<tr>					
+					<tr>
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<!-- 영롱 네이버로그인 -->
-							<div id="naver_id_login"><a href="${url}" class="button naverButton">NAVER</a></div>
-							<!-- 영롱 카카오로그인 -->
+							<input type="button" value="NAVER" class="button naverButton">
+							<div id="naver_id_login"></div>
 							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton">
-							
 							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
-
 					</tr>
-				</table>
-						  
 					
+				</table>
 			</form>
 		</section>
 	</div>
