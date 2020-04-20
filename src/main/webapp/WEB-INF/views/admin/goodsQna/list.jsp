@@ -33,28 +33,42 @@
 				<tr>
 					<th>NO</th>
 					<th>GOODS TITLE</th>
-					<th>TITLE</th>
-					<th>WRITER</th>
+					<th>ExistReply</th>
 					<th>DATE</th>
-					<th>HIT</th>
+					<th>USERID</th>
 				</tr>
+				<c:forEach var="fundingQuestion" items="${fundingQuestionList }">
 				<tr class="userInfo">
-					<td>Q&A NUMBER</td>
-					<td>GOODS TITLE</td>
-					<td><a href="${conPath }/adminQnaView.do">QNA TITLE</a></td>
-					<td>WRITER</td>
-					<td>2020-04-19</td>
-					<td>0</td>
+					<td>${fundingQuestion.fundingQuestionNumber }</td>
+					<td><a href="${conPath }/adminQnaView.do?fundingQuestionNumber=${fundingQuestion.fundingQuestionNumber}">${fundingQuestion.fundingQuestionTitle}</a></td>
+					<td>
+						<c:if test="${fundingQuestion.fundingQuestionExistReply==0}">
+						답글 없음
+						</c:if>
+						<c:if test="${fundingQuestion.fundingQuestionExistReply==1}">
+						답글 있음
+						</c:if>
+					</td>
+					<td>${fundingQuestion.fundingQuestionDate }</td>
+					<td>${fundingQuestion.userId }</td>
 				</tr>
+				</c:forEach>
 			</table>
 			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/adminGoodsQnaList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/adminGoodsQnaList.do?pageNum=${i}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/adminGoodsQnaList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				</c:if>
 			</div>
 		</section>
 	</div>

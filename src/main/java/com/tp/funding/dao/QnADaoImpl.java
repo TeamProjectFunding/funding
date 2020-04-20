@@ -41,4 +41,9 @@ public class QnADaoImpl implements QnADao {
 		return sessionTemplate.selectList("qnAAdminList");
 	}
 
+	@Override
+	public int totQnA() {
+		return sessionTemplate.selectOne("totQnA");
+	}
+
 }

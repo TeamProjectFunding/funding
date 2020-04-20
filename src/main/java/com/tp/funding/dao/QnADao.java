@@ -11,4 +11,5 @@ public interface QnADao {
 	public List<QnA> qnAList(QnA qnA);
 	public int qnAHitUp(int qnANumber);
 	public List<QnA> qnAAdminList();
+	public int totQnA();
 }

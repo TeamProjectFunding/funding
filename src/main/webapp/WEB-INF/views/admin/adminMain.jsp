@@ -114,116 +114,42 @@
 			<div class="dashBoard">
 				<h3>Q&A</h3>
 				<div class="dashBoardList">
+				<c:forEach var="qna" items="${qnAAdminList}">
 					<ul>
-						<li><a href="#none">Q&ATitle</a><span>witerName 2020.04.14</span></li>
+						<li><a href="#none">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId} ${qna.qnADate}</span></li>
 						<li id="buttonWrap">
 							<a href="#none" class="button">답변</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
+				</c:forEach>
 				</div>
 			</div>
 			<div class="dashBoard">
 				<h3>이벤트</h3>
 				<div class="dashBoardList">
+				<c:forEach var="event" items="${eventAllList}">
 					<ul>
-						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">${event.eventTilte}</a><span>${event.eventStartDate}</span></li>
 						<li id="buttonWrap">
 							<a href="${conPath }/eventClose.do" class="button">마감</a>
 							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/eventClose.do" class="button">마감</a>
-							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/eventClose.do" class="button">마감</a>
-							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/eventClose.do" class="button">마감</a>
-							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/eventClose.do" class="button">마감</a>
-							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
-						</li>
-					</ul>
+				</c:forEach>
 				</div>
 			</div>
 			<div class="dashBoard">
 				<h3>공지</h3>
 				<div class="dashBoardList">
+				<c:forEach var="notice" items="${noticeList}">
 					<ul>
-						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">${notice.noticeTilte}</a><span>${notice.noticeDate}</span></li>
 						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeModify.do?${notice.noticeNumber}" class="button">수정</a>
 							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
-						</li>
-					</ul>
+				</c:forEach>
 				</div>
 			</div>
 		</div>

@@ -21,45 +21,33 @@
 			<h1>COMPANY INFOMATION</h1>
 			<table>
 				<tr>
-					<th><img src="" alt="companyProfie"></th>
-					<td><span>GRADE</span> companyName</td>
+					<th><img src="${conPath }/images/${company.companyProfileImage}" alt="companyProfie"></th>
+					<td><span>COMPANYBUSINESSNUMBER</span>${company.companyName }</td>
 				</tr>
 				<tr>
 					<th>ID :</th>
-					<td>COMPANYID</td>
+					<td>${company.companyId }</td>
 				</tr>
 				<tr>
 					<th>BUSINESS NUMBER</th>
-					<td>000-0000-0000</td>
-				</tr>
-				<tr>
-					<th>PHONE :</th>
-					<td>000-0000-0000</td>
+					<td>${company.companyBusinessNumber}</td>
 				</tr>
 				<tr>
 					<th>ADDRESS :</th>
-					<td>xx도 xx시 xx동</td>
+					<td>${company.companyAddressBasic }&nbsp;${company.companyAddressDetail }</td>
 				</tr>
-				<tr>
-					<th>PHONE :</th>
-					<td>000-0000-0000</td>
-				</tr>
-				
 				<tr>
 					<th>BANK :</th>
-					<td>BANKNAME</td>
+					<td>${company.companyBankName }</td>
 				</tr>
 				<tr>
 					<th>ACCOUNT NUMBER :</th>
-					<td>00-0000-0000-000</td>
-				</tr>
-				<tr>
-					<th>ADVERTISING RECEIVED :</th>
-					<td>[PHONE] O [EMAIL] X </td>
+					<td>${company.companyAccountNumber }</td>
 				</tr>
 				<tr>
 					<th colspan="2" id="buttomWrap">
-						<input type="button" value="DELETE" class="button">
+						<input type="button" value="DELETE" class="button"
+						onclick="location.href='adminCompanyOutSite.do?companyId=${company.companyId}'">
 					</th>
 				</tr>
 			</table>

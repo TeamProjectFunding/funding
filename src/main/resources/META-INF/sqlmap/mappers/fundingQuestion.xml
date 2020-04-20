@@ -20,5 +20,7 @@ SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE
 INSERT INTO FundingQuestion VALUES 
 	(FUNDINGQUESTIONNUMBER.nextval,#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
 </insert>
-
+<select id="totfundingQuestion" resultType="int">
+SELECT COUNT(*) FROM FUNDINGQUESTION
+</select>
 </mapper>
