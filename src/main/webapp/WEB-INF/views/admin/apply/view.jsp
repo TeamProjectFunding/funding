@@ -19,27 +19,27 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="applyViewWrap">
 			<h1>APPLY</h1>
-			<form action="adminApply.do" method="post" enctype="">
+			<form action="adminApply.do?fundingCode=${fundingDetail.fundingCode}">
 				<table>
 					<tr>
 						<th>COMPANY NAME</th>
-						<td>COMPANTNAME</td>
+						<td>${fundingDetail.companyName}</td>
 					</tr>
 					<tr>
 						<th>GOODS NAME</th>
-						<td>GOODSNAME</td>
+						<td>${fundingDetail.fundingName}</td>
 					</tr>
 					<tr>
 						<th>RECRUITMENT AMOUNT</th>
-						<td>100,000,000 won</td>
+						<td><fmt:formatNumber value="${fundingDetail.fundingTargetAmount}" type="currency" currencySymbol="￦"/></td>
 					</tr>
 					<tr>
 						<th>APPLICATION PERIOD</th>
-						<td>2020-04-19 ~ 2020-07-19</td>
+						<td>${fundingDetail.fundingStartDate} ~ ${fundingDetail.fundingTargetDate}</td>
 					</tr>
 					<tr>
 						<th>COMPANY INTRODUCTION</th>
-						<td>COMPANTINTRODUCTION HI~</td>
+						<td>${fundingDetail.companyIntroduction}</td>
 					</tr>
 					<tr>
 						<th>GOODS THUMNAIL</th>
@@ -53,7 +53,7 @@
 				<table class="reward">
 					<tr>
 						<th>REWARD NAME</th>
-						<td>REWARDNAME</td>
+						<td>${fundingDetail.fundingName}</td>
 					</tr>
 					<tr>
 						<th>REWARD CONDITION</th>
@@ -68,7 +68,7 @@
 					<tr>
 						<th id="buttonWrap" colspan="2">
 							<input type="submit" value="APPLY" class="button">
-							<input type="button" value="REJECK" class="button" onClick="location.href='${conPath}/adminApplyRejeck.do'">
+							<input type="button" value="REJECK" class="button" onClick="location.href='${conPath}/adminReject.do?fundingCode=${fundingDetail.fundingCode}'">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
 						</th>
 					</tr>

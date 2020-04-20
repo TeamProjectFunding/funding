@@ -31,7 +31,7 @@
 					<div class="dashBoardList">
 						<c:forEach var="fundingReadyList" items="${fundingReadyList}">
 							<ul>
-								<li><a href="${conPath}/adminApplyViewList.do">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
+								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
 								<li id="buttonWrap">
 									<a href="${conPath}/adminApply.do?fundingCode=${fundingReadyList.fundingCode}" class="button">승인</a>
 									<a href="${conPath }/adminReject.do?fundingCode=${fundingReadyList.fundingCode}" class="button">반려</a>

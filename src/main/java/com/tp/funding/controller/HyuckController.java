@@ -181,12 +181,22 @@ public class HyuckController {
 		return "forward:adminMain.do";
 	}
 	
+	@RequestMapping(value="adminApplyView")
+	public String adminApplyView(int fundingCode, Model model) {
+		
+		model.addAttribute("fundingDetail", fundingGoodsService.fundingDetail(fundingCode));
+		
+		return "admin/apply/view";
+	}
+	
 	@RequestMapping(value="adminApplyViewList")
 	public String adminApplyViewList(FundingGoods fundingGoods, Model model) {		
 		
 				
 		return "admin/apply/view";
 	}
+	
+	
 	
 	
 

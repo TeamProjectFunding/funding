@@ -61,10 +61,10 @@ public class HomeController {
 		return "admin/apply/list";
 	}
 	//admin apply view
-	@RequestMapping(value="adminApplyView")
-	public String adminApplyView() {
-		return "admin/apply/view";
-	}
+//	@RequestMapping(value="adminApplyView")
+//	public String adminApplyView() {
+//		return "admin/apply/view";
+//	}
 	
 		
 	//관리자 게시판 
