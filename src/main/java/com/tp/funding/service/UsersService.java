@@ -19,4 +19,5 @@ public interface UsersService {
 	public int userGradeUp(String userId);
 	public int userInvestmentAmountModify(String userId,int changeMoneyAmount);
 	public int userInterestAmountModify(String userId,int changeMoneyAmount);
+	public int userTempPassword(String userId,String userPassword);
 }

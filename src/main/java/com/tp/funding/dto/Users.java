@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Users {
 	private String userId;              
-	private String userPassword ;       
+	private String userPassword;       
 	private String userProfileImage;      
 	private String userName;              
 	private String userPhone;             

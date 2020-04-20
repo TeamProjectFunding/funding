@@ -36,6 +36,9 @@ SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERI
 userAddressBasic=#{userAddressBasic}, userAddressDetail=#{userAddressDetail}, userBirthday=#{userBirthday},
 userAdPhone=#{userAdPhone}, userAdEmail=#{userAdEmail} WHERE USERID = #{userId}
 	</update>
+	<update id="userTempPassword" parameterType="Users">
+		UPDATE USERS SET userPassword = #{userPassword} WHERE USERID = #{userId}
+	</update>
 	<update id="userOutSite" parameterType="String">
 		UPDATE USERS SET userOutSite = 1 WHERE USERID = #{userId}
 	</update>

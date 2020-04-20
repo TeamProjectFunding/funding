@@ -72,6 +72,11 @@ public class UsersDaoImpl implements UsersDao{
 	public int userInterestAmountModify(String userId) {
 		return sessionTemplate.update("userInterestAmountModify", userId);
 	}
+
+	@Override
+	public int userTempPassword(Users user) {
+		return sessionTemplate.update("userTempPassword", user);
+	}
 	
 	
 }
