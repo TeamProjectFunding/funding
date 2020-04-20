@@ -18,12 +18,12 @@
 	<jsp:include page="../adminMenu.jsp"/>
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="GoodsWrap">
-			<h1>GOODS LIST</h1>
+			<h1>APPLY LIST</h1>
 			<form action="">
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="userName" placeholder="상품을 입력하세요.">
+							<input type ="text" name="userName" placeholder="기업명을 입력하세요.">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
@@ -32,61 +32,43 @@
 			<div class="goods">
 				<ul>
 					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+						<a href='adminApplyView.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
 					</li>
 					<li class="companyName">company name</li>
 					<li class="goodsName">goods name</li>
 					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
 				</ul>
 			</div>
 			<div class="goods">
 				<ul>
 					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+						<a href='adminApplyView.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
 					</li>
 					<li class="companyName">company name</li>
 					<li class="goodsName">goods name</li>
 					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
 				</ul>
 			</div>
 			<div class="goods">
 				<ul>
 					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+						<a href='adminApplyView.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
 					</li>
 					<li class="companyName">company name</li>
 					<li class="goodsName">goods name</li>
 					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
 				</ul>
 			</div>
 			<div class="goods">
 				<ul>
 					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+						<a href='adminApplyView.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
 					</li>
 					<li class="companyName">company name</li>
 					<li class="goodsName">goods name</li>
 					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
 				</ul>
 			</div>
-			
-			
 			<div class="paging">
 				<a href="" class="prev">PREV</a>
 				<a href="" class="current">1</a>
@@ -97,7 +79,6 @@
 				<a href="" class="next">NEXT</a> 
 			</div>
 		</section>
-		</div>
 	</div>
 </body>
 </html>

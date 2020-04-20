@@ -35,6 +35,7 @@
 				</ul>
 				<div id="buttonWrap">
 					<a href="fundingStep1.do" class="button">FUNDING</a>
+					<a href="goodsQnaWirteForm.do" class="button">Q&A</a>
 					<a href="pick.do" class="button">♡</a>
 				</div>
 			</div>

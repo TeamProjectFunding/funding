@@ -9,24 +9,7 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-	$(function(){
-		$('.checkboxLabel').click(function(){
-			$(this).prev().click();
-		});
-		$('form').submit(function(event){
-			$('input[name="userAgree"]').each(function(index){  
-			    if(!$(this).is(":checked")){
-			    	alert('체크를 다 하셔야 됩니다.');
-			    	event.preventDefault();
-			    	return false;
-			    }
-			});
-
-
-		});
-	});
-</script>
+<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -41,12 +24,11 @@
 			
 			<h1>투자 위험 안내</h1>
 			<form action="fundingStep2.do">
-				<input type="hidden" name="fundingCode" value="${param.fundingCode }">
 				<table>
 					<tr>
 						<th>
-							<input type="checkbox" name="userAgree">
-							<p class="checkboxLabel">
+							<input type="checkbox" name="">
+							<p>
 								원금손실의 위험이 있습니다.
 							</p>
 						</th>
@@ -67,8 +49,8 @@
 					
 					<tr>
 						<th>
-							<input type="checkbox" name="userAgree">
-							<p class="checkboxLabel">
+							<input type="checkbox" name="">
+							<p>
 								환금성이 낮습니다.
 							</p>
 						</th>
@@ -88,8 +70,8 @@
 					
 					<tr>
 						<th>
-							<input type="checkbox" name="userAgree">
-							<p class="checkboxLabel">
+							<input type="checkbox" name="">
+							<p>
 								배당가능성이 낮습니다
 							</p>
 						</th>
@@ -106,8 +88,8 @@
 					
 					<tr>
 						<th>
-							<input type="checkbox" name="userAgree">
-							<p class="checkboxLabel">
+							<input type="checkbox" name="">
+							<p>
 								지분 희석이 발생할 수 있습니다
 							</p>
 						</th>
@@ -140,7 +122,7 @@
 					<tr >
 						<th id="buttonWrap">
 							<input type="submit" value="NEXT STEP" class="button">
-							<input type="button" value="BACK" class='button' onclick="history.back()">
+							<input type="button" value="BACK" class='button'>
 						</th>
 					</tr>
 				</table>

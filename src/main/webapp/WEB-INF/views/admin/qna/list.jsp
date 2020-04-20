@@ -15,6 +15,46 @@
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp"/>
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="boardListWrap">
+			<h1>Q&A LIST</h1>
+			<form action="">
+				<table>
+					<tr>
+						<th>
+							<input type ="text" name="userName" placeholder="제목을 입력하세요.">
+							<input type ="submit" value="SEARCH" class="button">
+						</th>
+					</tr>
+				</table>
+			</form>
+			<table>
+				<tr>
+					<th>NO</th>
+					<th>TITLE</th>
+					<th>WRITER</th>
+					<th>DATE</th>
+					<th>HIT</th>
+				</tr>
+				<tr class="userInfo">
+					<td>Q&A NUMBER</td>
+					<td><a href="${conPath }/adminQnaView.do">QNA TITLE</a></td>
+					<td>WRITER</td>
+					<td>2020-04-19</td>
+					<td>0</td>
+				</tr>
+			</table>
+			<div class="paging">
+				<a href="" class="prev">PREV</a>
+				<a href="" class="current">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="" class="next">NEXT</a> 
+			</div>
+		</section>
+	</div>
 </body>
 </html>

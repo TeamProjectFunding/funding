@@ -15,42 +15,28 @@
 <body>
 
 <header>
-	<c:if test="${not empty sessionScope.user}">
-		<p id="messageWrap">로그인 되었습니다</p>
-	</c:if>
-	<c:if test="${not empty sessionScope.company}">
-		<p id="messageWrap">로그인 되었습니다</p>
-	</c:if>	
-	
+	<p id="messageWrap">반갑습니다.</p>
+	<script>
+		$(function(){
+			$('#messageWrap').delay(1000).slideUp();
+		});
+	</script>
 	<div id="headerWrap">
 		<a href="main.do" class='headerLogo'>CROWD<br>FUND</a>
 		<div class='menuWrap'>
-			<ul class="util">				
+			<ul class="util">
+				<li><a href="adminLogin.do">ADMIN LOG-IN</a></li>
 				<li><a href="adminMain.do">ADMIN</a></li>
-								
-				<c:if test="${empty sessionScope.user && empty sessionScope.company}">
-					<li><a href="login.do">LOG-IN</a></li>
-					<li><a href="join.do">JOIN</a></li>
-				</c:if>				
-				
+				<li><a href="login.do">LOG-IN</a></li>
+				<li><a href="join.do">JOIN</a></li>
 				
 				<!-- login 
-            <li><a href="mypage.do" class="mypageButton"><img src="" alt="profile"><span>userName</span></a></li>
-            <li><a href="login.do">LOG-OUT</a></li>
-            -->
+				<li><a href="mypage.do" class="mypageButton"><img src="" alt="profile"><span>userName</span></a></li>
+				<li><a href="login.do">LOG-OUT</a></li>
+				-->
 				
-				<c:if test="${not empty sessionScope.user || not empty sessionScope.company }">
-					<li><a href="#" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile"></a></li>
-					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
-				</c:if>							
-				
-				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
-					<li><a href="#none" class="alarmButton">alarm<c:if test="${user.notificationCount >= 1}"><span class="alarm"></span></c:if></a></li>
-				</c:if>
-				<c:if test="${not empty sessionScope.company && empty sessionScope.user}">
-					<li><a href="#none" class="alarmButton">alarm<c:if test="${company.notificationCount >= 1 }"><span class="alarm"></span></c:if></a></li>
-				</c:if>
-					<li><a href="#none" class="searchButton"><!-- img src="" alt="search" -->search</a></li>
+				<li><a href="#none" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<span class="alarm"></span></a></li>
+				<li><a href="#none" class="searchButton"><!-- img src="" alt="search" -->search</a></li>
 			</ul>
 			<script>
 				$(function(){
@@ -75,8 +61,8 @@
 				});
 			</script>
 			<ul class="gnb">
-				<li><a href="fundList.do?category=fund">FUND</a></li>
-				<li><a href="fundList.do?category=reward">REWARD</a></li>
+				<li><a href="fundList.do">FUND</a></li>
+				<li><a href="rewardList.do">REWARD</a></li>
 				<li><a href="eventList.do">EVENT</a></li>
 				<li><a href="qnaList.do">Q&A</a></li>
 				<li><a href="noticeList.do">NOTICE</a></li>

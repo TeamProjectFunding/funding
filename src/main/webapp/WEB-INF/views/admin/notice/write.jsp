@@ -15,6 +15,40 @@
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp" />
+	
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="applyWrap">
+			<h1>NOTICE WRITE</h1>
+			<form action="noticeWrite.do" method="post" >
+				<table>
+					<tr>
+						<th>TITLE</th>
+						<td><input type="text" name="noticeTitle" placeholder="타이틀을 입력하세요." required="required"></td>
+					</tr>
+					<tr>
+						<th>WRITER</th>
+						<td>ADMIN</td>
+					</tr>
+					<tr>
+						<th>CONTENT</th>
+						<td><textarea name="noticeContent"></textarea></td>
+					</tr>
+					
+				</table>
+				
+				<table>
+					<tr>
+						<th id="buttonWrap" colspan="2">
+							<input type="submit" value="WRITE" class="button">
+							<input type="reset" value="RESET" class="button">
+							<input type="button" value="BACK" class="button" onClick="history.back()">
+						</th>
+					</tr>
+				</table>
+				
+			</form>
+		</section>
+	</div>
 </body>
 </html>

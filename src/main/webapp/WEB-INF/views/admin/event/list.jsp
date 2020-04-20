@@ -15,6 +15,48 @@
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp"/>
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="userListWrap">
+			<h1>COMPANY LIST</h1>
+			<form action="">
+				<table>
+					<tr>
+						<th>
+							<input type ="text" name="userName" placeholder="기업명을 입력하세요.">
+							<input type ="submit" value="SEARCH" class="button">
+						</th>
+					</tr>
+				</table>
+			</form>
+			<table>
+				<tr>
+					<th>GRADE</th>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>PHONE</th>
+					<th>ADDRESS</th>
+					<th>JOIN DATE</th>
+				</tr>
+				<tr class="userInfo">
+					<td>COMPANYGRADE</td>
+					<td><a href="${conPath }/adminCompanyView.do">COMPANYID</a></td>
+					<td>COMPANYNAME</td>
+					<td>COMPANYPHONE</td>
+					<td>COMPANYADDRESS</td>
+					<td>COMPANYJOINDATE</td>
+				</tr>
+			</table>
+			<div class="paging">
+				<a href="" class="prev">PREV</a>
+				<a href="" class="current">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="" class="next">NEXT</a> 
+			</div>
+		</section>
+	</div>
 </body>
 </html>

@@ -23,38 +23,38 @@
 				<h3>투자신청내역</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
+							<a href="${conPath}/adminApply.do" class="button">승인</a>
+							<a href="${conPath }/adminReject.do" class="button">반려</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
+							<a href="${conPath}/adminApply.do" class="button">승인</a>
+							<a href="${conPath }/adminReject.do" class="button">반려</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
+							<a href="${conPath}/adminApply.do" class="button">승인</a>
+							<a href="${conPath }/adminReject.do" class="button">반려</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
+							<a href="${conPath}/adminApply.do" class="button">승인</a>
+							<a href="${conPath }/adminReject.do" class="button">반려</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">승인</a>
-							<a href="#none" class="button">반려</a>
+							<a href="${conPath}/adminApply.do" class="button">승인</a>
+							<a href="${conPath }/adminReject.do" class="button">반려</a>
 						</li>
 					</ul>
 				</div>
@@ -63,39 +63,33 @@
 				<h3>투자마감</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">goodsTitle</a><span>3일 남음</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
 				</div>
@@ -104,33 +98,33 @@
 				<h3>상품문의</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">[goodsTitle] questionTitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">[goodsTitle] questionTitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">[goodsTitle] questionTitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">[goodsTitle] questionTitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">[goodsTitle] questionTitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
 						</li>
 					</ul>
 				</div>
@@ -139,7 +133,7 @@
 				<h3>Q&A</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
+						<li><a href="#none">Q&ATitle</a><span>witerName 2020.04.14</span></li>
 						<li id="buttonWrap">
 							<a href="#none" class="button">답변</a>
 						</li>
@@ -174,38 +168,38 @@
 				<h3>이벤트</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-							<a href="#none" class="button">참여자</a>
+							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-							<a href="#none" class="button">참여자</a>
+							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-							<a href="#none" class="button">참여자</a>
+							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-							<a href="#none" class="button">참여자</a>
+							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">eventTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/eventView.do">eventTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">마감</a>
-							<a href="#none" class="button">참여자</a>
+							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>
 				</div>
@@ -214,38 +208,38 @@
 				<h3>공지</h3>
 				<div class="dashBoardList">
 					<ul>
-						<li><a href="#none">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">수정</a>
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">수정</a>
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">수정</a>
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">수정</a>
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#none">noticeTitle</a><span>2020.04.14</span></li>
+						<li><a href="${conPath }/noticeView.do">noticeTitle</a><span>2020.04.14</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">수정</a>
-							<a href="#none" class="button">마감</a>
+							<a href="${conPath }/noticeModify.do" class="button">수정</a>
+							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
 						</li>
 					</ul>
 				</div>

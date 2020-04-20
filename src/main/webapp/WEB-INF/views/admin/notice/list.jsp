@@ -15,6 +15,37 @@
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp"/>
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="boardListWrap">
+			<h1>NOTICE LIST</h1>
+			
+			<table>
+				<tr>
+					<th>NO</th>
+					<th>TITLE</th>
+					<th>WRITER</th>
+					<th>DATE</th>
+					<th>HIT</th>
+				</tr>
+				<tr class="boardInfo">
+					<td>1</td>
+					<td><a href="${conPath }/adminNoticeView.do">NOTICE TITLE</a></td>
+					<td>ADMIN</td>
+					<td>2020-04-19</td>
+					<td>0</td>
+				</tr>
+			</table>
+			<div class="paging">
+				<a href="" class="prev">PREV</a>
+				<a href="" class="current">1</a>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">5</a>
+				<a href="" class="next">NEXT</a> 
+			</div>
+		</section>
+	</div>
 </body>
 </html>

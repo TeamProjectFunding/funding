@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
-
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -27,10 +26,8 @@
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="submit" value="FIND ID/PW" class="button">
 							<input type="button" value="NAVER" class="button naverButton">
-							<div id="naver_id_login" style="display: none"></div>
-							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton" style="background-color: #FFE500">
+							<input type="submit" value="FIND ID/PW" class="button">
 						</th>
 					</tr>
 					
@@ -38,50 +35,6 @@
 			</form>
 		</section>
 	</div>
-	                
-<script src="${conPath }/js/kakao.js"></script>
-<script>
-	$(function(){
-		Kakao.init('955fa574fcf92290ccab03a97378fe35');
-		/* Kakao.Auth.authorize({
-				redirectUri: '${conPath}/WEB-INF/views/loginApi/kakaoLogin.jsp'
-		}); */
-		Kakao.Auth.createLoginButton({ 
-			container: '#kakaoLoginButton', 
-			success: function(authObj) {
-			      Kakao.API.request({
-			        url: '/v2/user/me',
-			        success: function(res) {
-			        	var email = res.kakao_account['email'];
-						location.href="${conPath}/loginApi.do?loginApiId="+email;
-					},
-			        fail: function(error) {
-			          alert(
-			            'login success, but failed to request user information: ' +
-			              JSON.stringify(error)
-			          )
-			        },
-			      })
-			    },
-			    fail: function(err) {
-			      alert('failed to login: ' + JSON.stringify(err))
-			    },
-			});
-	});
-</script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script>
-	$('.naverButton').click(function(){
-		$('#naver_id_login_anchor').click();
-	});
-     var naver_id_login = new naver_id_login("LsBPexGeKhecQjzWoxFD", "http://localhost:8181/funding/naverCallback.do");
-     var state = naver_id_login.getUniqState();
-     naver_id_login.setButton("white", 2,40);
-     naver_id_login.setDomain("http://127.0.0.1:8181/funding/login");
-     naver_id_login.setState(state);
-     naver_id_login.setPopup();
-     naver_id_login.init_naver_id_login();
-  </script>
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

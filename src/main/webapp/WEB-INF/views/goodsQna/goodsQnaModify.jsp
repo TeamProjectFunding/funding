@@ -8,18 +8,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link href="${conPath}/css/admin.css" rel="stylesheet">
+	<link href="${conPath}/css/common.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body>
-	<jsp:include page="../adminMenu.jsp" />
-	
-	<div id="contentWrap" class="adminMainWrap">
+	<jsp:include page="../main/header.jsp" />
+	<div id="contentWrap" class="fundingWrap">
 		<section id="applyWrap">
-			<h1>GOODS MODIFY</h1>
+			<h1>APPLY</h1>
 			<form action="fundingApply.do" method="post" enctype="">
 				<table>
 					<tr>
@@ -51,32 +50,42 @@
 						<td><input type="file" placeholder="투자설명서 업로드(image 파일)"></td>
 					</tr>
 				</table>
-				<table class="reward">
-					<tr>
-						<th>REWARD NAME</th>
-						<td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td>
-					</tr>
-					<tr>
-						<th>REWARD CONDITION</th>
-						<td><input type="number"> ~ <input type="number"></td>
-					</tr>
-					<tr>
-						<th>REWARD IMAGE</th>
-						<td><input type="file" name="rewardImage"></td>
-					</tr>
-				</table>
+				<div id="addReward">
+					
+				</div>
 				<table>
 					<tr>
 						<th id="buttonWrap" colspan="2">
-							<input type="submit" value="MODIFY" class="button">
+							<input type="submit" value="APPLY" class="button">
 							<input type="reset" value="RESET" class="button">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
+							<input type="button" class="button addRewardButton" value="REWARD+">
+							<input type="button" class="button deleteRewardButton" value="REWARD-">
 						</th>
 					</tr>
 				</table>
-				
+				<script>
+					$(function(){
+						var addReward = '<table class="reward">'
+											+'<tr><th></th></tr>'
+											+'<tr><th>REWARD NAME</th><td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>'
+											+'<tr><th>REWARD CONDITION</th><td><input type="number"> ~ <input type="number"></td></tr>'
+											+'<tr><th>REWARD IMAGE</th><td><input type="file" name="rewardImage"></td></tr>'
+										+'</table>';
+						$('.addRewardButton').click(function(){
+							$('#addReward').append(addReward);
+							$('.deleteRewardButton').fadeIn();
+						});
+						
+						$('.deleteRewardButton').click(function(){
+							$('#addReward >table').slideUp();
+							$('.deleteRewardButton').fadeOut();
+						});
+					});
+				</script>
 			</form>
 		</section>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

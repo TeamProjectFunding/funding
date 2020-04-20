@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="conPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,41 +17,38 @@
 				$('.closeButton').click(function(){
 					$('.popupWrap').slideUp();
 				});
-			
+				
 				$('.alarmList').click(function(){
 					$(this).addClass('read');
 				});
 			});
 		</script>
 		<div id="contentWrap">
-		<h1>${user.userId}${company.companyId}</h1>
 			<h1>알림</h1>
-			<h4>모든알림 : ${user.notificationCount}${company.notificationCount}</h4>
-			<c:if test="${not empty user && empty company}">
-				<div class="alarmListWrap">
-					
-					<c:forEach var="notification" items="${notificationUnReadUserList}">
-						<ul >
-							<li class="alarmContent">${notification.notificationContent}</li>
-							<li class="date">${notification.notificationDate}</li>
-						</ul>
-					</c:forEach>				
-				</div>
-			</c:if>	
-			
-			<%-- <h4>모든알림 ${company.notificationCount}</h4> --%>
-			<c:if test="${not empty company && empty user}">
-				<div class="alarmListWrap">
-					<c:forEach var="notification" items="${notificationUnReadCompanyList}">
-						<ul >
-							<li class="alarmContent">${notification.notificationContent}</li>
-							<li class="date">${notification.notificationDate}</li>
-						</ul>
-					</c:forEach>
-				</div>
-			</c:if>			
+			<h4>모든알림 10</h4>
+			<div class="alarmListWrap">
+				<ul class="alarmList">
+					<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
+					<li class="date">2020 -04-12 일요일 <a href="#" class="readButton">읽음</a></li>
+				</ul>
+				<ul class="alarmList">
+					<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
+					<li class="date">2020 -04-12 일요일 <a href="#" class="readButton">읽음</a></li>
+				</ul>
+				<ul class="alarmList">
+					<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
+					<li class="date">2020 -04-12 일요일 <a href="#" class="readButton">읽음</a></li>
+				</ul>
+				<ul class="alarmList">
+					<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
+					<li class="date">2020 -04-12 일요일 <a href="#" class="readButton">읽음</a></li>
+				</ul>
+				<ul class="alarmList">
+					<li class="alarmContent">투자회원 등록 심사가 완료되어 계좌가 발급 되었습니다.</li>
+					<li class="date">2020 -04-12 일요일 <a href="#" class="readButton">읽음</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	
 </body>
 </html>

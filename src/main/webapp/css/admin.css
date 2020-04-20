@@ -28,6 +28,10 @@ section{width:100%; float:left;}
 #contentWrap.adminLoginWrap td{padding:2%;}
 #contentWrap.adminLoginWrap td input{width:100%; padding:2%; text-align: center; border:1px solid #f7f7f7; font-size:12px;}
 
+.paging{ float:left; width:100%; line-height:150px; text-align: center;}
+.paging a{padding:2%;}
+.paging .current{color:#f1bf04;}
+
 /** menu **/
 aside{position:fixed; width:25%; min-width:300px; height:100%; left:0; top:0; padding:5px; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover; border-right: 1px solid #ffffff2e; z-index: 9999; }
 aside .headerLogo{float:left; width:100%; font-size:30px; line-height:30px; padding:10px; font-weight:bold; color:#fff; text-align: center;}
@@ -57,6 +61,36 @@ table #buttonWrap{background: none;}
 .adminMainWrap .userInfo{background: #fff; color:#131a23;}
 .adminMainWrap .userInfo:hover{background:#ccc;}
 
+/** admin goods **/
+
+/* list */
+.goods{width:45%; padding:2.5%; float:left;}
+.goods ul li {position:relative; width:100%; overflow: hidden; text-align: center; font-weight:bold; padding:1%;}
+.goods ul .thumnail{height:250px; cursor: pointer; padding:0;}
+.goods ul .thumnail img{width: 100%; height:100%; transition:.5s;  transform:scale(1);}
+.goods ul .thumnail:hover img{transform:scale(1.2); transition:.5s;}
+.goods ul .thumnail span{position:absolute; top:0; left:0; float:left;  padding:5px; color:#fff; background: #f1bf04;}
+.goods ul .companyName{color:#808080; font-size:14px;}
+.goods ul .goodsName{font-size: 20px; }
+.goods ul .deadline{font-size: 12px; color:#f1bf04; overflow: hidden;}
+
+/* modify*/
+#applyWrap input{ border:1px solid #e8e8e8; padding:2%;}
+#applyWrap input[type="text"],[type="number"],[type="file"]{width:70%;}
+#applyWrap input[type="date"]{width:34%;}
+#applyWrap textarea{padding:2%; width:70%; min-height:300px; border:1px solid #e8e8e8; height: }
+#applyWrap .reward{border-top:1px solid #e8e8e8;}
+#applyWrap .reward input[type="number"]{width:34%;}
+#applyWrap table #buttonWrap{float:none;}
+#applyWrap table .button{width:15%;}
+
+
+/* admin apply */
+#applyViewWrap{margin:50px 0 50px;}
+#applyWrap td{text-align: center;}
+#applyWrap th{ width:30%}
+#applyWrap .reward{border-top:1px solid #e8e8e8;}
+#applyWrap table .button{width:15%;}
 
 
 

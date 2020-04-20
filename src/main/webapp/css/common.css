@@ -107,7 +107,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .bannerList .noticeList li{width:90%; margin:0 5px 0; padding:1%; color:#fff;  line-height:50px; float:left;  font-size:12px; font-weight:bold; opacity: 1; border-bottom: 1px solid #1e2938; box-shadow: 0 0 0 #fff;}
 .bannerList .noticeList li:hover{color:#f1bf05; transition:.3s; box-shadow:-1px 1px 5px #fff;}
 .bannerList .noticeList li span{font-size: 10px; color:#ffffffb8;  float:right;}
-
+.bannerList .noticeList li  a{color:#fff;}
 /** user **/
 
 #contentWrap.userWrap{padding:10% 20%;  }
@@ -215,7 +215,25 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap #applyWrap table .deleteRewardButton{display:none;}
 #contentWrap.fundingWrap #applyWrap table .button{width:15%;}
 
+/** event **/
 
+.eventWrap .eventWrap{width:100%; height:auto; float: left;}
+.event{width:400px; padding:1%; float:left;}
+.event ul li {position:relative; width:100%; overflow: hidden; text-align: center; font-weight:bold; padding:1%;}
+.event ul .thumnail{height:250px; cursor: pointer; padding:0;}
+.event ul .thumnail img{width: 100%; height:100%; transition:.5s;  transform:scale(1);}
+.event ul .thumnail:hover img{transform:scale(1.2); transition:.5s;}
+.event ul .thumnail span{position:absolute; top:0; left:0; float:left;  padding:5px; color:#fff; background: #f1bf04;}
+.event ul .eventTitle{font-size: 20px; }
+.event ul .deadline{font-size: 12px; color:#f1bf04; overflow: hidden;}
+
+/** board **/
+/* list */
+.boardWrap {width:1000px;}
+.boardWrap table{text-align: center;}
+.boardWrap table th{padding:3%;}
+.boardWrap table th input[type="text"]{width:40%; padding:1%; border-bottom:1px solid #e8e8e8; text-align: center;}
+.boardWrap table td{padding:2%; border-bottom:1px solid #e8e8e8;}
 
 
 

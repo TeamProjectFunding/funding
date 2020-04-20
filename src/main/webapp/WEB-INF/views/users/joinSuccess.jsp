@@ -9,107 +9,88 @@
 <meta charset="UTF-8">
 <title>JOIN SUCCESS</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="userWrap">
 		<section class="joinSuccessWrap">
-		
-		<c:if test="${not empty userJoinResult}">
-			<script>
-				alert('${userJoinResult}');
-			</script>
-		</c:if>
-		
-		<c:if test="${not empty companyJoinResult}">
-			<script>
-				alert('${companyJoinResult}');
-			</script>
-		</c:if>
-		
-			
-			
-			<c:if test="${not empty user.userId}">	
 			
 				<!-- user join success -->
 				<table>
 					<tr>
-						<th colspan='2'>${user.userName}님 가입 성공하였습니다.</th>
+						<th colspan='2'>userName 님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="${conpath}/images/profile/${user.userProfileImage}" alt="userProfileImage"></td>
-					</tr>						
+						<td colspan='2'><img src="userProfileImage" alt="userProfileImage"></td>
+					</tr>
 					<tr>
 						<td>ID</td>
-						<td>${user.userId}</td>
+						<td>userId</td>
 					</tr>
 					<tr>
 						<td>PHONE</td>
-						<td>${user.userPhone}</td>
+						<td>userPhone</td>
 					</tr>
-					<c:if test="${not empty user.userBirthday}">
-						<tr>
-							<td>BIRTH DAY</td>
-							<td>${user.userBirthday}</td>
-						</tr>
-					</c:if>
-					<c:if test="${not empty user.userAddressBasic}">
+					<tr>
+						<td>BIRTH DAY</td>
+						<td>userBirthDay</td>
+					</tr>
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							${user.userAddressBasic} ${user.userAddressDetail}
+							userAddressBasic + userAdderssDetail
 						</td>
 					</tr>
-					</c:if>					
 					<tr>
 						<td>AD</td>
-						<td><c:if test="${user.userAdPhone == 1}">전화광고 수신 동의</c:if>  <c:if test="${user.userAdEmail == 1}">메일광고 수신 동의</c:if></td>
-					</tr>					
+						<td>userAdPhone ok / userAdEmail ok</td>
+					</tr>
 					<tr>
 						<td class="buttonWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?userId=${user.userId}'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
 				
-			</c:if>	
-			
-			<c:if test="${not empty company.companyId}">			
-			
 				<!-- company join success -->
 				<table >
 					<tr>
-						<th colspan='2'>${company.companyName}님 가입 성공하였습니다.</th>
+						<th colspan='2'>companyName 님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="${conpath}/images/profile/${company.companyProfileImage}" alt="userProfileImage"></td>
+						<td colspan='2'><img src="userProfileImage" alt="userProfileImage"></td>
 					</tr>
 					<tr>
 						<td>ID</td>
-						<td>${company.companyId}</td>
+						<td>companyId</td>
 					</tr>
 					<tr>
 						<td>PHONE</td>
-						<td>${company.companyPhone}</td>
+						<td>companyPhone</td>
 					</tr>
-					<c:if test="${not empty company.companyAddressBasic}">
+					<tr>
+						<td>COMPANY NUMBER</td>
+						<td>companyNumber</td>
+					</tr>
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							${company.companyAddressBasic} ${company.companyAdderssDetail}
+							companyAddressBasic + companyAdderssDetail
 						</td>
 					</tr>
-					</c:if>					
+					<tr>
+						<td>AD</td>
+						<td>companyAdPhone ok / companyAdEmail ok</td>
+					</tr>
 					<tr>
 						<td class="buttonnWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?companyId=${company.companyId}'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
 				</table>
-				
-			</c:if>
 		</section>
 		</div>
 		<jsp:include page="../main/footer.jsp" />
