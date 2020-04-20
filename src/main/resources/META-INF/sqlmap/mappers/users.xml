@@ -62,4 +62,7 @@ WHERE USERID = #{userId}
 	<update id="userInterestAmountModify" parameterType="Users">
 		UPDATE USERS SET userInterestAmount = userInterestAmount + #{changeMoneyAmount} WHERE USERID = #{userId}
 	</update>
+	<update id="tempPasswordChange" parameterType="Users" >
+		UPDATE USERS SET USERPASSWORD = #{userPassword} WHERE USERID = #{userId}
+	</update>	
 </mapper>
