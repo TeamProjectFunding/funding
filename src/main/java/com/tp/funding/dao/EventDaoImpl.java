@@ -16,6 +16,10 @@ public class EventDaoImpl implements EventDao {
 		return sessionTemplate.selectList("eventAllList");
 	}
 	@Override
+	public List<Event> eventAdminList(Event event) {
+		return sessionTemplate.selectList("eventAdminList", event);
+	}
+	@Override
 	public List<Event> eventDoingList(Event event) {
 		return sessionTemplate.selectList("eventDoingList", event);
 	}

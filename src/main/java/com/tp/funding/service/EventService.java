@@ -7,6 +7,7 @@ import com.tp.funding.dto.Event;
 
 public interface EventService {
 	public List<Event> eventAllList ();
+	public List<Event> eventAdminList(String pageNum);
 	public List<Event> eventDoingList(String pageNum);
 	public List<Event> eventEndingList(String pageNum);
 	public Event eventDetail(int eventNumber);

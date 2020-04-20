@@ -124,6 +124,4 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테�
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
 commit;
-SELECT * FROM (SELECT ROWNUM RN, A.* 
-	FROM (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID ORDER BY FUNDINGQUESTIONDATE DESC) A)
- 		WHERE RN BETWEEN 1 AND 3;
+

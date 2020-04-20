@@ -68,10 +68,10 @@ public class HomeController {
 		
 	//관리자 게시판 
 	//admin event list
-	@RequestMapping(value="adminEventList")
-	public String adminEventList() {
-		return "admin/event/list";
-	}
+//	@RequestMapping(value="adminEventList")
+//	public String adminEventList() {
+//		return "admin/event/list";
+//	}
 	//admin event writeForm
 	@RequestMapping(value="adminEventWriteForm")
 	public String adminEventWriteForm() {

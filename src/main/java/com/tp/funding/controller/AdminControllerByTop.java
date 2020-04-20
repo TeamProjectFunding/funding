@@ -101,5 +101,13 @@ public class AdminControllerByTop {
 		model.addAttribute("fundingQuestionList", fqService.fundingQuestionList(pageNum));
 		return "admin/goodsQna/list";
 	}
+	//관리자 왼쪽바 이벤트 페이징
+	@RequestMapping(value="adminEventList")
+	public String adminEventList(Model model, String pageNum) {
+		Paging eventPaging = new Paging(eService.totEvent(), pageNum, 5, 5);
+		model.addAttribute("paging", eventPaging);
+		model.addAttribute("eventAdminList", eService.eventAdminList(pageNum));
+		return "admin/event/list";
+	}
 }
 	
