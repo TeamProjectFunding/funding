@@ -28,4 +28,9 @@ public class FundingQuestionDaoImpl implements FundingQuestionDao {
 		return sessionTemplate.insert("fundingQuestionWrite", fundingQuestion);
 	}
 
+	@Override
+	public int totfundingQuestion() {
+		return sessionTemplate.selectOne("totfundingQuestion");
+	}
+
 }

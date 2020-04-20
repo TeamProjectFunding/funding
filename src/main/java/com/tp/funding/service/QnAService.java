@@ -8,7 +8,8 @@ public interface QnAService {
 	public int qnAWrite(QnA qnA);
 	public int qnAReplyWrite(QnA qnA);
 	public int qnADetail(QnA qnA);
-	public List<QnA> qnAList(QnA qnA);
+	public List<QnA> qnAList(String	pageNum);
 	public int qnAHitUp(int qnANumber);
 	public List<QnA> qnAAdminList();
+	public int totQnA();
 }

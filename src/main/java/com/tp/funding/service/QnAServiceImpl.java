@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tp.funding.dao.QnADao;
 import com.tp.funding.dto.QnA;
+import com.tp.funding.util.Paging;
 @Service
 public class QnAServiceImpl implements QnAService {
 	@Autowired
@@ -27,8 +28,13 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public List<QnA> qnAList(QnA qnA) {//페이징
-		return qnADao.qnAList(qnA);
+	public List<QnA> qnAList(String pageNum) {//페이징
+		int QnATotalCount = qnADao.totQnA();
+		Paging paging = new Paging(QnATotalCount, pageNum, 5, 5);
+		QnA qna = new QnA();
+		qna.setStartRow(paging.getStartRow());
+		qna.setEndRow(paging.getEndRow());
+		return qnADao.qnAList(qna);
 	}
 
 	@Override
@@ -39,6 +45,11 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public List<QnA> qnAAdminList() {
 		return qnADao.qnAAdminList();
+	}
+
+	@Override
+	public int totQnA() {
+		return qnADao.totQnA();
 	}
 
 }

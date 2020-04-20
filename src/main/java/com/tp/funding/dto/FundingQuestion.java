@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class FundingQuestion {
 	private int fundingQuestionNumber;
+	private String fundingQuestionTitle;
 	private String fundingQuestionContent;
 	private Date fundingQuestionDate;
 	private int fundingQuestionExistReply;
@@ -17,11 +18,36 @@ public class FundingQuestion {
 	// Users join
 	private String userName;
 	private String userProfileImage;
+	public FundingQuestion() {
+		super();
+	}
+	public FundingQuestion(int fundingQuestionNumber, String fundingQuestionTitle, String fundingQuestionContent,
+			Date fundingQuestionDate, int fundingQuestionExistReply, int fundingCode, String userId, int startRow,
+			int endRow, String userName, String userProfileImage) {
+		super();
+		this.fundingQuestionNumber = fundingQuestionNumber;
+		this.fundingQuestionTitle = fundingQuestionTitle;
+		this.fundingQuestionContent = fundingQuestionContent;
+		this.fundingQuestionDate = fundingQuestionDate;
+		this.fundingQuestionExistReply = fundingQuestionExistReply;
+		this.fundingCode = fundingCode;
+		this.userId = userId;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.userName = userName;
+		this.userProfileImage = userProfileImage;
+	}
 	public int getFundingQuestionNumber() {
 		return fundingQuestionNumber;
 	}
 	public void setFundingQuestionNumber(int fundingQuestionNumber) {
 		this.fundingQuestionNumber = fundingQuestionNumber;
+	}
+	public String getFundingQuestionTitle() {
+		return fundingQuestionTitle;
+	}
+	public void setFundingQuestionTitle(String fundingQuestionTitle) {
+		this.fundingQuestionTitle = fundingQuestionTitle;
 	}
 	public String getFundingQuestionContent() {
 		return fundingQuestionContent;
@@ -77,34 +103,13 @@ public class FundingQuestion {
 	public void setUserProfileImage(String userProfileImage) {
 		this.userProfileImage = userProfileImage;
 	}
-	public FundingQuestion(int fundingQuestionNumber, String fundingQuestionContent, Date fundingQuestionDate,
-			int fundingQuestionExistReply, int fundingCode, String userId, int startRow, int endRow, String userName,
-			String userProfileImage) {
-		super();
-		this.fundingQuestionNumber = fundingQuestionNumber;
-		this.fundingQuestionContent = fundingQuestionContent;
-		this.fundingQuestionDate = fundingQuestionDate;
-		this.fundingQuestionExistReply = fundingQuestionExistReply;
-		this.fundingCode = fundingCode;
-		this.userId = userId;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.userName = userName;
-		this.userProfileImage = userProfileImage;
-	}
-	public FundingQuestion() {
-		super();
-	}
 	@Override
 	public String toString() {
-		return "FundingQuestion [fundingQuestionNumber=" + fundingQuestionNumber + ", fundingQuestionContent="
-				+ fundingQuestionContent + ", fundingQuestionDate=" + fundingQuestionDate
-				+ ", fundingQuestionExistReply=" + fundingQuestionExistReply + ", fundingCode=" + fundingCode
-				+ ", userId=" + userId + ", startRow=" + startRow + ", endRow=" + endRow + ", userName=" + userName
-				+ ", userProfileImage=" + userProfileImage + "]";
+		return "FundingQuestion [fundingQuestionNumber=" + fundingQuestionNumber + ", fundingQuestionTitle="
+				+ fundingQuestionTitle + ", fundingQuestionContent=" + fundingQuestionContent + ", fundingQuestionDate="
+				+ fundingQuestionDate + ", fundingQuestionExistReply=" + fundingQuestionExistReply + ", fundingCode="
+				+ fundingCode + ", userId=" + userId + ", startRow=" + startRow + ", endRow=" + endRow + ", userName="
+				+ userName + ", userProfileImage=" + userProfileImage + "]";
 	}
-
 	
-	
-
 }

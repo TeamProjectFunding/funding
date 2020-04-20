@@ -98,11 +98,11 @@ public class HomeController {
 		return "admin/event/list";
 	}
 	
-	//admin notice list
-	@RequestMapping(value="adminNoticeList")
-	public String adminNoticeList() {
-		return "admin/notice/list";
-	}
+//	//admin notice list
+//	@RequestMapping(value="adminNoticeList")
+//	public String adminNoticeList() {
+//		return "admin/notice/list";
+//	}
 	//admin notice writeForm
 	@RequestMapping(value="adminNoticeWriteForm")
 	public String adminNoticeWriteForm() {
@@ -130,12 +130,12 @@ public class HomeController {
 	}
 	
 		
-	//admin qna list
-	@RequestMapping(value="adminQnaList")
-	public String adminQndList() {
-		return "admin/qna/list";
-	}
-	//admin qna view
+//	//admin qna list
+//	@RequestMapping(value="adminQnaList")
+//	public String adminQndList() {
+//		return "admin/qna/list";
+//	}
+//	//admin qna view
 	@RequestMapping(value="adminQnaView")
 	public String adminQndView() {
 		return "admin/qna/view";
@@ -168,11 +168,11 @@ public class HomeController {
 	
 	
 	
-	//admin goodsQna list
-	@RequestMapping(value="adminGoodsQnaList")
-	public String adminGoodsQnaList() {
-		return "admin/goodsQna/list";
-	}
+//	//admin goodsQna list
+//	@RequestMapping(value="adminGoodsQnaList")
+//	public String adminGoodsQnaList() {
+//		return "admin/goodsQna/list";
+//	}
 	//admin goodsQna view
 	@RequestMapping(value="adminGoodsQnaView")
 	public String adminGoodsQndView() {

@@ -28,22 +28,31 @@
 					<th>DATE</th>
 					<th>HIT</th>
 				</tr>
+				<c:forEach var="notice" items="${noticeListP}">
 				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/adminNoticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
+					<td>${notice.noticeNumber }</td>
+					<td><a href="${conPath }/noticeView.do?noticeNumber=${notice.noticeTilte}">${notice.noticeTilte}</a></td>
+					<td>${notice.adminId }</td>
+					<td>${notice.noticeDate }</td>
+					<td>${notice.noticeHit }</td>
 				</tr>
+				</c:forEach>
 			</table>
 			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/adminNoticeList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/adminNoticeList.do?pageNum=${i}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/adminNoticeList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				</c:if>
 			</div>
 		</section>
 	</div>

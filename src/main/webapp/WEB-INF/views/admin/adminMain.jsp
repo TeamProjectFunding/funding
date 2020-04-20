@@ -132,36 +132,14 @@
 			<div class="dashBoard">
 				<h3>Q&A</h3>
 				<div class="dashBoardList">
+				<c:forEach var="qna" items="${qnAAdminList}">
 					<ul>
-						<li><a href="#none">Q&ATitle</a><span>witerName 2020.04.14</span></li>
+						<li><a href="#none">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId} ${qna.qnADate}</span></li>
 						<li id="buttonWrap">
 							<a href="#none" class="button">답변</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="#none">questionTitle</a><span>witerName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
-						</li>
-					</ul>
+				</c:forEach>
 				</div>
 			</div>
 			<div class="dashBoard">

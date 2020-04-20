@@ -92,10 +92,10 @@ INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용19', SYSDATE,
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용20', SYSDATE, 0 , 'admin', null, 'user7');
 
 --공지사항 관리자단에 뿌릴 공지사항더미데이터
-INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
-INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
-INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다', '불꽃가능', SYSDATE, 0 ,'admin');
-INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘7', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘7', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다7', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다7', '포기는 습니다', SYSDATE, 0 ,'admin');
 SELECT * FROM NOTICE ORDER BY NOTICEDATE DESC;
 --이벤트 관리자단에 뿌릴 이벤트더미데이터
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
@@ -112,3 +112,18 @@ SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNAD
 SELECT * FROM QNA;
 SELECT * FROM QNA Q,USERS U,COMPANY C,ADMIN A WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC;
 commit;
+--상품문의--
+select * from users;
+select * from fundinggoods;
+select * from fundingquestion;
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같아요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+commit;
+SELECT * FROM (SELECT ROWNUM RN, A.* 
+	FROM (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID ORDER BY FUNDINGQUESTIONDATE DESC) A)
+ 		WHERE RN BETWEEN 1 AND 3;

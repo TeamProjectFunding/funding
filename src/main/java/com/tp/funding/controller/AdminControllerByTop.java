@@ -5,37 +5,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tp.funding.dto.QnA;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingGoodsService;
+import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.UsersService;
+import com.tp.funding.util.Paging;
 
 @Controller
 public class AdminControllerByTop {
 	@Autowired
-	UsersService uService;   //유저 리스트뿌리려고
+	UsersService uService;   //유저 서비스
 	@Autowired
-	CompanyService cService; //회사 리스트뿌리려고
+	CompanyService cService; //회사 서비스
 	@Autowired
-	NoticeService nService;
+	NoticeService nService;  //공지사항 서비스
 	@Autowired
-	EventService eService;
+	EventService eService;   //이벤트  서비스
 	@Autowired
-	QnAService qService;
+	QnAService qService;     //질문 서비스
 	@Autowired
-	FundingGoodsService fService;
+	FundingGoodsService fService; //상품 서비스
+	@Autowired
+	FundingQuestionService fqService; //상품문의 서비스
 	
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
 	public String adminMain(Model model) {
-		/*이벤트 페이징 처리  ServiceImpl 이랑 Dao랑 같이보셈!!
-		 * Paging eventPaging = new Paging(eService.totEvent(), pageNum, 5, 5);
-		 * model.addAttribute("paging", eventPaging);
-		 * model.addAttribute("eventDoingList", eService.eventDoingList(pageNum));
-		 */
 		model.addAttribute("qnAAdminList", qService.qnAAdminList());
 		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
 		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
@@ -78,6 +76,30 @@ public class AdminControllerByTop {
 	public String adminCompanyOutSite(Model model, String companyId) {
 		model.addAttribute("companyOutSiteResult", cService.companyOutSite(companyId));
 		return "forward:adminCompanyList.do";
+	}
+	//관리자 왼쪽바 NOTICE 페이징
+	@RequestMapping(value="adminNoticeList")
+	public String adminNoticeList(Model model, String pageNum) {
+		Paging noticePaging = new Paging(nService.totNotice(), pageNum, 5, 5);
+		model.addAttribute("paging", noticePaging);
+		model.addAttribute("noticeListP", nService.noticeListP(pageNum));
+		return "admin/notice/list";
+	}
+	//관리자 왼쪽바 QnA 페이징
+	@RequestMapping(value="adminQnaList")
+	public String adminQnaList(Model model, String pageNum) {
+		Paging qnAPaging = new Paging(qService.totQnA(), pageNum, 5, 5);
+		model.addAttribute("paging", qnAPaging);
+		model.addAttribute("qnAList", qService.qnAList(pageNum));
+		return "admin/qna/list";
+	}
+	//관리자 왼쪽바 상품문의 페이징
+	@RequestMapping(value="adminGoodsQnaList")
+	public String adminGoodsQnaList(Model model, String pageNum) {
+		Paging fundingQuestion = new Paging(fqService.totfundingQuestion(), pageNum, 5, 5) ;
+		model.addAttribute("paging", fundingQuestion);
+		model.addAttribute("fundingQuestionList", fqService.fundingQuestionList(pageNum));
+		return "admin/goodsQna/list";
 	}
 }
 	

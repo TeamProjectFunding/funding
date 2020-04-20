@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tp.funding.dao.FundingQuestionDao;
 import com.tp.funding.dto.FundingQuestion;
+import com.tp.funding.util.Paging;
 @Service
 public class FundingQuestionServiceImpl implements FundingQuestionService {
 
@@ -14,7 +15,12 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 	private FundingQuestionDao fundingQuestionDao;
 	
 	@Override
-	public List<FundingQuestion> fundingQuestionList(FundingQuestion fundingQuestion) {
+	public List<FundingQuestion> fundingQuestionList(String pageNum) {
+		int fundingQuestionTotalCount = fundingQuestionDao.totfundingQuestion();
+		Paging paging = new Paging(fundingQuestionTotalCount, pageNum, 5, 5);
+		FundingQuestion fundingQuestion = new FundingQuestion();
+		fundingQuestion.setStartRow(paging.getStartRow());
+		fundingQuestion.setEndRow(paging.getEndRow());
 		return fundingQuestionDao.fundingQuestionList(fundingQuestion);
 	}
 
@@ -26,6 +32,11 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 	@Override
 	public int fundingQuestionWrite(FundingQuestion fundingQuestion) {
 		return fundingQuestionDao.fundingQuestionWrite(fundingQuestion);
+	}
+
+	@Override
+	public int totfundingQuestion() {
+		return fundingQuestionDao.totfundingQuestion();
 	}
 
 }

@@ -295,6 +295,7 @@ CREATE TABLE FundingGoodsDetail (
 
 CREATE TABLE FundingQuestion (
 	FundingQuestionNumber        NUMBER(12)   PRIMARY KEY, -- 문의번호
+    FundingQuestionTitle      VARCHAR2(1000) NULL,     --문의 제목
 	FundingQuestionContent    VARCHAR2(4000) NULL,     -- 문의내용
 	FundingQuestionDate       DATE          DEFAULT SYSDATE,     -- 문의날짜
 	FundingQuestionExistReply NUMBER(1)    NULL,     -- 답급여부
@@ -362,10 +363,10 @@ CREATE TABLE Notice (
 	NoticeHit     NUMBER(12)   NULL,     -- 공지조회수
 	AdminId       VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
 );
-
+ 
 CREATE TABLE QnA (
     QnANumber	NUMBER(12) PRIMARY KEY,
-    QnATilte	VARCHAR2(1000) NOT NULL,
+    QnATitle	VARCHAR2(1000) NOT NULL,
     QnAContent	VARCHAR2(4000) NOT NULL,
     QnAHit	    NUMBER(12) DEFAULT 0,
     QnAOriginalWriter	NUMBER(1),

@@ -7,6 +7,7 @@ import com.tp.funding.dto.Notice;
 public interface NoticeService {
 	public int totNotice();
 	public List<Notice> noticeList();
+	public List<Notice> noticeListP(String pageNum);
 	public int noticeWrite(Notice notice);
 	public Notice noticeDetail(int noticeNumber);
 	public int noticeModify(Notice notice);
