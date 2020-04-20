@@ -15,50 +15,32 @@
 
 </head>
 <body>
+<c:if test="${not empty adminApplyMsg}">
+	<script>
+		alert('${adminApplyMsg}');
+	</script>
+</c:if>
+
+
 	
 	<jsp:include page="../admin/adminMenu.jsp" />
 	<div id="contentWrap" class="adminMainWrap">
 		<div id="dashBoardWrap">
 			<div class="dashBoard">
-				<h3>투자신청내역</h3>
-				<div class="dashBoardList">
-					<ul>
-						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath}/adminApply.do" class="button">승인</a>
-							<a href="${conPath }/adminReject.do" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath}/adminApply.do" class="button">승인</a>
-							<a href="${conPath }/adminReject.do" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath}/adminApply.do" class="button">승인</a>
-							<a href="${conPath }/adminReject.do" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath}/adminApply.do" class="button">승인</a>
-							<a href="${conPath }/adminReject.do" class="button">반려</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath}/adminApplyView.do">goodsTitle</a><span>2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath}/adminApply.do" class="button">승인</a>
-							<a href="${conPath }/adminReject.do" class="button">반려</a>
-						</li>
-					</ul>
-				</div>
+				<h3>투자신청내역</h3>				
+					<div class="dashBoardList">
+						<c:forEach var="fundingReadyList" items="${fundingReadyList}">
+							<ul>
+								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
+								<li id="buttonWrap">
+									<a href="${conPath}/adminApply.do?fundingCode=${fundingReadyList.fundingCode}" class="button">승인</a>
+									<a href="${conPath }/adminReject.do?fundingCode=${fundingReadyList.fundingCode}" class="button">반려</a>
+								</li>
+							</ul>	
+						</c:forEach>										
+					</div>				
 			</div>
+			
 			<div class="dashBoard">
 				<h3>투자마감</h3>
 				<div class="dashBoardList">

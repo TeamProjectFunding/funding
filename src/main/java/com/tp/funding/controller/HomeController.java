@@ -1,6 +1,7 @@
 package com.tp.funding.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,7 +13,7 @@ public class HomeController {
 		return "admin/adminLogin";
 	}
 		
-//	//admin main
+
 //	@RequestMapping(value ="adminMain")
 //	public String adminMain() {
 //		return "admin/adminMain";
@@ -216,7 +217,14 @@ public class HomeController {
 	
 	//로그인
 	@RequestMapping(value = "loginView")
-	public String login() {
+	public String login(String userId, String companyId, Model model) {
+		
+		if(userId != null && companyId == null) {
+			model.addAttribute("userId", userId);
+		}else if(companyId != null && userId == null) {
+			model.addAttribute("companyId", companyId);
+		}		
+		
 		return "users/login";
 	}
 	
