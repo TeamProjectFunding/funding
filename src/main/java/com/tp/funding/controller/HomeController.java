@@ -12,35 +12,35 @@ public class HomeController {
 		return "admin/adminLogin";
 	}
 		
-	//admin main
-	@RequestMapping(value ="adminMain")
-	public String adminMain() {
-		return "admin/adminMain";
-	}
+//	//admin main
+//	@RequestMapping(value ="adminMain")
+//	public String adminMain() {
+//		return "admin/adminMain";
+//	}
 	
-	//admin users list
-	@RequestMapping(value="adminUserList")
-	public String adminUserList() {
-		return "admin/users/list";
-	}
+//	//admin users list
+//	@RequestMapping(value="adminUserList")
+//	public String adminUserList() {
+//		return "admin/users/list";
+//	}
 	
-	//admin users view
-	@RequestMapping(value="adminUserView")
-	public String adminUserView() {
-		return "admin/users/view";
-	}
+//	//admin users view
+//	@RequestMapping(value="adminUserView")
+//	public String adminUserView() {
+//		return "admin/users/view";
+//	}
 	
-	//admin company list
-	@RequestMapping(value="adminCompanyList")
-	public String adminCompanyList() {
-		return "admin/company/list";
-	}
-		
-	//admin company view
-	@RequestMapping(value="adminCompanyView")
-	public String adminCompanyView() {
-		return "admin/company/view";
-	}
+//	//admin company list
+//	@RequestMapping(value="adminCompanyList")
+//	public String adminCompanyList() {
+//		return "admin/company/list";
+//	}
+//		
+//	//admin company view
+//	@RequestMapping(value="adminCompanyView")
+//	public String adminCompanyView() {
+//		return "admin/company/view";
+//	}
 	
 	//admin goods list
 	@RequestMapping(value="adminGoodsList")
