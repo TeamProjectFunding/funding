@@ -207,15 +207,15 @@ public class HomeController {
 
 	
 	
-	
-	//메인
-	@RequestMapping(value = "main")
-	public String home() {
-		return "main/main";
-	}
+// Long	
+//	//메인
+//	@RequestMapping(value = "main")
+//	public String home() {
+//		return "main/main";
+//	}
 	
 	//로그인
-	@RequestMapping(value = "login")
+	@RequestMapping(value = "loginView")
 	public String login() {
 		return "users/login";
 	}
@@ -225,12 +225,13 @@ public class HomeController {
 	public String join() {
 		return "users/join";
 	}
-	
-	//회원가입 입력 폼
-	@RequestMapping(value ="joinForm")
-	public String joinForm() {
-		return "users/joinForm";
-	}
+
+// hyuck
+//	//회원가입 입력 폼
+//	@RequestMapping(value ="joinForm")
+//	public String joinForm() {
+//		return "users/joinForm";
+//	}
 	
 	//회원가입 완료
 	@RequestMapping(value ="joinSuccess")
@@ -250,23 +251,26 @@ public class HomeController {
 		return "main/main";
 	}
 	
-	//펀드 리스트
-	@RequestMapping(value ="fundList")
-	public String fundList() {
-		return "goods/fundList";
-	}
+// Long
+//	//펀드 리스트
+//	@RequestMapping(value ="fundList")
+//	public String fundList() {
+//		return "goods/fundList";
+//	}
 	
-	//리워드 리스트
-	@RequestMapping(value ="rewardList")
-	public String rewardList() {
-		return "goods/rewardList";
-	}
+// 펀드 리스트로 통합
+//	//리워드 리스트
+//	@RequestMapping(value ="rewardList")
+//	public String rewardList() {
+//		return "goods/rewardList";
+//	}
 	
-	//펀드, 리워드 상세보기(정보)
-	@RequestMapping(value ="goodsViewCoreInfomation")
-	public String goodsViewCoreInfomation() {
-		return "goods/goodsViewCoreInfomation";
-	}
+// Long	
+//	//펀드, 리워드 상세보기(정보)
+//	@RequestMapping(value ="goodsViewCoreInfomation")
+//	public String goodsViewCoreInfomation() {
+//		return "goods/goodsViewCoreInfomation";
+//	}
 	
 	//펀드, 리워드 상세보기(투자위험)
 	@RequestMapping(value ="goodsViewRisk")

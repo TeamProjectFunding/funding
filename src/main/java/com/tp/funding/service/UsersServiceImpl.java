@@ -170,5 +170,13 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userAccountModify(user);
 	}
 
+	@Override
+	public int userTempPassword(String userId, String userPassword) {
+		Users user = new Users();
+		user.setUserId(userId);
+		user.setUserPassword(userPassword);
+		return userDao.userTempPassword(user);
+	}
+
 
 }
