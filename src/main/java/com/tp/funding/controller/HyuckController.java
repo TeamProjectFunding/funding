@@ -163,28 +163,7 @@ public class HyuckController {
 			model.addAttribute("findPwMsg", "해당 아이디가 존재하지 않습니다.");
 		}
 		return "users/login";
-<<<<<<< HEAD
 	}
-=======
-	}	
->>>>>>> 707096b1fac56671801f271d50e4331006d13f0a
-	
-	@RequestMapping(value="adminApply")
-	public String adminApply(int fundingCode, Model model) {
-		fundingGoodsService.fundingAdminPermitYes(fundingCode);
-		model.addAttribute("adminApplyMsg", "apply 완료");
-				
-		return "forward:adminMain.do";
-	}
-	
-	@RequestMapping(value="adminReject")
-	public String adminReject(int fundingCode, Model model) {
-		fundingGoodsService.fundingAdminPermitNo(fundingCode);
-		model.addAttribute("adminApplyMsg", "reject 완료");
-		
-		return "forward:adminMain.do";
-	}
-	
 	@RequestMapping(value="adminApplyView")
 	public String adminApplyView(int fundingCode, Model model) {
 		

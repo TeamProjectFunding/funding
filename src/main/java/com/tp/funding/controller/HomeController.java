@@ -208,13 +208,13 @@ public class HomeController {
 
 	
 	
-// Long	
+//	long
 //	//메인
 //	@RequestMapping(value = "main")
 //	public String home() {
 //		return "main/main";
 //	}
-	
+//	
 	//로그인
 	@RequestMapping(value = "loginView")
 	public String login(String userId, String companyId, Model model) {

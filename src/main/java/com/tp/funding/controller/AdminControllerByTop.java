@@ -109,5 +109,13 @@ public class AdminControllerByTop {
 		model.addAttribute("eventAdminList", eService.eventAdminList(pageNum));
 		return "admin/event/list";
 	}
+	//혁 컨트롤러에서 가져옴 
+	@RequestMapping(value="adminApply")
+	public String adminApply(int fundingCode, Model model) {
+		fService.fundingAdminPermitYes(fundingCode);
+		model.addAttribute("adminApplyMsg", "apply 완료");
+				
+		return "forward:adminMain.do";
+	}
 }
 	
