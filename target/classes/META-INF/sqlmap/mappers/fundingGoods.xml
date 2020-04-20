@@ -113,12 +113,8 @@
 	  	BETWEEN TO_CHAR(SYSDATE-5, 'YYYYMMDD') AND TO_CHAR(SYSDATE, 'YYYYMMDD') ORDER BY FG.FUNDINGTARGETDATE DESC
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
+	<select id="totCntOpenList" resultType="int">
+		select count(*) from FUNDINGGOODS where SYSDATE &lt; FundingTargetDate
+	</select>	
 
 </mapper>

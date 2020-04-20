@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
+import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingGoodsService;
@@ -162,16 +163,7 @@ public class HyuckController {
 			model.addAttribute("findPwMsg", "해당 아이디가 존재하지 않습니다.");
 		}
 		return "users/login";
-	}
-	
-	@RequestMapping(value ="adminMain")
-	public String adminMain(Model model) {
-		
-		model.addAttribute("fundingReadyList", fundingGoodsService.fundingReadyList());	
-		
-		
-		return "admin/adminMain";
-	}
+	}	
 	
 	@RequestMapping(value="adminApply")
 	public String adminApply(int fundingCode, Model model) {
@@ -187,6 +179,13 @@ public class HyuckController {
 		model.addAttribute("adminApplyMsg", "reject 완료");
 		
 		return "forward:adminMain.do";
+	}
+	
+	@RequestMapping(value="adminApplyViewList")
+	public String adminApplyViewList(FundingGoods fundingGoods, Model model) {		
+		
+				
+		return "admin/apply/view";
 	}
 	
 	
