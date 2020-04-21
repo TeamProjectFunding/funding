@@ -16,6 +16,7 @@ import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.UsersService;
+import com.tp.funding.util.Paging;
 
 @Controller
 public class HyuckController {
@@ -174,11 +175,15 @@ public class HyuckController {
 		return "admin/apply/view";
 	}
 	
-	@RequestMapping(value="adminApplyViewList")
-	public String adminApplyViewList(FundingGoods fundingGoods, Model model) {		
+	@RequestMapping(value="adminApplyList")
+	public String adminApplyViewList(FundingGoods fundingGoods, String pageNum, Model model) {			
 		
-				
-		return "admin/apply/view";
+		Paging paging = new Paging(fundingGoodsService.totCntReadyList(), pageNum, 4, 5);
+		fundingGoods.setStartRow(paging.getStartRow());
+		fundingGoods.setEndRow(paging.getEndRow());
+		model.addAttribute("fundingReadyList", fundingGoodsService.fundingReadyList(fundingGoods));
+		model.addAttribute("paging", paging);
+		return "admin/apply/list";
 	}
 	
 	

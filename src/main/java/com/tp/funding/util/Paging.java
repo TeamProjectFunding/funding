@@ -16,7 +16,7 @@ public class Paging {
 	
 	public Paging(int total, String pageNum, int pageSize, int blockSize) {
 		super();
-		this.currentPage = (pageNum != null && !pageNum.equals(""))?Integer.parseInt(pageNum):1;
+		this.currentPage = (pageNum != null && !pageNum.equals(""))? Integer.parseInt(pageNum) : 1;
 		this.pageSize = pageSize;
 		this.blockSize = blockSize;
 		startRow = (currentPage-1) * pageSize +1;

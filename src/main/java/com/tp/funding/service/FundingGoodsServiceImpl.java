@@ -158,8 +158,8 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public List<FundingGoods> fundingReadyList() {
-		return fundingGoodsDao.fundingReadyList();
+	public List<FundingGoods> fundingReadyList(FundingGoods fundingGoods) {		
+		return fundingGoodsDao.fundingReadyList(fundingGoods);		
 	}
 	
 	@Override
@@ -176,9 +176,8 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public int totCntOpenList() {
-		
-		return fundingGoodsDao.totCntOpenList();
-	}
+	public int totCntReadyList() {
+		return fundingGoodsDao.totCntReadyList();
+	}	
 
 }
