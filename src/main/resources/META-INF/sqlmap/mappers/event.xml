@@ -64,4 +64,10 @@
     EVENTREPLYCOUNT FROM EVENT E WHERE E.EVENTENDDATE < SYSDATE ORDER BY E.EVENTSTARTDATE DESC)
     ]]>
     </select>
+    <select id="eventColseStep1" parameterType="int" resultType="int">
+	SELECT COUNT(*) eventParticipateCount FROM FUNDINGGOODSDETAIL WHERE FUNDINGDATE BETWEEN (SELECT EVENTSTARTDATE FROM EVENT WHERE EVENTNUMBER=#{eventNumber}) AND (SELECT EVENTENDDATE FROM EVENT WHERE EVENTNUMBER=#{eventNumber})
+	</select>
+	<update id="eventColseStep2" parameterType="Event">
+	UPDATE EVENT SET EVENTPRIZECOUNT =#{eventParticipateCount} WHERE EVENTNUMBER= #{eventNumber}
+	</update>
     </mapper>

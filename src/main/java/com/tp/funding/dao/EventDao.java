@@ -14,4 +14,6 @@ public interface EventDao {
 	public int totEvent();
 	public int totDoingEvent(Event event);
 	public int totEndingEvent();
+	public int eventColseStep1(int eventNumber);
+	public int eventColseStep2(Event event);
 }

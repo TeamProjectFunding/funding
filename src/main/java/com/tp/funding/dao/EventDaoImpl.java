@@ -53,4 +53,12 @@ public class EventDaoImpl implements EventDao {
 	public int totEndingEvent() {
 		return sessionTemplate.selectOne("totEndingEvent");
 	}
+	@Override
+	public int eventColseStep1(int eventNumber) {
+		return sessionTemplate.selectOne("eventColseStep1", eventNumber);
+	}
+	@Override
+	public int eventColseStep2(Event event) {
+		return sessionTemplate.update("eventColseStep2", event);
+	}
 }
