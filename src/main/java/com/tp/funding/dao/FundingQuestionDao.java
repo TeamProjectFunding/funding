@@ -12,4 +12,5 @@ public interface FundingQuestionDao {
 	
 	public int fundingQuestionWrite(FundingQuestion fundingQuestion);
 	
+	public int totfundingQuestion();
 }

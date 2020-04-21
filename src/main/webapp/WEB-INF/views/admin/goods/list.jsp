@@ -29,48 +29,7 @@
 					</tr>
 				</table>
 			</form>
-			<div class="goods">
-				<ul>
-					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
-					</li>
-					<li class="companyName">company name</li>
-					<li class="goodsName">goods name</li>
-					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
-				</ul>
-			</div>
-			<div class="goods">
-				<ul>
-					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
-					</li>
-					<li class="companyName">company name</li>
-					<li class="goodsName">goods name</li>
-					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
-				</ul>
-			</div>
-			<div class="goods">
-				<ul>
-					<li class="thumnail">
-						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
-					</li>
-					<li class="companyName">company name</li>
-					<li class="goodsName">goods name</li>
-					<li class="deadline">deadline after 10 days</li>
-					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
-					</li>
-				</ul>
-			</div>
+			
 			<div class="goods">
 				<ul>
 					<li class="thumnail">

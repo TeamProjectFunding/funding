@@ -175,4 +175,10 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.fundingBalancePlus(fundingGoods);
 	}
 
+	@Override
+	public int totCntOpenList() {
+		
+		return fundingGoodsDao.totCntOpenList();
+	}
+
 }

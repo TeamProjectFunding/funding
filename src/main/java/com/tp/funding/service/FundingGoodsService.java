@@ -30,5 +30,6 @@ public interface FundingGoodsService {
 	public int rewardTotalCount();
 	public List<FundingGoods> fundingReadyList();
 	public List<FundingGoods> fundingDeadlineList();// 마감 5일전 안의 것 뿌리기
+	public int totCntOpenList();
 	
 }

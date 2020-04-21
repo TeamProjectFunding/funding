@@ -67,7 +67,7 @@
 					</tr>					
 					<tr>
 						<td class="buttonWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?userId=${user.userId}'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/loginView.do?userId=${user.userId}'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>
@@ -103,7 +103,7 @@
 					</c:if>					
 					<tr>
 						<td class="buttonnWrap" colspan="2">
-							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/login.do?companyId=${company.companyId}'">
+							<input type="button" value="LOGIN" class="button" onClick="location.href='${conPath}/loginView.do?companyId=${company.companyId}'">
 							<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
 						</td>
 					</tr>

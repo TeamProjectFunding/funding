@@ -71,11 +71,12 @@ public class UsersDaoImpl implements UsersDao{
 	@Override
 	public int userInterestAmountModify(String userId) {
 		return sessionTemplate.update("userInterestAmountModify", userId);
-	}
+	}	
 
 	@Override
-	public int userTempPassword(Users user) {
-		return sessionTemplate.update("userTempPassword", user);
+	public int tempPasswordChange(Users user) {
+		
+		return sessionTemplate.update("tempPasswordChange", user);
 	}
 	
 	

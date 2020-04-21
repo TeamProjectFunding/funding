@@ -40,5 +40,8 @@
 	</update>
 	<select id="qnAAdminList" resultType="QnA">
 	SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC
+	</select>
+	<select id="totQnA" resultType="int">
+	SELECT COUNT(*) FROM QNA
 	</select>	
 </mapper>

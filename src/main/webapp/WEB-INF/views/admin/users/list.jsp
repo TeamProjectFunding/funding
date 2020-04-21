@@ -15,6 +15,12 @@
 
 </head>
 <body>
+<c:if test="${userOutSiteResult eq 1}">
+	<script>
+		alert('회원비활성화 성공');
+	</script>
+</c:if>
+
 	<jsp:include page="../adminMenu.jsp"/>
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="userListWrap">
@@ -23,7 +29,7 @@
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="userName" placeholder="회원명을 입력하세요.">
+							<input type ="text" name="searchUserName" placeholder="회원명을 입력하세요.">
 							<input type ="submit" value="SEARCH" placeholder="회원명을 입력하세요." class="button">
 						</th>
 					</tr>
@@ -38,47 +44,16 @@
 					<th>ADDRESS</th>
 					<th>JOIN DATE</th>
 				</tr>
+				<c:forEach var="user" items="${userSearchList}">
 				<tr class="userInfo">
-					<td>USERGRADE</td>
-					<td><a href="${conPath }/adminUserView.do">USERID</a></td>
-					<td>USERNAME</td>
-					<td>USERPHONE</td>
-					<td>USERADDRESS</td>
-					<td>USERJOINDATE</td>
+					<td>${user.userGradeName }</td>
+					<td><a href="${conPath }/adminUserDetailView.do?userId=${user.userId}">${user.userId}</a></td>
+					<td>${user.userName }</td>
+					<td>${user.userPhone }</td>
+					<td>${user.userAddressBasic }&nbsp;${user.userAddressDetail }</td>
+					<td>${user.userJoinDate }</td>
 				</tr>
-				<tr class="userInfo">
-					<td>USERGRADE</td>
-					<td><a href="${conPath }/adminUserView.do">USERID</a></td>
-					<td>USERNAME</td>
-					<td>USERPHONE</td>
-					<td>USERADDRESS</td>
-					<td>USERJOINDATE</td>
-				</tr>
-				<tr class="userInfo">
-					<td>USERGRADE</td>
-					<td><a href="${conPath }/adminUserView.do">USERID</a></td>
-					<td>USERNAME</td>
-					<td>USERPHONE</td>
-					<td>USERADDRESS</td>
-					<td>USERJOINDATE</td>
-				</tr>
-				<tr class="userInfo">
-					<td>USERGRADE</td>
-					<td><a href="${conPath }/adminUserView.do">USERID</a></td>
-					<td>USERNAME</td>
-					<td>USERPHONE</td>
-					<td>USERADDRESS</td>
-					<td>USERJOINDATE</td>
-				</tr>
-				<tr class="userInfo">
-					<td>USERGRADE</td>
-					<td><a href="${conPath }/adminUserView.do">USERID</a></td>
-					<td>USERNAME</td>
-					<td>USERPHONE</td>
-					<td>USERADDRESS</td>
-					<td>USERJOINDATE</td>
-				</tr>
-				
+				</c:forEach>
 			</table>
 		</section>
 	</div>

@@ -97,4 +97,7 @@
 		UPDATE COMPANY SET CompanyInFunding = #{companyInFunding} WHERE COMPANYID =
 		#{companyId}
 	</update>
+	<update id="tempPasswordCompanyChange" parameterType="Company" >
+		UPDATE COMPANY SET COMPANYPASSWORD = #{companyPassword} WHERE COMPANYID = #{companyId}
+	</update>	
 </mapper>

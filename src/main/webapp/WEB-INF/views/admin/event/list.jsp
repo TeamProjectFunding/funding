@@ -31,30 +31,39 @@
 			</form>
 			<table>
 				<tr>
-					<th>GRADE</th>
-					<th>ID</th>
-					<th>NAME</th>
-					<th>PHONE</th>
-					<th>ADDRESS</th>
-					<th>JOIN DATE</th>
+					<th>NUMBER</th>
+					<th>TITLE</th>
+					<th>PRODUCTNAME</th>
+					<th>EVENT START</th>
+					<th>EVENT END</th>
+					<th>HIT</th>
 				</tr>
+				<c:forEach var="event" items="${eventAdminList}">
 				<tr class="userInfo">
-					<td>COMPANYGRADE</td>
-					<td><a href="${conPath }/adminCompanyView.do">COMPANYID</a></td>
-					<td>COMPANYNAME</td>
-					<td>COMPANYPHONE</td>
-					<td>COMPANYADDRESS</td>
-					<td>COMPANYJOINDATE</td>
+					<td>${event.eventNumber}</td>
+					<td><a href="${conPath }/adminCompanyView.do">${event.eventTilte}</a></td>
+					<td>${event.eventProductName }</td>
+					<td>${event.eventStartDate }</td>
+					<td>${event.eventEndDate }</td>
+					<td>${event.eventHit }</td>
 				</tr>
+				</c:forEach>
 			</table>
-			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+					<div class="paging">
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/adminEventList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/adminEventList.do?pageNum=${i}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/adminEventList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				</c:if>
 			</div>
 		</section>
 	</div>

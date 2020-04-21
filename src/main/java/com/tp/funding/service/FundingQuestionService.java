@@ -6,10 +6,12 @@ import com.tp.funding.dto.FundingQuestion;
 
 public interface FundingQuestionService {
 	
-	public List<FundingQuestion> fundingQuestionList(FundingQuestion fundingQuestion);
+	public List<FundingQuestion> fundingQuestionList(String pageNum);
 	
 	public FundingQuestion fundingQuestionDetail(int fundingQuestionNumber);
 	
 	public int fundingQuestionWrite(FundingQuestion fundingQuestion);
+	
+	public int totfundingQuestion();
 	
 }

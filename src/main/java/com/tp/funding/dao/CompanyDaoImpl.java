@@ -63,4 +63,9 @@ public class CompanyDaoImpl implements CompanyDao {
 		return sessionTemplate.update("companyInFundingModify", company);
 	}
 
+	@Override
+	public int tempPasswordChange(Company company) {
+		return sessionTemplate.update("tempPasswordCompanyChange", company);
+	}
+
 }

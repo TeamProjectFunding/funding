@@ -7,7 +7,13 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -19,6 +25,9 @@ import com.tp.funding.dto.Company;
 public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	private CompanyDao companyDao;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Override
 	public List<Company> companyList() {
@@ -145,6 +154,41 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public int companyInFundingModify(Company company) {
 		return companyDao.companyInFundingModify(company);
+	}
+
+	@Override
+	public int tempPasswordChange(final Company company) {
+		
+		String tempPassword = "";
+		for (int i = 0; i < 8; i++) {
+			char lowerStr = (char) (Math.random() * 26 + 97);
+			if (i % 2 == 0) {
+				tempPassword += (int) (Math.random() * 10);
+			} else {
+				tempPassword += lowerStr;
+			}
+		}		
+		
+		company.setCompanyPassword(tempPassword);
+		MimeMessagePreparator tempPasswordMsg = new MimeMessagePreparator() {
+			
+			String content ="<h1>"+company.getCompanyId()+"님의 임시비밀번호 안내입니다.</h1><br>"+
+					 "<div> 임시 비밀번호는 : "+company.getCompanyPassword()+" 입니다.<br>"+
+					 "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";			
+			
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(company.getCompanyId()));
+				mimeMessage.setFrom(new InternetAddress("wogur698@gmail.com"));
+				mimeMessage.setSubject(company.getCompanyId()+"님 비밀번호 안내 메일입니다.");
+				mimeMessage.setText(content, "utf-8", "html");
+				
+			}
+		};
+		
+		mailSender.send(tempPasswordMsg);		
+		return companyDao.tempPasswordChange(company);
 	}
 
 }

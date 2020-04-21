@@ -19,7 +19,7 @@ public interface UsersDao {
 	public int userBalanceModify(Users user);
 	public int userGradeUp(String userId);
 	public int userInvestmentAmountModify(String userId);
-	public int userInterestAmountModify(String userId);
-	public int userTempPassword(Users user);
+	public int userInterestAmountModify(String userId);	
+	public int tempPasswordChange(Users user);	
 
 }

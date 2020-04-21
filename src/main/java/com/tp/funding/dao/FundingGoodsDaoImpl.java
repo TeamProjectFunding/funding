@@ -119,4 +119,9 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 		return sessionTemplate.selectList("fundingDeadlineList");
 	}
 
+	@Override
+	public int totCntOpenList() {
+		return sessionTemplate.selectOne("totCntOpenList");
+	}
+
 }

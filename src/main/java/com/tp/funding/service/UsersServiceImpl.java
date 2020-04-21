@@ -7,7 +7,13 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -20,6 +26,10 @@ import com.tp.funding.util.FileCopy;
 public class UsersServiceImpl implements UsersService {
 	@Autowired
 	private UsersDao userDao;
+	
+	@Autowired
+	private JavaMailSender mailSender;
+	
 
 	@Override
 	public List<Users> userList() {
@@ -131,9 +141,41 @@ public class UsersServiceImpl implements UsersService {
 		user.setUserBankName(userBankName);
 		user.setUserAccountNumber(userAccountNumber);
 		return userDao.userAccountModify(user);
-	}
+	}	
 
-	
+	@Override
+	public int tempPasswordChange(final Users user) {
+		
+		String tempPassword = "";
+		for (int i = 0; i < 8; i++) {
+			char lowerStr = (char) (Math.random() * 26 + 97);
+			if (i % 2 == 0) {
+				tempPassword += (int) (Math.random() * 10);
+			} else {
+				tempPassword += lowerStr;
+			}
+		}
+		
+		user.setUserPassword(tempPassword);
+		MimeMessagePreparator tempPasswordMsg = new MimeMessagePreparator() {
+			
+			String content ="<h1>"+user.getUserName()+"님의 임시비밀번호 안내입니다.</h1>"+
+					 "<div> 임시 비밀번호는 : "+user.getUserPassword()+"입니다.<br>"+
+					 "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";
+			
+			
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getUserId()));
+				mimeMessage.setFrom(new InternetAddress("wogur698@gmail.com"));
+				mimeMessage.setSubject(user.getUserName()+"님 비밀번호 안내 메일입니다.");
+				mimeMessage.setText(content, "utf-8", "html");
+			}
+		};
+		
+		mailSender.send(tempPasswordMsg);
+		return userDao.tempPasswordChange(user);
+	}
 
 
 }

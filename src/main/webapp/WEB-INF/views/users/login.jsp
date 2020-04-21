@@ -8,17 +8,30 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
+<script>
+function getUserId(){
+	var id = document.getElementsByName("id")[0].value;
+	location.href="${conPath}/findPw.do?userId="+id+"&companyId="+id;
+}
+</script>
 
 </head>
 <body>
+<c:if test="${not empty findPwMsg}">
+	<script>
+		alert('${findPwMsg}');
+	</script>
+</c:if>
+
+
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="userWrap">
 		<section class="loginWrap">
 			<h1>LOG-IN</h1>
-			<form action="" method="post">
+			<form action="${conPath}/login.do" method="post">
 				<table>
 					<tr>
-						<td><input type="text" name="id" placeholder="아이디를 입력하세요"></td>
+						<td><input type="text" name="id" placeholder="아이디를 입력하세요" required="required" value="${userId}${companyId}"></td>
 					</tr>
 					<tr>
 						<td><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></td>
@@ -27,7 +40,7 @@
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="submit" value="FIND ID/PW" class="button">
+							<input type="button" value="FIND ID/PW" class="button" onclick="getUserId();">
 							<input type="button" value="NAVER" class="button naverButton">
 							<div id="naver_id_login" style="display: none"></div>
 							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton" style="background-color: #FFE500">

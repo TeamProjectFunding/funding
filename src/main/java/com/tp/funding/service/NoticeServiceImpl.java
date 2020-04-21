@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tp.funding.dao.NoticeDao;
 import com.tp.funding.dto.Notice;
+import com.tp.funding.util.Paging;
 @Service
 public class NoticeServiceImpl implements NoticeService {
 	@Autowired
@@ -44,6 +45,16 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<Notice> noticeList() {
 		return noticeDao.noticeList();
+	}
+
+	@Override
+	public List<Notice> noticeListP(String pageNum) {
+		int noticeTotalCount = noticeDao.totNotice();
+		Paging paging = new Paging(noticeTotalCount, pageNum, 5, 5);
+		Notice notice = new Notice();
+		notice.setStartRow(paging.getStartRow());
+		notice.setEndRow(paging.getEndRow());
+		return noticeDao.noticeListP(notice);
 	}
 
 }

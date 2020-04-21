@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Users;
 
 public interface UsersService {
@@ -18,6 +19,6 @@ public interface UsersService {
 	public int userBalanceModify(String userId,int changeMoneyAmount);
 	public int userGradeUp(String userId);
 	public int userInvestmentAmountModify(String userId,int changeMoneyAmount);
-	public int userInterestAmountModify(String userId,int changeMoneyAmount);
-	public int userTempPassword(String userId,String userPassword);
+	public int userInterestAmountModify(String userId,int changeMoneyAmount);	
+	public int tempPasswordChange(Users user);	
 }

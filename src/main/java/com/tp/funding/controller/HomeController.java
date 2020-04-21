@@ -1,6 +1,7 @@
 package com.tp.funding.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,35 +13,35 @@ public class HomeController {
 		return "admin/adminLogin";
 	}
 		
-	//admin main
-	@RequestMapping(value ="adminMain")
-	public String adminMain() {
-		return "admin/adminMain";
-	}
+
+//	@RequestMapping(value ="adminMain")
+//	public String adminMain() {
+//		return "admin/adminMain";
+//	}
 	
-	//admin users list
-	@RequestMapping(value="adminUserList")
-	public String adminUserList() {
-		return "admin/users/list";
-	}
+//	//admin users list
+//	@RequestMapping(value="adminUserList")
+//	public String adminUserList() {
+//		return "admin/users/list";
+//	}
 	
-	//admin users view
-	@RequestMapping(value="adminUserView")
-	public String adminUserView() {
-		return "admin/users/view";
-	}
+//	//admin users view
+//	@RequestMapping(value="adminUserView")
+//	public String adminUserView() {
+//		return "admin/users/view";
+//	}
 	
-	//admin company list
-	@RequestMapping(value="adminCompanyList")
-	public String adminCompanyList() {
-		return "admin/company/list";
-	}
-		
-	//admin company view
-	@RequestMapping(value="adminCompanyView")
-	public String adminCompanyView() {
-		return "admin/company/view";
-	}
+//	//admin company list
+//	@RequestMapping(value="adminCompanyList")
+//	public String adminCompanyList() {
+//		return "admin/company/list";
+//	}
+//		
+//	//admin company view
+//	@RequestMapping(value="adminCompanyView")
+//	public String adminCompanyView() {
+//		return "admin/company/view";
+//	}
 	
 	//admin goods list
 	@RequestMapping(value="adminGoodsList")
@@ -60,18 +61,18 @@ public class HomeController {
 		return "admin/apply/list";
 	}
 	//admin apply view
-	@RequestMapping(value="adminApplyView")
-	public String adminApplyView() {
-		return "admin/apply/view";
-	}
+//	@RequestMapping(value="adminApplyView")
+//	public String adminApplyView() {
+//		return "admin/apply/view";
+//	}
 	
 		
 	//관리자 게시판 
 	//admin event list
-	@RequestMapping(value="adminEventList")
-	public String adminEventList() {
-		return "admin/event/list";
-	}
+//	@RequestMapping(value="adminEventList")
+//	public String adminEventList() {
+//		return "admin/event/list";
+//	}
 	//admin event writeForm
 	@RequestMapping(value="adminEventWriteForm")
 	public String adminEventWriteForm() {
@@ -98,11 +99,11 @@ public class HomeController {
 		return "admin/event/list";
 	}
 	
-	//admin notice list
-	@RequestMapping(value="adminNoticeList")
-	public String adminNoticeList() {
-		return "admin/notice/list";
-	}
+//	//admin notice list
+//	@RequestMapping(value="adminNoticeList")
+//	public String adminNoticeList() {
+//		return "admin/notice/list";
+//	}
 	//admin notice writeForm
 	@RequestMapping(value="adminNoticeWriteForm")
 	public String adminNoticeWriteForm() {
@@ -130,12 +131,12 @@ public class HomeController {
 	}
 	
 		
-	//admin qna list
-	@RequestMapping(value="adminQnaList")
-	public String adminQndList() {
-		return "admin/qna/list";
-	}
-	//admin qna view
+//	//admin qna list
+//	@RequestMapping(value="adminQnaList")
+//	public String adminQndList() {
+//		return "admin/qna/list";
+//	}
+//	//admin qna view
 	@RequestMapping(value="adminQnaView")
 	public String adminQndView() {
 		return "admin/qna/view";
@@ -168,11 +169,11 @@ public class HomeController {
 	
 	
 	
-	//admin goodsQna list
-	@RequestMapping(value="adminGoodsQnaList")
-	public String adminGoodsQnaList() {
-		return "admin/goodsQna/list";
-	}
+//	//admin goodsQna list
+//	@RequestMapping(value="adminGoodsQnaList")
+//	public String adminGoodsQnaList() {
+//		return "admin/goodsQna/list";
+//	}
 	//admin goodsQna view
 	@RequestMapping(value="adminGoodsQnaView")
 	public String adminGoodsQndView() {
@@ -207,16 +208,23 @@ public class HomeController {
 
 	
 	
-// Long	
+//	long
 //	//메인
 //	@RequestMapping(value = "main")
 //	public String home() {
 //		return "main/main";
 //	}
-	
+//	
 	//로그인
 	@RequestMapping(value = "loginView")
-	public String login() {
+	public String login(String userId, String companyId, Model model) {
+		
+		if(userId != null && companyId == null) {
+			model.addAttribute("userId", userId);
+		}else if(companyId != null && userId == null) {
+			model.addAttribute("companyId", companyId);
+		}		
+		
 		return "users/login";
 	}
 	

@@ -17,6 +17,17 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventAllList();
 	}
 	@Override
+	public List<Event> eventAdminList(String pageNum) {
+		int eventTotalCount = eventDao.totDoingEvent();
+		Paging paging = new Paging(eventTotalCount, pageNum, 5, 5);
+		int startRow = paging.getStartRow();
+		int endRow = paging.getEndRow();
+		Event event = new Event();
+		event.setStartRow(startRow);
+		event.setEndRow(endRow);
+		return eventDao.eventAdminList(event);
+	}
+	@Override
 	public List<Event> eventDoingList(String pageNum) {
 		int eventTotalCount = eventDao.totDoingEvent();
 		//pageSize = 5 , BlockSize =5
