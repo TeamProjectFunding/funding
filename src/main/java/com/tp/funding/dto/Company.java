@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Company {
 
-	private String companyId;
+	private String companyId; //emailId
 	private String companyPassword;
 	private String companyProfileImage;
 	private String companyIntroduction;
