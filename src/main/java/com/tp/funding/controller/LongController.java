@@ -36,10 +36,10 @@ public class LongController {
 	public String fundList(Model model, String pageNum, String category) {
 		// startRow endRow
 		if (category.equals("fund")) {
-			model.addAttribute("fundList", fundingGoodsService.investmentAllList(pageNum));
+			model.addAttribute("goods", fundingGoodsService.investmentAllList(pageNum));
 			model.addAttribute("category", "FUND");
 		} else if (category.equals("reward")) {
-			model.addAttribute("fundList", fundingGoodsService.rewardAllList(pageNum));
+			model.addAttribute("goods", fundingGoodsService.rewardAllList(pageNum));
 			model.addAttribute("category", "REWARD");
 		}
 		return "goods/fundList";
@@ -76,7 +76,8 @@ public class LongController {
 	}
 
 	@RequestMapping(value = "userPick")
-	public String userPick(String userId, int fundingCode, Model model) {
+	public String userPick(int fundingCode, Model model,HttpSession session) {
+		String userId = ((Users)session.getAttribute("user")).getUserId();
 		if (userPickService.userPickCheck(userId, fundingCode) == 1) { // 이미 찜 추가 했으면 찜 삭제
 			userPickService.userPickDelete(userId, fundingCode);
 			model.addAttribute("userPickResult", false); // 찜 삭제

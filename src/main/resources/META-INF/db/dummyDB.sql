@@ -49,10 +49,10 @@ INSERT INTO Users VALUES ('user7@naver.com','123','profile.jpg','김병지','010
     
 INSERT INTO Users VALUES ('wogur698@naver.com','123','profile.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
-    
-    
 
-  select * from fundinggoods;
+  
+
+
   
 --펀딩상품    
     -- 승인 대기중인 (투자 / 리워드)
@@ -118,10 +118,34 @@ INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용19', SYSDATE,
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용20', SYSDATE, 0 , 'admin', 'com2@google.com', null);
 
 --공지사항 관리자단에 뿌릴 공지사항더미데이터
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘1', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘1', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다1', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다1', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘2', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘2', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다2', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다2', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘3', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘3', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다3', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다3', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘4', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘4', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다4', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다4', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘5', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘5', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다5', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다5', '포기는 습니다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘6', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘6', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다6', '불꽃가능', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다6', '포기는 습니다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘7', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘7', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다7', '불꽃가능', SYSDATE, 0 ,'admin');
-INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'포기는 없다7', '포기는 습니다', SYSDATE, 0 ,'admin');
+
 
 --이벤트 관리자단에 뿌릴 이벤트더미데이터
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
@@ -131,16 +155,43 @@ INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '왕창SALE', '금주이벤트는
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-04-04', '2019-05-05',NULL,'admin');
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-03-03', '2019-03-03',NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가10배SALE', '금주이벤트는 엔화의10배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '폭탄SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '왕창SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-04-04', '2019-05-05',NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-03-03', '2019-03-03',NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가10배SALE', '금주이벤트는 엔화의10배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '폭탄SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '왕창SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-04-04', '2019-05-05',NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '거져가져가', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2019-03-03', '2019-03-03',NULL,'admin');
 
 --이벤트 관지자단에 뿌릴 Q&A더미데이터
-INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다1' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다2' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다3' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다4' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다5' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다6' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다7' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
-
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다1' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다2' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다3' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다4' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다5' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다6' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다7' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
+INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
 --상품문의--
 <<<<<<< HEAD
-select * from users;
-select * from fundinggoods;
-select * from fundingquestion;
+=======
+
+
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user8');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
@@ -149,8 +200,22 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테�
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
 commit;
+>>>>>>> 60894fa8ef4b8cf6ea714bb7ebf3784d270fa282
 
-=======
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user2@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같아요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user2@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같아요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
+INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user2@naver.com');
@@ -160,4 +225,4 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
 
 commit;
->>>>>>> 707096b1fac56671801f271d50e4331006d13f0a
+

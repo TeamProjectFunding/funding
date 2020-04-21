@@ -50,5 +50,15 @@ public class NoticeDaoImpl implements NoticeDao {
 	public List<Notice> noticeListP(Notice notice) {
 		return sessionTemplate.selectList("noticeListP", notice);
 	}
+	@Override
+	public List<Notice> noticeSearchList(Notice notice) {
+		return sessionTemplate.selectList("noticeSearchList");
+	}
+
+	@Override
+	public int totSearchList() {
+		return sessionTemplate.selectOne("totSearchList");
+	}
+
 
 }

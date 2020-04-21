@@ -15,12 +15,14 @@
 <body>
 
 <header>
+	<c:if test="${not empty result}">
 	<p id="messageWrap">반갑습니다.</p>
 	<script>
 		$(function(){
 			$('#messageWrap').delay(1000).slideUp();
 		});
 	</script>
+	</c:if>
 	<div id="headerWrap">
 		<a href="main.do" class='headerLogo'>CROWD<br>FUND</a>
 		<div class='menuWrap'>
