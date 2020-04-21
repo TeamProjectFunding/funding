@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.tp.funding.dto.Company;
+import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.FundingDetailService;
@@ -18,6 +21,7 @@ import com.tp.funding.service.UsersService;
 
 @Controller
 public class LongController {
+	private boolean repeatF5 = false;
 	@Autowired
 	private FundingGoodsService fundingGoodsService;
 	@Autowired
@@ -105,6 +109,26 @@ public class LongController {
 		return "funding/fundingResult";
 	}
 
+	
+	//펀딩 신청 폼
+	@RequestMapping(value="fundingApplyForm")
+	public String fundingApplyForm() {
+		repeatF5 = true;
+		return "funding/fundingApplyForm";
+	}
+	
+	//펀딩(리워드) 신청
+	@RequestMapping(value="fundingApply")
+	public String fundingApply(FundingGoods goods,MultipartHttpServletRequest mRequest, Model model) {
+		System.out.println(goods);
+		String[] rewardName = mRequest.getParameterValues("rewardName");
+		System.out.println("goodsName="+rewardName);
+		for(String i : rewardName) {
+			System.out.println(i);
+		}
+		return "funding/applyNext";
+	}
+		
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
 	public String naverCollback() {

@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.tp.funding.dao.FundingGoodsDao;
 import com.tp.funding.dto.FundingGoods;
 
@@ -14,7 +16,7 @@ public interface FundingGoodsService {
 	public List<FundingGoods> investmentAllList(String pageNum);
 	public List<FundingGoods> rewardAllList(String pageNum);
 	public FundingGoods fundingDetail(int fundingCode);
-	public int fundingRegist(FundingGoods fundingGoods);
+	public int fundingRegist(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest);
 	public int fundingAccountAdd(FundingGoods fundingGoods);
 	public int fundingAdminPermitYes(int fundingCode);
 	public int fundingAdminPermitNo(int fundingCode);

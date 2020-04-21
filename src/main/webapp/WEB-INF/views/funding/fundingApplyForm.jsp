@@ -19,11 +19,11 @@
 	<div id="contentWrap" class="fundingWrap">
 		<section id="applyWrap">
 			<h1>APPLY</h1>
-			<form action="fundingApply.do" method="post" enctype="">
+			<form action="fundingApply.do" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th>COMPANY NAME</th>
-						<td>company name</td>
+						<td>${company.companyName }</td>
 					</tr>
 					<tr>
 						<th>GOODS NAME</th>
@@ -31,23 +31,27 @@
 					</tr>
 					<tr>
 						<th>RECRUITMENT AMOUNT</th>
-						<td><input type="number" name="goodsName" placeholder="희망모집금액을 입력하세요." required="required"></td>
+						<td><input type="number" name="fundingTargetAmount" placeholder="희망모집금액을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
 						<th>APPLICATION PERIOD</th>
-						<td><input type="date" name="applicationStart"> ~ <input type="date" name="applicationEnd"></td>
+						<td><input type="date" name="fundingStartDate"> ~ <input type="date" name="fundingTargetDate"></td>
 					</tr>
 					<tr>
 						<th>COMPANY INTRODUCTION</th>
-						<td><textarea name="companyIntroductuion"></textarea></td>
+						<td><textarea name="companyIntroductuion">${company.companyIntroduction }</textarea></td>
 					</tr>
 					<tr>
 						<th>GOODS THUMNAIL</th>
-						<td><input type="file" placeholder="썸네일 업로드(image 파일)"></td>
+						<td><input type="file" name="file" placeholder="썸네일 업로드(image 파일)"></td>
+					</tr>
+					<tr>
+						<th>GOODS DETAIL IMAGE</th>
+						<td><input type="file" name="file" placeholder="상세이미지 업로드(image 파일)"></td>
 					</tr>
 					<tr>
 						<th>INVESTMENT MENUAL</th>
-						<td><input type="file" placeholder="투자설명서 업로드(image 파일)"></td>
+						<td><input type="file" name="file" placeholder="투자설명서 업로드(image 파일)"></td>
 					</tr>
 				</table>
 				<div id="addReward">
@@ -68,9 +72,9 @@
 					$(function(){
 						var addReward = '<table class="reward">'
 											+'<tr><th></th></tr>'
-											+'<tr><th>REWARD NAME</th><td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>'
-											+'<tr><th>REWARD CONDITION</th><td><input type="number"> ~ <input type="number"></td></tr>'
-											+'<tr><th>REWARD IMAGE</th><td><input type="file" name="rewardImage"></td></tr>'
+											+'<tr><th>REWARD NAME</th><td><input type="text" name="rewardName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>'
+											+'<tr><th>REWARD CONDITION</th><td><input type="number"> ~ <input type="number" name="rewardCondition"></td></tr>'
+											+'<tr><th>REWARD IMAGE</th><td><input type="file" name="file"></td></tr>'
 										+'</table>';
 						$('.addRewardButton').click(function(){
 							$('#addReward').append(addReward);

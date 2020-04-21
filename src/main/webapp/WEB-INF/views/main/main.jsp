@@ -8,6 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>CROWDFUND : MAIN</title>
+<script>
+	function noCompany(){
+		alert('펀딩 신청은 회사 로그인 이후에 가능합니다.');
+	}
+</script>
 </head>
 <body>
 
@@ -88,7 +93,12 @@
 				<h1>OPEN FUNDING</h1>
 				<h4>Introduce your story and meet investors and supporters</h4>
 				<div id="buttonWrap">
+					<c:if test="${not empty sessionScope.company }">
 					<a href="fundingApplyForm.do" class="button">Do it</a>
+					</c:if>
+					<c:if test="${empty sessionScope.company }">
+					<a href="#none" class="button" onclick="noCompany()">Do it</a>
+					</c:if>
 				</div>
 			</div>
 			<ul class="bannerList">

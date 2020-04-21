@@ -39,7 +39,6 @@ public class HyuckController {
 	
 	@RequestMapping(value = "joinResult", method = RequestMethod.POST)
 	public String joinResult(Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {		
-		
 		if(repeatF5) {
 			if (user.getUserId() != null && company.getCompanyId() == null) {
 				

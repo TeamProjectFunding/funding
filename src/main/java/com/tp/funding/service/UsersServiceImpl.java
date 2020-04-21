@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.UsersDao;
 import com.tp.funding.dto.Users;
+import com.tp.funding.util.FileCopy;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -53,7 +54,8 @@ public class UsersServiceImpl implements UsersService {
 					mFile.transferTo(new File(uploadPath + userProfileImage));
 					System.out.println("서버에 저장된 파일 : " + uploadPath + userProfileImage);
 					System.out.println("백업위해 복사할 파일 : " + backupPath + userProfileImage);
-					int fileResult = filecopy(uploadPath + userProfileImage, backupPath + userProfileImage);
+					FileCopy filecopyClass = new FileCopy();
+					int fileResult = filecopyClass.filecopy(uploadPath + userProfileImage, backupPath + userProfileImage);
 					if (fileResult == 1) {
 						System.out.println("복사성공");
 					} else {
@@ -71,46 +73,7 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userJoin(user);
 	}
 
-	private int filecopy(String serverFile, String backupFile) {
-		int result = 0;
-
-		FileInputStream is = null;
-		FileOutputStream os = null;
-
-		File file = new File(serverFile);
-
-		try {
-
-			is = new FileInputStream(serverFile);
-			os = new FileOutputStream(backupFile);
-			byte[] buff = new byte[(int) file.length()];
-			while (true) {
-				int nReadyByte = is.read(buff);
-				if (nReadyByte == -1)
-					break;
-				os.write(buff, 0, nReadyByte);
-			}
-
-			result = 1;
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-
-				if (os != null)
-					os.close();
-				if (is != null)
-					is.close();
-
-			} catch (Exception e2) {
-				System.out.println(e2.getMessage());
-			}
-		}
-
-		return result;
-	}
-
+	
 	@Override
 	public int userLoginCheck(Users user) {
 		return userDao.userLoginCheck(user);
@@ -170,13 +133,7 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userAccountModify(user);
 	}
 
-	@Override
-	public int userTempPassword(String userId, String userPassword) {
-		Users user = new Users();
-		user.setUserId(userId);
-		user.setUserPassword(userPassword);
-		return userDao.userTempPassword(user);
-	}
+	
 
 
 }

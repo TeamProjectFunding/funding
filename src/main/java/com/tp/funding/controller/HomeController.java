@@ -238,18 +238,19 @@ public class HomeController {
 	public String joinSuccess() {
 		return "users/joinSuccess";
 	}
+
+// Long
+//	//펀딩 신청 폼
+//	@RequestMapping(value="fundingApplyForm")
+//	public String fundingApplyForm() {
+//		return "funding/fundingApplyForm";
+//	}
 	
-	//펀딩 신청 폼
-	@RequestMapping(value="fundingApplyForm")
-	public String fundingApplyForm() {
-		return "funding/fundingApplyForm";
-	}
-	
-	//펀딩 신청 폼
-	@RequestMapping(value="fundingApply")
-	public String fundingApply() {
-		return "main/main";
-	}
+//	//펀딩 신청 
+//	@RequestMapping(value="fundingApply")
+//	public String fundingApply() {
+//		return "main/main";
+//	}
 	
 // Long
 //	//펀드 리스트
