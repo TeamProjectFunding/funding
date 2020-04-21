@@ -37,6 +37,11 @@
 					<td>${notice.noticeHit }</td>
 				</tr>
 				</c:forEach>
+				<tr>
+					<th id="buttonWrap" colspan='5'>
+						<a href="${conPath }/adminNoticeWriteForm.do" class="button">WRITE</a>
+					</th>
+				</tr>
 			</table>
 			<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">

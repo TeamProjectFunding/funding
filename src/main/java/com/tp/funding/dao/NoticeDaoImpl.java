@@ -52,12 +52,12 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 	@Override
 	public List<Notice> noticeSearchList(Notice notice) {
-		return sessionTemplate.selectList("noticeSearchList");
+		return sessionTemplate.selectList("noticeSearchList",  notice);
 	}
 
 	@Override
-	public int totSearchList() {
-		return sessionTemplate.selectOne("totSearchList");
+	public int totSearchList(Notice notice) {
+		return sessionTemplate.selectOne("totSearchList", notice);
 	}
 
 

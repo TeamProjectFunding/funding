@@ -25,9 +25,8 @@ public interface FundingGoodsDao {
 	public int fundingSuccess(int fundingCode);
 	public int fundingFailure(int fundingCode);
 	public int fundingBalanceMove(int fundingCode);
-	public List<FundingGoods> fundingReadyList();
-	public int totCntOpenList();
-		
+	public List<FundingGoods> fundingReadyList(FundingGoods fundingGoods);	
+	public int totCntReadyList();	
 	
 	public int investmentTotalCount();
 	public int rewardTotalCount();

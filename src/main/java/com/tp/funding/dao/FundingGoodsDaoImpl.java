@@ -110,8 +110,8 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	}
 
 	@Override
-	public List<FundingGoods> fundingReadyList() {
-		return sessionTemplate.selectList("fundingReadyList");
+	public List<FundingGoods> fundingReadyList(FundingGoods fundingGoods) {
+		return sessionTemplate.selectList("fundingReadyList", fundingGoods);
 	}
 
 	@Override
@@ -120,9 +120,9 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	}
 
 	@Override
-	public int totCntOpenList() {
-		return sessionTemplate.selectOne("totCntOpenList");
-	}
+	public int totCntReadyList() {
+		return sessionTemplate.selectOne("totCntReadyList");
+	}	
 
 	@Override
 	public List<FundingGoods> investmentOpenList(FundingGoods fundingGoods) {

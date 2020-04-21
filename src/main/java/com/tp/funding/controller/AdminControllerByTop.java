@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.Notice;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingGoodsService;
@@ -33,11 +35,11 @@ public class AdminControllerByTop {
 	
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
-	public String adminMain(Model model) {
+	public String adminMain(Model model, FundingGoods fundingGoods) {
 		model.addAttribute("qnAAdminList", qService.qnAAdminList());
 		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
 		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
-		model.addAttribute("fundingReadyList", fService.fundingReadyList()); // 승인 대기중인 리스트
+		model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트		
 		
 		return "admin/adminMain";
 	}
@@ -117,5 +119,36 @@ public class AdminControllerByTop {
 				
 		return "forward:adminMain.do";
 	}
+	//공지사항 작성 폼이동 
+	@RequestMapping(value="adminNoticeWriteForm")
+	public String adminNoticeWriteForm() {
+		return "admin/notice/write";
+	}
+	//공지사항 작성
+	@RequestMapping(value="noticeWrite")
+	public String noticeWrite(Model model, Notice notice) {
+		nService.noticeWrite(notice);
+		return "redirect:adminNoticeList.do";
+	}
+	//공지사항 수정 폼이동
+	@RequestMapping(value="noticeAdminModifyForm")
+	public String noticeAdminModifyForm(Model model, int noticeNumber) {
+		nService.noticeDetail(noticeNumber);
+		model.addAttribute("notice", nService.noticeDetail(noticeNumber));
+		return "admin/notice/modify";
+	}
+	//공지사항 수정
+	@RequestMapping(value="noticeAdminModify")
+	public String noticeAdminModfiy(Notice notice) {
+		nService.noticeModify(notice);
+		return "redirect:adminNoticeList.do";
+	}
+	//공지사항 삭제
+	@RequestMapping(value="noticeAdminDelete")
+	public String noticeAdminDelete(int noticeNumber) {
+		nService.noticeDelete(noticeNumber);
+		return "redirect:adminNoticeList.do";
+	}
+	
 }
 	

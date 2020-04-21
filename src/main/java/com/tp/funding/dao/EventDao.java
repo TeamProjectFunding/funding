@@ -12,6 +12,6 @@ public interface EventDao {
 	public Event eventDetail(int eventNumber);
 	public int eventWrite(Event event);
 	public int totEvent();
-	public int totDoingEvent();
+	public int totDoingEvent(Event event);
 	public int totEndingEvent();
 }

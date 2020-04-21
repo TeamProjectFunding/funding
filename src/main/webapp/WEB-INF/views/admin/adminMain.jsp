@@ -29,7 +29,7 @@
 			<div class="dashBoard">
 				<h3>투자신청내역</h3>				
 					<div class="dashBoardList">
-						<c:forEach var="fundingReadyList" items="${fundingReadyList}">
+						<c:forEach var="fundingReadyList" items="${fundingReadyList}">						
 							<ul>
 								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
 								<li id="buttonWrap">
@@ -145,8 +145,8 @@
 					<ul>
 						<li><a href="${conPath }/noticeView.do">${notice.noticeTilte}</a><span>${notice.noticeDate}</span></li>
 						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do?${notice.noticeNumber}" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
+							<a href="${conPath }/noticeAdminModifyForm.do?noticeNumber=${notice.noticeNumber}" class="button">수정</a>
+							<a href="${conPath }/noticeAdminDelete.do?noticeNumber=${notice.noticeNumber}" class="button">삭제</a>
 						</li>
 					</ul>
 				</c:forEach>

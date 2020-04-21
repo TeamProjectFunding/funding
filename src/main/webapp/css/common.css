@@ -41,8 +41,10 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #headerWrap .menuWrap ul li a{position:relative; color:#fff; }
 #headerWrap .menuWrap ul li a:hover{color:#f1bf04;}
 #headerWrap .menuWrap .util .alarm{display:block; position:absolute; top:-1px; right:-8px; width:7px; height:7px; border-radius:50%; color:#fff; background: #f1bf04; font-size: 8px;}
+
 #headerWrap .menuWrap .mypageButton{display:block; width:40px; height:40px; border-radius: 50%; overflow: hidden;}
 #headerWrap .menuWrap .mypageButton img{width:100%;}
+
 
 .popupWrap{display:none;}
 .popupWrap{position:fixed; z-index:99999; width:100%; height:100%; background:#131a23fc;}

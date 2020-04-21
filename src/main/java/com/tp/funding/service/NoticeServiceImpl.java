@@ -58,13 +58,17 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int totSearchList() {
-		return noticeDao.totSearchList();
+	public int totSearchList(Notice notice) {
+		return noticeDao.totSearchList(notice);
 	}
 
 	@Override
 	public List<Notice> noticeSearchList(String pageNum, Notice notice) {
-		return null;
+		int noticeTotalCount = noticeDao.totSearchList(notice);
+		Paging paging = new Paging(noticeTotalCount, pageNum, 5, 5);
+		notice.setStartRow(paging.getStartRow());
+		notice.setEndRow(paging.getEndRow());
+		return noticeDao.noticeSearchList(notice);
 	}
 
 }

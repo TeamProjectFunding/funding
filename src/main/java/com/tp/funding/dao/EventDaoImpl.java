@@ -45,8 +45,8 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public int totDoingEvent() {
-		return sessionTemplate.selectOne("totDoingEvent");
+	public int totDoingEvent(Event event) {
+		return sessionTemplate.selectOne("totDoingEvent", event);
 	}
 
 	@Override

@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link href="${conPath}/css/common.css" rel="stylesheet">
+	<link href="${conPath}/css/admin.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,19 +20,19 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="applyWrap">
 			<h1>NOTICE WRITE</h1>
-			<form action="noticeWrite.do" method="post" >
+			<form action="${conPath }/noticeWrite.do" method="post" >
 				<table>
 					<tr>
 						<th>TITLE</th>
-						<td><input type="text" name="noticeTitle" placeholder="타이틀을 입력하세요." required="required"></td>
+						<td><input type="text" name="noticeTilte" placeholder="타이틀을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
 						<th>WRITER</th>
-						<td>ADMIN</td>
+						<td><input type="text" name="adminId" value="admin" required="required"></td>
 					</tr>
 					<tr>
 						<th>CONTENT</th>
-						<td><textarea name="noticeContent"></textarea></td>
+						<td><textarea name="noticeContent" cols="5" rows="20"></textarea></td>
 					</tr>
 					
 				</table>

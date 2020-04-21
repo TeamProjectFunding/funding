@@ -19,17 +19,6 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="GoodsWrap">
 			<h1>GOODS LIST</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="userName" placeholder="상품을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
-			
 			<div class="goods">
 				<ul>
 					<li class="thumnail">
