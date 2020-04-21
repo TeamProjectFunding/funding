@@ -127,7 +127,7 @@
 					<ul>
 						<li><a href="${conPath }/eventView.do">${event.eventTilte}</a><span>${event.eventStartDate}</span></li>
 						<li id="buttonWrap">
-							<a href="${conPath }/eventClose.do" class="button">마감</a>
+							<a href="${conPath }/eventClose.do?eventNumber=${event.eventNumber}" class="button">마감</a>
 							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
 						</li>
 					</ul>

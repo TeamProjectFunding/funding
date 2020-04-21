@@ -1,14 +1,20 @@
 package com.tp.funding.controller;
 
+import java.util.Iterator;
+import java.util.Random;
+import java.util.TreeSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.Event;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.Notice;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
+import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
@@ -32,7 +38,8 @@ public class AdminControllerByTop {
 	FundingGoodsService fService; //상품 서비스
 	@Autowired
 	FundingQuestionService fqService; //상품문의 서비스
-	
+	@Autowired
+	FundingDetailService fundingDetailService;
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
 	public String adminMain(Model model, FundingGoods fundingGoods) {
@@ -150,8 +157,41 @@ public class AdminControllerByTop {
 	@RequestMapping(value="noticeAdminDelete")
 	public String noticeAdminDelete(int noticeNumber) {
 		nService.noticeDelete(noticeNumber);
-		return "redirect:adminNoticeList.do";
+		return "redirect:adminMain.do";
 	}
-	
+	@RequestMapping(value="eventClose")
+	public String eventClose(Model model, int eventNumber) {
+		//1단계 
+		int eventParticipateCount = eService.eventColseStep1(eventNumber);
+		Event event = new Event();
+		event.setEventParticipateCount(eventParticipateCount);
+		event.setEventNumber(eventNumber);
+		//2단계
+		eService.eventColseStep2(event);
+		event = eService.eventDetail(eventNumber);
+		System.out.println(event.toString());
+		//3단계 추첨
+		Random random = new Random();
+		int eventPrizeCount = event.getEventPrizeCount(); //eventPrizecount
+		int[] raffle = new int[eventPrizeCount]; //당첨인원 eventPrizeCount
+		TreeSet<Integer> chancenum = new TreeSet<Integer>();
+		while(chancenum.size() < raffle.length) {//raffle.length 당첨인원만큼
+			chancenum.add(random.nextInt(eventParticipateCount)+1); //eventParticipateCount 참여자
+		}
+		Iterator<Integer> key = chancenum.iterator();
+		int index = 0;
+		while(key.hasNext()) {
+			raffle[index]=key.next();
+			index ++;
+		}
+		
+		//4단계
+//		SELECT userId FROM (select ROWNUM RN,FG.* from fundinggoodsdetail FG where fundingdate between (select eventstartdate from event where eventnumber=2) and
+//				(select eventenddate from event where eventnumber=2)) WHERE RN=5; //eventPrize.xml uwerId 조회하고
+//		INSERT INTO EventPrize VALUES (EVENTPRIZENUMBER.nextval,'user1@naver.com',1); //eventPrize.xml 인서트
+//		INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, 'xxx 님 이벤트 xx에 당첨되셨어요', SYSDATE, 0 , 'admin', null, 'user1@naver.com'); // 알림에 인서트
+		// 4.추첨한 사람을 알림보내주면끄, notification
+		return "redirect:adminMain.do";
+	}
 }
 	

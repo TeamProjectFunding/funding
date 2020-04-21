@@ -77,5 +77,13 @@ public class EventServiceImpl implements EventService {
 	public int totEndingEvent() {
 		return eventDao.totEndingEvent();
 	}
+	@Override
+	public int eventColseStep1(int eventNumber) {
+		return eventDao.eventColseStep1(eventNumber);
+	}
+	@Override
+	public int eventColseStep2(Event event) {
+		return eventDao.eventColseStep2(event);
+	}
 
 }

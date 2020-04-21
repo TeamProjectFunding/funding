@@ -20,6 +20,26 @@ public class FundingGoodsDetail {
 	//user join
 	private String userProfileImage;      
 	private String userName;
+	//event 마감처리에 사용될 eventNumber
+	private int eventNumber;
+	public FundingGoodsDetail() {
+	}
+	public FundingGoodsDetail(int fundingGoodsDetailNumber, int fundingAmount, Date fundingDate,
+			int fundingRewardAddDonation, Date fundingTargetDate, int fundingCode, String userId, int startRow,
+			int endRow, String userProfileImage, String userName, int eventNumber) {
+		this.fundingGoodsDetailNumber = fundingGoodsDetailNumber;
+		this.fundingAmount = fundingAmount;
+		this.fundingDate = fundingDate;
+		this.fundingRewardAddDonation = fundingRewardAddDonation;
+		this.fundingTargetDate = fundingTargetDate;
+		this.fundingCode = fundingCode;
+		this.userId = userId;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.userProfileImage = userProfileImage;
+		this.userName = userName;
+		this.eventNumber = eventNumber;
+	}
 	public int getFundingGoodsDetailNumber() {
 		return fundingGoodsDetailNumber;
 	}
@@ -86,24 +106,11 @@ public class FundingGoodsDetail {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public FundingGoodsDetail() {
-		super();
+	public int getEventNumber() {
+		return eventNumber;
 	}
-	public FundingGoodsDetail(int fundingGoodsDetailNumber, int fundingAmount, Date fundingDate,
-			int fundingRewardAddDonation, Date fundingTargetDate, int fundingCode, String userId, int startRow,
-			int endRow, String userProfileImage, String userName) {
-		super();
-		this.fundingGoodsDetailNumber = fundingGoodsDetailNumber;
-		this.fundingAmount = fundingAmount;
-		this.fundingDate = fundingDate;
-		this.fundingRewardAddDonation = fundingRewardAddDonation;
-		this.fundingTargetDate = fundingTargetDate;
-		this.fundingCode = fundingCode;
-		this.userId = userId;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.userProfileImage = userProfileImage;
-		this.userName = userName;
+	public void setEventNumber(int eventNumber) {
+		this.eventNumber = eventNumber;
 	}
 	@Override
 	public String toString() {
@@ -111,11 +118,6 @@ public class FundingGoodsDetail {
 				+ fundingAmount + ", fundingDate=" + fundingDate + ", fundingRewardAddDonation="
 				+ fundingRewardAddDonation + ", fundingTargetDate=" + fundingTargetDate + ", fundingCode=" + fundingCode
 				+ ", userId=" + userId + ", startRow=" + startRow + ", endRow=" + endRow + ", userProfileImage="
-				+ userProfileImage + ", userName=" + userName + "]";
+				+ userProfileImage + ", userName=" + userName + ", eventNumber=" + eventNumber + "]";
 	}
-	
-	
-	
-	
-	
 }
