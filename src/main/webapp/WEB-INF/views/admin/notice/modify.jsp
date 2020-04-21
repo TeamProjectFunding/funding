@@ -8,13 +8,47 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link href="${conPath}/css/common.css" rel="stylesheet">
+	<link href="${conPath}/css/admin.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp" />
+	
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="noticeWrap">
+			<h1>NOTICE MODIFY</h1>
+			<form action="noticeAdminModify.do?noticeNumber=${notice.noticeNumber }" method="post" enctype="">
+				<table>
+					<tr>
+						<th>TITLE</th>
+						<td><input type="text" name="noticeTilte" value="${notice.noticeTilte }" required="required"></td>
+					</tr>
+					<tr>
+						<th>WRITER</th>
+						<td><input type="text" name="adminId" value="${notice.adminId }" required="required"></td>
+					</tr>
+					<tr>
+						<th>CONTENT</th>
+						<td><textarea name="noticeContent" >${notice.noticeContent }</textarea></td>
+					</tr>
+					
+				</table>
+				
+				<table>
+					<tr>
+						<th id="buttonWrap" colspan="2">
+							<input type="submit" value="MODIFY" class="button">
+							<input type="reset" value="RESET" class="button">
+							<input type="button" value="BACK" class="button" onClick="history.back()">
+						</th>
+					</tr>
+				</table>
+				
+			</form>
+		</section>
+	</div>
 </body>
 </html>

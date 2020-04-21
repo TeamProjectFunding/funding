@@ -105,31 +105,31 @@ public class HomeController {
 //		return "admin/notice/list";
 //	}
 	//admin notice writeForm
-	@RequestMapping(value="adminNoticeWriteForm")
-	public String adminNoticeWriteForm() {
-		return "admin/notice/write";
-	}
+//	@RequestMapping(value="adminNoticeWriteForm")
+//	public String adminNoticeWriteForm() {
+//		return "admin/notice/write";
+//	}
 	//admin notice write
-	@RequestMapping(value="adminNoticeWrite")
-	public String adminNoticeWrite() {
-		return "admin/notice/list";
-	}
-	//admin notice modifyForm
-	@RequestMapping(value="adminNoticeModifyForm")
-	public String adminNoticeModifyForm() {
-		return "admin/notice/modify";
-	}
-	//admin notice modify
-	@RequestMapping(value="adminNoticeModify")
-	public String adminNoticeModify() {
-		return "admin/notice/list";
-	}
-	//admin notice delete
-	@RequestMapping(value="adminNoticeDelete")
-	public String adminNoticeDelete() {
-		return "admin/notice/list";
-	}
-	
+//	@RequestMapping(value="adminNoticeWrite")
+//	public String adminNoticeWrite() {
+//		return "admin/notice/list";
+//	}
+//	//admin notice modifyForm
+//	@RequestMapping(value="adminNoticeModifyForm")
+//	public String adminNoticeModifyForm() {
+//		return "admin/notice/modify";
+//	}
+//	//admin notice modify
+//	@RequestMapping(value="adminNoticeModify")
+//	public String adminNoticeModify() {
+//		return "admin/notice/list";
+//	}
+//	//admin notice delete
+//	@RequestMapping(value="adminNoticeDelete")
+//	public String adminNoticeDelete() {
+//		return "admin/notice/list";
+//	}
+//	
 		
 //	//admin qna list
 //	@RequestMapping(value="adminQnaList")
