@@ -19,16 +19,6 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="boardListWrap">
 			<h1>GOODS Q&A LIST</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="userName" placeholder="제목을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
 			<table>
 				<tr>
 					<th>NO</th>

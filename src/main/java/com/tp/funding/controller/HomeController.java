@@ -329,11 +329,11 @@ public class HomeController {
 		return "funding/fundingComplate";
 	}
 	
-	//이벤트 리스트
-	@RequestMapping(value ="eventList")
-	public String eventList() {
-		return "event/eventList";
-	}
+//	//이벤트 리스트
+//	@RequestMapping(value ="eventList")
+//	public String eventList() {
+//		return "event/eventList";
+//	}
 	
 	//이벤트 view
 	@RequestMapping(value ="eventView")
@@ -377,11 +377,11 @@ public class HomeController {
 		return "qna/qnaList";
 	}
 	
-	//공지 리스트
-	@RequestMapping(value ="noticeList")
-	public String noticeList() {
-		return "notice/noticeList";
-	}
+//	//공지 리스트 byTop
+//	@RequestMapping(value ="noticeList")
+//	public String noticeList() {
+//		return "notice/noticeList";
+//	}
 		
 	//공지 view
 	@RequestMapping(value ="noticeView")

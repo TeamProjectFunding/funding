@@ -20,9 +20,37 @@ public class Event {
 	private String adminId;
 	
 	private int eventReplyCount; //이벤트 답글 갯수
+	//검색시 사용
+	private String doingEventSearchWord;
 	// paging
 	private int startRow;
 	private int endRow;
+	public Event() {
+	}
+	public Event(int eventNumber, String eventTilte, String eventContent, String eventThumbnailImage,
+			String eventDetailImage, String eventProductName, String eventProductImage, int eventPrizeCount,
+			int eventParticipateCount, int eventHit, Date eventStartDate, Date eventEndDate,
+			Date eventProductDeliveryDate, String adminId, int eventReplyCount, String doingEventSearchWord,
+			int startRow, int endRow) {
+		this.eventNumber = eventNumber;
+		this.eventTilte = eventTilte;
+		this.eventContent = eventContent;
+		this.eventThumbnailImage = eventThumbnailImage;
+		this.eventDetailImage = eventDetailImage;
+		this.eventProductName = eventProductName;
+		this.eventProductImage = eventProductImage;
+		this.eventPrizeCount = eventPrizeCount;
+		this.eventParticipateCount = eventParticipateCount;
+		this.eventHit = eventHit;
+		this.eventStartDate = eventStartDate;
+		this.eventEndDate = eventEndDate;
+		this.eventProductDeliveryDate = eventProductDeliveryDate;
+		this.adminId = adminId;
+		this.eventReplyCount = eventReplyCount;
+		this.doingEventSearchWord = doingEventSearchWord;
+		this.startRow = startRow;
+		this.endRow = endRow;
+	}
 	public int getEventNumber() {
 		return eventNumber;
 	}
@@ -113,6 +141,12 @@ public class Event {
 	public void setEventReplyCount(int eventReplyCount) {
 		this.eventReplyCount = eventReplyCount;
 	}
+	public String getDoingEventSearchWord() {
+		return doingEventSearchWord;
+	}
+	public void setDoingEventSearchWord(String doingEventSearchWord) {
+		this.doingEventSearchWord = doingEventSearchWord;
+	}
 	public int getStartRow() {
 		return startRow;
 	}
@@ -125,32 +159,6 @@ public class Event {
 	public void setEndRow(int endRow) {
 		this.endRow = endRow;
 	}
-	public Event(int eventNumber, String eventTilte, String eventContent, String eventThumbnailImage,
-			String eventDetailImage, String eventProductName, String eventProductImage, int eventPrizeCount,
-			int eventParticipateCount, int eventHit, Date eventStartDate, Date eventEndDate,
-			Date eventProductDeliveryDate, String adminId, int eventReplyCount, int startRow, int endRow) {
-		super();
-		this.eventNumber = eventNumber;
-		this.eventTilte = eventTilte;
-		this.eventContent = eventContent;
-		this.eventThumbnailImage = eventThumbnailImage;
-		this.eventDetailImage = eventDetailImage;
-		this.eventProductName = eventProductName;
-		this.eventProductImage = eventProductImage;
-		this.eventPrizeCount = eventPrizeCount;
-		this.eventParticipateCount = eventParticipateCount;
-		this.eventHit = eventHit;
-		this.eventStartDate = eventStartDate;
-		this.eventEndDate = eventEndDate;
-		this.eventProductDeliveryDate = eventProductDeliveryDate;
-		this.adminId = adminId;
-		this.eventReplyCount = eventReplyCount;
-		this.startRow = startRow;
-		this.endRow = endRow;
-	}
-	public Event() {
-		super();
-	}
 	@Override
 	public String toString() {
 		return "Event [eventNumber=" + eventNumber + ", eventTilte=" + eventTilte + ", eventContent=" + eventContent
@@ -159,10 +167,7 @@ public class Event {
 				+ ", eventPrizeCount=" + eventPrizeCount + ", eventParticipateCount=" + eventParticipateCount
 				+ ", eventHit=" + eventHit + ", eventStartDate=" + eventStartDate + ", eventEndDate=" + eventEndDate
 				+ ", eventProductDeliveryDate=" + eventProductDeliveryDate + ", adminId=" + adminId
-				+ ", eventReplyCount=" + eventReplyCount + ", startRow=" + startRow + ", endRow=" + endRow + "]";
+				+ ", eventReplyCount=" + eventReplyCount + ", doingEventSearchWord=" + doingEventSearchWord
+				+ ", startRow=" + startRow + ", endRow=" + endRow + "]";
 	}
-	
-	
-	
-	
 }

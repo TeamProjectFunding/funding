@@ -6,7 +6,7 @@ import com.tp.funding.dto.Notice;
 
 public interface NoticeDao {
 	public int totNotice();
-	public int totSearchList();
+	public int totSearchList(Notice notice);
 	public List<Notice> noticeList();
 	public List<Notice> noticeListP(Notice notice); 
 	public List<Notice> noticeSearchList(Notice notice);

@@ -18,7 +18,7 @@ public class EventServiceImpl implements EventService {
 	}
 	@Override
 	public List<Event> eventAdminList(String pageNum) {
-		int eventTotalCount = eventDao.totDoingEvent();
+		int eventTotalCount = eventDao.totEvent();
 		Paging paging = new Paging(eventTotalCount, pageNum, 5, 5);
 		int startRow = paging.getStartRow();
 		int endRow = paging.getEndRow();
@@ -28,13 +28,12 @@ public class EventServiceImpl implements EventService {
 		return eventDao.eventAdminList(event);
 	}
 	@Override
-	public List<Event> eventDoingList(String pageNum) {
-		int eventTotalCount = eventDao.totDoingEvent();
+	public List<Event> eventDoingList(String pageNum, Event event) {
+		int eventTotalCount = eventDao.totDoingEvent(event);
 		//pageSize = 5 , BlockSize =5
-		Paging paging = new Paging(eventTotalCount, pageNum, 5, 5);
+		Paging paging = new Paging(eventTotalCount, pageNum, 6, 5);
 		int startRow = paging.getStartRow();
 		int endRow = paging.getEndRow();
-		Event event = new Event();
 		event.setStartRow(startRow);
 		event.setEndRow(endRow);
 		return eventDao.eventDoingList(event);
@@ -70,8 +69,8 @@ public class EventServiceImpl implements EventService {
 
 
 	@Override
-	public int totDoingEvent() {
-		return eventDao.totDoingEvent();
+	public int totDoingEvent(Event event) {
+		return eventDao.totDoingEvent(event);
 	}
 
 	@Override
