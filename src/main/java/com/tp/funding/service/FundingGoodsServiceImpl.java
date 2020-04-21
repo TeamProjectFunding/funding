@@ -178,6 +178,11 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	@Override
 	public int totCntReadyList() {
 		return fundingGoodsDao.totCntReadyList();
+	}
+
+	@Override
+	public int totCntOpenList() {
+		return fundingGoodsDao.totCntOpenList();
 	}	
 
 }

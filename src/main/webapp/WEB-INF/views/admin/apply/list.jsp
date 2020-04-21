@@ -32,25 +32,25 @@
 						<li class="companyName">${fundingReadyList.companyName}</li>
 						<li class="goodsName">${fundingReadyList.fundingName}</li>
 						<fmt:parseNumber value="${fundingReadyList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
-						<li class="deadline">${endDate - nowDate}</li>
+						<li class="deadline">${endDate - nowDate}일 남았지롱</li>
 					</ul>
 				</div>
 			</c:forEach>				
 			
 			<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">
-					<a href="${conPath }/adminApplyList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+					<a href="${conPath }/adminApplyList.do?pageNum=${paging.startPage-1 }" class="PREV">PREV</a>
 				</c:if>
 				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage}">
 					<c:if test="${paging.currentPage==i }">
 						<a href="#none" class="current">${i }</a>  
 					</c:if>
 					<c:if test="${paging.currentPage!=i }">
-						<a href="${conPath }/adminApplyList.do?pageNum=${i}"> ${i }</a>
+						<a href="${conPath }/adminApplyList.do?pageNum=${i}"> ${i}</a>
 					</c:if>
 				</c:forEach>
 				<c:if test="${paging.endPage<paging.pageCnt }">
-					<a href="${conPath }/adminApplyList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+					<a href="${conPath }/adminApplyList.do?pageNum=${paging.endPage+1 }" class="NEXT">NEXT</a>
 				</c:if>
 			</div>
 			

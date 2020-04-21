@@ -15,23 +15,18 @@ public class QnA {
 	private String userId;
 	private String companyId;
 	private String adminId;
-	
-	
-	//paging
-		private int startRow;
-		private int endRow;
-		
-	//UserJoin
-	private String userName;
-	private String userProfileImage;
-	
-	//Company
-	//회사이름, 회사 프로필이미지 
-	private String companyProfileImage;
-	private String companyName;
 
-	//AdminId
-	private String adminName;
+	// paging
+	private int startRow;
+	private int endRow;
+
+	// writer
+	private String writer;
+	private String writerProfileImage;
+
+	public QnA() {
+
+	}
 
 	public int getQnANumber() {
 		return qnANumber;
@@ -41,11 +36,11 @@ public class QnA {
 		this.qnANumber = qnANumber;
 	}
 
-	public String getqnATitle() {
+	public String getQnATitle() {
 		return qnATitle;
 	}
 
-	public void setqnATitle(String qnATitle) {
+	public void setQnATitle(String qnATitle) {
 		this.qnATitle = qnATitle;
 	}
 
@@ -145,74 +140,20 @@ public class QnA {
 		this.endRow = endRow;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getWriter() {
+		return writer;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
-	public String getUserProfileImage() {
-		return userProfileImage;
+	public String getWriterProfileImage() {
+		return writerProfileImage;
 	}
 
-	public void setUserProfileImage(String userProfileImage) {
-		this.userProfileImage = userProfileImage;
-	}
-
-	public String getCompanyProfileImage() {
-		return companyProfileImage;
-	}
-
-	public void setCompanyProfileImage(String companyProfileImage) {
-		this.companyProfileImage = companyProfileImage;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public String getAdminName() {
-		return adminName;
-	}
-
-	public void setAdminName(String adminName) {
-		this.adminName = adminName;
-	}
-
-	public QnA(int qnANumber, String qnATitle, String qnAContent, int qnAHit, int qnAOriginalWriter, int qnAGroup,
-			int qnARef, int qnAIndent, Date qnADate, String userId, String companyId, String adminId, int startRow,
-			int endRow, String userName, String userProfileImage, String companyProfileImage, String companyName,
-			String adminName) {
-		super();
-		this.qnANumber = qnANumber;
-		this.qnATitle = qnATitle;
-		this.qnAContent = qnAContent;
-		this.qnAHit = qnAHit;
-		this.qnAOriginalWriter = qnAOriginalWriter;
-		this.qnAGroup = qnAGroup;
-		this.qnARef = qnARef;
-		this.qnAIndent = qnAIndent;
-		this.qnADate = qnADate;
-		this.userId = userId;
-		this.companyId = companyId;
-		this.adminId = adminId;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.userName = userName;
-		this.userProfileImage = userProfileImage;
-		this.companyProfileImage = companyProfileImage;
-		this.companyName = companyName;
-		this.adminName = adminName;
-	}
-
-	public QnA() {
-		super();
+	public void setWriterProfileImage(String writerProfileImage) {
+		this.writerProfileImage = writerProfileImage;
 	}
 
 	@Override
@@ -220,10 +161,8 @@ public class QnA {
 		return "QnA [qnANumber=" + qnANumber + ", qnATitle=" + qnATitle + ", qnAContent=" + qnAContent + ", qnAHit="
 				+ qnAHit + ", qnAOriginalWriter=" + qnAOriginalWriter + ", qnAGroup=" + qnAGroup + ", qnARef=" + qnARef
 				+ ", qnAIndent=" + qnAIndent + ", qnADate=" + qnADate + ", userId=" + userId + ", companyId="
-				+ companyId + ", adminId=" + adminId + ", startRow=" + startRow + ", endRow=" + endRow + ", userName="
-				+ userName + ", userProfileImage=" + userProfileImage + ", companyProfileImage=" + companyProfileImage
-				+ ", companyName=" + companyName + ", adminName=" + adminName + "]";
+				+ companyId + ", adminId=" + adminId + ", startRow=" + startRow + ", endRow=" + endRow + ", writer="
+				+ writer + ", writerProfileImage=" + writerProfileImage + "]";
 	}
-	
-	
+
 }

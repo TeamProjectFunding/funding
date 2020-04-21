@@ -15,6 +15,11 @@
 
 </head>
 <body>
+<!-- 현재 날짜 -->
+   <jsp:useBean id="today" class="java.util.Date" />
+   <fmt:parseNumber value="${today.time / (1000*60*60*24)}" integerOnly="true" var="nowDate" />
+
+
 <c:if test="${not empty adminApplyMsg}">
 	<script>
 		alert('${adminApplyMsg}');
@@ -44,36 +49,27 @@
 			<div class="dashBoard">
 				<h3>투자마감</h3>
 				<div class="dashBoardList">
+				<c:forEach var="fundingDeadlineList" items="${fundingDeadlineList}">
+					<fmt:parseNumber value="${fundingDeadlineList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
+				
 					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">${fundingDeadlineList.fundingName}</a>
+						<c:if test="${endDate < nowDate }">
+							<span>${nowDate-endDate}일 지남</span></li>
+						</c:if>
+						<c:if test="${nowDate < endDate}">
+							<span>${endDate-nowDate}일 남음</span></li>
+						</c:if>
+						<c:if test="${nowDate == endDate}">
+							<span>마감일</span></li>
+						</c:if>
+						
 						<li id="buttonWrap">
 							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">goodsTitle</a><span>3일 남음</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
-						</li>
-					</ul>
+					
+					</c:forEach>					
 				</div>
 			</div>
 			<div class="dashBoard">

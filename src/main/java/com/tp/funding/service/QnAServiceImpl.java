@@ -23,18 +23,14 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public int qnADetail(QnA qnA) {
+	public QnA qnADetail(QnA qnA) {
 		return qnADao.qnADetail(qnA);
 	}
 
 	@Override
-	public List<QnA> qnAList(String pageNum) {//페이징
-		int QnATotalCount = qnADao.totQnA();
-		Paging paging = new Paging(QnATotalCount, pageNum, 5, 5);
-		QnA qna = new QnA();
-		qna.setStartRow(paging.getStartRow());
-		qna.setEndRow(paging.getEndRow());
-		return qnADao.qnAList(qna);
+	public List<QnA> qnAList(QnA qnA) {//페이징
+		
+		return qnADao.qnAList(qnA);
 	}
 
 	@Override
@@ -50,6 +46,16 @@ public class QnAServiceImpl implements QnAService {
 	@Override
 	public int totQnA() {
 		return qnADao.totQnA();
+	}
+
+	@Override
+	public int totCntSearchQnA(QnA qnA) {
+		return qnADao.totCntSearchQnA(qnA);
+	}
+
+	@Override
+	public int qnAModify(QnA qnA) {
+		return qnADao.qnAModify(qnA);
 	}
 
 }

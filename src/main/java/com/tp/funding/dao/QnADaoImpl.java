@@ -22,7 +22,7 @@ public class QnADaoImpl implements QnADao {
 	}
 
 	@Override
-	public int qnADetail(QnA qnA) {
+	public QnA qnADetail(QnA qnA) {
 		return sessionTemplate.selectOne("qnADetail", qnA);
 	}
 
@@ -44,6 +44,16 @@ public class QnADaoImpl implements QnADao {
 	@Override
 	public int totQnA() {
 		return sessionTemplate.selectOne("totQnA");
+	}
+
+	@Override
+	public int totCntSearchQnA(QnA qnA) {
+		return sessionTemplate.selectOne("totCntSearchQnA", qnA);
+	}
+
+	@Override
+	public int qnAModify(QnA qnA) {
+		return sessionTemplate.insert("qnAModify", qnA);
 	}
 
 }
