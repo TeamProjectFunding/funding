@@ -16,7 +16,8 @@ section{width:100%; float:left;}
 table #buttonWrap{float:none;}
 .button:hover{color:#f1bf04;}
 .button:active{background:#f1bf04; color:#fff;}
-
+i.material-icons {color: #fff; line-height: 1.5;}
+i.material-icons:hover{color:#f1bf04;}
 .paging{ float:left; width:100%; line-height:150px; text-align: center;}
 .paging a{padding:2%;}
 .paging .current{color:#f1bf04;}
@@ -39,7 +40,9 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #headerWrap .menuWrap ul li{float:left; line-height:35px; padding:0 2%; text-align: center;}
 #headerWrap .menuWrap ul li a{position:relative; color:#fff; }
 #headerWrap .menuWrap ul li a:hover{color:#f1bf04;}
-#headerWrap .menuWrap .util .alarm{display:block; position:absolute; top:-1px; right:-1px; width:7px; height:7px; border-radius:50%; color:#fff; background: #f1bf04; font-size: 8px;}
+#headerWrap .menuWrap .util .alarm{display:block; position:absolute; top:-1px; right:-8px; width:7px; height:7px; border-radius:50%; color:#fff; background: #f1bf04; font-size: 8px;}
+#headerWrap .menuWrap .mypageButton{display:block; width:40px; height:40px; border-radius: 50%; overflow: hidden;}
+#headerWrap .menuWrap .mypageButton img{width:100%;}
 
 .popupWrap{display:none;}
 .popupWrap{position:fixed; z-index:99999; width:100%; height:100%; background:#131a23fc;}
@@ -67,7 +70,11 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #alarmWrap #contentWrap .alarmListWrap ul li:last-child{ font-size:12px; color:#eebd07a1;}
 #alarmWrap #contentWrap .alarmList.read{left:-110%; height:0;transition:2s;}
 
-
+#mypageWrap.mypageMenuWrap{right:0; top:82px; width:30%; height:auto; min-width:400px; background:#1e2938a3; padding:5%;}
+#mypageWrap.mypageMenuWrap table{width:100%; text-align: center;}
+#mypageWrap th,#mypageWrap th{padding:5%;}
+#mypageWrap a{color: #fff; display: block; width: 100%; line-height: 50px; border: 1px solid #ffffff38;}
+#mypageWrap a:hover{color:#f1bf04; border: 1px solid #f1bf047a; transition:.5s;}
 /* footer.jsp */
 footer{position:relative; float:left; width:100%;  height:auto; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover;}
 footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
@@ -200,6 +207,12 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap table td{padding:2%; font-size: 12px; line-height: 30px;}
 #contentWrap.fundingWrap table td span{font-size:10px; font-weight:bold;}
 #contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
+#contentWrap.fundingWrap .fundingStep2 form {width:100%; float:left; border:1px solid #f1f1f1;}
+#contentWrap.fundingWrap .fundingStep2 table {text-align: center;} 
+#contentWrap.fundingWrap .fundingStep2 table th{padding:5%;}
+#contentWrap.fundingWrap .fundingStep2 table td{padding:3%;}
+#contentWrap.fundingWrap .fundingStep2 table input[type='number']{padding:2%; border: 1px solid  #e8e8e8;}
+#contentWrap.fundingWrap .fundingStep2 table select{width:70%; height:30px; background:#fff; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
 
 /* apply */
@@ -229,13 +242,14 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 
 /** board **/
 /* list */
-.boardWrap {width:1000px;}
-.boardWrap table{text-align: center;}
-.boardWrap table th{padding:3%;}
-.boardWrap table th input[type="text"]{width:40%; padding:1%; border-bottom:1px solid #e8e8e8; text-align: center;}
-.boardWrap table td{padding:2%; border-bottom:1px solid #e8e8e8;}
+#contentWrap.boardWrap {width:1000px;}
+#contentWrap.boardWrap table{text-align: center; font-size:14px;}
+#contentWrap.boardWrap table th{padding:3%;}
+#contentWrap.boardWrap table th input[type="text"]{width:40%; padding:1%; border-bottom:1px solid #e8e8e8; text-align: center;}
+#contentWrap.boardWrap table td{padding:2%; border-bottom:1px solid #e8e8e8;}
 
-
+#contentWrap.boardWrap table .boardContent{line-height:30px;}
+#contentWrap.boardWrap table textarea{width:100%; height:200px;}
 
 
 

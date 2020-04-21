@@ -12,6 +12,8 @@ public interface FundingGoodsDao {
 	public List<FundingGoods> searchFundingKeyUpTop5();
 	public List<FundingGoods> investmentAllList(FundingGoods fundingGoods);
 	public List<FundingGoods> rewardAllList(FundingGoods fundingGoods);
+	public List<FundingGoods> investmentOpenList(FundingGoods fundingGoods);
+	public List<FundingGoods> rewardOpenList(FundingGoods fundingGoods);
 	public FundingGoods fundingDetail(int fundingCode);
 	public int fundingRegist(FundingGoods fundingGoods);
 	public int fundingAccountAdd(FundingGoods fundingGoods);

@@ -124,4 +124,14 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 		return sessionTemplate.selectOne("totCntOpenList");
 	}
 
+	@Override
+	public List<FundingGoods> investmentOpenList(FundingGoods fundingGoods) {
+		return sessionTemplate.selectList("investmentOpenList", fundingGoods);
+	}
+
+	@Override
+	public List<FundingGoods> rewardOpenList(FundingGoods fundingGoods) {
+		return sessionTemplate.selectList("rewardOpenList", fundingGoods);
+	}
+
 }

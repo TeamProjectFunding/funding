@@ -311,23 +311,23 @@ public class HomeController {
 		return "goods/goodsViewInvestor";
 	}
 	
-	//펀딩하기 Step1
-	@RequestMapping(value ="fundingStep1")
-	public String fundingStep1() {
-		return "funding/fundingStep1";
-	}
-	
-	//펀딩하기 Step2
-	@RequestMapping(value ="fundingStep2")
-	public String fundingStep2() {
-		return "funding/fundingStep2";
-	}
+//	//펀딩하기 Step1
+//	@RequestMapping(value ="fundingStep1")
+//	public String fundingStep1() {
+//		return "funding/fundingStep1";
+//	}
+//	
+//	//펀딩하기 Step2
+//	@RequestMapping(value ="fundingStep2")
+//	public String fundingStep2() {
+//		return "funding/fundingStep2";
+//	}
 		
-	//펀딩하기 Step3
-	@RequestMapping(value ="fundingComplate")
-	public String fundingComplate() {
-		return "funding/fundingComplate";
-	}
+//	//펀딩하기 Step3
+//	@RequestMapping(value ="fundingComplate")
+//	public String fundingComplate() {
+//		return "funding/fundingComplate";
+//	}
 	
 	//이벤트 리스트
 	@RequestMapping(value ="eventList")

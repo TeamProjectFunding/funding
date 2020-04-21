@@ -2,6 +2,7 @@
 
 import java.util.List;
 
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.FundingGoodsDao;
@@ -13,8 +14,10 @@ public interface FundingGoodsService {
 	public List<FundingGoods> fundingCloseList(FundingGoods fundingGoods);
 	public List<FundingGoods> fundingSearchList(String FundingName);
 	public List<FundingGoods> searchFundingKeyUpTop5();
-	public List<FundingGoods> investmentAllList(String pageNum);
-	public List<FundingGoods> rewardAllList(String pageNum);
+	public List<FundingGoods> investmentAllList(String pageNum,Model model);
+	public List<FundingGoods> rewardAllList(String pageNum,Model model);
+	public List<FundingGoods> investmentOpenList(String pageNum,Model model);
+	public List<FundingGoods> rewardOpenList(String pageNum,Model model);
 	public FundingGoods fundingDetail(int fundingCode);
 	public int fundingRegist(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest);
 	public int fundingAccountAdd(FundingGoods fundingGoods);

@@ -150,7 +150,7 @@
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- naver -->
 		<dependency>
 			<groupId>com.github.scribejava</groupId>
@@ -158,6 +158,12 @@
 			<version>2.8.1</version>
 		</dependency>
 
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
 
 	</dependencies>
 	<build>

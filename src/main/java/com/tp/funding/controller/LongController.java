@@ -2,8 +2,10 @@ package com.tp.funding.controller;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
+import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UserPickService;
 import com.tp.funding.service.UsersService;
 
@@ -30,16 +34,19 @@ public class LongController {
 	private UserPickService userPickService;
 	@Autowired
 	private UsersService usersService;
-
+	@Autowired
+	private RewardService rewardService;
+	
+	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
 	public String fundList(Model model, String pageNum, String category) {
 		// startRow endRow
 		if (category.equals("fund")) {
-			model.addAttribute("goods", fundingGoodsService.investmentAllList(pageNum));
+			model.addAttribute("goods", fundingGoodsService.investmentOpenList(pageNum,model));
 			model.addAttribute("category", "FUND");
 		} else if (category.equals("reward")) {
-			model.addAttribute("goods", fundingGoodsService.rewardAllList(pageNum));
+			model.addAttribute("goods", fundingGoodsService.rewardOpenList(pageNum,model));
 			model.addAttribute("category", "REWARD");
 		}
 		return "goods/fundList";
@@ -70,8 +77,8 @@ public class LongController {
 	// 메인
 	@RequestMapping(value = "main")
 	public String main(Model model) {
-		model.addAttribute("investmentTop3", fundingGoodsService.investmentAllList(null));
-		model.addAttribute("rewardTop3", fundingGoodsService.rewardAllList(null));
+		model.addAttribute("investmentTop3", fundingGoodsService.investmentAllList(null,null));
+		model.addAttribute("rewardTop3", fundingGoodsService.rewardAllList(null,null));
 		return "main/main";
 	}
 
@@ -128,6 +135,55 @@ public class LongController {
 			System.out.println(i);
 		}
 		return "funding/applyNext";
+	}
+	
+	//펀딩하기 Step1
+	@RequestMapping(value ="fundingStep1")
+	public String fundingStep1() {
+		return "funding/fundingStep1";
+	}
+	
+	//펀딩하기 Step2
+	@RequestMapping(value ="fundingStep2")
+	public String fundingStep2(int fundingCode, Model model) {
+		model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
+		model.addAttribute("rewardList", rewardService.fundingRewardList(fundingCode));
+		return "funding/fundingStep2";
+	}
+	//리워드 select ajax
+	@RequestMapping(value ="selectReward")
+	public String selectReward(int rewardCode, Model model) {
+		System.out.println("일로옴");
+		Reward reward = rewardService.rewardDetail(rewardCode);
+		System.out.println(reward);
+		JSONObject selectReward = new JSONObject();
+		selectReward.put("rewardProduct", reward.getRewardImage());
+		selectReward.put("rewardDeliveryDate", reward.getFundingRewardDeliveryDate());
+		model.addAttribute("rewardProduct",reward.getRewardImage());
+		model.addAttribute("rewardDeliveryDate",reward.getFundingRewardDeliveryDate());
+		return "message/rewardDetail";
+	}
+	
+	//펀딩하기 Step3
+	@RequestMapping(value ="fundingComplate")
+	public String fundingComplate(FundingGoodsDetail fundingGoodsDetail,int rewardCode,int fundingCategory,HttpServletRequest request,Model model) {
+		int fundingCode = fundingGoodsDetail.getFundingCode();
+		int changeAccountBalance = 0;
+		if(fundingCategory == 0) { //투자
+			int fundingAmount = Integer.parseInt(request.getParameter("fundingAmount"));
+			fundingGoodsDetail.setFundingAmount(fundingAmount);
+		}else if(fundingCategory == 1) { //리워드
+			int fundingRewardAddDonation = Integer.parseInt(request.getParameter("fundingRewardAddDonation"));
+			fundingGoodsDetail.setFundingRewardAddDonation(fundingRewardAddDonation);
+		}
+		fundingDetailService.fundingGoodsDetailWrite(fundingGoodsDetail); //펀딩 디테일 생성
+//		fundingGoodsService.fundingBalancePlus(fundingCode, changeAccountBalance)
+		
+		model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
+		model.addAttribute("rewardCode", rewardService.rewardDetail(rewardCode));
+		model.addAttribute("fundingGoodsDetail", fundingGoodsDetail);
+		
+		return "funding/fundingComplate";
 	}
 		
 	// 네이버 로그인 콜백
