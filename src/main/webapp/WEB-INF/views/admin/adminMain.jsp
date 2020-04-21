@@ -29,7 +29,7 @@
 			<div class="dashBoard">
 				<h3>투자신청내역</h3>				
 					<div class="dashBoardList">
-						<c:forEach var="fundingReadyList" items="${fundingReadyList}">
+						<c:forEach var="fundingReadyList" items="${fundingReadyList}">						
 							<ul>
 								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
 								<li id="buttonWrap">

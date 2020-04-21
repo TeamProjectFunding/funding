@@ -64,7 +64,7 @@ table #buttonWrap{background: none;}
 /** admin goods **/
 
 /* list */
-.goods{width:45%; padding:2.5%; float:left;}
+.goods{width:45%; margin:2.5%; float:left;}
 .goods ul li {position:relative; width:100%; overflow: hidden; text-align: center; font-weight:bold; padding:1%;}
 .goods ul .thumnail{height:250px; cursor: pointer; padding:0;}
 .goods ul .thumnail img{width: 100%; height:100%; transition:.5s;  transform:scale(1);}

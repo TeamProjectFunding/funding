@@ -56,10 +56,10 @@ public class HomeController {
 	
 		
 	//admin apply list
-	@RequestMapping(value="adminApplyList")
-	public String adminApplyList() {
-		return "admin/apply/list";
-	}
+//	@RequestMapping(value="adminApplyList")
+//	public String adminApplyList() {
+//		return "admin/apply/list";
+//	}
 	//admin apply view
 //	@RequestMapping(value="adminApplyView")
 //	public String adminApplyView() {

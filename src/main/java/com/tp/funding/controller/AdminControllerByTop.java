@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingGoodsService;
@@ -33,11 +34,11 @@ public class AdminControllerByTop {
 	
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
-	public String adminMain(Model model) {
+	public String adminMain(Model model, FundingGoods fundingGoods) {
 		model.addAttribute("qnAAdminList", qService.qnAAdminList());
 		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
 		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
-		model.addAttribute("fundingReadyList", fService.fundingReadyList()); // 승인 대기중인 리스트
+		model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트		
 		
 		return "admin/adminMain";
 	}
