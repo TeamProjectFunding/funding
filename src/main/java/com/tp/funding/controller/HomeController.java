@@ -105,31 +105,31 @@ public class HomeController {
 //		return "admin/notice/list";
 //	}
 	//admin notice writeForm
-	@RequestMapping(value="adminNoticeWriteForm")
-	public String adminNoticeWriteForm() {
-		return "admin/notice/write";
-	}
+//	@RequestMapping(value="adminNoticeWriteForm")
+//	public String adminNoticeWriteForm() {
+//		return "admin/notice/write";
+//	}
 	//admin notice write
-	@RequestMapping(value="adminNoticeWrite")
-	public String adminNoticeWrite() {
-		return "admin/notice/list";
-	}
-	//admin notice modifyForm
-	@RequestMapping(value="adminNoticeModifyForm")
-	public String adminNoticeModifyForm() {
-		return "admin/notice/modify";
-	}
-	//admin notice modify
-	@RequestMapping(value="adminNoticeModify")
-	public String adminNoticeModify() {
-		return "admin/notice/list";
-	}
-	//admin notice delete
-	@RequestMapping(value="adminNoticeDelete")
-	public String adminNoticeDelete() {
-		return "admin/notice/list";
-	}
-	
+//	@RequestMapping(value="adminNoticeWrite")
+//	public String adminNoticeWrite() {
+//		return "admin/notice/list";
+//	}
+//	//admin notice modifyForm
+//	@RequestMapping(value="adminNoticeModifyForm")
+//	public String adminNoticeModifyForm() {
+//		return "admin/notice/modify";
+//	}
+//	//admin notice modify
+//	@RequestMapping(value="adminNoticeModify")
+//	public String adminNoticeModify() {
+//		return "admin/notice/list";
+//	}
+//	//admin notice delete
+//	@RequestMapping(value="adminNoticeDelete")
+//	public String adminNoticeDelete() {
+//		return "admin/notice/list";
+//	}
+//	
 		
 //	//admin qna list
 //	@RequestMapping(value="adminQnaList")
@@ -329,11 +329,11 @@ public class HomeController {
 		return "funding/fundingComplate";
 	}
 	
-	//이벤트 리스트
-	@RequestMapping(value ="eventList")
-	public String eventList() {
-		return "event/eventList";
-	}
+//	//이벤트 리스트
+//	@RequestMapping(value ="eventList")
+//	public String eventList() {
+//		return "event/eventList";
+//	}
 	
 	//이벤트 view
 	@RequestMapping(value ="eventView")
@@ -377,11 +377,11 @@ public class HomeController {
 		return "qna/qnaList";
 	}
 	
-	//공지 리스트
-	@RequestMapping(value ="noticeList")
-	public String noticeList() {
-		return "notice/noticeList";
-	}
+//	//공지 리스트 byTop
+//	@RequestMapping(value ="noticeList")
+//	public String noticeList() {
+//		return "notice/noticeList";
+//	}
 		
 	//공지 view
 	@RequestMapping(value ="noticeView")

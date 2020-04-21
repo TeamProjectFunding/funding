@@ -19,16 +19,6 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="boardListWrap">
 			<h1>Q&A LIST</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="userName" placeholder="제목을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
 			<table>
 				<tr>
 					<th>NO</th>
@@ -49,18 +39,18 @@
 			</table>
 			<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">
-				<a href="${conPath }/adminNoticeList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				<a href="${conPath }/adminQnaList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
 				</c:if>
 				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
 					<c:if test="${paging.currentPage==i }">
 						<a href="#none" class="current">${i }</a>  
 					</c:if>
 					<c:if test="${paging.currentPage!=i }">
-						<a href="${conPath }/adminNoticeList.do?pageNum=${i}"> ${i }</a>
+						<a href="${conPath }/adminQnaList.do?pageNum=${i}"> ${i }</a>
 					</c:if>
 				</c:forEach>
 				<c:if test="${paging.endPage<paging.pageCnt }">
-				<a href="${conPath }/adminNoticeList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				<a href="${conPath }/adminQnaList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
 				</c:if>
 			</div>
 		</section>

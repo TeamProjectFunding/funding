@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -23,6 +23,7 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="GoodsWrap">
 			<h1>GOODS LIST</h1>
+
 			<!-- <form action="">
 				<table>
 					<tr>
@@ -33,6 +34,21 @@
 					</tr>
 				</table>
 			</form> -->
+
+			<div class="goods">
+				<ul>
+					<li class="thumnail">
+						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
+					</li>
+					<li class="companyName">company name</li>
+					<li class="goodsName">goods name</li>
+					<li class="deadline">deadline after 10 days</li>
+					<li id="buttonWrap">
+						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
+						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
+					</li>
+				</ul>
+			</div>
 			
 			<c:forEach var="adminGoodsList" items="${adminGoodsList}">
 				<div class="goods">

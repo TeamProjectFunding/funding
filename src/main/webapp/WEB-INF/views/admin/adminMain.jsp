@@ -141,8 +141,8 @@
 					<ul>
 						<li><a href="${conPath }/noticeView.do">${notice.noticeTilte}</a><span>${notice.noticeDate}</span></li>
 						<li id="buttonWrap">
-							<a href="${conPath }/noticeModify.do?${notice.noticeNumber}" class="button">수정</a>
-							<a href="${conPath }/noticeDelete.do" class="button">삭제</a>
+							<a href="${conPath }/noticeAdminModifyForm.do?noticeNumber=${notice.noticeNumber}" class="button">수정</a>
+							<a href="${conPath }/noticeAdminDelete.do?noticeNumber=${notice.noticeNumber}" class="button">삭제</a>
 						</li>
 					</ul>
 				</c:forEach>

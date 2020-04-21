@@ -10,8 +10,6 @@
     	<result property="noticeDate" column="noticeDate"/>
     	<result property="noticeHit" column="noticeHit"/>
     	<result property="adminId" column="adminId"/>
-    	<result property="startRow" column="startRow"/>
-    	<result property="endRow" column="endRow"/>
 	</resultMap>
 	<select id="totNotice" resultType="int">
 	SELECT COUNT(*) FROM NOTICE
@@ -38,9 +36,14 @@
 	DELETE FROM NOTICE WHERE NOTICENUMBER=#{noticeNumber}
 	</delete>
 	<select id ="noticeSearchList" parameterType="Notice" resultMap="NoticeList">
-	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord}||'%' ORDER BY NOTICENUMBER DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+		<if test="searchWord!='' and searchWord!=null">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord, jdbcType = VARCHAR}||'%' ORDER BY NOTICENUMBER DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="searchWord=='' or searchWord==null">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE ORDER BY NOTICENUMBER DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
 	</select>
 	<select id="totSearchList" parameterType="Notice" resultType="int">
-	SELECT COUNT(*) FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord}||'%' ORDER BY NOTICENUMBER DESC
+		SELECT COUNT(*) FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord, jdbcType = VARCHAR}||'%' 
 	</select>
 	</mapper>

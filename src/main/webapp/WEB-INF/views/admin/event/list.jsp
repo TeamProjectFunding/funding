@@ -19,16 +19,6 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="userListWrap">
 			<h1>COMPANY LIST</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="userName" placeholder="기업명을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
 			<table>
 				<tr>
 					<th>NUMBER</th>

@@ -19,7 +19,7 @@
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="noticeTitle" placeholder="제목을 입력하세요.">
+							<input type ="text" name="searchWord" value="${param.searchWord }" placeholder="제목 검색">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
@@ -33,57 +33,31 @@
 					<th>DATE</th>
 					<th>HIT</th>
 				</tr>
+				<c:forEach var="noticeS" items="${noticeSearchList}">
 				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
+					<td>${noticeS.noticeNumber }</td>
+					<td><a href="${conPath }/noticeView.do?">${noticeS.noticeTilte}</a></td>
+					<td>${noticeS.adminId }</td>
+					<td>${noticeS.noticeDate }</td>
+					<td>${noticeS.noticeHit }</td>
 				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/noticeView.do">NOTICE TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
+				</c:forEach>
 			</table>
 			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/noticeList.do?pageNum=${paging.startPage-1 }&searchWord=${param.searchWord}" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/noticeList.do?pageNum=${i}&searchWord=${param.searchWord}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/noticeList.do?pageNum=${paging.endPage+1 }&searchWord=${param.searchWord}" class="next">NEXT</a>
+				</c:if>
 			</div>
 		</section>
 	</div>
