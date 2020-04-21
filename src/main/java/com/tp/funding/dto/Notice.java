@@ -10,10 +10,27 @@ public class Notice {
 	private Date noticeDate;
 	private int noticeHit;
 	private String adminId;
-
+	//search
+	private String searchWord;
 	// paging
 	private int startRow;
 	private int endRow;
+	public Notice() {
+		super();
+	}
+	public Notice(int noticeNumber, String noticeTilte, String noticeContent, Date noticeDate, int noticeHit,
+			String adminId, String searchWord, int startRow, int endRow) {
+		super();
+		this.noticeNumber = noticeNumber;
+		this.noticeTilte = noticeTilte;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
+		this.noticeHit = noticeHit;
+		this.adminId = adminId;
+		this.searchWord = searchWord;
+		this.startRow = startRow;
+		this.endRow = endRow;
+	}
 	public int getNoticeNumber() {
 		return noticeNumber;
 	}
@@ -50,6 +67,12 @@ public class Notice {
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
 	public int getStartRow() {
 		return startRow;
 	}
@@ -62,28 +85,10 @@ public class Notice {
 	public void setEndRow(int endRow) {
 		this.endRow = endRow;
 	}
-	public Notice(int noticeNumber, String noticeTilte, String noticeContent, Date noticeDate, int noticeHit,
-			String adminId, int startRow, int endRow) {
-		super();
-		this.noticeNumber = noticeNumber;
-		this.noticeTilte = noticeTilte;
-		this.noticeContent = noticeContent;
-		this.noticeDate = noticeDate;
-		this.noticeHit = noticeHit;
-		this.adminId = adminId;
-		this.startRow = startRow;
-		this.endRow = endRow;
-	}
-	public Notice() {
-		super();
-	}
 	@Override
 	public String toString() {
 		return "Notice [noticeNumber=" + noticeNumber + ", noticeTilte=" + noticeTilte + ", noticeContent="
 				+ noticeContent + ", noticeDate=" + noticeDate + ", noticeHit=" + noticeHit + ", adminId=" + adminId
-				+ ", startRow=" + startRow + ", endRow=" + endRow + "]";
+				+ ", searchWord=" + searchWord + ", startRow=" + startRow + ", endRow=" + endRow + "]";
 	}
-	
-	
-
 }

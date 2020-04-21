@@ -37,4 +37,10 @@
 	<delete id="noticeDelete" parameterType="int">
 	DELETE FROM NOTICE WHERE NOTICENUMBER=#{noticeNumber}
 	</delete>
+	<select id ="noticeSearchList" parameterType="Notice" resultMap="NoticeList">
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord}||'%' ORDER BY NOTICENUMBER DESC) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="totSearchList" parameterType="Notice" resultType="int">
+	SELECT COUNT(*) FROM NOTICE WHERE NOTICETILTE LIKE '%'||#{searchWord}||'%' ORDER BY NOTICENUMBER DESC
+	</select>
 	</mapper>

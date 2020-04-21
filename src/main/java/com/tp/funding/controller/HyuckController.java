@@ -89,13 +89,14 @@ public class HyuckController {
 
 			session.setAttribute("user", usersService.userDetail(id));
 			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
+			model.addAttribute("result", "성공");
 
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
 			session.setAttribute("company", companyService.companyDetail(id));
 			session.setAttribute("notificationUnReadCompanyList",
 					notificationService.notificationUnReadCompanyList(id));
-
+			model.addAttribute("result", "성공");
 		} else {
 
 			model.addAttribute("errorMessage", "등록되지 않은 아이디거나, 아이디 또는 비밀번호가 회원정보와 일치하지 않습니다.");

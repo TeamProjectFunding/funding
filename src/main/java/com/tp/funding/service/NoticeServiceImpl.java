@@ -57,4 +57,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.noticeListP(notice);
 	}
 
+	@Override
+	public int totSearchList() {
+		return noticeDao.totSearchList();
+	}
+
+	@Override
+	public List<Notice> noticeSearchList(String pageNum, Notice notice) {
+		return null;
+	}
+
 }
