@@ -21,4 +21,14 @@ public class EventPrizeServiceImpl implements EventPrizeService {
 		return eventPrizeDao.eventPrizeRegist(eventPrize);
 	}
 
+	@Override
+	public String searchNumUserId(EventPrize eventPrize) {
+		return eventPrizeDao.searchNumUserId(eventPrize);
+	}
+
+	@Override
+	public int raffleUserIdEnrollment(EventPrize eventPrize) {
+		return eventPrizeDao.raffleUserIdEnrollment(eventPrize);
+	}
+
 }

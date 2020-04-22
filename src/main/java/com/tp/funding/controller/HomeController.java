@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	
 	//admin login
-	@RequestMapping(value ="adminLogin")
-	public String adminLogin() {
-		return "admin/adminLogin";
-	}
+//	@RequestMapping(value ="adminLogin")
+//	public String adminLogin() {
+//		return "admin/adminLogin";
+//	}
 		
 
 //	@RequestMapping(value ="adminMain")

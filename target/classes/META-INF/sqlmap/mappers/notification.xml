@@ -39,4 +39,8 @@
     	SELECT N.* FROM NOTIFICATION N,USERS U WHERE N.USERID=U.USERID AND N.NOTIFICATIONREAD=1 
     	AND U.USERID=#{userId}  ORDER BY N.NOTIFICATIONDATE DESC
     	</select>
+    	<insert id="eventRaffleUserSend" parameterType="Notification">
+    	INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, 
+    	 #{notificationContent}, SYSDATE, 0 , #{adminId}, null, #{userId})
+    	</insert>
     </mapper>

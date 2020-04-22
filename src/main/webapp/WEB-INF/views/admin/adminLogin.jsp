@@ -23,7 +23,7 @@
 					<td><input type="text" name="adminId" placeholder="관리자 아이디 입력하세요."></td>
 				</tr>
 				<tr>
-					<td><input type="password" name="adminPw" placeholder="비밀번호를 입력하세요." ></td>
+					<td><input type="password" name="adminPassword" placeholder="비밀번호를 입력하세요." ></td>
 				</tr>
 				<tr>
 					<th id="buttonWrap">

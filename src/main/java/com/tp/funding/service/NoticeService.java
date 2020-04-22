@@ -3,6 +3,7 @@ package com.tp.funding.service;
 import java.util.List;
 
 import com.tp.funding.dto.Notice;
+import com.tp.funding.dto.Notification;
 
 public interface NoticeService {
 	public int totNotice();
@@ -15,4 +16,5 @@ public interface NoticeService {
 	public int noticeModify(Notice notice);
 	public int noticeHitUp(Notice notice);
 	public int noticeDelete(int noticeNumber);
+	
 }

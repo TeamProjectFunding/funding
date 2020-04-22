@@ -100,8 +100,7 @@ public class HyuckController {
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
 			session.setAttribute("company", companyService.companyDetail(id));
-			session.setAttribute("notificationUnReadCompanyList",
-					notificationService.notificationUnReadCompanyList(id));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(id));
 			model.addAttribute("result", "성공");
 		} else {
 
@@ -260,6 +259,32 @@ public class HyuckController {
 		}		
 		
 		return "forward:qnaList.do";
-	}	
+	}
+	
+	@RequestMapping(value ="adminLogin")
+	public String adminLogin() {
+		return "admin/adminLogin";
+	}
+	
+	@RequestMapping(value="qnaReplyForm")
+	public String adminQnaReplyForm(QnA qnA, Model model) {
+		
+		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));		
+		
+		return "qna/qnaReply";
+	}
+	
+	@RequestMapping(value="qnaReplyWrite")
+	public String qnaReply(QnA qnA, Model model) {
+		System.out.println(qnA);
+		int result = qnaService.qnAReplyWrite(qnA);
+		if(result == 1) {
+			model.addAttribute("qnaReplyresult", "답글 작성 완료");
+		}else {
+			model.addAttribute("qnaReplyresult", "답글 작성 실패");
+		}		
+		
+		return "forward:qnaList.do";
+	}
 
 }

@@ -21,4 +21,14 @@ public class EventPrizeDaoImpl implements EventPrizeDao {
 		return sessionTemplate.selectList("eventPrizeRegist", eventPrize);
 	}
 
+	@Override
+	public String searchNumUserId(EventPrize eventPrize) {
+		return sessionTemplate.selectOne("searchNumUserId", eventPrize);
+	}
+
+	@Override
+	public int raffleUserIdEnrollment(EventPrize eventPrize) {
+		return sessionTemplate.insert("raffleUserIdEnrollment", eventPrize);
+	}
+
 }

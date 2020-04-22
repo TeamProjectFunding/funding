@@ -11,6 +11,7 @@ public class QnA {
 	private int qnAGroup;
 	private int qnARef;
 	private int qnAIndent;
+	private int qnAReplyExist;
 	private Date qnADate;
 	private String userId;
 	private String companyId;
@@ -26,6 +27,14 @@ public class QnA {
 
 	public QnA() {
 
+	}
+
+	public int getQnAReplyExist() {
+		return qnAReplyExist;
+	}
+
+	public void setQnAReplyExist(int qnAReplyExist) {
+		this.qnAReplyExist = qnAReplyExist;
 	}
 
 	public int getQnANumber() {
@@ -160,9 +169,11 @@ public class QnA {
 	public String toString() {
 		return "QnA [qnANumber=" + qnANumber + ", qnATitle=" + qnATitle + ", qnAContent=" + qnAContent + ", qnAHit="
 				+ qnAHit + ", qnAOriginalWriter=" + qnAOriginalWriter + ", qnAGroup=" + qnAGroup + ", qnARef=" + qnARef
-				+ ", qnAIndent=" + qnAIndent + ", qnADate=" + qnADate + ", userId=" + userId + ", companyId="
-				+ companyId + ", adminId=" + adminId + ", startRow=" + startRow + ", endRow=" + endRow + ", writer="
-				+ writer + ", writerProfileImage=" + writerProfileImage + "]";
+				+ ", qnAIndent=" + qnAIndent + ", qnAReplyExist=" + qnAReplyExist + ", qnADate=" + qnADate + ", userId="
+				+ userId + ", companyId=" + companyId + ", adminId=" + adminId + ", startRow=" + startRow + ", endRow="
+				+ endRow + ", writer=" + writer + ", writerProfileImage=" + writerProfileImage + "]";
 	}
+
+	
 
 }
