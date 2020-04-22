@@ -362,7 +362,7 @@ CREATE TABLE Notice (
 	NoticeDate    DATE          DEFAULT SYSDATE,     -- 공지날짜
 	NoticeHit     NUMBER(12)   NULL,     -- 공지조회수
 	AdminId       VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
-);
+); 
  
 CREATE TABLE QnA (
     QnANumber	NUMBER(12) PRIMARY KEY,

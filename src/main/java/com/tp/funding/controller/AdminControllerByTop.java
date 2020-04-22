@@ -55,6 +55,8 @@ public class AdminControllerByTop {
 		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
 		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
 		model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트		
+		model.addAttribute("fundingDeadlineList", fService.fundingDeadlineList());
+		
 		
 		return "admin/adminMain";
 	}
@@ -107,9 +109,10 @@ public class AdminControllerByTop {
 	public String adminQnaList(Model model, String pageNum) {
 		Paging qnAPaging = new Paging(qService.totQnA(), pageNum, 5, 5);
 		model.addAttribute("paging", qnAPaging);
-		model.addAttribute("qnAList", qService.qnAList(pageNum));
+		model.addAttribute("qnAList", qService.qnAAdminList());
 		return "admin/qna/list";
 	}
+	
 	//관리자 왼쪽바 상품문의 페이징
 	@RequestMapping(value="adminGoodsQnaList")
 	public String adminGoodsQnaList(Model model, String pageNum) {

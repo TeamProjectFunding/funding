@@ -13,13 +13,66 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	
-	<section id="fundingWrap" class="fundingStep1">
-		<ul id="fundingStep">
-			<li><span>투자 위험 안내 확인/동의</span></li>
-			<li>예치금 확인/투자금액 입력</li>
-			<li>투자 내역 확인 및 완료</li>
-		</ul>
-			
+	<div id="contentWrap" class="fundingWrap">
+	<section id="fundingWrap">
+		<div id="fundingStep" class="fundingStep2">
+			<ul id="fundingStep">
+				<li>투자 위험 안내 확인/동의</li>
+				<li>예치금 확인/투자금액 입력</li>
+				<li><span>투자 내역 확인 및 완료</span></li>
+			</ul>
+			<h1>예치금 확인/투자금액 입력</h1>
+			<form>
+				<table>
+					<tr>
+						<th colspan="2">${good.fundingName } 펀딩 성공 되었습니다.</th>
+					</tr>
+					<!-- 투자 -->
+					<c:if test="${good.fundingCategory eq 0 }">
+						<tr>
+							<th>투자이율</th>
+							<td>${reward.rewardInterst }%</td>
+						</tr>
+						<tr>
+							<th>투자기간</th>
+							<td><fmt:formatDate value="${fundingGoodsDetail.fundingTargetDate }" pattern="yyyy-MM-dd"/> ~ ${fundingGoodsDetail.fundingTargetDate }  (${reward.fundingInvestmentPeriod }개월) </td>
+						</tr>
+					</c:if>
+					
+					<!-- 리워드 -->
+					<c:if test="${good.fundingCategory eq 1 }">
+					<tr>
+						<th>리워드 상품</th>
+						<td><img src="${conPath }/images/reward/${reward.rewardImage}" alt="rewardProductImage"></td>
+					</tr>
+					<tr>
+						<th>리워드 제공예상일</th>
+						<td><fmt:formatDate value="${reward.fundingRewardDeliveryDate }" pattern="yyyy-MM-dd"/> 일괄배송</td>
+					</tr>
+					<tr>
+						<th>후원금</th>
+						<td><fmt:formatNumber value="${fundingGoodsDetail.fundingRewardAddDonation }" currencySymbol="true"/> 원</td>
+					</tr>
+					</c:if>
+					<!-- 공통 -->
+					<tr>
+						<th>투자금액</th>
+						<td><fmt:formatNumber value="${fundingGoodsDetail.fundingAmount }" currencySymbol="true"/> 원</td>
+					</tr>
+					<tr>
+						<th>남은 예치금</th> 
+						<td><fmt:formatNumber value="${user.userAccountBalance }" currencySymbol="true"/>  원</td>
+					</tr>
+					<tr>
+						<th id="buttonWrap" colspan="2">
+						<input type="button" value="HOME" class="button" onClick="location.href='${conPath}/main.do'">
+						</th>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</section>
+	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

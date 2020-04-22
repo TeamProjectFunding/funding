@@ -42,6 +42,10 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #headerWrap .menuWrap ul li a:hover{color:#f1bf04;}
 #headerWrap .menuWrap .util .alarm{display:block; position:absolute; top:-1px; right:-8px; width:7px; height:7px; border-radius:50%; color:#fff; background: #f1bf04; font-size: 8px;}
 
+#headerWrap .menuWrap .mypageButton{display:block; width:40px; height:40px; border-radius: 50%; overflow: hidden;}
+#headerWrap .menuWrap .mypageButton img{width:100%;}
+
+
 .popupWrap{display:none;}
 .popupWrap{position:fixed; z-index:99999; width:100%; height:100%; background:#131a23fc;}
 .popupWrap .closeButton{position:absolute; top:5%; right:5%; width:30px; height:30px; cursor: pointer;}
@@ -206,12 +210,14 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap table td span{font-size:10px; font-weight:bold;}
 #contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
 #contentWrap.fundingWrap .fundingStep2 form {width:100%; float:left; border:1px solid #f1f1f1;}
+#contentWrap.fundingWrap .fundingStep2 form .rewardCondition{display: none;}
 #contentWrap.fundingWrap .fundingStep2 table {text-align: center;} 
 #contentWrap.fundingWrap .fundingStep2 table th{padding:5%;}
 #contentWrap.fundingWrap .fundingStep2 table td{padding:3%;}
 #contentWrap.fundingWrap .fundingStep2 table input[type='number']{padding:2%; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap .fundingStep2 table select{width:70%; height:30px; background:#fff; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
+
 
 /* apply */
 #contentWrap.fundingWrap #applyWrap{margin:50px 0 50px;}

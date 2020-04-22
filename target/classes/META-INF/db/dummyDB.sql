@@ -1,4 +1,4 @@
-
+﻿
 INSERT INTO Company VALUES ('com','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('A','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('com2','11','pro','intro',SYSDATE,'Aname','010','addr','de','은행','예금','번호',0,0,0,NULL);
@@ -124,41 +124,41 @@ INSERT INTO Users VALUES ('wogur698@naver.com','123','profile.jpg','임재혁','
 --펀딩상품    
     -- 승인 대기중인 (투자 / 리워드)
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '대기투자상품1', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
+    (FundingCode.nextval, 0, '대기투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingExplanationFile.png', null,
         null, null, 0, 12000000, 0, SYSDATE, '2021-05-25', null, 7, 15, 0, 0, 0, 'admin', 'com@naver.com');
         
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '대기투자상품2', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
+    (FundingCode.nextval, 0, '대기투자상품2', '투자상품입니다.', 'fundingProduct_02.jpeg', 'fundingProduct_02.jpeg', 'fundingExplanationFile.png', null,
         null, null, 0, 15000000, 0, SYSDATE, '2021-05-30', null, 7, 15, 0, 0, 0, 'admin', 'com6@google.com');
         
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '대기투자상품3', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
+    (FundingCode.nextval, 0, '대기투자상품3', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'fundingExplanationFile.png', null,
         null, null, 0, 3000000, 0, SYSDATE, '2021-06-10', null, 7, 2, 0, 0, 0, 'admin', 'com5@google.com');        
         
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 1, '대기리워드상품1', '리워드상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
+    (FundingCode.nextval, 1, '대기리워드상품1', '리워드상품입니다.', 'fundingProduct_04.jpeg', 'fundingProduct_04.jpeg', 'fundingExplanationFile.png', null,
         null, null, 0, 4000000, 0, SYSDATE, '2020-05-05', '2020-06-05', 0, 2, 0, 0, 0, 'admin', 'com@naver.com');
         
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 1, '대기리워드상품2', '리워드상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
+    (FundingCode.nextval, 1, '대기리워드상품2', '리워드상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingExplanationFile.png', null,
         null, null, 0, 5000000, 0, SYSDATE, '2020-06-25', '2020-06-28', 0, 2, 0, 0, 0, 'admin', 'com1@naver.com');        
        
         
     
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '투자상품2', '투자상품2입니다.', '썸네일2', '이미지상세2', '펀딩설명이지롱', '신한은행',
+    (FundingCode.nextval, 0, '투자상품2', '투자상품2입니다.', 'fundingProduct_02.jpeg', 'fundingProduct_02.jpeg', 'fundingExplanationFile.png', '신한은행',
         'masters계좌1', '110-278-849991', 500000, 1000000, 50, '2020-03-20', '2020-05-25', null, 10, 12, 1, 23, 1, 'admin', 'com1@naver.com'); 
         
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 1, '리워드상품1', '리워드상품1입니다.', '썸네일3', '이미지상세3', '펀딩설명이지롱', '신한은행',
+    (FundingCode.nextval, 1, '리워드상품1', '리워드상품1입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'fundingExplanationFile.png', '신한은행',
         'masters계좌2', '110-278-844190', 600000, 2000000, 30, '2020-04-05', '2020-05-25', '2020-05-28', 0, 0, 1, 50, 1, 'admin', 'com2@google.com');         
 
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 1, '리워드상품2', '리워드상품2입니다.', '썸네일4', '이미지상세4', '펀딩설명이지롱', '신한은행',
+    (FundingCode.nextval, 1, '리워드상품2', '리워드상품2입니다.', 'fundingProduct_04.jpeg', 'fundingProduct_04.jpeg', 'fundingExplanationFile.png', '신한은행',
         'masters계좌3', '110-278-159848', 1800000, 3000000, 60, '2020-03-21', '2020-05-25', '2020-05-29', 0, 0, 1, 21, 1, 'admin', 'com6@google.com'); 
 
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '투자상품3', '투자상품3입니다.', '썸네일5', '이미지상세5', '펀딩설명이지롱', '신한은행',
+    (FundingCode.nextval, 0, '투자상품3', '투자상품3입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingExplanationFile.png', '신한은행',
         'masters계좌4', '110-278-448585', 200000, 2000000, 10, '2020-04-04', '2020-05-25', null, 7, 12, 1, 9, 1, 'admin', 'com5@google.com'); 
         
         
@@ -256,13 +256,8 @@ INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다7' , '내용입니다
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
 --상품문의--
 
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같아요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
+
+
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user2@naver.com');
@@ -284,6 +279,11 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
-select * from fundingquestion;
 commit;
+
+-- 펀딩 하기
+INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,20000000,10000,'2020-05-06','2020-09-09',2,'user');
+
+
+
 

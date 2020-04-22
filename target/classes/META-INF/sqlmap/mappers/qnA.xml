@@ -6,35 +6,76 @@
 <mapper namespace="QnA">
 	<insert id="qnAWrite" parameterType="QnA">
 		<if test="userId != null and userId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,#{userId},null,null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 0, QnANumber.currval, 0, 0, 0, sysdate, #{userId},null,null)
 		</if>
 		<if test="companyId != null and companyId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,null,#{companyId},null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 1, QnANumber.currval, 0, 0, 0, sysdate,null, #{companyId},null)
 		</if>
 		<if test="adminId != null and adminId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},QnANumber.currval,0,0,sysdate,null,null,#{adminId})
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 2, QnANumber.currval, 0, 0, 0, sysdate, null, null, #{adminId})
 		</if>
 	</insert>
+	
+	<insert id="qnAModify" parameterType="QnA">
+		<if test="userId != null and userId != ''">
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 0, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate, #{userId},null,null)
+		</if>
+		<if test="companyId != null and companyId != ''">
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 1, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate,null, #{companyId},null)
+		</if>
+		<if test="adminId != null and adminId != ''">
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 2, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate, null, null, #{adminId})
+		</if>
+	</insert>	
+	
 	<insert id="qnAReplyWrite" parameterType="QnA">
 		<if test="userId != null and userId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,#{userId},null,null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,#{userId},null,null)
 		</if>
 		<if test="companyId != null and companyId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,#{companyId},null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,#{companyId},null)
 		</if>
 		<if test="adminId != null and adminId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATilte},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,null,#{adminId})
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,null,#{adminId})
 		</if>
 	</insert>
-	<select id="qnADetail" parameterType="int">
-		SELECT * FROM QnA WHERE QnANumber=${QnANumber}
+	<select id="qnADetail" parameterType="QnA" resultType="QnA">		
+		
+   SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+   WRITER, ((SELECT USERPROFILEIMAGE FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYPROFILEIMAGE FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINPROFILEIMAGE FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+    WRITERPROFILEIMAGE FROM QNA Q WHERE QnANumber=#{qnANumber}
+		
 	</select>
+	
 	<select id="qnAList" parameterType="QnA" resultType="QnA">
-		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
-	(SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
-	(SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
-	WRITER FROM QNA Q ORDER BY Q.QNAGROUP DESC, Q.QNAREF) A) WHERE RN BETWEEN #{startRow} AND #{endRow}
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   	(SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+   WRITER, ((SELECT USERPROFILEIMAGE FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYPROFILEIMAGE FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINPROFILEIMAGE FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+   WRITERPROFILEIMAGE FROM QNA Q WHERE ((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER)) LIKE '%'||#{writer}||'%' ORDER BY Q.QNAGROUP DESC, Q.QNAREF) A)
+    WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
+	
+	<select id="totCntSearchQnA" parameterType="QnA" resultType="int">
+	SELECT COUNT(*) FROM (SELECT ROWNUM RN, A.* FROM (SELECT Q.*,((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+   WRITER, ((SELECT USERPROFILEIMAGE FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYPROFILEIMAGE FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINPROFILEIMAGE FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER))
+   WriterProfile FROM QNA Q WHERE ((SELECT USERNAME FROM USERS U,QNA QU WHERE U.USERID=QU.USERID AND Q.QNANUMBER=QU.QNANUMBER) || 
+   (SELECT COMPANYNAME FROM COMPANY C,QNA QC WHERE C.COMPANYID=QC.COMPANYID AND Q.QNANUMBER=QC.QNANUMBER) ||
+   (SELECT ADMINNAME FROM ADMIN A,QNA QA WHERE A.ADMINID=QA.ADMINID AND Q.QNANUMBER=QA.QNANUMBER)) LIKE '%'||#{writer}||'%' ORDER BY Q.QNAGROUP DESC, Q.QNAREF) A)
+	</select>
+	
 	<update id="qnAHitUp" parameterType="int">
 		UPDATE QnA SET QnAHit=QnAHit+1 WHERE QnANumber=#{qnANumber}
 	</update>
@@ -42,6 +83,8 @@
 	SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC
 	</select>
 	<select id="totQnA" resultType="int">
-	SELECT COUNT(*) FROM QNA
+	SELECT COUNT(*) FROM QNA	
+
+	
 	</select>	
 </mapper>

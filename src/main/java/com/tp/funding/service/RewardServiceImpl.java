@@ -30,8 +30,8 @@ public class RewardServiceImpl implements RewardService {
 	}
 
 	@Override
-	public List<Reward> fundingRewardList(int fundingcode) {
-		return rewardDao.fundingRewardList(fundingcode);
+	public List<Reward> fundingRewardList(int fundingCode) {
+		return rewardDao.fundingRewardList(fundingCode);
 	}
 
 }

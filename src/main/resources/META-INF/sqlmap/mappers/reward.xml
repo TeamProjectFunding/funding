@@ -10,11 +10,11 @@
 	<update id="rewardInvestmentReceiveCountUp" parameterType="int">
 		UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=#{rewardCode}
 	</update>
-	<select id="rewardDetail" parameterType="int">
+	<select id="rewardDetail" parameterType="int" resultType="Reward">
 		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, 
 		FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=#{rewardCode}
 	</select>
-	<select id="fundingRewardList" parameterType="int">
+	<select id="fundingRewardList" parameterType="int" resultType="Reward">
 		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingcode}
 	</select>
 </mapper>

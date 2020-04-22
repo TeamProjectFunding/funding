@@ -43,14 +43,21 @@
 				</div>
 			</c:forEach>
 			<div class="paging">
-					<a href="" class="prev">PREV</a>
-					<a href="" class="current">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a href="" class="next">NEXT</a> 
-				</div>
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/fundList.do?category=${param.category }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/fundList.do?category=${param.category }&pageNum=${i}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/fundList.do?category=${param.category }&pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				</c:if>
+			</div>
 		</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

@@ -1,13 +1,11 @@
 ﻿package com.tp.funding.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.FundingGoodsDao;
@@ -40,11 +38,14 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public List<FundingGoods> investmentAllList(String pageNum) {
+	public List<FundingGoods> investmentAllList(String pageNum,Model model) {
 		// pageSize = 6, BlockSize = 5
 		int investmentTotalCount = investmentTotalCount();
 		Paging paging = new Paging(investmentTotalCount, pageNum, 6, 5);
 		// 페이징 처리
+		if(model != null) {
+			model.addAttribute("paging", paging);
+		}
 		FundingGoods fundingGoods = new FundingGoods();
 		fundingGoods.setStartRow(paging.getStartRow());
 		fundingGoods.setEndRow(paging.getEndRow());
@@ -52,10 +53,13 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public List<FundingGoods> rewardAllList(String pageNum) {
+	public List<FundingGoods> rewardAllList(String pageNum,Model model) {
 		int rewardTotalCount = rewardTotalCount();
 		Paging paging = new Paging(rewardTotalCount, pageNum, 6, 5);
 		// 페이징 처리
+		if(model !=null) {
+			model.addAttribute("paging", paging);
+		}
 		FundingGoods fundingGoods = new FundingGoods();
 		fundingGoods.setStartRow(paging.getStartRow());
 		fundingGoods.setEndRow(paging.getEndRow());
@@ -168,16 +172,50 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public int fundingBalancePlus(int fundingCode, int changeAccountBalance) {
+	public int fundingBalancePlus(int fundingCode, int changeMoneyAmount) {
 		FundingGoods fundingGoods = new FundingGoods();
 		fundingGoods.setFundingCode(fundingCode);
-		fundingGoods.setChangeMoneyAmount(changeAccountBalance);
+		fundingGoods.setChangeMoneyAmount(changeMoneyAmount);
 		return fundingGoodsDao.fundingBalancePlus(fundingGoods);
 	}
 
 	@Override
 	public int totCntReadyList() {
 		return fundingGoodsDao.totCntReadyList();
+	}
+
+	@Override
+	public int totCntOpenList() {
+		return fundingGoodsDao.totCntOpenList();
 	}	
+
+	@Override
+	public List<FundingGoods> investmentOpenList(String pageNum, Model model) {
+		// pageSize = 6, BlockSize = 5
+				int investmentTotalCount = investmentTotalCount();
+				Paging paging = new Paging(investmentTotalCount, pageNum, 6, 5);
+				// 페이징 처리
+				if(model != null) {
+					model.addAttribute("paging", paging);
+				}
+				FundingGoods fundingGoods = new FundingGoods();
+				fundingGoods.setStartRow(paging.getStartRow());
+				fundingGoods.setEndRow(paging.getEndRow());
+				return fundingGoodsDao.investmentOpenList(fundingGoods);
+	}
+
+	@Override
+	public List<FundingGoods> rewardOpenList(String pageNum, Model model) {
+		int rewardTotalCount = rewardTotalCount();
+		Paging paging = new Paging(rewardTotalCount, pageNum, 6, 5);
+		// 페이징 처리
+		if(model !=null) {
+			model.addAttribute("paging", paging);
+		}
+		FundingGoods fundingGoods = new FundingGoods();
+		fundingGoods.setStartRow(paging.getStartRow());
+		fundingGoods.setEndRow(paging.getEndRow());
+		return fundingGoodsDao.rewardOpenList(fundingGoods);
+	}
 
 }

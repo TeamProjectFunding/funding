@@ -11,10 +11,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NotificationService;
+import com.tp.funding.service.QnAService;
 import com.tp.funding.service.UsersService;
 import com.tp.funding.util.Paging;
 
@@ -34,6 +36,9 @@ public class HyuckController {
 	
 	@Autowired
 	private FundingGoodsService fundingGoodsService;
+	
+	@Autowired
+	private QnAService qnaService;
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
@@ -186,8 +191,75 @@ public class HyuckController {
 		return "admin/apply/list";
 	}
 	
+	@RequestMapping("adminGoodsList")
+	public String adminGoodsList(FundingGoods fundingGoods, String pageNum, Model model) {
+		Paging paging = new Paging(fundingGoodsService.totCntOpenList(), pageNum, 4, 5);
+		fundingGoods.setStartRow(paging.getStartRow());
+		fundingGoods.setEndRow(paging.getEndRow());		
+		model.addAttribute("adminGoodsList", fundingGoodsService.fundingOpenList(fundingGoods));
+		model.addAttribute("paging", paging);
+		
+		return "admin/goods/list";
+	}
 	
+	@RequestMapping("qnaList")
+	public String qnaList(String pageNum, QnA qnA, Model model,String searchWord) {
+		qnA.setWriter(searchWord); // 검색할 writer
+		Paging paging = new Paging(qnaService.totCntSearchQnA(qnA), pageNum, 6, 5);
+		qnA.setStartRow(paging.getStartRow());
+		qnA.setEndRow(paging.getEndRow());
+		model.addAttribute("qnaList", qnaService.qnAList(qnA));	
+		model.addAttribute("paging", paging);
+		
+		return "qna/qnaList";
+	}
 	
+	@RequestMapping(value ="qnaWriteForm")
+	public String qnaWriteForm() {
+		return "qna/qnaWrite";
+	}
 	
+	@RequestMapping(value ="qnaWrite")
+	public String qnaWrite(QnA qnA, Model model) {
+		
+		int result = qnaService.qnAWrite(qnA);
+		if(result == 1) {
+			model.addAttribute("writeResult", "문의 작성 완료!");
+		}else {
+			model.addAttribute("writeResult", "문의 작성 실패ㅠ");
+		}
+		
+		return "forward:qnaList.do";
+	}
+	
+	@RequestMapping(value ="qnaView")
+	public String qnaView(QnA qnA, Model model) {
+		
+		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
+		
+		return "qna/qnaView";
+	}
+	
+	@RequestMapping(value ="qnaModifyForm")
+	public String qnaModifyForm(QnA qnA, Model model) {
+		
+		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
+		
+		return "qna/qnaModify";
+	}
+	
+	@RequestMapping(value ="qnaModify")
+	public String qnaModify(QnA qnA, Model model) {
+		
+		int Result = qnaService.qnAModify(qnA);
+		
+		if(Result == 1) {
+			model.addAttribute("qnAModifyResult", "수정 성공");
+		}else {
+			model.addAttribute("qnAModifyResult", "수정 실패");
+		}		
+		
+		return "forward:qnaList.do";
+	}	
 
 }

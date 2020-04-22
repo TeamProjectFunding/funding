@@ -9,17 +9,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
+<c:if test="${not empty writeResult}">
+	<script>
+		alert('${writeResult}');
+	</script>
+</c:if>
+
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="boardWrap">
 		<section class="boardListWrap">
 			<h1>Q&A</h1>
-			<form action="">
+			<form action="${conPath}/qnaList.do">
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="qnaTitle" placeholder="제목을 입력하세요.">
+							<input type ="text" name="searchWord" placeholder="작성자를 입력하세요.">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
@@ -32,47 +39,57 @@
 					<th>WRITER</th>
 					<th>DATE</th>
 					<th>HIT</th>
+					
+					<c:if test="${not empty user || not empty company}">
+						<th>REPLY</th>
+					</c:if>
+					
 				</tr>
-				<tr class="boardInfo">
-					<td>2</td>
-					<td><a href="${conPath }/qnaView.do">[Q] Q&A TITLE 2</a></td>
-					<td>USER</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>2-1</td>
-					<td><a href="${conPath }/qnaView.do">[A] Q2 REPLY TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/qnaView.do">[Q] Q&A TITLE 1</a></td>
-					<td>USER</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1-1</td>
-					<td><a href="${conPath }/qnaView.do">[A] Q1 REPLY TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-				</tr>
+				<c:forEach var="qna" items="${qnaList}">
+					<tr class="boardInfo">
+						<td>${qna.qnANumber}</td>
+						<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">${qna.qnATitle}</a></td>
+						<td>${qna.writer}</td>
+						<td>${qna.qnADate}</td>
+						<td>${qna.qnAHit}</td>
+						
+						<c:if test="${qna.qnAOriginalWriter==2 && (not empty user || not empty company)}">
+							<td><a href="adminQnaReplyForm.do" class="button">REPLY</a></td>
+						</c:if>
+						<c:if test="${(qna.qnAOriginalWriter==0 || qna.qnAOriginalWriter==1) && not empty admin }">
+							<td><a href="adminQnaReplyForm.do" class="button">REPLY</a></td>
+						</c:if> 						
+						
+					</tr>		
+				</c:forEach>
 				
+				<c:if test="${not empty user || not empty company }">		
+					<tr>
+						<th id="buttonWrap" colspan="6">
+							<a href="qnaWriteForm.do" class="button">WRITE</a>
+						</th>
+					</tr>
+				</c:if>	
 				
 			</table>
+			
 			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize}">
+					<a href="${conPath }/qnaList.do?pageNum=${paging.startPage-1}&searchWord=${param.searchWord}" class="PREV">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage}">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i}</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						 <a href="${conPath}/qnaList.do?pageNum=${i}&searchWord=${param.searchWord}">${i}</a> 
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+					<a href="${conPath }/qnaList.do?pageNum=${paging.endPage+1}&searchWord=${param.searchWord}" class="NEXT">NEXT</a>
+				</c:if>
 			</div>
+			
 		</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

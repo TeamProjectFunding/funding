@@ -10,10 +10,10 @@
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+	function noUser(){
+		alert('로그인 이후에 가능합니다.');
+	}
 	$(function(){
-		$('#noUser').click(function(){
-			alert('찜은 로그인 이후에 가능합니다.');
-		});
 		$('#userPick').click(function(){
 			if($(this).html() == '♡'){
 				$(this).html('♥');
@@ -56,23 +56,29 @@
 						<p><fmt:formatNumber value="${good.fundingAccountBalance }" currencySymbol="true"/>원  <span>달성목표금액 <fmt:formatNumber value="${good.fundingTargetAmount }" currencySymbol="true"/> 원 ${good.fundingTargetRate }%</span></p>
 					</li>
 					<fmt:parseNumber
-							value="${fund.fundingTargetDate.time / (1000*60*60*24)}"
+							value="${good.fundingTargetDate.time / (1000*60*60*24)}"
 							integerOnly="true" var="endDate" />
 					<li>
 						<p>${endDate-nowDate }일 남음 <span><fmt:formatDate value="${good.fundingTargetDate }" pattern="yyyy.MM.dd"/> 00:00 마감</span></p>
 					</li>
 					<li>
-						<p><img src="" alt="investorProfile"><span>+20 투자성공</span></p>
+						<p><c:forEach var="user" items="${userList }" begin="0" end="5"><img src="${conPath }/image/profile/${user.userProfileImage}" alt="investorProfile"></c:forEach>
+						<span>+${userList.size() }명 펀딩성공</span></p> 
 					</li>
 				</ul>
 				 <div id="buttonWrap">
-					<a href="fundingStep1.do" class="button">FUNDING</a>
+				 	<c:if test="${not empty sessionScope.user }">
+					<a href="fundingStep1.do?fundingCode=${param.fundingCode }" class="button">FUNDING</a>
+				 	</c:if>
+				 	<c:if test="${empty sessionScope.user }">
+					<a href="#none" onclick="noUser()" class="button">FUNDING</a>
+				 	</c:if>
 					<a href="goodsQnaWirteForm.do" class="button">Q&A</a>
 					<c:if test="${not empty sessionScope.user}">
 					<a href="#none" class="button" id="userPick"><c:if test="${not empty userAlreadyPick }">♥</c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
 					</c:if>
 					<c:if test="${empty sessionScope.user }">
-					<a href="#none" class="button" id="noUser">♡</a>
+					<a href="#none" onclick="noUser()" class="button">♡</a>
 					</c:if>
 					<span id="userPickResult"></span>
 				</div>
@@ -85,11 +91,11 @@
 		</div>
 		
 		<ul class="goodsInfoNavigation">
-			<li><a href="goodsViewCoreInfomation.do"><span>투자정보</span></a></li>
-			<li><a href="goodsViewRisk.do">투자위험</a></li>
-			<li><a href="goodsViewNews.do">새소식</a></li>
-			<li><a href="goodsViewDebate.do">토론</a></li>
-			<li><a href="goodsViewInvestor.do">투자자</a></li>
+			<li><a href="goodsViewCoreInfomation.do?fundingCode=${param.fundingCode }"><span>투자정보</span></a></li>
+			<li><a href="goodsViewRisk.do?fundingCode=${param.fundingCode }">투자위험</a></li>
+			<li><a href="goodsViewNews.do?fundingCode=${param.fundingCode }">새소식</a></li>
+			<li><a href="goodsViewDebate.do?fundingCode=${param.fundingCode }">토론</a></li>
+			<li><a href="goodsViewInvestor.do?fundingCode=${param.fundingCode }">투자자</a></li>
 		</ul>
 		<div id="goodsViewContentWrap" class="coreInfomationWrap">
 			<div class="company">
@@ -105,7 +111,7 @@
 			</div>
 			<div class='detail'>
 				<h3>상세내용</h3>
-				<img src="" alt="투자설명서">
+				<img src="${conPath }/images/goods/${good.fundingExplanationFile}" alt="투자설명서">
 			</div>
 		</div>
 		<div>

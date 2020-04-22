@@ -14,7 +14,6 @@ public class Reward {
 	private int fundingInvestmentPeriod;   
 	private int investmentReceiveCount;    
 	private int fundingCode;
-	
 	//paging
 		private int startRow;
 		private int endRow;

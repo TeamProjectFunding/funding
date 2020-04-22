@@ -35,7 +35,7 @@
 				</c:if>	
 				
 				<c:if test="${not empty sessionScope.user || not empty sessionScope.company }">
-					<li><a href="mypage.do" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile"></a></li>
+					<li><a href="mypage.do" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" ></a></li>
 					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
 				</c:if>	
 				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
