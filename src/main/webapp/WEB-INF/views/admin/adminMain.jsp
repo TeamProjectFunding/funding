@@ -26,12 +26,11 @@
 	</script>
 </c:if>
 
-<c:if test="${result eq '성공' }">
+<c:if test="${not empty qnaReplyresult }">
 	<script>
-		alert('반갑습니다. 관리자님!');
+		alert('${qnaReplyresult}');
 	</script>
 </c:if>
-
 
 <c:if test="${result eq '실패' }">
 	<script>
@@ -39,8 +38,6 @@
 		history.back();
 	</script>
 </c:if>
-
-
 	
 	<jsp:include page="../admin/adminMenu.jsp" />
 	<div id="contentWrap" class="adminMainWrap">
@@ -126,9 +123,9 @@
 				<div class="dashBoardList">
 				<c:forEach var="qna" items="${qnAAdminList}">
 					<ul>
-						<li><a href="#none">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId} ${qna.qnADate}</span></li>
+						<li><a href="${conPath}/adminQnaView.do?qnANumber=${qna.qnANumber}">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId}${qna.qnADate}</span></li>
 						<li id="buttonWrap">
-							<a href="#none" class="button">답변</a>
+							<a href="${conPath}/adminQnaReplyForm.do?qnANumber=${qna.qnANumber}" class="button">답변</a>
 						</li>
 					</ul>
 				</c:forEach>

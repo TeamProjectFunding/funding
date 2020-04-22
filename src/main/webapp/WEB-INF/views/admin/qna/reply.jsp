@@ -20,37 +20,47 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="qnaWrap">
 			<h1>REPLY</h1>
-			<form action="qnaReplyWrite.do" method="post" >
+			<form action="${conPath}/adminQnaReply.do">
+			<input type="hidden" name="qnAGroup" value="${qnADetail.qnAGroup}">
+			<input type="hidden" name="qnARef" value="${qnADetail.qnARef}">
+			<input type="hidden" name="qnAIndent" value="${qnADetail.qnAIndent}">
+			<input type="hidden" name="pageNum" value="${param.pageNum}">
+			<input type="hidden" name="qnANumber" value="${qnADetail.qnANumber}">			
+			
 				<table>
 					<tr>
 						<th>TITLE</th>
-						<td>qnaTitle</td>
+						<td>${qnADetail.qnATitle}</td>
 					</tr>
 					<tr>
 						<th>WRITER</th>
-						<td>qnaOriginaWriter</td>
+						<td>${qnADetail.writer}</td>
 					</tr>
 					<tr>
 						<th>CONTENT</th>
-						<td>qna Content</td>
+						<td>${qnADetail.qnAContent}</td>
 					</tr>
 					<tr>
 						<th>DATE</th>
-						<td>2020-04-20</td>
+						<td>${qnADetail.qnADate}</td>
 					</tr>
 				</table>
 				<table>
 					<tr>
 						<th>TITLE</th>
-						<td><input type="text" name="qnaTitle" placeholder="ReplyTitle 을 입력하세요." required="required"></td>
+						<td><input type="text" name="qnATitle" placeholder="ReplyTitle 을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
 						<th>WRITER</th>
-						<td>ADMIN</td>
+						<td>	
+																				
+							<input type="text" name="adminId" value="${admin.adminId}" readonly="readonly">
+														
+						</td>
 					</tr>
 					<tr>
 						<th>CONTENT</th>
-						<td><textarea name="qnaContent"></textarea></td>
+						<td><textarea name="qnAContent"></textarea></td>
 					</tr>
 					
 				</table>
@@ -58,7 +68,7 @@
 				<table>
 					<tr>
 						<th id="buttonWrap" colspan="2">
-							<input type="submit" value="WRITE" class="button">
+							<input type="submit" value="REPLY" class="button">
 							<input type="reset" value="RESET" class="button">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
 						</th>
