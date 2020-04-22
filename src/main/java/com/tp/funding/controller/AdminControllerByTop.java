@@ -54,13 +54,10 @@ public class AdminControllerByTop {
 	FundingQuestionService fqService; // 상품문의 서비스
 	@Autowired
 	FundingDetailService fundingDetailService;
-
 	@Autowired
 	AdminService adminService;
-
 	@Autowired
 	EventPrizeService eventPrizeService;
-
 	@Autowired
 	NotificationService notificationService;
 
