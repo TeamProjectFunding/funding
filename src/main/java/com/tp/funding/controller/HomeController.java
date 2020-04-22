@@ -44,10 +44,10 @@ public class HomeController {
 //	}
 	
 	//admin goods list
-	@RequestMapping(value="adminGoodsList")
-	public String adminGoodsList() {
-		return "admin/goods/list";
-	}
+//	@RequestMapping(value="adminGoodsList")
+//	public String adminGoodsList() {
+//		return "admin/goods/list";
+//	}
 	//admin goods modify
 	@RequestMapping(value="adminGoodsModify")
 	public String adminGoodsModify() {
@@ -342,35 +342,35 @@ public class HomeController {
 	}
 	
 	//Q&A 리스트
-	@RequestMapping(value ="qnaList")
-	public String qnaList() {
-		return "qna/qnaList";
-	}	
+//	@RequestMapping(value ="qnaList")
+//	public String qnaList() {
+//		return "qna/qnaList";
+//	}	
 	//Q&A view
-	@RequestMapping(value ="qnaView")
-	public String qnaView() {
-		return "qna/qnaView";
-	}
+//	@RequestMapping(value ="qnaView")
+//	public String qnaView() {
+//		return "qna/qnaView";
+//	}
 	//Q&A 작성 form
-	@RequestMapping(value ="qnaWriteForm")
-	public String qnaWriteForm() {
-		return "qna/qnaWrite";
-	}
+//	@RequestMapping(value ="qnaWriteForm")
+//	public String qnaWriteForm() {
+//		return "qna/qnaWrite";
+//	}
 	//Q&A 작성
-	@RequestMapping(value ="qnaWrite")
-	public String qnaWrite() {
-		return "qna/qnaView";
-	}
+//	@RequestMapping(value ="qnaWrite")
+//	public String qnaWrite() {
+//		return "qna/qnaView";
+//	}
 	//Q&A 수정 form
-	@RequestMapping(value ="qnaModifyForm")
-	public String qnaModifyForm() {
-		return "qna/qnaModify";
-	}
+//	@RequestMapping(value ="qnaModifyForm")
+//	public String qnaModifyForm() {
+//		return "qna/qnaModify";
+//	}
 	//Q&A 수정
-	@RequestMapping(value ="qnaModify")
-	public String qnaModify() {
-		return "qna/qnaView";
-	}		
+//	@RequestMapping(value ="qnaModify")
+//	public String qnaModify() {
+//		return "qna/qnaView";
+//	}		
 	//Q&A 삭제
 	@RequestMapping(value ="qnaDelete")
 	public String noticeDelete() {

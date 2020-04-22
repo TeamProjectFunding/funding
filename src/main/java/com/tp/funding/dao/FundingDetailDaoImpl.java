@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.tp.funding.dto.FundingGoodsDetail;
 @Repository
 public class FundingDetailDaoImpl implements FundingDetailDao {
-
+	
 	@Autowired
 	private SqlSession sessionTemplate;
 	
@@ -42,5 +42,6 @@ public class FundingDetailDaoImpl implements FundingDetailDao {
 	public int doFundingGoodTotalCount(int fundingCode) {
 		return sessionTemplate.selectOne("doFundingGoodTotalCount", fundingCode);
 	}
+
 
 }

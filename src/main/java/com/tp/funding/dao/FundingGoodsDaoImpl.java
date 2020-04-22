@@ -122,6 +122,11 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	@Override
 	public int totCntReadyList() {
 		return sessionTemplate.selectOne("totCntReadyList");
+	}
+
+	@Override
+	public int totCntOpenList() {		
+		return sessionTemplate.selectOne("totCntOpenList");
 	}	
 
 	@Override

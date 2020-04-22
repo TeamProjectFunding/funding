@@ -1,4 +1,4 @@
-
+﻿
 INSERT INTO Company VALUES ('com','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('A','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('com2','11','pro','intro',SYSDATE,'Aname','010','addr','de','은행','예금','번호',0,0,0,NULL);
@@ -255,9 +255,6 @@ INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다6' , '내용입니다
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다7' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
 --상품문의--
-
-
-
 
 
 
