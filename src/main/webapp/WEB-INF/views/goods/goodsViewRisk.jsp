@@ -1,57 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="conPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
 <body>
-	<jsp:include page="../main/header.jsp" />
-	<div id="contentWrap" class="goodsWrap">
-	<section class="goodsViewWrap">
-		<div id="goodsBasicInfomationWrap">
-			<div class="thumnail">
-				<img src="${conPath}/images/fundingProduct_01.jpeg" alt="">
-			</div>
-			<div class="infomationTextSection">
-				<h1><span>[companyName]</span> <br/>funding Title</h1>
-				<ul>
-					<li>
-						<p>159,086,576원  <span>달성목표금액 30,032,574원30%</span></p>
-					</li>
-					<li>
-						<p>13일 남음 <span>2020.04.21 15:00 마감</span></p>
-					</li>
-					<li>
-						<p><img src="" alt="investorProfile"><span>+20 투자성공</span></p>
-					</li>
-				</ul>
-				<div id="buttonWrap">
-					<a href="fundingStep1.do" class="button">FUNDING</a>
-					<a href="goodsQnaWirteForm.do" class="button">Q&A</a>
-					<a href="pick.do" class="button">♡</a>
-				</div>
-			</div>
-		</div>
-		
-		<div id="investmentRiskNotice">
-			<p clsss="riskNotice">투자 위험 고지비상장기업 투자는 원금 손실의 가능성이 크니 <a href="">투자 위험 안내</a>를 꼭 확인하세요.</p>
-			<p class="serviceInfomation">서비스 안내개인 일반 투자자의 연간 투자 한도가 동일 발행인 기준 200만원→500만원, 누적 투자 금액 500만원→1,000만원으로 확대되었습니다.</p>
-		</div>
-		
-		<ul class="goodsInfoNavigation">
-			<li><a href="goodsViewCoreInfomation.do">투자정보</a></li>
-			<li><a href="goodsViewRisk.do"><span>투자위험</span></a></li>
-			<li><a href="goodsViewNews.do">새소식</a></li>
-			<li><a href="goodsViewDebate.do">토론</a></li>
-			<li><a href="goodsViewInvestor.do">투자자</a></li>
-		</ul>
-		<div id="goodsViewContentWrap"  class="riskWrap">
 			<h3>투자 위험 안내</h3>
 			<p>진행되는 금융투자상품에 대한 투자는 아래와 같은 투자 위험을 가지고 있습니다.<br><br>
 
@@ -75,9 +28,5 @@
 				모든 투자에는 기대수익에 상응하는 투자위험이 있음을 유의하셔야 합니다. 투자자는 투자결과에 따라 높은 수익을 얻을 수도 있지만,
 				원금의 100%를 손실할 가능성도 있습니다. 온라인소액투자중개서비스를 제공하는 회사로서 투자에 따른 손실 또는 그 위험을 보전해 드리지 못하며,
 				투자에 따른 모든 책임은 각 투자자에게 귀속됩니다. 따라서 투자자가 직접 습득한 정보와 자체적인 투자의 의사결정에 따라 투자에 임하실 것을 당부 드립니다.</p><br><br><br>
-		</div>
-	</section>
-	</div>
-	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

@@ -13,7 +13,29 @@
 	function noUser(){
 		alert('로그인 이후에 가능합니다.');
 	}
+	function goodsInfoNavigation(infoType){
+		$('.goodsInfoNavigation').children().children().removeClass('goodInfoActive');
+		$('#'+infoType).addClass('goodInfoActive');
+		var fundingCode = ${param.fundingCode };
+		$.ajax({
+			url : '${conPath}/goodsInfoNavigation.do',
+			datatype : 'html',
+			data : "infoType="+infoType+"&fundingCode="+fundingCode,
+			success : function(data, status){
+				$('#goodsViewContentWrap').html(data);
+			}
+		});
+	}
 	$(function(){
+		var fundingCode = ${param.fundingCode}; 
+		$.ajax({
+			url : '${conPath}/goodsInfoNavigation.do',
+			datatype : 'html',
+			data : "infoType=goodsViewInfo&fundingCode="+fundingCode,
+			success : function(data, status){
+				$('#goodsViewContentWrap').html(data);
+			}
+		});
 		$('#userPick').click(function(){
 			if($(this).html() == '♡'){
 				$(this).html('♥');
@@ -91,11 +113,11 @@
 		</div>
 		
 		<ul class="goodsInfoNavigation">
-			<li><a href="goodsViewCoreInfomation.do?fundingCode=${param.fundingCode }"><span>투자정보</span></a></li>
-			<li><a href="goodsViewRisk.do?fundingCode=${param.fundingCode }">투자위험</a></li>
-			<li><a href="goodsViewNews.do?fundingCode=${param.fundingCode }">새소식</a></li>
-			<li><a href="goodsViewDebate.do?fundingCode=${param.fundingCode }">토론</a></li>
-			<li><a href="goodsViewInvestor.do?fundingCode=${param.fundingCode }">투자자</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewInfo');" class="goodInfoActive" id="goodsViewInfo">투자정보</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewRisk');" id="goodsViewRisk">투자위험</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewNews');" id="goodsViewNews">새소식</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewInvestor');" id="goodsViewInvestor">토론</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewDebate');" id="goodsViewDebate">투자자</a></li>
 		</ul>
 		<div id="goodsViewContentWrap" class="coreInfomationWrap">
 			<div class="company">

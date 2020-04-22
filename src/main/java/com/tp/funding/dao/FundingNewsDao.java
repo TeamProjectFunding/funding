@@ -10,4 +10,6 @@ public interface FundingNewsDao {
 	public List<FundingNews> fundingNewsList(FundingNews fundingNews);
 	
 	public FundingNews fundingNewsDetail(int fundingNewsNumber);
+	
+	public int newsTotalCountInFunding(int fundingCode);
 }

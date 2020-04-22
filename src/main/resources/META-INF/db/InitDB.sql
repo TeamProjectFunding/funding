@@ -267,6 +267,7 @@ CREATE TABLE Reward (
 	RewardInterst             NUMBER(12)  NULL,     -- 리워드 이자
 	FundingInvestmentPeriod   NUMBER(2)   NULL,     -- 투자기간(월)
 	InvestmentReceiveCount    NUMBER(2)   NULL,     -- 이자 받은 횟수
+    LastInterestReceivedDate  DATE         NULL,    -- 최근 이자 받은 날짜
 	FundingCode               NUMBER(12)   REFERENCES FundingGoods(FundingCode)      -- 펀딩상품코드
 );
 

@@ -10,12 +10,14 @@
 </insert>
 
 <select id="fundingNewsList" parameterType="FundingNews" resultType="FundingNews">
-	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM FUNDINGNEWS ORDER BY FUNDINGNEWSDATE DESC) A) 
+	SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM FUNDINGNEWS WHERE FUNDINGCODE=#{fundingCode} ORDER BY FUNDINGNEWSDATE DESC) A) 
 		WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 
 <select id="fundingNewsDetail" parameterType="int" resultType="FundingNews">
 	SELECT * FROM FUNDINGNEWS WHERE FUNDINGNEWSNUMBER=#{fundingNewsNumber}
 </select>
-
+<select id="newsTotalCountInFunding" parameterType="int" resultType="int">
+	SELECT COUNT(*) FROM FUNDINGNEWS WHERE FUNDINGCODE=#{fundingCode} 
+</select>
 </mapper>

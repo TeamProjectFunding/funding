@@ -1,4 +1,3 @@
-﻿
 INSERT INTO Company VALUES ('com','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('A','11','pro','intro',SYSDATE,'name','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO Company VALUES ('com2','11','pro','intro',SYSDATE,'Aname','010','addr','de','은행','예금','번호',0,0,0,NULL);
@@ -53,8 +52,6 @@ INSERT INTO Notification VALUES (NOTIFICATIONNUMBER.nextval,'알림내용','2020
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,2000000,10000,'2020-05-06','2020-09-09',1,'user');
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,200000,1000,SYSDATE,'2020-09-09',1,'user2');
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,100000,0,SYSDATE,'2020-09-09',1,'user3');
-select * from users;
-select * from company;
 INSERT INTO FundingQuestion VALUES (FUNDINGQUESTIONNUMBER.nextval,'문의내용','2020-04-09',0,'1','user');
 INSERT INTO FundingQuestionReply VALUES (FUNDINGQUESTIONREPLYNUMBER.nextval,'답글내용','2020-04-09','1','admin');
 INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용','2020-04-09',0,1,'user');
@@ -213,7 +210,7 @@ INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘7', '긍정적인 
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘7', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다7', '불꽃가능', SYSDATE, 0 ,'admin');
 
-SELECT * FROM ADMIN;
+
 --이벤트 관리자단에 뿌릴 이벤트더미데이터
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, DATE '2020-08-20' ,NULL,'admin');
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가10배SALE', '금주이벤트는 엔화의10배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
@@ -284,6 +281,22 @@ commit;
 -- 펀딩 하기
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,20000000,10000,'2020-05-06','2020-09-09',2,'user');
 
+-- 리워드
 
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',50000,1,'리워드이미지1','2020-05-10',0,0,0,null,1);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',100000,1,'리워드이미지2','2020-05-10',0,0,0,null,1);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',150000,1,'리워드이미지3','2020-05-10',0,0,0,null,1);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',50000,1,'리워드이미지1','2020-05-10',0,0,0,null,6);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',100000,1,'리워드이미지2','2020-05-10',0,0,0,null,6);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',150000,1,'리워드이미지3','2020-05-10',0,0,0,null,6);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',50000,1,'리워드이미지1','2020-05-10',0,0,0,null,14);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',100000,1,'리워드이미지2','2020-05-10',0,0,0,null,14);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(상품)',150000,1,'리워드이미지3','2020-05-10',0,0,0,null,14);
 
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)1',0,0,'리워드이미지2',null,5,12,0,'2020-05-10',12); --펀딩마감일 넣기
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)2',0,0,'리워드이미지2',null,12,11,0,'2020-05-11',2);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)3',0,0,'리워드이미지2',null,15,10,0,'2020-05-12',3);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)4',0,0,'리워드이미지2',null,18,13,0,'2020-05-13',4); 
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)5',0,0,'리워드이미지2',null,12,18,0,'2020-05-14',5);
 
+commit;

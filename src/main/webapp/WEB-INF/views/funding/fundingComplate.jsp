@@ -35,7 +35,7 @@
 						</tr>
 						<tr>
 							<th>투자기간</th>
-							<td><fmt:formatDate value="${fundingGoodsDetail.fundingTargetDate }" pattern="yyyy-MM-dd"/> ~ ${fundingGoodsDetail.fundingTargetDate }  (${reward.fundingInvestmentPeriod }개월) </td>
+							<td><fmt:formatDate value="${reward.fundingTargetDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${reward.investmentMaturityDate}" pattern="yyyy-MM-dd"/>  (${reward.fundingInvestmentPeriod*30 }일) </td>
 						</tr>
 					</c:if>
 					
