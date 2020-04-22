@@ -1,4 +1,4 @@
-package com.tp.funding.controller;
+﻿package com.tp.funding.controller;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -13,15 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tp.funding.dto.Admin;
 import com.tp.funding.dto.Event;
+import com.tp.funding.dto.EventPrize;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.Notice;
+
 import com.tp.funding.service.AdminService;
+
+import com.tp.funding.dto.Notification;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.EventPrizeService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
+import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.UsersService;
 import com.tp.funding.util.Paging;
@@ -48,6 +54,15 @@ public class AdminControllerByTop {
 	@Autowired
 	AdminService adminService;
 	
+	@Autowired
+	FundingDetailService fundingDetailService; //상품상세 서비스
+
+	@Autowired
+	EventPrizeService eventPrizeService;
+
+	@Autowired
+	NotificationService notificationService;
+
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
 	public String adminMain(Model model, FundingGoods fundingGoods, Admin admin, HttpSession session) {
@@ -182,6 +197,7 @@ public class AdminControllerByTop {
 		nService.noticeDelete(noticeNumber);
 		return "redirect:adminMain.do";
 	}
+	//이벤트 마감
 	@RequestMapping(value="eventClose")
 	public String eventClose(Model model, int eventNumber) {
 		//1단계 
@@ -192,7 +208,6 @@ public class AdminControllerByTop {
 		//2단계
 		eService.eventColseStep2(event);
 		event = eService.eventDetail(eventNumber);
-		System.out.println(event.toString());
 		//3단계 추첨
 		Random random = new Random();
 		int eventPrizeCount = event.getEventPrizeCount(); //eventPrizecount
@@ -202,18 +217,30 @@ public class AdminControllerByTop {
 			chancenum.add(random.nextInt(eventParticipateCount)+1); //eventParticipateCount 참여자
 		}
 		Iterator<Integer> key = chancenum.iterator();
-		int index = 0;
+		int idx = 0;
 		while(key.hasNext()) {
-			raffle[index]=key.next();
-			index ++;
+			raffle[idx]=key.next();
+			EventPrize eventPrize = new EventPrize();
+			eventPrize.setSearchNumUserId(raffle[idx]); //추첨 번호로 유저아이디검색하려고 
+			eventPrize.setEventNumber(eventNumber);		//추첨 번호로 유저아이디검색하려고
+			//System.out.println(eventPrize.toString()); 잘나와
+			String[] userId = new String[eventPrizeCount]; //조회해서 유저아이디 담는 배열
+			userId[idx] = eventPrizeService.searchNumUserId(eventPrize);
+			//System.out.println(userId[idx]); 잘나와
+			EventPrize eventPrizeRaffleInsert = new EventPrize();
+			eventPrizeRaffleInsert.setUserId(userId[idx]);
+			eventPrizeRaffleInsert.setEventNumber(eventNumber);
+			eventPrizeService.raffleUserIdEnrollment(eventPrizeRaffleInsert); //당청 아이디 eventPrize에 인서트함 
+			Notification notification = new Notification();
+			String notificationContent = userId[idx]+"님 이벤트에 당첨되셨습니다";
+			notification.setNotificationContent(notificationContent);
+			notification.setUserId(userId[idx]);
+			notification.setAdminId("admin"); //나중에 세션값에서 넣어줘야함
+			notificationService.eventRaffleUserSend(notification);
+			idx ++;
 		}
-		
-		//4단계
-//		SELECT userId FROM (select ROWNUM RN,FG.* from fundinggoodsdetail FG where fundingdate between (select eventstartdate from event where eventnumber=2) and
-//				(select eventenddate from event where eventnumber=2)) WHERE RN=5; //eventPrize.xml uwerId 조회하고
-//		INSERT INTO EventPrize VALUES (EVENTPRIZENUMBER.nextval,'user1@naver.com',1); //eventPrize.xml 인서트
-//		INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, 'xxx 님 이벤트 xx에 당첨되셨어요', SYSDATE, 0 , 'admin', null, 'user1@naver.com'); // 알림에 인서트
-		// 4.추첨한 사람을 알림보내주면끄, notification
+
+
 		return "redirect:adminMain.do";
 	}
 }

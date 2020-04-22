@@ -16,4 +16,12 @@
     <insert id="eventPrizeRegist" parameterType="EventPrize">
     INSERT INTO EVENTPRIZE VALUES (EVENTPRIZENUMBER.NEXTVAL, #{userId}, #{eventNumber})
     </insert>
+    <select id="searchNumUserId" parameterType="EventPrize" resultType="String">
+    SELECT USERID FROM (SELECT ROWNUM RN,FG.* FROM FUNDINGGOODSDETAIL FG WHERE FUNDINGDATE BETWEEN 
+    (SELECT EVENTSTARTDATE FROM EVENT WHERE EVENTNUMBER=#{eventNumber}) AND 
+    (SELECT EVENTENDDATE FROM EVENT WHERE EVENTNUMBER=#{eventNumber})) WHERE RN=#{searchNumUserId}
+    </select>
+    <insert id="raffleUserIdEnrollment" parameterType="EventPrize">
+    INSERT INTO EventPrize VALUES (EVENTPRIZENUMBER.nextval,#{userId},#{eventNumber})
+    </insert>
     </mapper>
