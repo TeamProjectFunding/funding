@@ -6,7 +6,7 @@ INSERT INTO Company VALUES ('com3','11','pro','intro',SYSDATE,'Aname','010','add
 INSERT INTO Company VALUES ('com4','11','pro4','intro4',SYSDATE,'Aname4','010','addr','de','은행','예금','번호',0,0,0,NULL);
 INSERT INTO UserGrade VALUES (1,'NORMAL',0,1000000);
 INSERT INTO UserGrade VALUES (2,'GOLD',1000001,100000000);
-INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
+INSERT INTO UserGrade VALUES (3,'VIP',100000001,2000000000);
 INSERT INTO Admin VALUES ('admin','11','adn','ADMINIMAGE');
 INSERT INTO Users VALUES ('user','11','PRO','이','12','서울','ㅈ','ㅇ','기',0,NULL,SYSDATE,0,0,0,0,0,1);
 INSERT INTO Users VALUES ('user2','11','PRO2','이2','12','서울','ㅈ','ㅇ','기',0,NULL,SYSDATE,0,0,0,0,1,1);
@@ -49,6 +49,7 @@ INSERT INTO FundingGoods VALUES (FundingCode.nextval,0,'펀딩상품','펀딩상
 INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목','새소식내용','2020-05-05','이미지',1,'com');
 INSERT INTO Event VALUES (EVENTNUMBER.nextval,'제목','내용','이벤트이미지썸','이벤트이미지상세','이벤트상품이름','이벤트상품이미지',2,500,300,'2020-03-05','2020-04-05','2020-05-05','admin');
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드이름',3,1,'리워드이미지','2020-03-02',5,12,2,1);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)',0,1,'리워드이미지',null,5,12,0,2);
 INSERT INTO Notification VALUES (NOTIFICATIONNUMBER.nextval,'알림내용','2020-06-07',0,'admin',null,'user');
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,2000000,10000,'2020-05-06','2020-09-09',1,'user');
 INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,200000,1000,SYSDATE,'2020-09-09',1,'user2');

@@ -282,6 +282,11 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
-select * from fundingquestion;
 commit;
+
+-- 펀딩 하기
+INSERT INTO FundingGoodsDetail VALUES (FUNDINGGOODSDETAILNUMBER.nextval,20000000,10000,'2020-05-06','2020-09-09',2,'user');
+
+
+
 

@@ -65,4 +65,10 @@ WHERE USERID = #{userId}
 	<update id="tempPasswordChange" parameterType="Users" >
 		UPDATE USERS SET USERPASSWORD = #{userPassword} WHERE USERID = #{userId}
 	</update>	
+	
+	<select id="userCurrentGrade" parameterType="String" resultType="int">
+		SELECT userGradeNo FROM userGrade ug WHERE (SELECT SUM(fundingAmount) FROM users u,fundingGoodsDetail fd 
+		WHERE u.userId = fd.userId and u.userId=#{userId}) between ug.userGradeLowFundingAmount and ug.userGradeHighFundingAmount
+	</select>
+	
 </mapper>

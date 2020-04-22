@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<span id="rewardProduct">${rewardProduct }</span>
-<span id="rewardDeliveryDate">${rewardDeliveryDate }</span>
+${rewardCondition }
 </body>
 </html>

@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -26,39 +25,43 @@
 			<form>
 				<table>
 					<tr>
-						<th colspan="2">GOODS TITLE 펀딩 성공 되었습니다.</th>
+						<th colspan="2">${good.fundingName } 펀딩 성공 되었습니다.</th>
 					</tr>
 					<!-- 투자 -->
-					<tr>
-						<th>투자이율</th>
-						<td>15%</td>
-					</tr>
-					<tr>
-						<th>투자기간</th>
-						<td>2020-04-21 ~ 2020-07-21 (3개월) </td>
-					</tr>
+					<c:if test="${good.fundingCategory eq 0 }">
+						<tr>
+							<th>투자이율</th>
+							<td>${reward.rewardInterst }%</td>
+						</tr>
+						<tr>
+							<th>투자기간</th>
+							<td><fmt:formatDate value="${fundingGoodsDetail.fundingTargetDate }" pattern="yyyy-MM-dd"/> ~ ${fundingGoodsDetail.fundingTargetDate }  (${reward.fundingInvestmentPeriod }개월) </td>
+						</tr>
+					</c:if>
 					
 					<!-- 리워드 -->
+					<c:if test="${good.fundingCategory eq 1 }">
 					<tr>
 						<th>리워드 상품</th>
-						<td><img src="" alt="rewardProductImage"></td>
+						<td><img src="${conPath }/images/reward/${reward.rewardImage}" alt="rewardProductImage"></td>
 					</tr>
 					<tr>
 						<th>리워드 제공예상일</th>
-						<td>2020-07-21 일괄배송</td>
+						<td><fmt:formatDate value="${reward.fundingRewardDeliveryDate }" pattern="yyyy-MM-dd"/> 일괄배송</td>
 					</tr>
 					<tr>
 						<th>후원금</th>
-						<td>50,000 원</td>
+						<td><fmt:formatNumber value="${fundingGoodsDetail.fundingRewardAddDonation }" currencySymbol="true"/> 원</td>
 					</tr>
+					</c:if>
 					<!-- 공통 -->
 					<tr>
 						<th>투자금액</th>
-						<td>500,000 원</td>
+						<td><fmt:formatNumber value="${fundingGoodsDetail.fundingAmount }" currencySymbol="true"/> 원</td>
 					</tr>
 					<tr>
 						<th>남은 예치금</th> 
-						<td>100,000,000 원</td>
+						<td><fmt:formatNumber value="${user.userAccountBalance }" currencySymbol="true"/>  원</td>
 					</tr>
 					<tr>
 						<th id="buttonWrap" colspan="2">

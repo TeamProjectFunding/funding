@@ -24,7 +24,7 @@ public interface FundingGoodsService {
 	public int fundingAdminPermitYes(int fundingCode);
 	public int fundingAdminPermitNo(int fundingCode);
 	public int fundingPeopleCountUp(int fundingCode);
-	public int fundingBalancePlus(int fundingCode,int changeAccountBalance);
+	public int fundingBalancePlus(int fundingCode,int changeMoneyAmount);
 	public int fundingTargetRateModify(int fundingCode);
 	public int fundingSuccess(int fundingCode);
 	public int fundingFailure(int fundingCode);

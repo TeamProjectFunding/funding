@@ -123,7 +123,7 @@ public class UsersServiceImpl implements UsersService {
 		Users user = new Users();
 		user.setUserId(userId);
 		user.setChangeMoneyAmount(changeMoneyAmount);
-		return userDao.userInvestmentAmountModify(userId);
+		return userDao.userInvestmentAmountModify(user);
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class UsersServiceImpl implements UsersService {
 		Users user = new Users();
 		user.setUserId(userId);
 		user.setChangeMoneyAmount(changeMoneyAmount);
-		return userDao.userInterestAmountModify(userId);
+		return userDao.userInterestAmountModify(user);
 	}
 
 	@Override
@@ -175,6 +175,11 @@ public class UsersServiceImpl implements UsersService {
 		
 		mailSender.send(tempPasswordMsg);
 		return userDao.tempPasswordChange(user);
+	}
+
+	@Override
+	public int userCurrentGrade(String userId) {
+		return userDao.userCurrentGrade(userId);
 	}
 
 

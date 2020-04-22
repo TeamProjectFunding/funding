@@ -210,12 +210,14 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap table td span{font-size:10px; font-weight:bold;}
 #contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
 #contentWrap.fundingWrap .fundingStep2 form {width:100%; float:left; border:1px solid #f1f1f1;}
+#contentWrap.fundingWrap .fundingStep2 form .rewardCondition{display: none;}
 #contentWrap.fundingWrap .fundingStep2 table {text-align: center;} 
 #contentWrap.fundingWrap .fundingStep2 table th{padding:5%;}
 #contentWrap.fundingWrap .fundingStep2 table td{padding:3%;}
 #contentWrap.fundingWrap .fundingStep2 table input[type='number']{padding:2%; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap .fundingStep2 table select{width:70%; height:30px; background:#fff; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
+
 
 /* apply */
 #contentWrap.fundingWrap #applyWrap{margin:50px 0 50px;}

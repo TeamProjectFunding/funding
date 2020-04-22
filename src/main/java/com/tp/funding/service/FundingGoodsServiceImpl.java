@@ -1,14 +1,11 @@
 ﻿package com.tp.funding.service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.FundingGoodsDao;
@@ -175,10 +172,10 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
-	public int fundingBalancePlus(int fundingCode, int changeAccountBalance) {
+	public int fundingBalancePlus(int fundingCode, int changeMoneyAmount) {
 		FundingGoods fundingGoods = new FundingGoods();
 		fundingGoods.setFundingCode(fundingCode);
-		fundingGoods.setChangeMoneyAmount(changeAccountBalance);
+		fundingGoods.setChangeMoneyAmount(changeMoneyAmount);
 		return fundingGoodsDao.fundingBalancePlus(fundingGoods);
 	}
 
