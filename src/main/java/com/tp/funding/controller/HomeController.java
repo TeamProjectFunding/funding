@@ -384,9 +384,9 @@ public class HomeController {
 //		return "notice/noticeList";
 //	}
 		
-	//공지 view
-	@RequestMapping(value ="noticeView")
-	public String noticeView() {
-		return "notice/noticeView";
-	}
+//	//공지 view
+//	@RequestMapping(value ="noticeView")
+//	public String noticeView() {
+//		return "notice/noticeView";
+//	}
 }
