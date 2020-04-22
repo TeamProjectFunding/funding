@@ -146,4 +146,8 @@
 	<update id="fundraizingFailure" parameterType="int">
 	UPDATE FUNDINGGOODS SET FUNDINGSUCCESSORFAILURE = 2, FUNDINGACCOUNTBALANCE = 0  WHERE FUNDINGCODE=#{fundingCode}
 	</update>
+	
+	<select id="getFundingCode" resultType="int">
+	SELECT COUNT(*) FROM FundingGoods
+	</select>
 </mapper>

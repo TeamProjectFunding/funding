@@ -26,9 +26,22 @@ public class Reward {
 	
 	// 투자 원금 환불일 서브쿼리
 	private Date investmentMaturityDate;
-	
-	
-	
+	//투자일 때
+	public Reward(String rewardName,int rewardGrade,int rewardInterst,int fundingInvestmentPeriod,int fundingCode) {
+		this.rewardName = rewardName;
+		this.rewardGrade = rewardGrade;
+		this.rewardInterst = rewardInterst;
+		this.fundingInvestmentPeriod = fundingInvestmentPeriod;
+		this.fundingCode = fundingCode;
+	}
+	// 리워드 상품일 때
+	public Reward(String rewardName,int rewardCondition, int rewardGrade,Date fundingRewardDeliveryDate,int fundingCode) {
+		this.rewardName = rewardName;
+		this.rewardCondition = rewardCondition;
+		this.rewardGrade = rewardGrade;
+		this.fundingRewardDeliveryDate = fundingRewardDeliveryDate;
+		this.fundingCode = fundingCode;
+	}
 	public Date getInvestmentMaturityDate() {
 		return investmentMaturityDate;
 	}

@@ -299,4 +299,25 @@ INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)3',0,0,'리워�
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)4',0,0,'리워드이미지2',null,18,13,0,'2020-05-13',4); 
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'리워드(투자)5',0,0,'리워드이미지2',null,12,18,0,'2020-05-14',5);
 
+-- 새소식
+
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목1','새소식내용1','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목2','새소식내용2','2020-04-23','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목3','새소식내용3','2020-04-24','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목4','새소식내용4','2020-04-25','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목5','새소식내용5','2020-04-26','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목6','새소식내용6','2020-04-27','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목7','새소식내용7','2020-04-27','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목8','새소식내용8','2020-04-28','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목9','새소식내용9','2020-04-29','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목10','새소식내용10','2020-04-30','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목11','새소식내용11','2020-05-01','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목12','새소식내용12','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목13','새소식내용13','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목14','새소식내용14','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목15','새소식내용15','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목16','새소식내용16','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목17','새소식내용17','2020-04-22','이미지',2,'com2');
+INSERT INTO FundingNews VALUES (FundingNewsNumber.nextval,'새소식제목18','새소식내용18','2020-04-22','이미지',2,'com2');
+
 commit;

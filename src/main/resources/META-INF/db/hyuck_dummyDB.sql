@@ -216,6 +216,15 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
-select * from fundingquestion;
+
 commit;
 
+-- fundingComment
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,1,'user2');

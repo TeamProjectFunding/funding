@@ -35,4 +35,5 @@ public interface FundingGoodsDao {
 	public FundingGoods getFundingGoods(int fundingCode);
 	public int fundingSucces(int fundingCode);
 	public int fundraizingFailure(int fundingCode);
+	public int getFundingCode(); //현재 펀딩코드 가져오기 (리워드 등록할 때)
 }

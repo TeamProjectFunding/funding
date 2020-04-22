@@ -62,6 +62,6 @@ INSERT INTO EventReply VALUES (EVENTREPLYNUMBER.nextval,'답글내용','2020-04-
 INSERT INTO EventPrize VALUES (EVENTPRIZENUMBER.nextval,'user',1);
 INSERT INTO UserPick VALUES (USERPICKNUMBER.nextval,'user',1);
 INSERT INTO Notice VALUES (NOTICENUMBER.nextval,'공지제목','공지내용','2020-04-09',200,'admin');
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA제목','QnA내용',0,1,QnANumber.currval,0,0,0,sysdate,'user',null,null);
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답제목','QnA답내용',0,3,1,1,1,0,sysdate,null,null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA제목','QnA내용',0,1,QnANumber.currval,0,0,0,0,sysdate,'user',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답제목','QnA답내용',0,3,1,1,1,0,0,sysdate,null,null,'admin');
 commit;

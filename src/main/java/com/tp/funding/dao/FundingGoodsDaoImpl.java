@@ -151,8 +151,12 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 
 	@Override
 	public int fundraizingFailure(int fundingCode) {
-		System.out.println("여기서 왜걸리는 거야 미챠부리겠네");
 		return sessionTemplate.update("fundraizingFailure", fundingCode);
+	}
+
+	@Override
+	public int getFundingCode() {
+		return sessionTemplate.selectOne("getFundingCode");
 	}
 
 }

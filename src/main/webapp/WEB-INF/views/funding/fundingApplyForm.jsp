@@ -14,16 +14,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(function(){
+	var fileNum = 0;
 	$('#fundReward').hide();
-	var addReward = '<table class="reward">'
-						+'<tr><th></th></tr>'
-						+'<tr><th>REWARD NAME</th><td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>'
-						+'<tr><th>REWARD CONDITION</th><td><input type="number"></td></tr>'
-						+'<tr><th>REWARD IMAGE</th><td><input type="file" name="rewardImage"></td></tr>'
-					+'</table>';
+	
 	$('.addRewardButton').click(function(){
+		var addReward = '<table class="reward">'
+			+'<tr><th></th></tr>'
+			+'<tr><th>REWARD NAME</th><td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>'
+			+'<tr><th>REWARD CONDITION</th><td><input type="number" name="rewardCondition" required="required" placeholder="상품가격을 입력하세요."></td></tr>'
+			+'<tr><th>REWARD IMAGE</th><td><input type="file" name="fileReward'+fileNum+'"></td></tr>'
+		+'</table>';
 		$('#addReward').append(addReward);
 		$('.deleteRewardButton').fadeIn();
+		fileNum++;
 	});
 	
 	$('.deleteRewardButton').click(function(){
@@ -42,6 +45,9 @@ $(function(){
 			$('#addReward').show();
 			$('.addRewardButton').show();
 			$('.deleteRewardButton').show();
+			$('input[name="fundRewardName"]').val(' ');
+			$('input[name="fundingInvestmentProfitRate"]').val(0);
+			$('input[name="fundingInvestmentPeriod"]').val(0);
 			$('.addRewardButton').click();
 		}
 	});
@@ -50,7 +56,6 @@ $(function(){
 		if(fundingCategory == 0){
 			
 		}else if(fundingCategory == 1){
-			var name = $('input[name="rewardName"]').val();
 		}
 	});
 });
@@ -94,20 +99,20 @@ $(function(){
 					</tr>
 					<tr>
 						<th>GOODS THUMNAIL</th>
-						<td><input type="file" name="file1" placeholder="썸네일 업로드(image 파일)"></td>
+						<td><input type="file" name="fileThumbnail" placeholder="썸네일 업로드(image 파일)"></td>
 					</tr>
 					<tr>
 						<th>GOODS DETAIL IMAGE</th>
-						<td><input type="file" name="file2" placeholder="상세이미지 업로드(image 파일)"></td>
+						<td><input type="file" name="fileDetail" placeholder="상세이미지 업로드(image 파일)"></td>
 					</tr>
 					<tr>
 						<th>INVESTMENT MENUAL</th>
-						<td><input type="file" name="file3" placeholder="투자설명서 업로드(image 파일)"></td>
+						<td><input type="file" name="fileExplanation" placeholder="투자설명서 업로드(image 파일)"></td>
 					</tr>
 				</table>
 				<div id="fundReward">
 					<table class="reward">
-						<tr><th>REWARD NAME</th><td><input type="text" name="goodsName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>
+						<tr><th>REWARD NAME</th><td><input type="text" name="fundRewardName" placeholder="리워드 이름을 입력하세요." required="required"></td></tr>
 						<tr><th>REWARD INVESTMENT</th><td><input type="number" name="fundingInvestmentProfitRate" placeholder="예상 이자율을 입력하세요" required="required"></td></tr>
 						<tr><th>INVESTMENT PERIOD</th><td><input type="number" name="fundingInvestmentPeriod" placeholder="투자 상품 상환 기간을 적어주세요" required="required"></td></tr>
 					</table>

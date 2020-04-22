@@ -255,8 +255,12 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 
 	@Override
 	public int fundraizingFailure(int fundingCode) {
-		System.out.println("요도 잘 들어오드나? ------------"+fundingCode);
 		return fundingGoodsDao.fundraizingFailure(fundingCode);
+	}
+
+	@Override
+	public int getFundingCode() {
+		return fundingGoodsDao.getFundingCode();
 	}
 
 }
