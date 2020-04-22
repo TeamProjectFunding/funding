@@ -56,4 +56,9 @@ public class QnADaoImpl implements QnADao {
 		return sessionTemplate.insert("qnAModify", qnA);
 	}
 
+	@Override
+	public int qnAReplyExistUp(int qnANumber) {
+		return sessionTemplate.update("qnAReplyExistUp", qnANumber);
+	}
+
 }

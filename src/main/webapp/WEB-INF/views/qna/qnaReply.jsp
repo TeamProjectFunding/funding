@@ -20,11 +20,12 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="qnaWrap">
 			<h1>REPLY</h1>
-			<form action="qnaReplyWrite.do">
+			<form action="${conPath}/qnaReplyWrite.do">
 			<input type="hidden" name="qnAGroup" value="${qnADetail.qnAGroup}">
 			<input type="hidden" name="qnARef" value="${qnADetail.qnARef}">
 			<input type="hidden" name="qnAIndent" value="${qnADetail.qnAIndent}">
-			<input type="hidden" name="pageNum" value="${param.pageNum}">			
+			<input type="hidden" name="pageNum" value="${param.pageNum}">
+			<input type="hidden" name="qnANumber" value="${qnADetail.qnANumber}">			
 			
 				<table>
 					<tr>

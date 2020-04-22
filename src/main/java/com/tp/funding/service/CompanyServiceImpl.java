@@ -191,4 +191,9 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDao.tempPasswordChange(company);
 	}
 
+	@Override
+	public int companyFundraisingSuccess(Company company) {
+		return companyDao.companyFundraisingSuccess(company);
+	}
+
 }

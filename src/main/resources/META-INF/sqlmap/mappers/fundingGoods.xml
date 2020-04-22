@@ -136,6 +136,14 @@
 	
 	<select id="totCntOpenList" resultType="int">
 		SELECT COUNT(*) FROM FUNDINGGOODS WHERE SYSDATE &lt; FundingTargetDate AND FUNDINGADMINPERMIT = 1
-	</select>	
-
+	</select>
+	<select id="getFundingGoods" parameterType="int" resultType="FundingGoods">
+	SELECT * FROM FUNDINGGOODS WHERE FUNDINGCODE=#{fundingCode}
+	</select>
+	<update id="fundingSucces" parameterType="int">
+	UPDATE FUNDINGGOODS SET FUNDINGSUCCESSORFAILURE = 1, FUNDINGACCOUNTBALANCE = 0  WHERE FUNDINGCODE=#{fundingCode}
+	</update>
+	<update id="fundraizingFailure" parameterType="int">
+	UPDATE FUNDINGGOODS SET FUNDINGSUCCESSORFAILURE = 2, FUNDINGACCOUNTBALANCE = 0  WHERE FUNDINGCODE=#{fundingCode}
+	</update>
 </mapper>

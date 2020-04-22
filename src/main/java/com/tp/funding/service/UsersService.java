@@ -21,5 +21,6 @@ public interface UsersService {
 	public int userInvestmentAmountModify(String userId,int changeMoneyAmount);
 	public int userInterestAmountModify(String userId,int changeMoneyAmount);	
 	public int tempPasswordChange(Users user);	
-	public int userCurrentGrade(String userId);	
+	public int userCurrentGrade(String userId);
+	public int fundraisingFailureReturnMoney(Users user);
 }

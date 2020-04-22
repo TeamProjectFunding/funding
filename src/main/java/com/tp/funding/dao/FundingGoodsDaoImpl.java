@@ -139,4 +139,20 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 		return sessionTemplate.selectList("rewardOpenList", fundingGoods);
 	}
 
+	@Override
+	public FundingGoods getFundingGoods(int fundingCode) {
+		return sessionTemplate.selectOne("getFundingGoods", fundingCode);
+	}
+
+	@Override
+	public int fundingSucces(int fundingCode) {
+		return sessionTemplate.update("fundingSucces", fundingCode);
+	}
+
+	@Override
+	public int fundraizingFailure(int fundingCode) {
+		System.out.println("여기서 왜걸리는 거야 미챠부리겠네");
+		return sessionTemplate.update("fundraizingFailure", fundingCode);
+	}
+
 }

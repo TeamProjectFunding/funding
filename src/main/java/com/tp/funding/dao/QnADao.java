@@ -14,5 +14,5 @@ public interface QnADao {
 	public int totQnA();
 	public int totCntSearchQnA(QnA qnA);
 	public int qnAModify(QnA qnA);
-	
+	public int qnAReplyExistUp(int qnANumber);
 }

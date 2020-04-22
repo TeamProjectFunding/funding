@@ -243,4 +243,20 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.rewardOpenList(fundingGoods);
 	}
 
+	@Override
+	public FundingGoods getFundingGoods(int fundingCode) {
+		return fundingGoodsDao.getFundingGoods(fundingCode);
+	}
+
+	@Override
+	public int fundingSucces(int fundingCode) {
+		return fundingGoodsDao.fundingSucces(fundingCode);
+	}
+
+	@Override
+	public int fundraizingFailure(int fundingCode) {
+		System.out.println("요도 잘 들어오드나? ------------"+fundingCode);
+		return fundingGoodsDao.fundraizingFailure(fundingCode);
+	}
+
 }

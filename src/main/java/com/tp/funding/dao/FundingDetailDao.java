@@ -18,4 +18,6 @@ public interface FundingDetailDao {
 	
 	public int doFundingGoodTotalCount(int fundingCode);
 	
+	public List<FundingGoodsDetail> fundingGoodsAdminDeadline(int fundingCode);
+	
 }

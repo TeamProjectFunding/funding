@@ -46,4 +46,14 @@ public class NotificationServiceImpl implements NotificationService {
 		return notificationDao.eventRaffleUserSend(notification);
 	}
 
+	@Override
+	public int companyFundraisingSuccessSend(Notification notification) {
+		return notificationDao.companyFundraisingSuccessSend(notification);
+	}
+
+	@Override
+	public int usersFundraizingFailureSend(Notification notification) {
+		return notificationDao.usersFundraizingFailureSend(notification);
+	}
+
 }

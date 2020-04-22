@@ -137,20 +137,21 @@ public class HomeController {
 //		return "admin/qna/list";
 //	}
 //	//admin qna view
-	@RequestMapping(value="adminQnaView")
-	public String adminQndView() {
-		return "admin/qna/view";
-	}
+//	@RequestMapping(value="adminQnaView")
+//	public String adminQndView() {
+//		return "admin/qna/view";
+//	}
 	//admin qna replyForm
-	@RequestMapping(value="adminQnaReplyForm")
-	public String adminQndReplyForm() {
-		return "admin/qna/reply";
-	}
+	
+//	@RequestMapping(value="adminQnaReplyForm")
+//	public String adminQndReplyForm() {
+//		return "admin/qna/reply";
+//	}
 	//admin qna reply
-	@RequestMapping(value="adminQnaReply")
-	public String adminQndReply() {
-		return "admin/qna/list";
-	}
+//	@RequestMapping(value="adminQnaReply")
+//	public String adminQndReply() {
+//		return "admin/qna/list";
+//	}
 	//admin qna reply modifyform
 	@RequestMapping(value="adminQnaReplyModifyForm")
 	public String adminQndReplyModifyForm() {
