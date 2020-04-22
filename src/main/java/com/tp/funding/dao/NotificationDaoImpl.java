@@ -41,4 +41,9 @@ public class NotificationDaoImpl implements NotificationDao {
 		return sessionTemplate.selectList("notificationReadUserList", userId);
 	}
 
+	@Override
+	public int eventRaffleUserSend(Notification notification) {
+		return sessionTemplate.insert("eventRaffleUserSend", notification);
+	}
+
 }

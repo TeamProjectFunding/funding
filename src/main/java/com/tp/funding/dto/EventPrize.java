@@ -9,6 +9,19 @@ public class EventPrize {
 	// Users join
 	private String userProfileImage;
 	private String userName;
+	// 이벤트 당첨된 유저아이디 값찾을 숫자
+	private int searchNumUserId;
+	public EventPrize() {
+	}
+	public EventPrize(int eventPrizeNumber, String userId, int eventNumber, String userProfileImage, String userName,
+			int searchNumUserId) {
+		this.eventPrizeNumber = eventPrizeNumber;
+		this.userId = userId;
+		this.eventNumber = eventNumber;
+		this.userProfileImage = userProfileImage;
+		this.userName = userName;
+		this.searchNumUserId = searchNumUserId;
+	}
 	public int getEventPrizeNumber() {
 		return eventPrizeNumber;
 	}
@@ -39,22 +52,16 @@ public class EventPrize {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public EventPrize() {
-		super();
+	public int getSearchNumUserId() {
+		return searchNumUserId;
+	}
+	public void setSearchNumUserId(int searchNumUserId) {
+		this.searchNumUserId = searchNumUserId;
 	}
 	@Override
 	public String toString() {
 		return "EventPrize [eventPrizeNumber=" + eventPrizeNumber + ", userId=" + userId + ", eventNumber="
-				+ eventNumber + ", userProfileImage=" + userProfileImage + ", userName=" + userName + "]";
+				+ eventNumber + ", userProfileImage=" + userProfileImage + ", userName=" + userName
+				+ ", searchNumUserId=" + searchNumUserId + "]";
 	}
-	public EventPrize(int eventPrizeNumber, String userId, int eventNumber, String userProfileImage, String userName) {
-		super();
-		this.eventPrizeNumber = eventPrizeNumber;
-		this.userId = userId;
-		this.eventNumber = eventNumber;
-		this.userProfileImage = userProfileImage;
-		this.userName = userName;
-	}
-	
-	
 }

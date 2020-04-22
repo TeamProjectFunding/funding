@@ -41,4 +41,9 @@ public class NotificationServiceImpl implements NotificationService {
 		return notificationDao.notificationReadUserList(userId);
 	}
 
+	@Override
+	public int eventRaffleUserSend(Notification notification) {
+		return notificationDao.eventRaffleUserSend(notification);
+	}
+
 }

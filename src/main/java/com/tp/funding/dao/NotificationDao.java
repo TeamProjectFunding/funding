@@ -11,4 +11,5 @@ public interface NotificationDao {
 	public List<Notification> notificationReadUserList(String userId);
 	public List<Notification> notificationUnReadCompanyList(String companyId);
 	public List<Notification> notificationReadCompanyList(String CompanyId);
+	public int eventRaffleUserSend(Notification notification);
 }
