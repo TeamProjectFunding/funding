@@ -1,3 +1,4 @@
+
 -- 회사등록
 INSERT INTO COMPANY VALUES ('com@naver.com', '123', null, '영롱한 스타트업입니다.', SYSDATE, '영롱회사', '02-2066-5849', 
     '서울시 용산구', '대장빌딩 301호', null, null, null, 0, 0, 0,'191-38-6534-2');
@@ -5,7 +6,7 @@ INSERT INTO COMPANY VALUES ('com1@naver.com', '123', null, '몽롱한 스타트�
     '서울시 강남구', '강남빌딩 301호', null, null, null, 0, 0, 0,'172-28-7831-2');
 INSERT INTO COMPANY VALUES ('com2@google.com', '123', null, '상큼한 스타트업입니다.', SYSDATE, '상큼회사', '02-2066-5849', 
     '서울시 성북구', '성북빌딩 301호', null, null, null, 0, 0, 0,'168-18-5712-2');
-INSERT INTO COMPANY VALUES ('com3naver.com', '123', null, '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
+INSERT INTO COMPANY VALUES ('com3@naver.com', '123', null, '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
     '서울시 강북구', '강북빌딩 301호', null, null, null, 0, 0, 0,'158-18-4464-2');
 INSERT INTO COMPANY VALUES ('com4@naver.com', '123', null, '매콤한 스타트업입니다.', SYSDATE, '매콤회사', '02-2066-5849', 
     '서울시 강서구', '강서빌딩 301호', null, null, null, 0, 0, 0,'109-18-7734-2');
@@ -22,7 +23,7 @@ INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
 
 
 --관리자 등록
-INSERT INTO Admin VALUES ('admin', '123', '임재혁', 'ADMINIMAGE');
+INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', 'ADMINIMAGE');
 
 
 -- 유저 등록
@@ -72,8 +73,6 @@ INSERT INTO FundingGoods VALUES
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 1, '대기리워드상품2', '리워드상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
         null, null, 0, 5000000, 0, SYSDATE, '2020-06-25', '2020-06-28', 0, 2, 0, 0, 0, 'admin', 'com1@naver.com');        
-       
-        
     
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '투자상품2', '투자상품2입니다.', '썸네일2', '이미지상세2', '펀딩설명이지롱', '신한은행',
@@ -89,8 +88,28 @@ INSERT INTO FundingGoods VALUES
 
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '투자상품3', '투자상품3입니다.', '썸네일5', '이미지상세5', '펀딩설명이지롱', '신한은행',
-        'masters계좌4', '110-278-448585', 200000, 2000000, 10, '2020-04-04', '2020-05-25', null, 7, 12, 1, 9, 1, 'admin', 'com5@google.com'); 
+        'masters계좌4', '110-278-448585', 200000, 2000000, 10, '2020-04-04', '2020-05-25', null, 7, 12, 1, 9, 1, 'admin', 'com5@google.com');
         
+-- Q&A 더미
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,1,sysdate,'user1@naver.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user2@naver.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user3@google.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user4@google.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user5@naver.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user6@google.com',null,null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user7@naver.com',null,null);
+
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com1@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com2@google.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com3@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com4@naver.com',null);
+
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,20,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,19,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,18,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,17,1,1,0,0,sysdate,null, null,'admin');
+
         
 --알림내용 내용 더미 데이터--
 INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, '내용', SYSDATE, 0 , 'admin', null, 'user1@naver.com');
@@ -143,7 +162,6 @@ INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'긍정의 힘7', '긍정적인 
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'부정의 힘7', '부정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
 INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'할수있다7', '불꽃가능', SYSDATE, 0 ,'admin');
 
-SELECT * FROM ADMIN;
 --이벤트 관리자단에 뿌릴 이벤트더미데이터
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가9배SALE', '금주이벤트는 엔화의9배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, DATE '2020-08-20' ,NULL,'admin');
 INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '엔가10배SALE', '금주이벤트는 엔화의10배세일입니다', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, SYSDATE, SYSDATE+30,NULL,'admin');
@@ -184,16 +202,8 @@ INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다5' , '내용입니다
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다6' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다7' , '내용입니다', 0, 0, 0, 0, 0, 0, SYSDATE,'com@naver.com', null, null);
 INSERT INTO QNA VALUES (QnANumber.NEXTVAL, '문의입니다' , '내용입니다', 0, 1, 0, 0, 0, 0, SYSDATE,null, 'com@naver.com',null);
+
 --상품문의--
-
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'그냥 후져요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'쓰레기 같아요', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테스트1', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user8');
-
 
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품에 하자있음', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'벌레가 나왔어요', '내용물에 이상이있어요' , SYSDATE , 0 , 6, 'user1@naver.com');
@@ -218,6 +228,7 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
 
 commit;
+
 
 -- fundingComment
 INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,1,'user');

@@ -27,32 +27,34 @@
 					<th>DATE</th>
 					<th>HIT</th>
 				</tr>
-				<c:forEach var="qna" items="${qnAList}">
+				<c:forEach var="qna" items="${adminQnaList}">
 				<tr class="userInfo">
 					<td>${qna.qnANumber }</td>
-					<td><a href="${conPath }/adminQnaView.do">${qna.qnATitle }</a></td>
-					<td>${qna.userId }${qna.companyId }</td>
+					<td><a href="${conPath}/adminQnaView.do?qnANumber=${qna.qnANumber}">${qna.qnATitle }</a></td>
+					<td>${qna.userId }${qna.companyId}${qna.adminId}</td>
 					<td>${qna.qnADate }</td>
 					<td>${qna.qnAHit }</td>
 				</tr>
 				</c:forEach>
 			</table>
+			
 			<div class="paging">
-				<c:if test="${paging.startPage>paging.blockSize }">
-				<a href="${conPath }/adminQnaList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				<c:if test="${paging.startPage>paging.blockSize}">
+					<a href="${conPath }/adminQnaList.do?pageNum=${paging.startPage-1}" class="PREV">PREV</a>
 				</c:if>
-				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage}">
 					<c:if test="${paging.currentPage==i }">
-						<a href="#none" class="current">${i }</a>  
+						<a href="#none" class="current">${i}</a>  
 					</c:if>
 					<c:if test="${paging.currentPage!=i }">
-						<a href="${conPath }/adminQnaList.do?pageNum=${i}"> ${i }</a>
+						 <a href="${conPath}/adminQnaList.do?pageNum=${i}">${i}</a> 
 					</c:if>
 				</c:forEach>
 				<c:if test="${paging.endPage<paging.pageCnt }">
-				<a href="${conPath }/adminQnaList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+					<a href="${conPath }/adminQnaList.do?pageNum=${paging.endPage+1}" class="NEXT">NEXT</a>
 				</c:if>
 			</div>
+			
 		</section>
 	</div>
 </body>
