@@ -5,16 +5,18 @@
 
 <mapper namespace="Reward">
 	<insert id="rewardWrite" parameterType="Reward">
-		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{fundingCode})
+		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{LastInterestReceivedDate},#{fundingCode})
 	</insert>
 	<update id="rewardInvestmentReceiveCountUp" parameterType="int">
 		UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=#{rewardCode}
 	</update>
 	<select id="rewardDetail" parameterType="int" resultType="Reward">
-		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, 
-		FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=#{rewardCode}
+		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage,
+		(SELECT fg.fundingtargetdate+(re.fundinginvestmentperiod*30) FROM REWARD Re,fundinggoods Fg WHERE Re.FUNDINGCODE=Fg.FUNDINGCODE AND re.REWARDCODE=#{rewardCode}) investmentMaturityDate
+		 FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and rewardCode=#{rewardCode}
 	</select>
 	<select id="fundingRewardList" parameterType="int" resultType="Reward">
 		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingcode}
 	</select>
+	
 </mapper>

@@ -17,6 +17,13 @@
 		alert('${writeResult}');
 	</script>
 </c:if>
+<c:if test="${not empty qnaReplyresult}">
+	<script>
+		alert('${qnaReplyresult}');
+	</script>
+</c:if>
+
+
 
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="boardWrap">
@@ -47,17 +54,32 @@
 				</tr>
 				<c:forEach var="qna" items="${qnaList}">
 					<tr class="boardInfo">
-						<td>${qna.qnANumber}</td>
-						<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">${qna.qnATitle}</a></td>
+					
+						<c:if test="${qna.qnARef eq 0}">
+							<td>${qna.qnANumber}</td>
+						</c:if>						
+						<c:if test="${qna.qnARef != 0}">
+							<td>${qna.qnAGroup} - ${qna.qnARef}</td>
+						</c:if>
+						
+						<c:if test="${qna.qnARef eq 0}">
+							<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">${qna.qnATitle}</a></td>
+						</c:if>
+						<c:if test="${qna.qnARef != 0}">
+							<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">RE - ${qna.qnATitle}</a></td>
+						</c:if>
+						
+						
+						
 						<td>${qna.writer}</td>
 						<td>${qna.qnADate}</td>
 						<td>${qna.qnAHit}</td>
 						
 						<c:if test="${qna.qnAOriginalWriter==2 && (not empty user || not empty company)}">
-							<td><a href="adminQnaReplyForm.do" class="button">REPLY</a></td>
+							<td><a href="qnaReplyForm.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}" class="button">REPLY</a></td>
 						</c:if>
 						<c:if test="${(qna.qnAOriginalWriter==0 || qna.qnAOriginalWriter==1) && not empty admin }">
-							<td><a href="adminQnaReplyForm.do" class="button">REPLY</a></td>
+							<td onclick="location.href='qnaReplyForm.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}'"><a href="#none" class="button">REPLY</a></td>
 						</c:if> 						
 						
 					</tr>		

@@ -168,7 +168,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .goodsInfoNavigation {width:100%; float:left; padding:3%;}
 .goodsInfoNavigation li{float:left; width:20%; text-align: center;}
 .goodsInfoNavigation li a{ font-weight: bold; }
-.goodsInfoNavigation li a span{color:#f1bf04;}
+.goodsInfoNavigation li a.goodInfoActive{color:#f1bf04;}
 
 #goodsViewContentWrap{width:100%; float: left; padding:5%;}
 #goodsViewContentWrap h3{padding:0 0 5%; float:left;}

@@ -15,7 +15,7 @@
 <body>
 
 <header>
-	<c:if test="${not empty result}">
+	<c:if test="${not empty result || not empty param.result}">
 	<p id="messageWrap">반갑습니다.</p>
 	<script>
 		$(function(){
@@ -27,14 +27,20 @@
 		<a href="main.do" class='headerLogo'>CROWD<br>FUND</a>
 		<div class='menuWrap'>
 			<ul class="util">
-				<li><a href="adminLogin.do">ADMIN LOG-IN</a></li>
-				<li><a href="adminMain.do">ADMIN</a></li>
-				<c:if test="${empty sessionScope.user && empty sessionScope.company}">
+				
+				<c:if test="${empty admin}">	
+					<li><a href="adminLogin.do">ADMIN LOG-IN</a></li>
+				</c:if>
+				<c:if test="${not empty admin}">
+					<li><a href="adminMain.do">ADMIN</a></li>
+				</c:if>
+				
+				<c:if test="${empty sessionScope.user && empty sessionScope.company && empty admin }">
 					<li><a href="loginView.do">LOG-IN</a></li>
 					<li><a href="join.do">JOIN</a></li>
 				</c:if>	
 				
-				<c:if test="${not empty sessionScope.user || not empty sessionScope.company }">
+				<c:if test="${not empty sessionScope.user || not empty sessionScope.company || not empty admin }">
 					<li><a href="mypage.do" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" ></a></li>
 					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
 				</c:if>	

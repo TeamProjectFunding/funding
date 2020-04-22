@@ -100,8 +100,7 @@ public class HyuckController {
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
 			session.setAttribute("company", companyService.companyDetail(id));
-			session.setAttribute("notificationUnReadCompanyList",
-					notificationService.notificationUnReadCompanyList(id));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(id));
 			model.addAttribute("result", "성공");
 		} else {
 
@@ -235,6 +234,7 @@ public class HyuckController {
 	@RequestMapping(value ="qnaView")
 	public String qnaView(QnA qnA, Model model) {
 		
+		qnaService.qnAHitUp(qnA.getQnANumber());
 		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
 		
 		return "qna/qnaView";
@@ -260,6 +260,67 @@ public class HyuckController {
 		}		
 		
 		return "forward:qnaList.do";
-	}	
+	}
+	
+	@RequestMapping(value ="adminLogin")
+	public String adminLogin() {
+		return "admin/adminLogin";
+	}
+	
+	@RequestMapping(value="qnaReplyForm")
+	public String adminQnaReplyForm(QnA qnA, Model model) {
+		
+		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));		
+		
+		return "qna/qnaReply";
+	}
+	
+	@RequestMapping(value="qnaReplyWrite")
+	public String qnaReply(QnA qnA, Model model) {
+		
+		int result = qnaService.qnAReplyWrite(qnA);
+		if(result == 1) {
+			model.addAttribute("qnaReplyresult", "답글 작성 완료");
+			qnaService.qnAReplyExistUp(qnA.getQnANumber());
+			
+		}else {
+			model.addAttribute("qnaReplyresult", "답글 작성 실패");
+		}		
+		
+		return "forward:qnaList.do";
+	}
+	
+	@RequestMapping(value="adminQnaView")
+	public String adminQndView(QnA qnA, Model model) {
+		
+		qnaService.qnAHitUp(qnA.getQnANumber());
+		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
+		
+		return "admin/qna/view";
+		
+	}
+	
+	@RequestMapping(value="adminQnaReplyForm")
+	public String adminQndReplyForm(QnA qnA, Model model) {
+		
+		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));
+		
+		return "admin/qna/reply";
+	}
+	
+	@RequestMapping(value="adminQnaReply")
+	public String adminQndReply(QnA qnA, Model model) {
+		
+		int result = qnaService.qnAReplyWrite(qnA);
+		if(result == 1) {
+			model.addAttribute("qnaReplyresult", "답글 작성 완료");
+			qnaService.qnAReplyExistUp(qnA.getQnANumber());
+			
+		}else {
+			model.addAttribute("qnaReplyresult", "답글 작성 실패");
+		}		
+		
+		return "forward:adminMain.do";
+	}
 
 }

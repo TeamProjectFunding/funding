@@ -14,6 +14,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
+		$('.closeButton').click(function(){
+			$('.popupWrap').slideUp();
+		});
 		$('input[name="searchWord"]').keyup(function() {
 			var searchWord = $(this).val();
 			$.ajax({
@@ -33,29 +36,17 @@
 </script>
 </head>
 <body>
-	<!-- 현재 날짜 -->
-	<jsp:useBean id="today" class="java.util.Date" />
-	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"
-		integerOnly="true" var="nowDate" />
+	
 	<div id="searchWrap" class="popupWrap">
 		<div class="closeButton">
 			<span></span> <span></span>
 		</div>
-		<script>
-			$(function() {
-				$('.closeButton').click(function() {
-					$('.popupWrap').slideUp();
-				});
-			});
-		</script>
 		<div id="contentWrap">
-			<form action="#">
+			<form action="">
 				<table>
 					<tr>
 						<th><input type="text" placeholder="상품 검색어를 입력 하세요"
 							name="searchWord"></th>
-						<td id="buttonWrap"><input type="submit" value="SEARCH"
-							class="button"></td>
 					</tr>
 				</table>
 			</form>

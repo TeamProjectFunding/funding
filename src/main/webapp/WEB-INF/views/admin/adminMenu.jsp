@@ -26,7 +26,7 @@
 			<li><a href="adminGoodsQnaList.do">GOODS Q&A</a></li>
 			<li><a href="adminQnaList.do">Q&A</a></li>
 			<li><a href="adminNoticeList.do">NOTICE</a></li>
-			<li><a href="main.do">HOMEPAGE</a></li>
+			<li><a href="main.do?result=앵무만세">HOMEPAGE</a></li>
 		</ul>
 	</aside>
 </body>

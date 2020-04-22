@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<th>CONTENT</th>
-							<td><textarea name="qnAContent">qnaContent</textarea></td>
+							<td><textarea name="qnAContent"></textarea></td>
 						</tr>
 					</table>
 					

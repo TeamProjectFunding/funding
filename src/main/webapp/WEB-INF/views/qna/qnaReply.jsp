@@ -15,12 +15,12 @@
 
 </head>
 <body>
-	<jsp:include page="../adminMenu.jsp" />
+	<jsp:include page="../admin/adminMenu.jsp" />
 	
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="qnaWrap">
 			<h1>REPLY</h1>
-			<form action="${conPath}/adminQnaReply.do">
+			<form action="${conPath}/qnaReplyWrite.do">
 			<input type="hidden" name="qnAGroup" value="${qnADetail.qnAGroup}">
 			<input type="hidden" name="qnARef" value="${qnADetail.qnARef}">
 			<input type="hidden" name="qnAIndent" value="${qnADetail.qnAIndent}">
@@ -52,10 +52,18 @@
 					</tr>
 					<tr>
 						<th>WRITER</th>
-						<td>	
-																				
-							<input type="text" name="adminId" value="${admin.adminId}" readonly="readonly">
-														
+						<td>
+						
+							<c:if test="${not empty user}">
+								<input type="text" name="userId" value="${user.userId}" readonly="readonly">
+							</c:if>
+							<c:if test="${not empty company}">
+								<input type="text" name="companyId" value="${company.companyId}" readonly="readonly">
+							</c:if>
+							<c:if test="${not empty admin}">
+								<input type="text" name="adminId" value="${admin.adminId}" readonly="readonly">
+							</c:if>
+							
 						</td>
 					</tr>
 					<tr>

@@ -267,6 +267,7 @@ CREATE TABLE Reward (
 	RewardInterst             NUMBER(12)  NULL,     -- 리워드 이자
 	FundingInvestmentPeriod   NUMBER(2)   NULL,     -- 투자기간(월)
 	InvestmentReceiveCount    NUMBER(2)   NULL,     -- 이자 받은 횟수
+    LastInterestReceivedDate  DATE         NULL,    -- 최근 이자 받은 날짜
 	FundingCode               NUMBER(12)   REFERENCES FundingGoods(FundingCode)      -- 펀딩상품코드
 );
 
@@ -374,6 +375,7 @@ CREATE TABLE QnA (
     QnARef	NUMBER(12),
     QnAIndent	NUMBER(12),
     QnASecret	NUMBER(1), -- 비밀글여부	
+    QnAReplyExist NUMBER(1), -- 0 답글 없음 1 있음
     QnADate	DATE DEFAULT SYSDATE,
     UserId            VARCHAR2(100),      -- 유저ID 3중 한명만 쓰기때문에 ref는 안함
     CompanyId          VARCHAR2(100), -- 회사 ID

@@ -15,6 +15,43 @@
 
 </head>
 <body>
-
+	<jsp:include page="../adminMenu.jsp" />
+	
+	<div id="contentWrap" class="adminMainWrap">
+		<section id="qnaWrap">
+			<h1>REPLY</h1>
+			
+			<form action="${conPath}/adminQnaView.do" method="post" >
+				<h1>Q&A</h1>
+			<table>
+				<tr>
+					<th>${qnaDetail.qnATitle}</th>
+				</tr>
+				<tr>
+					<th>${qnaDetail.writer}</th>
+				</tr>
+				<tr>
+					<td class="boardContent">
+						${qnaDetail.qnAContent}
+					</td>
+				</tr>				
+				<tr>
+					<th id="buttonWrap">
+					
+						<c:if test="${(qnaDetail.qnAOriginalWriter == 0 || qnaDetail.qnAOriginalWriter == 1) && not empty admin }">
+							<a href="adminQnaReplyForm.do?qnANumber=${qnaDetail.qnANumber}" class="button">REPLY</a>
+						</c:if>
+						
+						<a href="#none" onclick="history.back()" class="button">뒤로</a>
+												
+						<a href="${conPath}/adminMain.do?" class="button">MAIN</a>
+												
+					</th>
+				</tr>
+			</table>
+				
+			</form>
+		</section>
+	</div>
 </body>
 </html>

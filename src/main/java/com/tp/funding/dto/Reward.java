@@ -13,6 +13,7 @@ public class Reward {
 	private int rewardInterst;             
 	private int fundingInvestmentPeriod;   
 	private int investmentReceiveCount;    
+	private Date LastInterestReceivedDate; // 최근 이자받은 날
 	private int fundingCode;
 	//paging
 		private int startRow;
@@ -22,6 +23,24 @@ public class Reward {
 	private String fundingName;
 	private Date fundingTargetDate;
 	private String fundingThumbnailImage;
+	
+	// 투자 원금 환불일 서브쿼리
+	private Date investmentMaturityDate;
+	
+	
+	
+	public Date getInvestmentMaturityDate() {
+		return investmentMaturityDate;
+	}
+	public void setInvestmentMaturityDate(Date investmentMaturityDate) {
+		this.investmentMaturityDate = investmentMaturityDate;
+	}
+	public Date getLastInterestReceivedDate() {
+		return LastInterestReceivedDate;
+	}
+	public void setLastInterestReceivedDate(Date lastInterestReceivedDate) {
+		LastInterestReceivedDate = lastInterestReceivedDate;
+	}
 	public int getRewardCode() {
 		return rewardCode;
 	}
@@ -112,27 +131,7 @@ public class Reward {
 	public void setFundingThumbnailImage(String fundingThumbnailImage) {
 		this.fundingThumbnailImage = fundingThumbnailImage;
 	}
-	public Reward(int rewardCode, String rewardName, int rewardCondition, int rewardGrade, String rewardImage,
-			Date fundingRewardDeliveryDate, int rewardInterst, int fundingInvestmentPeriod, int investmentReceiveCount,
-			int fundingCode, int startRow, int endRow, String fundingName, Date fundingTargetDate,
-			String fundingThumbnailImage) {
-		super();
-		this.rewardCode = rewardCode;
-		this.rewardName = rewardName;
-		this.rewardCondition = rewardCondition;
-		this.rewardGrade = rewardGrade;
-		this.rewardImage = rewardImage;
-		this.fundingRewardDeliveryDate = fundingRewardDeliveryDate;
-		this.rewardInterst = rewardInterst;
-		this.fundingInvestmentPeriod = fundingInvestmentPeriod;
-		this.investmentReceiveCount = investmentReceiveCount;
-		this.fundingCode = fundingCode;
-		this.startRow = startRow;
-		this.endRow = endRow;
-		this.fundingName = fundingName;
-		this.fundingTargetDate = fundingTargetDate;
-		this.fundingThumbnailImage = fundingThumbnailImage;
-	}
+	
 	public Reward() {
 		super();
 	}
@@ -142,10 +141,11 @@ public class Reward {
 				+ rewardCondition + ", rewardGrade=" + rewardGrade + ", rewardImage=" + rewardImage
 				+ ", fundingRewardDeliveryDate=" + fundingRewardDeliveryDate + ", rewardInterst=" + rewardInterst
 				+ ", fundingInvestmentPeriod=" + fundingInvestmentPeriod + ", investmentReceiveCount="
-				+ investmentReceiveCount + ", fundingCode=" + fundingCode + ", startRow=" + startRow + ", endRow="
-				+ endRow + ", fundingName=" + fundingName + ", fundingTargetDate=" + fundingTargetDate
-				+ ", fundingThumbnailImage=" + fundingThumbnailImage + "]";
+				+ investmentReceiveCount + ", LastInterestReceivedDate=" + LastInterestReceivedDate + ", fundingCode="
+				+ fundingCode + ", startRow=" + startRow + ", endRow=" + endRow + ", fundingName=" + fundingName
+				+ ", fundingTargetDate=" + fundingTargetDate + ", fundingThumbnailImage=" + fundingThumbnailImage + "]";
 	}
+	
 	
 	
 	
