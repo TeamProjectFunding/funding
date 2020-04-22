@@ -81,11 +81,10 @@
 	</select>
 	
 	<insert id="fundingRegist" parameterType="FundingGoods">
-	INSERT INTO FundingGoods VALUES (FundingCode.nextval, 0, #{fundingName}, #{fundingDescription},
-    #{fundingThumbnailImage}, #{fundingDetailImage}, #{fundingExplanationFile}, null, null, null, 0, #{fundingTargetAmount}, 0, SYSDATE, #{fundingTargetDate},
-        #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, 'admin', #{companyId})	
+	INSERT INTO FundingGoods VALUES (FundingCode.nextval, #{fundingCategory}, #{fundingName}, #{fundingDescription},
+    #{fundingThumbnailImage}, #{fundingDetailImage}, #{fundingExplanationFile}, null, null, null, 0, #{fundingTargetAmount}, 0, #{fundingStartDate}, #{fundingTargetDate},
+        #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, null, #{companyId})	
 	</insert>
-	
 	<update id="fundingAccountAdd" parameterType="FundingGoods">
 	UPDATE FUNDINGGOODS SET FundingBankName =#{fundingBankName}, FundingBankDepositor=#{fundingBankDepositor}, FundingAccountNumber=#{fundingAccountNumber}
     	WHERE FUNDINGCODE = #{fundingCode}		
@@ -137,6 +136,14 @@
 	
 	<select id="totCntOpenList" resultType="int">
 		SELECT COUNT(*) FROM FUNDINGGOODS WHERE SYSDATE &lt; FundingTargetDate AND FUNDINGADMINPERMIT = 1
-	</select>	
-
+	</select>
+	<select id="getFundingGoods" parameterType="int" resultType="FundingGoods">
+	SELECT * FROM FUNDINGGOODS WHERE FUNDINGCODE=#{fundingCode}
+	</select>
+	<update id="fundingSucces" parameterType="int">
+	UPDATE FUNDINGGOODS SET FUNDINGSUCCESSORFAILURE = 1, FUNDINGACCOUNTBALANCE = 0  WHERE FUNDINGCODE=#{fundingCode}
+	</update>
+	<update id="fundraizingFailure" parameterType="int">
+	UPDATE FUNDINGGOODS SET FUNDINGSUCCESSORFAILURE = 2, FUNDINGACCOUNTBALANCE = 0  WHERE FUNDINGCODE=#{fundingCode}
+	</update>
 </mapper>

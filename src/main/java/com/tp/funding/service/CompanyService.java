@@ -18,4 +18,5 @@ public interface CompanyService {
 	public int companyBalanceModify(Company company);
 	public int companyInFundingModify(Company company);
 	public int tempPasswordChange(Company company);
+	public int companyFundraisingSuccess(Company company);
 }

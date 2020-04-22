@@ -13,40 +13,29 @@
 <body>
 			<h3>새소식</h3>
 			<div class="newsListWrap">
-				
-				<ul class="newsList">
-					<li class="newsTitle"><a href="goodsNewsView.do">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
-				<ul class="newsList">
-					<li class="newsTitle"><a href="">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
-				<ul class="newsList">
-					<li class="newsTitle"><a href="">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
-				<ul class="newsList">
-					<li class="newsTitle"><a href="">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
-				<ul class="newsList">
-					<li class="newsTitle"><a href="">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
-				<ul class="newsList">
-					<li class="newsTitle"><a href="">newsTitle</a></li>
-					<li>fundingTitle <span>2020.04.10</span></li>
-				</ul>
+				<c:forEach var="news" items="${newsList }">
+					<ul class="newsList">
+						<li class="newsTitle"><a href="goodsNewsView.do">${news.fundingNewsTitle }</a></li>
+						<li>${good.fundingName } <span><fmt:formatDate value="${news.fundingNewsDate }" pattern="yyyy.MM.dd"/> </span></li>
+					</ul>
+				</c:forEach>
 			</div>
+			<a href="#none" onclick="goodsViewRiskPage('');"></a>
 			<div class="paging">
-					<a href="" class="prev">PREV</a>
-					<a href="" class="current">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="#none" onclick="goodsViewRiskPage('${paging.startPage-1 }');" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="#none" onclick="goodsViewRiskPage('${i }');" > ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="#none" onclick="goodsViewRiskPage('${paging.endPage+1 }');"  class="next">NEXT</a>
+				</c:if>
 			</div>
 </body>
 </html>

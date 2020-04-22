@@ -229,6 +229,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap #applyWrap textarea{padding:2%; width:70%; min-height:300px; border:1px solid #e8e8e8; height: }
 #contentWrap.fundingWrap #applyWrap #addReward table{border-top:1px solid #e8e8e8;}
 #contentWrap.fundingWrap #applyWrap #addReward table input[type="number"]{width:34%;}
+#contentWrap.fundingWrap #applyWrap #fundReward table{border-top:1px solid #e8e8e8;}
 #contentWrap.fundingWrap #applyWrap table .deleteRewardButton{display:none;}
 #contentWrap.fundingWrap #applyWrap table .button{width:15%;}
 

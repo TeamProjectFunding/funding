@@ -83,6 +83,11 @@ public class UsersDaoImpl implements UsersDao{
 	public int userCurrentGrade(String userId) {
 		return sessionTemplate.selectOne("userCurrentGrade", userId);
 	}
+
+	@Override
+	public int fundraisingFailureReturnMoney(Users user) {
+		return sessionTemplate.update("fundraisingFailureReturnMoney", user);
+	}
 	
 	
 }

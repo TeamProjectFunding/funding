@@ -123,13 +123,20 @@ public class LongController {
 
 	// 펀딩(리워드) 신청
 	@RequestMapping(value = "fundingApply")
-	public String fundingApply(FundingGoods goods, MultipartHttpServletRequest mRequest, Model model) {
-		System.out.println(goods);
-		String[] rewardName = mRequest.getParameterValues("rewardName");
-		System.out.println("goodsName=" + rewardName);
-		for (String i : rewardName) {
-			System.out.println(i);
+	public String fundingApply(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest, Model model) {
+		if(repeatF5) {
+			if(fundingGoods.getFundingCategory()==0) { // 투자일 때
+			}else { //리워드 일 때
+				
+			}
 		}
+		fundingGoodsService.fundingRegist(fundingGoods, mRequest);
+		
+//		String[] rewardName = mRequest.getParameterValues("rewardName");
+//		for (String i : rewardName) {
+//			System.out.println(i);
+//		}
+		repeatF5 = false;
 		return "funding/applyNext";
 	}
 

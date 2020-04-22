@@ -50,4 +50,16 @@
     	INSERT INTO NOTIFICATION VALUES(notificationnumber.nextval, 
     	 #{notificationContent}, SYSDATE, 0 , #{adminId}, null, #{userId})
     	</insert>
+    	<insert id="companyFundraisingSuccessSend" parameterType="Notification">
+    	INSERT INTO NOTIFICATION 
+    	(NOTIFICATIONNUMBER,NOTIFICATIONCONTENT,NOTIFICATIONDATE,NOTIFICATIONREAD ,ADMINID,COMPANYID)
+ 		VALUES 
+		(NOTIFICATIONNUMBER.NEXTVAL, #{notificationContent}, SYSDATE,0, #{adminId}, #{companyId})
+    	</insert>
+    	<insert id="usersFundraizingFailureSend" parameterType="Notification">
+    	INSERT INTO NOTIFICATION 
+    	(NOTIFICATIONNUMBER,NOTIFICATIONCONTENT,NOTIFICATIONDATE,NOTIFICATIONREAD ,ADMINID,USERID)
+ 		VALUES 
+		(NOTIFICATIONNUMBER.NEXTVAL, #{notificationContent}, SYSDATE,0, #{adminId}, #{userId})
+    	</insert>
     </mapper>

@@ -182,5 +182,10 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userCurrentGrade(userId);
 	}
 
+	@Override
+	public int fundraisingFailureReturnMoney(Users user) {
+		return userDao.fundraisingFailureReturnMoney(user);
+	}
+
 
 }

@@ -12,4 +12,6 @@ public interface NotificationService {
 	public List<Notification> notificationReadCompanyList(String companyId);
 	public List<Notification> notificationReadUserList(String userId);
 	public int eventRaffleUserSend(Notification notification);
+	public int companyFundraisingSuccessSend(Notification notification);
+	public int usersFundraizingFailureSend(Notification notification);
 }

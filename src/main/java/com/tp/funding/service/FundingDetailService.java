@@ -18,4 +18,6 @@ public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	
 	public int doFundingGoodTotalCount(int fundingCode);
 	
+	public List<FundingGoodsDetail> fundingGoodsAdminDeadline(int fundingCode);
+	
 }

@@ -12,4 +12,6 @@ public interface NotificationDao {
 	public List<Notification> notificationUnReadCompanyList(String companyId);
 	public List<Notification> notificationReadCompanyList(String CompanyId);
 	public int eventRaffleUserSend(Notification notification);
+	public int companyFundraisingSuccessSend(Notification notification);
+	public int usersFundraizingFailureSend(Notification notification);
 }
