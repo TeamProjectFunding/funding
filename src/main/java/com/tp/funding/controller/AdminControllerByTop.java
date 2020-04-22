@@ -4,14 +4,18 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.TreeSet;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.Admin;
 import com.tp.funding.dto.Event;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.Notice;
+import com.tp.funding.service.AdminService;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingDetailService;
@@ -40,17 +44,36 @@ public class AdminControllerByTop {
 	FundingQuestionService fqService; //상품문의 서비스
 	@Autowired
 	FundingDetailService fundingDetailService;
+	
+	@Autowired
+	AdminService adminService;
+	
 	//관리자 페이지 이동
 	@RequestMapping(value ="adminMain")
-	public String adminMain(Model model, FundingGoods fundingGoods) {
-		model.addAttribute("qnAAdminList", qService.qnAAdminList());
-		model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
-		model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
-		model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트		
-		model.addAttribute("fundingDeadlineList", fService.fundingDeadlineList());
+	public String adminMain(Model model, FundingGoods fundingGoods, Admin admin, HttpSession session) {
+		int result = adminService.adminLoginCheck(admin);
 		
+		if(result == 1 || session.getAttribute("admin")!=null) {
+			model.addAttribute("qnAAdminList", qService.qnAAdminList());
+			model.addAttribute("eventAllList", eService.eventAllList()); //이벤트리스트 전체
+			model.addAttribute("noticeList", nService.noticeList());	//공지사항리스트 전체
+			model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트		
+			model.addAttribute("fundingDeadlineList", fService.fundingDeadlineList());
+			
+			model.addAttribute("result", "성공");
+			
+			if(result==1) {
+				session.setAttribute("admin", adminService.adminDetail(admin.getAdminId()));
+			}
+			
+		}else {
+			
+			model.addAttribute("result", "실패");
+			
+		}		
 		
 		return "admin/adminMain";
+		
 	}
 	//관리자 페이지 user
 	@RequestMapping(value="adminUserList")

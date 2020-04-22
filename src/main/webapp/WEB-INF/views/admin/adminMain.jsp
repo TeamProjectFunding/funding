@@ -26,6 +26,20 @@
 	</script>
 </c:if>
 
+<c:if test="${result eq '성공' }">
+	<script>
+		alert('반갑습니다. 관리자님!');
+	</script>
+</c:if>
+
+
+<c:if test="${result eq '실패' }">
+	<script>
+		alert('ID와 비밀번호를 확인하세요');
+		history.back();
+	</script>
+</c:if>
+
 
 	
 	<jsp:include page="../admin/adminMenu.jsp" />

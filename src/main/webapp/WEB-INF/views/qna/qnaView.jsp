@@ -33,7 +33,14 @@
 				</tr>
 				<tr>
 					<th id="buttonWrap">
-						<a href="adminQnaReplyForm.do?qnANumber=${qnaDetail.qnANumber}" class="button">REPLY</a>
+					
+						<c:if test="${(qnaDetail.qnAOriginalWriter == 0 || qnaDetail.qnAOriginalWriter == 1) && not empty admin }">
+							<a href="qnaReplyForm.do?qnANumber=${qnaDetail.qnANumber}" class="button">REPLY</a>
+						</c:if>
+						<c:if test="${qnaDetail.qnAOriginalWriter == 2 && (not empty user || not empty company) }">
+							<a href="qnaReplyForm.do?qnANumber=${qnaDetail.qnANumber}" class="button">REPLY</a>
+						</c:if>
+						
 						<c:if test="${(qnaDetail.qnAOriginalWriter eq 0 && qnaDetail.userId eq user.userId) || 
 							(qnaDetail.qnAOriginalWriter eq 1 && qnaDetail.companyId eq company.companyId) || not empty admin }">
 							<a href="${conPath}/qnaModifyForm.do?qnANumber=${qnaDetail.qnANumber}&pageNum=${param.pageNum}" class="button">MODIFY</a>

@@ -362,7 +362,7 @@ CREATE TABLE Notice (
 	NoticeDate    DATE          DEFAULT SYSDATE,     -- 공지날짜
 	NoticeHit     NUMBER(12)   NULL,     -- 공지조회수
 	AdminId       VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
-);
+); 
  
 CREATE TABLE QnA (
     QnANumber	NUMBER(12) PRIMARY KEY,
@@ -374,6 +374,7 @@ CREATE TABLE QnA (
     QnARef	NUMBER(12),
     QnAIndent	NUMBER(12),
     QnASecret	NUMBER(1), -- 비밀글여부	
+    QnAReplyExist NUMBER(1), -- 0 답글 없음 1 있음
     QnADate	DATE DEFAULT SYSDATE,
     UserId            VARCHAR2(100),      -- 유저ID 3중 한명만 쓰기때문에 ref는 안함
     CompanyId          VARCHAR2(100), -- 회사 ID

@@ -6,37 +6,37 @@
 <mapper namespace="QnA">
 	<insert id="qnAWrite" parameterType="QnA">
 		<if test="userId != null and userId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 0, QnANumber.currval, 0, 0, 0, sysdate, #{userId},null,null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 0, QnANumber.currval, 0, 0, 0, 0, sysdate, #{userId},null,null)
 		</if>
 		<if test="companyId != null and companyId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 1, QnANumber.currval, 0, 0, 0, sysdate,null, #{companyId},null)
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 1, QnANumber.currval, 0, 0, 0, 0, sysdate,null, #{companyId},null)
 		</if>
 		<if test="adminId != null and adminId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 2, QnANumber.currval, 0, 0, 0, sysdate, null, null, #{adminId})
+		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0, 2, QnANumber.currval, 0, 0, 0, 0, sysdate, null, null, #{adminId})
 		</if>
 	</insert>
 	
 	<insert id="qnAModify" parameterType="QnA">
 		<if test="userId != null and userId != ''">
-		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 0, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate, #{userId},null,null)
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 0, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, #{qnAReplyExist}, sysdate, #{userId},null,null)
 		</if>
 		<if test="companyId != null and companyId != ''">
-		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 1, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate,null, #{companyId},null)
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 1, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, #{qnAReplyExist}, sysdate,null, #{companyId},null)
 		</if>
 		<if test="adminId != null and adminId != ''">
-		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 2, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, sysdate, null, null, #{adminId})
+		INSERT INTO QnA VALUES (#{qnANumber}, #{qnATitle}, #{qnAContent}, 0, 2, #{qnANumber}, #{qnARef}, #{qnAIndent}, 0, #{qnAReplyExist}, sysdate, null, null, #{adminId})
 		</if>
 	</insert>	
 	
 	<insert id="qnAReplyWrite" parameterType="QnA">
 		<if test="userId != null and userId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,#{userId},null,null)
+		INSERT INTO QnA VALUES (QnANumber.nextval, #{qnATitle},#{qnAContent},0, 0, #{qnAGroup},#{qnARef}+1,#{qnAIndent}+1, 0, 0,sysdate,#{userId},null,null)
 		</if>
 		<if test="companyId != null and companyId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,#{companyId},null)
+		INSERT INTO QnA VALUES (QnANumber.nextval, #{qnATitle},#{qnAContent},0, 1, #{qnAGroup},#{qnARef}+1,#{qnAIndent}+1, 0, 0,sysdate,null,#{companyId},null)
 		</if>
 		<if test="adminId != null and adminId != ''">
-		INSERT INTO QnA VALUES (QnANumber.nextval,#{qnATitle},#{qnAContent},0,#{qnAOriginalWriter},#{qnAGroup},#{qnARef},#{qnARIndent},sysdate,null,null,#{adminId})
+		INSERT INTO QnA VALUES (QnANumber.nextval, #{qnATitle},#{qnAContent},0, 2, #{qnAGroup},#{qnARef}+1,#{qnAIndent}+1, 0, 0,sysdate,null,null,#{adminId})
 		</if>
 	</insert>
 	<select id="qnADetail" parameterType="QnA" resultType="QnA">		
