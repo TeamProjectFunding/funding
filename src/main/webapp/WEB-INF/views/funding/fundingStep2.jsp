@@ -47,7 +47,7 @@
 			var categori = ${good.fundingCategory};
 			var userAccountBalance = ${user.userAccountBalance };
 			if(categori == 0){ // 투자
-				var fundingAmount = $('input[name="fundingAmount"]').val();
+				var fundingAmount = Number($('input[name="fundingAmount"]').val());
 				var fundingCode = ${param.fundingCode};
 				if(userAccountBalance<fundingAmount){
 					alert('예치금이 부족합니다. 예치금 입금 후 진행해주세요');
@@ -55,8 +55,12 @@
 				}				
 			}else if(categori == 1){
 				var fundingRewardAddDonation = $('input[name="fundingRewardAddDonation"]').val();
-				var rewardCondition = $(".rewardCondition").html().trim();
-				if(userAccountBalance<rewardCondition+fundingRewardAddDonation){
+				if(!fundingRewardAddDonation){
+					$('input[name="fundingRewardAddDonation"]').val(0);
+				}
+				fundingRewardAddDonation = Number(fundingRewardAddDonation);
+				var rewardCondition = Number($(".rewardCondition").html().trim());
+				if(rewardCondition+fundingRewardAddDonation>userAccountBalance){
 					alert('예치금이 부족합니다. 예치금 입금 후 진행해주세요');
 					return false;
 				}
@@ -113,7 +117,7 @@
 					</tr>
 					<tr>
 						<th>추가 후원금</th>
-						<td><input type="number" name="fundingRewardAddDonation" placeholder="후원금액을 입력하세요." required="required" min="0"></td>
+						<td><input type="number" name="fundingRewardAddDonation" placeholder="후원금액을 입력하세요." min="0"></td>
 					</tr>
 					<tr>
 						<th>고객 예치금</th> 

@@ -28,4 +28,9 @@ public class FundingNewsDaoImpl implements FundingNewsDao {
 		return sessionTemplate.selectOne("fundingNewsDetail", fundingNewsNumber);
 	}
 
+	@Override
+	public int newsTotalCountInFunding(int fundingCode) {
+		return sessionTemplate.selectOne("newsTotalCountInFunding",fundingCode);
+	}
+
 }

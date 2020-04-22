@@ -17,6 +17,7 @@ import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
+import com.tp.funding.service.FundingNewsService;
 import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UserPickService;
 import com.tp.funding.service.UsersService;
@@ -34,7 +35,9 @@ public class LongController {
 	private UsersService usersService;
 	@Autowired
 	private RewardService rewardService;
-
+	@Autowired
+	private FundingNewsService fundingNewsService;
+	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
 	public String fundList(Model model, String pageNum, String category) {
@@ -48,13 +51,16 @@ public class LongController {
 		}
 		return "goods/fundList";
 	}
-
+	
+	
+	//검색 리스트
 	@RequestMapping(value = "fundSearchList")
 	public String fundSearchList(Model model, String searchWord) {
 		model.addAttribute("fundList", fundingGoodsService.fundingSearchList(searchWord));
 		return "message/fundSearchList";
 	}
-
+	
+	//상품 상세보기 첫 페이지
 	@RequestMapping(value = "goodsViewCoreInfomation")
 	public String goodsViewCoreInfomation(Model model, int fundingCode, String pageNum, HttpSession session) {
 		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
@@ -70,7 +76,16 @@ public class LongController {
 		}
 		return "goods/goodsViewCoreInfomation";
 	}
-
+	
+	//상품 상세보기 info 네비게이션
+	@RequestMapping(value = "goodsInfoNavigation")
+	public String goodsInfoNavigation(int fundingCode,String infoType,String pageNum,Model model) {
+		if(infoType.equals("goodsViewNews")) {//새소식
+			model.addAttribute("newsList", fundingNewsService.fundingNewsList(pageNum, fundingCode, model));
+		}
+		return "goods/"+infoType;
+	}
+	
 	// 메인
 	@RequestMapping(value = "main")
 	public String main(Model model) {
@@ -79,6 +94,7 @@ public class LongController {
 		return "main/main";
 	}
 
+	// 유저 찜
 	@RequestMapping(value = "userPick")
 	public String userPick(int fundingCode, Model model, HttpSession session) {
 		String userId = ((Users) session.getAttribute("user")).getUserId();
@@ -92,6 +108,7 @@ public class LongController {
 		return "message/userPickResult";
 	}
 
+	//카카오 로그인
 	@RequestMapping(value = "kakaoLogin")
 	public String kakaoLogin(Model model) {
 		return "loginApi/kakaoLogin";
@@ -189,9 +206,6 @@ public class LongController {
 		model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
 		Reward reward = rewardService.rewardDetail(rewardCode);
 		model.addAttribute("reward", reward);
-		Date targetDate = fundingGoodsDetail.getFundingTargetDate();
-		System.out.println(targetDate.toString());
-		int period = reward.getFundingInvestmentPeriod()*30;
 		model.addAttribute("fundingGoodsDetail", fundingGoodsDetail);
 		return "funding/fundingComplate";
 	}
