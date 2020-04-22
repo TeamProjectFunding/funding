@@ -137,16 +137,7 @@ public class AdminControllerByTop {
 		model.addAttribute("paging", noticePaging);
 		model.addAttribute("noticeListP", nService.noticeListP(pageNum));
 		return "admin/notice/list";
-	}
-
-	// 관리자 왼쪽바 QnA 페이징
-	@RequestMapping(value = "adminQnaList")
-	public String adminQnaList(Model model, String pageNum) {
-		Paging qnAPaging = new Paging(qService.totQnA(), pageNum, 5, 5);
-		model.addAttribute("paging", qnAPaging);
-		model.addAttribute("qnAList", qService.qnAAdminList());
-		return "admin/qna/list";
-	}
+	}	
 
 	// 관리자 왼쪽바 상품문의 페이징
 	@RequestMapping(value = "adminGoodsQnaList")
