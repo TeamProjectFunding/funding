@@ -22,5 +22,5 @@ public interface UsersDao {
 	public int userInterestAmountModify(Users user);	
 	public int tempPasswordChange(Users user);	
 	public int userCurrentGrade(String userId);	
-
+	public int fundraisingFailureReturnMoney(Users user);
 }

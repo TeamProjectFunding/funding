@@ -35,7 +35,7 @@
 				</table>
 			</form> -->
 
-			<div class="goods">
+		<%-- 	<div class="goods">
 				<ul>
 					<li class="thumnail">
 						<a href='goodsViewCoreInfomation.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>FUND</span></a>
@@ -44,11 +44,11 @@
 					<li class="goodsName">goods name</li>
 					<li class="deadline">deadline after 10 days</li>
 					<li id="buttonWrap">
-						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
+						<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClosex.do?'">마감</a>
 						<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
 					</li>
 				</ul>
-			</div>
+			</div> --%>
 			
 			<c:forEach var="adminGoodsList" items="${adminGoodsList}">
 				<div class="goods">
@@ -61,7 +61,7 @@
 						<fmt:parseNumber value="${adminGoodsList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
 						<li class="deadline">${endDate - nowDate}일 남았지롱</li>
 						<li id="buttonWrap">
-							<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do'">마감</a>
+							<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do?fundingCode=${adminGoodsList.fundingCode }'">마감</a>
 							<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
 						</li>
 					</ul>

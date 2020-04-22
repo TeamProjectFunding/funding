@@ -99,5 +99,8 @@
 	</update>
 	<update id="tempPasswordCompanyChange" parameterType="Company" >
 		UPDATE COMPANY SET COMPANYPASSWORD = #{companyPassword} WHERE COMPANYID = #{companyId}
+	</update>
+	<update id="companyFundraisingSuccess" parameterType="Company">
+	update Company set CompanyAccountBalance = CompanyAccountBalance+#{changeAccountBalance} where CompanyId= #{companyId} 
 	</update>	
 </mapper>

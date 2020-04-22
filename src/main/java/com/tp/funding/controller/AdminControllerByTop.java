@@ -1,5 +1,6 @@
 package com.tp.funding.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.TreeSet;
@@ -9,11 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Event;
 import com.tp.funding.dto.EventPrize;
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Notification;
+import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventPrizeService;
 import com.tp.funding.service.EventService;
@@ -167,7 +171,7 @@ public class AdminControllerByTop {
 		nService.noticeDelete(noticeNumber);
 		return "redirect:adminMain.do";
 	}
-	//이벤트 마감
+	//이벤트 마감 
 	@RequestMapping(value="eventClose")
 	public String eventClose(Model model, int eventNumber) {
 		//1단계 
@@ -193,10 +197,8 @@ public class AdminControllerByTop {
 			EventPrize eventPrize = new EventPrize();
 			eventPrize.setSearchNumUserId(raffle[idx]); //추첨 번호로 유저아이디검색하려고 
 			eventPrize.setEventNumber(eventNumber);		//추첨 번호로 유저아이디검색하려고
-			//System.out.println(eventPrize.toString()); 잘나와
 			String[] userId = new String[eventPrizeCount]; //조회해서 유저아이디 담는 배열
 			userId[idx] = eventPrizeService.searchNumUserId(eventPrize);
-			//System.out.println(userId[idx]); 잘나와
 			EventPrize eventPrizeRaffleInsert = new EventPrize();
 			eventPrizeRaffleInsert.setUserId(userId[idx]);
 			eventPrizeRaffleInsert.setEventNumber(eventNumber);
@@ -209,9 +211,53 @@ public class AdminControllerByTop {
 			notificationService.eventRaffleUserSend(notification);
 			idx ++;
 		}
-
-
 		return "redirect:adminMain.do";
+	}
+	//펀딩 마감
+	@RequestMapping(value="adminFundingClose")
+	public String fundingClose(int fundingCode) {
+		FundingGoods fundingGoods = fService.getFundingGoods(fundingCode); // 성공실패여부 확인위해 객체가져옴
+		int FundingTargetRate = fundingGoods.getFundingTargetRate();		// 상품 모집 비율 달성여부
+		int changeAccountBalance  = fundingGoods.getFundingAccountBalance(); //성공시 회사계좌로 입금할 돈
+		String companyId = fundingGoods.getCompanyId();
+		if (FundingTargetRate >=100) { // 모집성공이면
+			Company company = new Company();						 
+			company.setChangeAccountBalance(changeAccountBalance);
+			company.setCompanyId(companyId);
+			cService.companyFundraisingSuccess(company); // 모금성공시 회사계좌 입금
+			Notification notification = new Notification();
+			String notificationContent = companyId+"님 모집에 성공하였습니다";
+			String adminId = "admin";
+			notification.setNotificationContent(notificationContent);
+			notification.setAdminId(adminId);
+			notification.setCompanyId(companyId);
+			notificationService.companyFundraisingSuccessSend(notification); // 알람뿌려
+			fService.fundingSucces(fundingCode); //펀딩 테이블 업데이트
+			return "redirect:adminMain.do";
+		}else { 
+			ArrayList<FundingGoodsDetail> fundingGoodsdteil = new ArrayList<FundingGoodsDetail>(fundingDetailService.fundingGoodsAdminDeadline(fundingCode));
+			String[] userId =new String[fundingGoodsdteil.size()];
+			int[] changeMoneyAmount =new int[fundingGoodsdteil.size()];
+			int idx=0;
+			while(idx < fundingGoodsdteil.size()) {
+				userId[idx] = fundingGoodsdteil.get(idx).getUserId();
+				changeMoneyAmount[idx] = fundingGoodsdteil.get(idx).getFundingAmount();
+				Users user = new Users();
+				user.setUserId(userId[idx]);
+				user.setChangeMoneyAmount(changeMoneyAmount[idx]);
+				uService.fundraisingFailureReturnMoney(user); //유저에게 환불 
+				Notification notification = new Notification();
+				String adminId = "admin"; // 세션갑넣어야함
+				String notificationContent = "모금에 실패하였습니다"+changeMoneyAmount[idx]+"환불합니다";
+				notification.setNotificationContent(notificationContent);;
+				notification.setAdminId(adminId);
+				notification.setUserId(userId[idx]);
+				notificationService.usersFundraizingFailureSend(notification); //알람 뿌려
+				idx++;
+			}
+			fService.fundraizingFailure(fundingCode); //펀딩 굿즈 2 실패 계좌잔고 0 세팅
+			return "redirect:adminMain.do";
+		}
 	}
 }
 	

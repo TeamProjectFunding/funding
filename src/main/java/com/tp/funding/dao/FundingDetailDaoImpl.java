@@ -43,5 +43,10 @@ public class FundingDetailDaoImpl implements FundingDetailDao {
 		return sessionTemplate.selectOne("doFundingGoodTotalCount", fundingCode);
 	}
 
+	@Override
+	public List<FundingGoodsDetail> fundingGoodsAdminDeadline(int fundingCode) {
+		return sessionTemplate.selectList("fundingGoodsAdminDeadline", fundingCode);
+	}
+
 
 }

@@ -46,4 +46,14 @@ public class NotificationDaoImpl implements NotificationDao {
 		return sessionTemplate.insert("eventRaffleUserSend", notification);
 	}
 
+	@Override
+	public int companyFundraisingSuccessSend(Notification notification) {
+		return sessionTemplate.insert("companyFundraisingSuccessSend", notification);
+	}
+
+	@Override
+	public int usersFundraizingFailureSend(Notification notification) {
+		return sessionTemplate.insert("usersFundraizingFailureSend", notification);
+	}
+
 }

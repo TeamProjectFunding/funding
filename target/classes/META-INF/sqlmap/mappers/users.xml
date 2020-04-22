@@ -70,5 +70,7 @@ WHERE USERID = #{userId}
 		SELECT userGradeNo FROM userGrade ug WHERE (SELECT SUM(fundingAmount) FROM users u,fundingGoodsDetail fd 
 		WHERE u.userId = fd.userId and u.userId=#{userId}) between ug.userGradeLowFundingAmount and ug.userGradeHighFundingAmount
 	</select>
-	
+	<update id="fundraisingFailureReturnMoney" parameterType="Users">
+	UPDATE USERS SET USERACCOUNTBALANCE= USERACCOUNTBALANCE+#{changeMoneyAmount} WHERE USERID=#{userId}
+	</update>
 </mapper>

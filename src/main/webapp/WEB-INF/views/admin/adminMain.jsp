@@ -55,17 +55,18 @@
 					<ul>
 						<li><a href="${conPath }/goodsViewCoreInfomation.do">${fundingDeadlineList.fundingName}</a>
 						<c:if test="${endDate < nowDate }">
-							<span>${nowDate-endDate}일 지남</span></li>
+							<span>${nowDate-endDate}일 지남</span>
 						</c:if>
 						<c:if test="${nowDate < endDate}">
-							<span>${endDate-nowDate}일 남음</span></li>
+							<span>${endDate-nowDate}일 남음</span>
 						</c:if>
 						<c:if test="${nowDate == endDate}">
-							<span>마감일</span></li>
+							<span>마감일</span>
 						</c:if>
+						</li>
 						
 						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do" class="button">마감</a>
+							<a href="${conPath }/adminFundingClose.do?fundingCode=${fundingDeadlineList.fundingCode}" class="button">마감</a>
 						</li>
 					</ul>
 					

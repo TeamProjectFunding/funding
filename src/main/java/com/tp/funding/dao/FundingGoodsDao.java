@@ -32,5 +32,7 @@ public interface FundingGoodsDao {
 	public int investmentTotalCount();
 	public int rewardTotalCount();
 	public List<FundingGoods> fundingDeadlineList();// 마감 5일전 안의 것 뿌리기
-	
+	public FundingGoods getFundingGoods(int fundingCode);
+	public int fundingSucces(int fundingCode);
+	public int fundraizingFailure(int fundingCode);
 }
