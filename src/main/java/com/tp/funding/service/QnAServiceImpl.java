@@ -58,4 +58,9 @@ public class QnAServiceImpl implements QnAService {
 		return qnADao.qnAModify(qnA);
 	}
 
+	@Override
+	public int qnAReplyExistUp(int qnANumber) {
+		return qnADao.qnAReplyExistUp(qnANumber);
+	}
+
 }

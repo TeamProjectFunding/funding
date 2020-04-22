@@ -79,12 +79,19 @@
 	<update id="qnAHitUp" parameterType="int">
 		UPDATE QnA SET QnAHit=QnAHit+1 WHERE QnANumber=#{qnANumber}
 	</update>
+	
 	<select id="qnAAdminList" resultType="QnA">
 	SELECT * FROM QNA WHERE QNAORIGINALWRITER=0 OR QNAORIGINALWRITER=1 ORDER BY QNADATE DESC
 	</select>
+	
 	<select id="totQnA" resultType="int">
 	SELECT COUNT(*) FROM QNA	
-
-	
 	</select>	
+	
+	<update id="qnAReplyExistUp" parameterType="int">
+		UPDATE QNA SET QNAREPLYEXIST = 1 WHERE QNANUMBER = #{qnANumber}
+	</update>
+	
+	
+	
 </mapper>
