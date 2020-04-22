@@ -321,6 +321,18 @@ public class HyuckController {
 		}		
 		
 		return "forward:adminMain.do";
+	}	
+	
+	@RequestMapping(value = "adminQnaList")
+	public String adminQnaList(QnA qnA, Model model, String pageNum) {
+		
+		Paging paging = new Paging(qnaService.totCntSearchQnA(qnA), pageNum, 6, 5);
+		qnA.setStartRow(paging.getStartRow());
+		qnA.setEndRow(paging.getEndRow());
+		model.addAttribute("adminQnaList", qnaService.qnAList(qnA));	
+		model.addAttribute("paging", paging);
+		
+		return "admin/qna/list";
 	}
 
 }

@@ -1,3 +1,4 @@
+
 -- 회사등록
 INSERT INTO COMPANY VALUES ('com@naver.com', '123', null, '영롱한 스타트업입니다.', SYSDATE, '영롱회사', '02-2066-5849', 
     '서울시 용산구', '대장빌딩 301호', null, null, null, 0, 0, 0,'191-38-6534-2');
@@ -5,7 +6,7 @@ INSERT INTO COMPANY VALUES ('com1@naver.com', '123', null, '몽롱한 스타트�
     '서울시 강남구', '강남빌딩 301호', null, null, null, 0, 0, 0,'172-28-7831-2');
 INSERT INTO COMPANY VALUES ('com2@google.com', '123', null, '상큼한 스타트업입니다.', SYSDATE, '상큼회사', '02-2066-5849', 
     '서울시 성북구', '성북빌딩 301호', null, null, null, 0, 0, 0,'168-18-5712-2');
-INSERT INTO COMPANY VALUES ('com3naver.com', '123', null, '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
+INSERT INTO COMPANY VALUES ('com3@naver.com', '123', null, '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
     '서울시 강북구', '강북빌딩 301호', null, null, null, 0, 0, 0,'158-18-4464-2');
 INSERT INTO COMPANY VALUES ('com4@naver.com', '123', null, '매콤한 스타트업입니다.', SYSDATE, '매콤회사', '02-2066-5849', 
     '서울시 강서구', '강서빌딩 301호', null, null, null, 0, 0, 0,'109-18-7734-2');
@@ -22,7 +23,7 @@ INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
 
 
 --관리자 등록
-INSERT INTO Admin VALUES ('admin', '123', '임재혁', 'ADMINIMAGE');
+INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', 'ADMINIMAGE');
 
 
 -- 유저 등록
