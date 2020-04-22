@@ -81,11 +81,10 @@
 	</select>
 	
 	<insert id="fundingRegist" parameterType="FundingGoods">
-	INSERT INTO FundingGoods VALUES (FundingCode.nextval, 0, #{fundingName}, #{fundingDescription},
-    #{fundingThumbnailImage}, #{fundingDetailImage}, #{fundingExplanationFile}, null, null, null, 0, #{fundingTargetAmount}, 0, SYSDATE, #{fundingTargetDate},
-        #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, 'admin', #{companyId})	
+	INSERT INTO FundingGoods VALUES (FundingCode.nextval, #{fundingCategory}, #{fundingName}, #{fundingDescription},
+    #{fundingThumbnailImage}, #{fundingDetailImage}, #{fundingExplanationFile}, null, null, null, 0, #{fundingTargetAmount}, 0, #{fundingStartDate}, #{fundingTargetDate},
+        #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, null, #{companyId})	
 	</insert>
-	
 	<update id="fundingAccountAdd" parameterType="FundingGoods">
 	UPDATE FUNDINGGOODS SET FundingBankName =#{fundingBankName}, FundingBankDepositor=#{fundingBankDepositor}, FundingAccountNumber=#{fundingAccountNumber}
     	WHERE FUNDINGCODE = #{fundingCode}		

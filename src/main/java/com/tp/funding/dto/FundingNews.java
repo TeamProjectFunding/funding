@@ -71,19 +71,6 @@ public class FundingNews {
 	public FundingNews() {
 		super();
 	}
-	public FundingNews(int fundingNewsNumber, String fundingNewsTitle, String fundingNewsContent, Date fundingNewsDate,
-			String fundingNewsImage, int fundingCode, String companyId, int startRow, int endRow) {
-		super();
-		this.fundingNewsNumber = fundingNewsNumber;
-		this.fundingNewsTitle = fundingNewsTitle;
-		this.fundingNewsContent = fundingNewsContent;
-		this.fundingNewsDate = fundingNewsDate;
-		this.fundingNewsImage = fundingNewsImage;
-		this.fundingCode = fundingCode;
-		this.companyId = companyId;
-		this.startRow = startRow;
-		this.endRow = endRow;
-	}
 	@Override
 	public String toString() {
 		return "FundingNews [fundingNewsNumber=" + fundingNewsNumber + ", fundingNewsTitle=" + fundingNewsTitle

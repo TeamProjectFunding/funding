@@ -26,6 +26,17 @@
 			}
 		});
 	}
+	function goodsViewRiskPage(pageNum){
+		var fundingCode = ${param.fundingCode };
+		$.ajax({
+			url : '${conPath}/goodsInfoNavigation.do',
+			datatype : 'html',
+			data : "infoType=goodsViewNews&pageNum="+pageNum+"&fundingCode="+fundingCode,
+			success : function(data, status){
+				$('#goodsViewContentWrap').html(data);
+			}
+		});	
+	}
 	$(function(){
 		var fundingCode = ${param.fundingCode}; 
 		$.ajax({
