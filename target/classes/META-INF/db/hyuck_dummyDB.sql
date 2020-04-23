@@ -88,11 +88,8 @@ INSERT INTO FundingGoods VALUES
 
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '투자상품3', '투자상품3입니다.', '썸네일5', '이미지상세5', '펀딩설명이지롱', '신한은행',
-        'masters계좌4', '110-278-448585', 200000, 2000000, 10, '2020-04-04', '2020-05-25', null, 7, 12, 1, 9, 1, 'admin', 'com5@google.com'); 
-
-
-
-
+        'masters계좌4', '110-278-448585', 200000, 2000000, 10, '2020-04-04', '2020-05-25', null, 7, 12, 1, 9, 1, 'admin', 'com5@google.com');
+        
 -- Q&A 더미
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,1,sysdate,'user1@naver.com',null,null);
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user2@naver.com',null,null);
@@ -112,8 +109,6 @@ INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,20,1
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,19,1,1,0,0,sysdate,null, null,'admin');
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,18,1,1,0,0,sysdate,null, null,'admin');
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,17,1,1,0,0,sysdate,null, null,'admin');
-
-
 
         
 --알림내용 내용 더미 데이터--
@@ -235,5 +230,24 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의�
 commit;
 
 
+-- fundingComment
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,2,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,2,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,2,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,2,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,2,'user2');
 
+-- fundingCommentReply
+INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답글이드아아내용','2020-04-09',3,'user');
 

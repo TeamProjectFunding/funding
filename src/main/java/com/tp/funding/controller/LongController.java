@@ -86,8 +86,7 @@ public class LongController {
 		if(infoType.equals("goodsViewNews")) {//새소식
 			model.addAttribute("newsList", fundingNewsService.fundingNewsList(pageNum, fundingCode, model));
 		}else if(infoType.equals("goodsViewDebate")) {//토론
-			
-			
+			model.addAttribute("commentList", fgCommentsService.fundingCommentList(fundingCode, pageNum, model));
 		}
 		return "goods/"+infoType;
 	}
