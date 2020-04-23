@@ -26,6 +26,12 @@
 	</script>
 </c:if>
 
+<c:if test="${not empty adminRejectMsg}">
+	<script>
+		alert('${adminRejectMsg}');
+	</script>
+</c:if>
+
 <c:if test="${not empty qnaReplyresult }">
 	<script>
 		alert('${qnaReplyresult}');
@@ -49,8 +55,8 @@
 							<ul>
 								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
 								<li id="buttonWrap">
-									<a href="${conPath}/adminApply.do?fundingCode=${fundingReadyList.fundingCode}" class="button">승인</a>
-									<a href="${conPath }/adminReject.do?fundingCode=${fundingReadyList.fundingCode}" class="button">반려</a>
+									<a href="${conPath}/adminApply.do?fundingCode=${fundingReadyList.fundingCode}&companyId=${fundingReadyList.companyId}&adminId=admin" class="button">승인</a>
+									<a href="${conPath }/adminReject.do?fundingCode=${fundingReadyList.fundingCode}&companyId=${fundingReadyList.companyId}&adminId=admin" class="button">반려</a>
 								</li>
 							</ul>	
 						</c:forEach>										

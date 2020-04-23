@@ -127,8 +127,8 @@
 			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewInfo');" class="goodInfoActive" id="goodsViewInfo">투자정보</a></li>
 			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewRisk');" id="goodsViewRisk">투자위험</a></li>
 			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewNews');" id="goodsViewNews">새소식</a></li>
-			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewInvestor');" id="goodsViewInvestor">토론</a></li>
-			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewDebate');" id="goodsViewDebate">투자자</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewDebate');" id="goodsViewDebate">토론</a></li>
+			<li><a href="#none" onclick="goodsInfoNavigation('goodsViewInvestor');" id="goodsViewInvestor">투자자</a></li>
 		</ul>
 		<div id="goodsViewContentWrap" class="coreInfomationWrap">
 			<div class="company">

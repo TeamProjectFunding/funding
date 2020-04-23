@@ -15,6 +15,7 @@ import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
+import com.tp.funding.service.FgCommentsService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingNewsService;
@@ -37,6 +38,8 @@ public class LongController {
 	private RewardService rewardService;
 	@Autowired
 	private FundingNewsService fundingNewsService;
+	@Autowired
+	private FgCommentsService fgCommentsService;
 	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
@@ -82,6 +85,9 @@ public class LongController {
 	public String goodsInfoNavigation(int fundingCode,String infoType,String pageNum,Model model) {
 		if(infoType.equals("goodsViewNews")) {//새소식
 			model.addAttribute("newsList", fundingNewsService.fundingNewsList(pageNum, fundingCode, model));
+		}else if(infoType.equals("goodsViewDebate")) {//토론
+			
+			
 		}
 		return "goods/"+infoType;
 	}
@@ -124,18 +130,30 @@ public class LongController {
 	// 펀딩(리워드) 신청
 	@RequestMapping(value = "fundingApply")
 	public String fundingApply(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest, Model model) {
+		System.out.println(fundingGoods);
 		if(repeatF5) {
 			if(fundingGoods.getFundingCategory()==0) { // 투자일 때
 			}else { //리워드 일 때
-				
+				Date fundingRewardDeliveryDate = Date.valueOf(mRequest.getParameter("fundingTargetDate"));
+				fundingGoods.setFundingRewardDeliveryDate(fundingRewardDeliveryDate);
+				fundingGoodsService.fundingRegist(fundingGoods, mRequest); //펀딩 상품 등록
+				int fundingCode = fundingGoodsService.getFundingCode(); //펀딩 코드 가져오기
+				String[] rewardName = mRequest.getParameterValues("goodsName");
+				String[] rewardConditionStr = mRequest.getParameterValues("rewardCondition");
+				Reward[] reward = new Reward[rewardConditionStr.length];
+				for(int i=0;i<rewardConditionStr.length;i++) {
+					reward[i] = new Reward();
+					reward[i].setRewardName(rewardName[i]);
+					reward[i].setRewardCondition(Integer.parseInt(rewardConditionStr[i]));
+					reward[i].setRewardGrade(1);
+					reward[i].setFundingRewardDeliveryDate(fundingRewardDeliveryDate);
+					reward[i].setFundingCode(fundingCode);
+					System.out.println("i번째"+reward[i]);
+				}
+				rewardService.rewardWrite(reward,mRequest);
 			}
 		}
-		fundingGoodsService.fundingRegist(fundingGoods, mRequest);
 		
-//		String[] rewardName = mRequest.getParameterValues("rewardName");
-//		for (String i : rewardName) {
-//			System.out.println(i);
-//		}
 		repeatF5 = false;
 		return "funding/applyNext";
 	}

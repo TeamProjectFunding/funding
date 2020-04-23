@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: TJ
+=======
+Built-By: wogur
+>>>>>>> bbeb648ddb194883eb4abab5c2ad10aa0b813937
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
