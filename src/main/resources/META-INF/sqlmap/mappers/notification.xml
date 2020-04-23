@@ -15,10 +15,14 @@
     	
     	<insert id="notificationWrite" parameterType="Notification">
 	    	<if test="userId != null and userId!=''">
-	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId},#{userId})
+	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId}, #{userId})
 	    	</if>
 	    	<if test="companyId != null and companyId=''">
+<<<<<<< HEAD
 	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId},null)
+=======
+	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId}, null)
+>>>>>>> 61ad54dbdb263c877a5bf09661a7294b75c376d0
 	    	</if>
     	</insert>
     	

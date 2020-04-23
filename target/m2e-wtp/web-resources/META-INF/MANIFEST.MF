@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: TJ
+=======
+Built-By: tatuj
+>>>>>>> 61ad54dbdb263c877a5bf09661a7294b75c376d0
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
