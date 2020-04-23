@@ -284,14 +284,11 @@ public class AdminControllerByTop {
 		}
 	}
 	//펀딩 상품 수정 예정
-	@RequestMapping(value="adminGoodsModifyForm")
-	public String adminGoodsModify(Model model, int fundingCode) {
-		FundingGoods fundingGoods = fService.fundingDetail(fundingCode); //펀딩 상품 가져감
-		model.addAttribute("fundingGoods", fundingGoods); 
-		model.addAttribute("funingrewardList", rewardService.fundingRewardList(fundingCode)); //펀딩에 딸린 리워드 리스트 가져감
-		for(Reward r : rewardService.fundingRewardList(fundingCode)) {
-			System.out.println(r);
-		}
-		return "admin/goods/modify";
-	}
+//	@RequestMapping(value="adminGoodsModifyForm")
+//	public String adminGoodsModify(Model model, int fundingCode) {
+//		FundingGoods fundingGoods = fService.fundingDetail(fundingCode); //펀딩 상품 가져감
+//		model.addAttribute("fundingGoods", fundingGoods); 
+//		model.addAttribute("funingrewardList", rewardService.fundingRewardList(fundingCode)); //펀딩에 딸린 리워드 리스트 가져감
+//		return "admin/goods/modify";
+//	}
 }

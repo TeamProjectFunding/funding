@@ -45,12 +45,23 @@
 				<c:if test="${not empty sessionScope.user || not empty sessionScope.company || not empty admin }">
 					<li>
 						<a href="#none" class="mypageButton">
-							<i class="material-icons">account_circle</i>
+
+							
 					<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
+
+						
+							<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}${admin.adminProfileImage}" alt="profile" >
+							
+							<c:if test="${sessionScope.user.userProfileImage eq null || sessionScope.company.companyProfileImage eq null || admin.adminProfileImage eq null }">
+								<i class="material-icons">account_circle</i>
+							</c:if>	
+							
+
 						</a>
 					</li>
 					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
-				</c:if>	
+				</c:if>					
+				
 				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
 					<li><a href="#none" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<c:if test="${user.notificationCount >= 1}"><span class="alarm"></span></c:if></a></li>
 				</c:if>
@@ -65,7 +76,9 @@
 						$('#searchWrap').slideDown();
 					});
 					$('.mypageButton').click(function(){
+
 						$('#mypageWrap').slideToggle();
+
 					});
 					$('.alarmButton').click(function(){
 						$('#alarmWrap').slideDown();

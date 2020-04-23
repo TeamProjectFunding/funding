@@ -18,6 +18,7 @@ import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
+import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UsersService;
 import com.tp.funding.util.Paging;
 
@@ -40,6 +41,9 @@ public class HyuckController {
 	
 	@Autowired
 	private QnAService qnaService;	
+	
+	@Autowired
+	private RewardService rewardService;
 	
 
 	// 회원가입 입력 폼
@@ -177,6 +181,7 @@ public class HyuckController {
 	public String adminApplyView(int fundingCode, Model model) {
 		
 		model.addAttribute("fundingDetail", fundingGoodsService.fundingDetail(fundingCode));
+		model.addAttribute("fundingDetailReward", rewardService.fundingRewardList(fundingCode));		
 		
 		return "admin/apply/view";
 	}

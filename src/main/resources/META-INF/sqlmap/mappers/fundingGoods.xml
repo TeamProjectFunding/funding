@@ -135,7 +135,8 @@
 	</select>
 	
 	<select id="totCntOpenList" resultType="int">
-		SELECT COUNT(*) FROM FUNDINGGOODS WHERE SYSDATE &lt; FundingTargetDate AND FUNDINGADMINPERMIT = 1
+
+		SELECT COUNT(*) FROM FUNDINGGOODS WHERE FUNDINGADMINPERMIT = 1 AND FUNDINGSUCCESSORFAILURE = 0
 	</select>
 	<select id="getFundingGoods" parameterType="int" resultType="FundingGoods">
 	SELECT * FROM FUNDINGGOODS WHERE FUNDINGCODE=#{fundingCode}
