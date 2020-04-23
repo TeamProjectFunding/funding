@@ -12,18 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Admin;
+import com.tp.funding.dto.Company;
 import com.tp.funding.dto.Event;
 import com.tp.funding.dto.EventPrize;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notice;
-
-import com.tp.funding.service.AdminService;
-
 import com.tp.funding.dto.Notification;
+import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
+import com.tp.funding.service.AdminService;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.EventPrizeService;
 import com.tp.funding.service.EventService;
@@ -33,6 +32,7 @@ import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
+import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UsersService;
 import com.tp.funding.util.Paging;
 
@@ -60,6 +60,8 @@ public class AdminControllerByTop {
 	EventPrizeService eventPrizeService;
 	@Autowired
 	NotificationService notificationService;
+	@Autowired
+	RewardService rewardService;
 
 	// 관리자 페이지 이동
 	@RequestMapping(value = "adminMain")
@@ -281,11 +283,15 @@ public class AdminControllerByTop {
 			return "redirect:adminMain.do";
 		}
 	}
+	//펀딩 상품 수정 예정
 	@RequestMapping(value="adminGoodsModifyForm")
 	public String adminGoodsModify(Model model, int fundingCode) {
-		//System.out.println("펀딩코드 잘넘어 와뜨나?"+fundingCode);
-		FundingGoods fundingGoods = fService.fundingDetail(fundingCode);
+		FundingGoods fundingGoods = fService.fundingDetail(fundingCode); //펀딩 상품 가져감
 		model.addAttribute("fundingGoods", fundingGoods); 
+		model.addAttribute("funingrewardList", rewardService.fundingRewardList(fundingCode)); //펀딩에 딸린 리워드 리스트 가져감
+		for(Reward r : rewardService.fundingRewardList(fundingCode)) {
+			System.out.println(r);
+		}
 		return "admin/goods/modify";
 	}
 }

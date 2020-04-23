@@ -17,7 +17,7 @@
 	    	<if test="userId != null and userId!=''">
 	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId},#{userId})
 	    	</if>
-	    	<if test="companyId != null and companyId''">
+	    	<if test="companyId != null and companyId=''">
 	    		INSERT INTO NOTIFICATION VALUES (NOTIFICATIONNUMBER.nextval,#{notificationContent},SYSDATE, 0, #{adminId},#{companyId},null)
 	    	</if>
     	</insert>
