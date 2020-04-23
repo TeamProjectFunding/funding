@@ -12,9 +12,14 @@ INSERT INTO FundingGoodsComments VALUES
 
 <select id="fundingCommentList" parameterType="FundingGoodsComments" resultType="FundingGoodsComments">
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-	(SELECT f.*,(SELECT COUNT(*) FROM FUNDINGGOODSCOMMENTS FGC, FUNDINGGOODSCOMMENTSREPLY FGCR WHERE FGC.fgCommentsNumber=FGCR.fgCommentsNumber) fundingCommentsReplyCount 
-		FROM FUNDINGGOODSCOMMENTS f ORDER BY f.FGCOMMENTSDATE DESC) A) 
+	(SELECT f.*,u.userName,u.userProfileImage
+		FROM FUNDINGGOODSCOMMENTS f,USERS u WHERE u.userId=f.userId AND f.fundingCode=#{fundingCode} ORDER BY f.FGCOMMENTSDATE DESC) A) 
 			WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+<select id="fundingCommentCount" parameterType="int" resultType="int">
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+	(SELECT count(*)
+		FROM FUNDINGGOODSCOMMENTS f,users u WHERE u.userid=f.userid and f.fundingcode=#{fundingCode} ORDER BY f.FGCOMMENTSDATE DESC) A)
 </select>
 
 <select id="fundingCommentDetail" parameterType="int" resultType="FundingGoodsComments">

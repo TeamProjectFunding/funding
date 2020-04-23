@@ -99,6 +99,18 @@ INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnAN
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user6@google.com',null,null);
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user7@naver.com',null,null);
 
+
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com1@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com2@google.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com3@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com4@naver.com',null);
+
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,20,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,19,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,18,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,17,1,1,0,0,sysdate,null, null,'admin');
+
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com@naver.com',null);
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com1@naver.com',null);
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com2@google.com',null);
@@ -109,6 +121,7 @@ INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,8,1,
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,9,1,1,0,0,sysdate,null, null,'admin');
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,10,1,1,0,0,sysdate,null, null,'admin');
 INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,11,1,1,0,0,sysdate,null, null,'admin');
+
 
         
 --알림내용 내용 더미 데이터--
@@ -251,5 +264,24 @@ select * from notification;
 
 
 
+-- fundingComment
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,1,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,1,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,1,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,2,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,2,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,2,'user2');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,2,'user3');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,2,'user');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,2,'user2');
 
+-- fundingCommentReply
+INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답글이드아아내용','2020-04-09',3,'user');
 
