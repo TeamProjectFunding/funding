@@ -17,8 +17,8 @@ SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE
 </select>
 
 <insert id="fundingQuestionWrite" parameterType="FundingQuestion">
-INSERT INTO FundingQuestion VALUES 
-	(FUNDINGQUESTIONNUMBER.nextval,#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
+INSERT INTO FUNDINGQUESTION VALUES 
+	(FUNDINGQUESTIONNUMBER.NEXTVAL,#{fundingQuestionTitle},#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
 </insert>
 <select id="totfundingQuestion" resultType="int">
 SELECT COUNT(*) FROM FUNDINGQUESTION
