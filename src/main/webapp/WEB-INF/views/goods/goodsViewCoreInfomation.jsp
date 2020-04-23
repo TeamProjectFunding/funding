@@ -149,7 +149,7 @@
 				 	<c:if test="${empty sessionScope.user }">
 					<a href="#none" onclick="noUser()" class="button">FUNDING</a>
 				 	</c:if>
-					<a href="goodsQnaWirteForm.do" class="button">Q&A</a>
+					<a href="goods.do?" class="button">Q&A</a>
 					<c:if test="${not empty sessionScope.user}">
 					<a href="#none" class="button" id="userPick"><c:if test="${not empty userAlreadyPick }">♥</c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
 					</c:if>
