@@ -281,4 +281,11 @@ public class AdminControllerByTop {
 			return "redirect:adminMain.do";
 		}
 	}
+	@RequestMapping(value="adminGoodsModifyForm")
+	public String adminGoodsModify(Model model, int fundingCode) {
+		//System.out.println("펀딩코드 잘넘어 와뜨나?"+fundingCode);
+		FundingGoods fundingGoods = fService.fundingDetail(fundingCode);
+		model.addAttribute("fundingGoods", fundingGoods); 
+		return "admin/goods/modify";
+	}
 }

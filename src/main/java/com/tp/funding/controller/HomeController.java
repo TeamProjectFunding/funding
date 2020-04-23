@@ -49,11 +49,11 @@ public class HomeController {
 //		return "admin/goods/list";
 //	}
 	//admin goods modify
-	@RequestMapping(value="adminGoodsModify")
-	public String adminGoodsModify() {
-		return "admin/goods/modify";
-	}
-	
+//	@RequestMapping(value="adminGoodsModify")
+//	public String adminGoodsModify() {
+//		return "admin/goods/modify";
+//	}
+//	
 		
 	//admin apply list
 //	@RequestMapping(value="adminApplyList")

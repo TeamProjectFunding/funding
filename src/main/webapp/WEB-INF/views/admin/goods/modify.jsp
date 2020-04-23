@@ -20,19 +20,19 @@
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="applyWrap">
 			<h1>GOODS MODIFY</h1>
-			<form action="fundingApply.do" method="post" enctype="">
+			<form action="#" method="post" enctype="">
 				<table>
 					<tr>
 						<th>COMPANY NAME</th>
-						<td>company name</td>
+						<td>${fundingGoods.companyName}</td>
 					</tr>
 					<tr>
 						<th>GOODS NAME</th>
-						<td><input type="text" name="goodsName" placeholder="타이틀을 입력하세요." required="required"></td>
+						<td><input type="text" name="fundingName" value="${fundingGoods.fundingName}" placeholder="타이틀을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
 						<th>RECRUITMENT AMOUNT</th>
-						<td><input type="number" name="goodsName" placeholder="희망모집금액을 입력하세요." required="required"></td>
+						<td><input type="number" name="fundingTargetAmount" value="" placeholder="희망모집금액을 입력하세요." required="required"></td>
 					</tr>
 					<tr>
 						<th>APPLICATION PERIOD</th>
