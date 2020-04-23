@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
@@ -38,7 +39,8 @@ public class HyuckController {
 	private FundingGoodsService fundingGoodsService;
 	
 	@Autowired
-	private QnAService qnaService;
+	private QnAService qnaService;	
+	
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
@@ -334,5 +336,26 @@ public class HyuckController {
 		
 		return "admin/qna/list";
 	}
+	
+	
+		@RequestMapping(value = "adminApply")
+		public String adminApply(int fundingCode, Model model, Notification notification) {			
+			fundingGoodsService.fundingAdminPermitYes(fundingCode);
+			notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
+			notificationService.notificationWrite(notification);
+			model.addAttribute("adminApplyMsg", "apply 완료");
+
+			return "forward:adminMain.do";
+		}
+		
+		@RequestMapping(value="adminReject")
+		public String adminReject(int fundingCode, Model model, Notification notification) {
+			fundingGoodsService.fundingAdminPermitNo(fundingCode);
+			notification.setNotificationContent("귀사의 투자 신청이 거절 되었습니다.");
+			System.out.println(notification);
+			notificationService.notificationWrite(notification);
+			model.addAttribute("adminRejectMsg", "reject 완료");
+			return "forward:adminMain.do";
+		}
 
 }

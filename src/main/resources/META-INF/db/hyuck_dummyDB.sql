@@ -60,11 +60,11 @@ INSERT INTO Users VALUES ('kha0213@naver.com','123','profile.jpg','김영롱','0
     -- 승인 대기중인 (투자 / 리워드)
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '대기투자상품1', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
-        null, null, 0, 12000000, 0, SYSDATE, '2021-05-25', null, 7, 15, 0, 0, 0, 'admin', 'com@naver.com');
+        null, null, 0, 12000000, 0, SYSDATE, '2020-04-20', null, 7, 15, 0, 0, 0, 'admin', 'com@naver.com');
         
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '대기투자상품2', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
-        null, null, 0, 15000000, 0, SYSDATE, '2021-05-30', null, 7, 15, 0, 0, 0, 'admin', 'com6@google.com');
+        null, null, 0, 15000000, 0, SYSDATE, '2020-04-22', null, 7, 15, 0, 0, 0, 'admin', 'com6@google.com');
         
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '대기투자상품3', '투자상품입니다.', '썸네일1', '이미지상세1', '펀딩설명이지롱', null,
@@ -103,16 +103,16 @@ INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnAN
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user6@google.com',null,null);
 INSERT INTO QnA VALUES (QnANumber.nextval,'QNA질문이오','QnA내용',0,0,QnANumber.currval,0,0,0,0,sysdate,'user7@naver.com',null,null);
 
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com@naver.com',null);
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com1@naver.com',null);
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com2@google.com',null);
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com3@naver.com',null);
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com4@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com1@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,1,sysdate,null,'com2@google.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com3@naver.com',null);
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA질문이다','QnA질문내용',0,1,QnANumber.currval,0,0,0,0,sysdate,null,'com4@naver.com',null);
 
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,20,1,1,0,0,sysdate,null, null,'admin');
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,19,1,1,0,0,sysdate,null, null,'admin');
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,18,1,1,0,0,sysdate,null, null,'admin');
-INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,17,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,8,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,9,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,10,1,1,0,0,sysdate,null, null,'admin');
+INSERT INTO QnA VALUES (QnANumber.nextval,'QnA답이오','QnA답내용',0,2,11,1,1,0,0,sysdate,null, null,'admin');
 
         
 --알림내용 내용 더미 데이터--
@@ -215,7 +215,31 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징테�
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'페이징 테스트2', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user1@naver.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL,'상품문의입니다', '보푸라기가 일어나요' , SYSDATE , 0 , 6, 'user3@google.com');
 
+
+-- fundingComment
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용1','2020-04-09',0,1,'user1@naver.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용2','2020-04-19',0,1,'user3@google.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용3','2020-04-10',0,1,'user2@naver.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용4','2020-04-11',0,1,'user3@google.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용5','2020-04-15',0,1,'user2@naver.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용6','2020-04-18',0,1,'user3@google.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용7','2020-04-22',0,1,'user1@naver.com');
+INSERT INTO FundingGoodsComments VALUES (FGCOMMENTSNUMBER.nextval,'내용8','2020-04-29',0,1,'user3@google.com');
+
 commit;
+
+select * from notification;
+
+
+
+
+
+
+
+
+
+
+
 
 
 -- fundingComment
