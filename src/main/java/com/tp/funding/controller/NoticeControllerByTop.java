@@ -21,4 +21,10 @@ public class NoticeControllerByTop {
 		model.addAttribute("noticeSearchList", noticeService.noticeSearchList(pageNum, notice));
 		return "notice/noticeList";
 	}
+	//메인페이지에서 공지사항 상세보기
+	@RequestMapping(value="noticeView")
+	public String noticeView(Model model, int noticeNumber) {
+		model.addAttribute("notice", noticeService.noticeDetail(noticeNumber)); 
+		return "notice/noticeView";
+	}
 }
