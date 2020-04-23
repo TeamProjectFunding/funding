@@ -43,10 +43,8 @@
 							</ol>
 						</li>
 					</ul>
-				<div class="debateReplyArea ReplyWrite${comment.fgCommentsNumber }">
-				</div>
-				<div class="debateReplyList ReplyList${comment.fgCommentsNumber }">
-				</div>
+				<div class="debateReplyArea ReplyWrite${comment.fgCommentsNumber }"></div>
+				<div class="debateReplyList ReplyList${comment.fgCommentsNumber }"></div>
 			</div>
 			</c:forEach>
 			
@@ -66,44 +64,6 @@
 				<a href="#none" onclick="goodsCommentPage('${paging.endPage+1 }');"  class="next">NEXT</a>
 				</c:if>
 			</div>
-			<!-- 예제 
-			<div class="debateListWrap">
-				<ul>
-					<li>
-						<ol>
-							<li class="userInfo"><img src="" alt="userProfile">userId</li>
-							<li class="debateDate">2020-04-17</li>
-						</ol>
-					</li>
-					<li>
-						<ol>
-							<li class="debateContent">도산했냐 아오 썅 !!!!! </li>
-							<li id="buttonWrap"><a href="#none" class="button replyButton">REPLY</a><a href="#none" class="button replyListButton">댓글1</a></li>
-						</ol>
-					</li>
-				</ul>
-				<div class="debateReplyArea">
-					
-				</div>
-				<div class="debateReplyList">
-					<ul>
-						<li>
-							<ol>
-								<li class="userInfo"><img src="" alt="userProfile">userId</li>
-								<li class="debateDate">2020-04-17</li>
-							</ol>
-						</li>
-						<li>
-							<ol>
-								<li class="debateContent">그래임마!!!!! </li>
-								<li></li>
-							</ol>
-						</li>
-					</ul>
-				</div>
-			</div>
-			-->
-			
-		</div>
+	</div>
 </body>
 </html>

@@ -113,7 +113,7 @@
 					<h3>NOTICE</h3>
 					<ul>
 						<c:forEach var="notice" items="${noticeList }" begin="0" end="9">
-						<li onclick="location.href='${conPath}/noticeView.do?noticeNumber=${notice.noticeNumber}">
+						<li onclick="location.href='${conPath}/noticeView.do?noticeNumber=${notice.noticeNumber}'">
 						${notice.noticeTilte}
 						<span><fmt:formatDate value="${notice.noticeDate }" pattern="yyyy-MM-dd"/></span>
 						</li>
