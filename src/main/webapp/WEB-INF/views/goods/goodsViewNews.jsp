@@ -20,7 +20,6 @@
 					</ul>
 				</c:forEach>
 			</div>
-			<a href="#none" onclick="goodsViewRiskPage('');"></a>
 			<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">
 				<a href="#none" onclick="goodsViewRiskPage('${paging.startPage-1 }');" class="prev">PREV</a>

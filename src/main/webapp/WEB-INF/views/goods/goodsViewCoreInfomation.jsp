@@ -13,6 +13,38 @@
 	function noUser(){
 		alert('로그인 이후에 가능합니다.');
 	}
+	/* goodsViewDebate 페이지 */
+	function commentReplyView(fgCommentsNumber){
+		var content = $('.ReplyList'+fgCommentsNumber).html().trim();
+		if(content == ''){
+			$.ajax({
+				url : '${conPath}/goodsCommentReplyView.do',
+				datatype : 'html',
+				data : "fgCommentsNumber="+fgCommentsNumber,
+				success : function(data, status){
+					$('.ReplyList'+fgCommentsNumber).html(data);
+				}
+			});
+		}else{
+			$('.ReplyList'+fgCommentsNumber).html('');
+		}
+	}
+	function commentReplyWriteView(fgCommentsNumber){
+		var content = $('.ReplyWrite'+fgCommentsNumber).html().trim();
+		if(content == ''){
+			$.ajax({
+				url : '${conPath}/goodsCommentWriteView.do',
+				datatype : 'html',
+				data : "fgCommentsNumber="+fgCommentsNumber,
+				success : function(data, status){
+					$('.ReplyWrite'+fgCommentsNumber).html(data);
+				}
+			});
+		}else{
+			$('.ReplyWrite'+fgCommentsNumber).html('');
+		}
+	}
+	
 	function goodsInfoNavigation(infoType){
 		$('.goodsInfoNavigation').children().children().removeClass('goodInfoActive');
 		$('#'+infoType).addClass('goodInfoActive');
@@ -91,7 +123,7 @@
 	<section class="goodsViewWrap">
 		<div id="goodsBasicInfomationWrap">
 			<div class="thumnail">
-				<img src="${conPath }/images/${good.fundingThumbnailImage}" alt="fundingThumnail">
+				<img src="${conPath }/images/goods/${good.fundingThumbnailImage}" alt="fundingThumnail">
 			</div>
 			<div class="infomationTextSection">
 				<h1><span>[${good.companyName }]</span> <br/>${good.fundingName }</h1>
@@ -117,7 +149,7 @@
 				 	<c:if test="${empty sessionScope.user }">
 					<a href="#none" onclick="noUser()" class="button">FUNDING</a>
 				 	</c:if>
-					<a href="goodsQnaWirteForm.do" class="button">Q&A</a>
+					<a href="goods.do?" class="button">Q&A</a>
 					<c:if test="${not empty sessionScope.user}">
 					<a href="#none" class="button" id="userPick"><c:if test="${not empty userAlreadyPick }">♥</c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
 					</c:if>

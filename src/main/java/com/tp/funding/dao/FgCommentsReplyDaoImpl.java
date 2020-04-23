@@ -22,8 +22,8 @@ public class FgCommentsReplyDaoImpl implements FgCommentsReplyDao {
 	}
 
 	@Override
-	public List<FundingGoodsCommentsReply> fundingCommentReplyList() {//페이징 안할까?
-		return sessionTemplate.selectList("fundingCommentReplyList");
+	public List<FundingGoodsCommentsReply> fundingCommentReplyList(int fgCommentsNumber) {
+		return sessionTemplate.selectList("fundingCommentReplyList",fgCommentsNumber);
 	}
 
 }

@@ -112,11 +112,12 @@
 				<li class="noticeList">
 					<h3>NOTICE</h3>
 					<ul>
-						<li onClick="location.href='${conPath}/noticeView.do">noticeTitle<span>2020-04-12</span></li>
-						<li onClick="location.href='${conPath}/noticeView.do">noticeTitle<span>2020-04-12</span></li>
-						<li onClick="location.href='${conPath}/noticeView.do">noticeTitle<span>2020-04-12</span></li>
-						<li onClick="location.href='${conPath}/noticeView.do">noticeTitle<span>2020-04-12</span></li>
-						<li onClick="location.href='${conPath}/noticeView.do">noticeTitle<span>2020-04-12</span></li>
+						<c:forEach var="notice" items="${noticeList }" begin="0" end="9">
+						<li onclick="location.href='${conPath}/noticeView.do?noticeNumber=${notice.noticeNumber}'">
+						${notice.noticeTilte}
+						<span><fmt:formatDate value="${notice.noticeDate }" pattern="yyyy-MM-dd"/></span>
+						</li>
+						</c:forEach>
 					</ul>
 					<div id="buttonWrap">
 						<a href="noticeList.do" class="button">MORE +</a>
