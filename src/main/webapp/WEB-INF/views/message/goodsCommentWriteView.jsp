@@ -16,10 +16,10 @@
 		</tr>
 		<tr>
 			<th>
-				<textarea name="fgCommentsReplyContent"></textarea>
+				<textarea name="fgCommentsReplyContent" class="textarea${fgCommentsNumber }"></textarea>
 			</th>
 			<td id="buttonWrap" rowspan="2">
-				<input type="button" value="SUBMIT" class="button">
+				<input type="button" value="SUBMIT" class="button" onclick="fgCommentsReplyWrite('${fgCommentsNumber }')">
 			</td>
 		</tr>
 	</table>

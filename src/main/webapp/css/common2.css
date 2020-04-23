@@ -45,11 +45,12 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #headerWrap .menuWrap .mypageButton{display:block; width:40px; height:40px; border-radius: 50%; overflow: hidden;}
 #headerWrap .menuWrap .mypageButton img{width:100%;}
 
+
 .popupWrap{display:none;}
 .popupWrap{position:fixed; z-index:99999; width:100%; height:100%; background:#131a23fc;}
-.closeButton{position:absolute; top:5%; right:5%; width:30px; height:30px; cursor: pointer;}
-.closeButton span{display:block; position:absolute; top:14px; width:100%; height:2px; border-radius: 1px; transform:rotate(45deg); background:#f1bf04;}
-.closeButton span:last-child{transform:rotate(-45deg);}
+.popupWrap .closeButton{position:absolute; top:5%; right:5%; width:30px; height:30px; cursor: pointer;}
+.popupWrap .closeButton span{display:block; position:absolute; top:14px; width:100%; height:2px; border-radius: 1px; transform:rotate(45deg); background:#f1bf04;}
+.popupWrap .closeButton span:last-child{transform:rotate(-45deg);}
 
 #searchWrap  #contentWrap form{width:100%; padding:10%;}
 #searchWrap  #contentWrap table th{text-align: center;}
@@ -71,12 +72,11 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 #alarmWrap #contentWrap .alarmListWrap ul li:last-child{ font-size:12px; color:#eebd07a1;}
 #alarmWrap #contentWrap .alarmList.read{left:-110%; height:0;transition:2s;}
 
-#mypageWrap.mypageMenuWrap{right:0; top:82px; width:30%; height:auto; min-width:400px; background:#1e2938a3; padding:2% 5%; z-index:999;}
+#mypageWrap.mypageMenuWrap{right:0; top:82px; width:30%; height:auto; min-width:400px; background:#1e2938a3; padding:5%;}
 #mypageWrap.mypageMenuWrap table{width:100%; text-align: center;}
 #mypageWrap th,#mypageWrap th{padding:5%;}
 #mypageWrap a{color: #fff; display: block; width: 100%; line-height: 50px; border: 1px solid #ffffff38;}
 #mypageWrap a:hover{color:#f1bf04; border: 1px solid #f1bf047a; transition:.5s;}
-#mypageWrap i.material-icons{font-size: 60px;}
 /* footer.jsp */
 footer{position:relative; float:left; width:100%;  height:auto; background:url(../images/main.jpg); background-attachment: fixed; background-size: cover;}
 footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
@@ -168,21 +168,20 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .goodsInfoNavigation {width:100%; float:left; padding:3%;}
 .goodsInfoNavigation li{float:left; width:20%; text-align: center;}
 .goodsInfoNavigation li a{ font-weight: bold; }
-.goodsInfoNavigation li a span{color:#f1bf04;}
+.goodsInfoNavigation li a.goodInfoActive{color:#f1bf04;}
 
 #goodsViewContentWrap{width:100%; float: left; padding:5%;}
 #goodsViewContentWrap h3{padding:0 0 5%; float:left;}
 #goodsViewContentWrap h4{padding:0 0 1%; float:left;}
 #goodsViewContentWrap p{padding:0 0 5%; font-size: 14px; float:left; line-height: 30px;}
 
-#goodsViewContentWrap.newsWrap{width:100%; float: left; padding:10%;}
+#goodsViewContentWrap.newsWrap{width:100%; float: left; padding:10% 20%;}
 #goodsViewContentWrap.newsWrap ul{float:left; width:100%; padding:3% 0 3%; border-bottom:1px solid  #e8e8e8;}
 #goodsViewContentWrap.newsWrap ul .newsTitle{font-size: 16px; font-weight: bold;}
 #goodsViewContentWrap.newsWrap ul li {font-size: 14px; padding:1%;}
 #goodsViewContentWrap.newsWrap ul li span{color:#808080; float:right; font-size: 12px;}
-#goodsViewContentWrap.newsWrap table{border-bottom:2px solid  #e8e8e8;}
-#goodsViewContentWrap.newsWrap table td{text-align: center; padding:2%; }
-#goodsViewContentWrap.newsWrap table th{text-align: center; padding:3%; }
+.goodsWrap .newsViewWrap table td{text-align: center; padding:2%; border-bottom:1px solid  #e8e8e8;}
+.goodsWrap .newsViewWrap table th{text-align: center; padding:3%; }
 
 #goodsViewContentWrap.debateWrap{padding:5% 10%;}
 #goodsViewContentWrap.debateWrap ul{float:left; width:100%; border-top:1px solid  #e8e8e8;}
@@ -211,12 +210,14 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap table td span{font-size:10px; font-weight:bold;}
 #contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
 #contentWrap.fundingWrap .fundingStep2 form {width:100%; float:left; border:1px solid #f1f1f1;}
+#contentWrap.fundingWrap .fundingStep2 form .rewardCondition{display: none;}
 #contentWrap.fundingWrap .fundingStep2 table {text-align: center;} 
 #contentWrap.fundingWrap .fundingStep2 table th{padding:5%;}
 #contentWrap.fundingWrap .fundingStep2 table td{padding:3%;}
 #contentWrap.fundingWrap .fundingStep2 table input[type='number']{padding:2%; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap .fundingStep2 table select{width:70%; height:30px; background:#fff; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
+
 
 /* apply */
 #contentWrap.fundingWrap #applyWrap{margin:50px 0 50px;}
@@ -225,13 +226,15 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap #applyWrap input{ border:1px solid #e8e8e8; padding:2%;}
 #contentWrap.fundingWrap #applyWrap input[type="text"],[type="number"],[type="file"]{width:70%;}
 #contentWrap.fundingWrap #applyWrap input[type="date"]{width:34%;}
-#contentWrap.fundingWrap #applyWrap input[type="radio"]{margin:0 5px 0 10px;}
 #contentWrap.fundingWrap #applyWrap textarea{padding:2%; width:70%; min-height:300px; border:1px solid #e8e8e8; height: }
 #contentWrap.fundingWrap #applyWrap #addReward table{border-top:1px solid #e8e8e8;}
+#contentWrap.fundingWrap #applyWrap #addReward table input[type="number"]{width:34%;}
+#contentWrap.fundingWrap #applyWrap #fundReward table{border-top:1px solid #e8e8e8;}
 #contentWrap.fundingWrap #applyWrap table .deleteRewardButton{display:none;}
 #contentWrap.fundingWrap #applyWrap table .button{width:15%;}
 
 /** event **/
+
 .eventWrap .eventWrap{width:100%; height:auto; float: left;}
 .event{width:400px; padding:1%; float:left;}
 .event ul li {position:relative; width:100%; overflow: hidden; text-align: center; font-weight:bold; padding:1%;}
@@ -243,6 +246,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .event ul .deadline{font-size: 12px; color:#f1bf04; overflow: hidden;}
 
 /** board **/
+/* list */
 #contentWrap.boardWrap {width:1000px;}
 #contentWrap.boardWrap table{text-align: center; font-size:14px;}
 #contentWrap.boardWrap table th{padding:3%;}
@@ -251,114 +255,6 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 
 #contentWrap.boardWrap table .boardContent{line-height:30px;}
 #contentWrap.boardWrap table textarea{width:100%; height:200px;}
-
-/** myPage **/
-.myPageMainWrap{padding:0 20%; }
-.myPageMainWrap .myPageProfile{width:40%; text-align: center; float:left; }
-.myPageMainWrap i.material-icons{color:#1e2938; font-size: 100px;}
-.myPageMainWrap table{width:60%; float:left;}
-.myPageMainWrap td{padding:2%; text-align: center;}
-.myPageMainWrap .userActivity{margin-top:50px; width:100%; float:left; font-size: 16px;}
-.myPageMainWrap .userActivity th{width:25%;  }
-.myPageMainWrap .userActivity td a{font-size: 30px;}
-.myPageMainWrap .userActivity td a:hover{color:#f1bf04; transition:.3s;}
-
-.myPageMainWrap .companyActivity{margin-top:50px; width:100%; float:left; font-size: 16px;}
-.myPageMainWrap .companyActivity th{width:50%;  }
-.myPageMainWrap .companyActivity td a{font-size: 30px;}
-.myPageMainWrap .companyActivity td a:hover{color:#f1bf04; transition:.3s;}
-
-.myPageModifyWrap{padding: 0 20% 0;}
-.myPageModifyWrap table {margin:50px 0 ;}
-.myPageModifyWraptable th{padding:5%;}
-.myPageModifyWrap table td {text-align: center; font-size: 12px; text-align: center;padding:2%;}
-.myPageModifyWrap table td input{width:80%; padding:2%; text-align: center; border:1px solid #e8e8e8; font-size:12px;}
-.myPageModifyWrap table td .postBox{width:50%;}
-.myPageModifyWrap table td .postButton{width:30%}
-.myPageModifyWrap table td input[type='checkbox']{width:10px;}
-
-.myPageModifyWrap .danger{color:#ca5109;}
-.myPageModifyWrap .normal{color:#f1bf04;}
-.myPageModifyWrap .safety{color:#016c86;}
-
-.myPageFundingWrap{padding:0 10% 10%; height:100%;}
-#fundingGraphWrap{padding:50px; float:left; width:100%; height:80%; overflow: hidden;}
-#fundingGraphWrap .graphAxis{float:left; position:relative; width:100%; height:100%; font-size: 12px; }
-#fundingGraphWrap .graphAxis .yAxisTitle{position: absolute; top:0; left:-50px; font-weight: bold; }
-#fundingGraphWrap .graphAxis .yAxisWrap{position:absolute; left:-50px; padding:50px 0 0; width:50px; height:100%; }
-.graphAxis .yAxisWrap span{height:20%; width:100%; float:left;}
-
-#fundingGraphWrap .graphAxis .xAxisTitle{position: absolute; bottom:-50px; right:-50px; width:50px; line-height:50px; font-weight: bold; }
-#fundingGraphWrap .graphAxis .xAxisWrap{ position:absolute; bottom:-50px;  width:100%; height:50px;}
-.graphAxis .xAxisWrap span{line-height:50px; width:20%; float:left; text-align: center;}
-
-.grabh {width:100%; height: 100%; padding: 50px 0 0; float:left;}
-.fundingBarWrap{width:20%; height:100%; float:left; background: none; transition:2s;}
-.fundingBarWrap div{width:50%; margin:0 25%; float:left;}
-.fundingBarWrap .whiteBar{background: #fff; transition:1s;}
-.fundingBar{position:relative; background:#f1bf04; box-sizing:content-box;position:relative; left:-2px; box-shadow: 1px 1px 3px #5a5a5a; transition:1s;}
-.myFundingViewButton{position: absolute;  color:#f1bf05;top:0; text-align: center; width:100%; height:100%; opacity: 0;}
-.fundingBar:hover .myFundingViewButton{ top: -50px;  transition:1s; color: #131a23; opacity: 1;}
-.fundingBar:hover{ background:#f1bf0473;  height:100%; transition:.1s; box-shadow: none;}
-
-.barAnimate .whiteBar{height:100% !important;}
-.barAnimate .fundingBar{box-shadow: none !important; margin-top:0 !important; }
-
-#myFundingDetail{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
-#myFundingDetail.openMypageFundingView{ margin:-250px 0 0 -300px;  padding:5% 0; width:600px; height:500px; background:#fff; border:2px solid #f1bf04; transition:.5s;}
-#myFundingDetail th { padding: 2% 0;}
-#myFundingDetail .thumnail{width:40%; float:left; padding:2%;}
-#myFundingDetail .thumnail img{float:left; width:100%;}
-#myFundingDetail .goodsInfo{width:60%; float:left; font-size: 12px; text-align: left;}
-#myFundingDetail .interestWrap{width:95%; height:200px;  margin:50px 2.5%; float:left; font-size: 12px; padding:5% 2% 2%; border-top: 1px solid #e2e2e2; overflow: scroll;}
-#myFundingDetail .interestWrap table{width:95%; float:left; text-align: center;}
-#myFundingDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
-#myFundingDetail .interestWrap table td{padding:2%; text-align: center;}
-
-.myPagePostWrap .dachBoardWrap{width:30%; height:90%; float:left; margin:1.5%;}
-.myPagePostWrap .dachBoardWrap h2{font-size: 20px; padding:5% 0;}
-.myPagePostWrap .dachBoardWrap div {padding:1%; float:left; width:100%; height:300px; overflow:scroll; border: 1px solid #ccc;}
-.myPagePostWrap .dachBoardWrap div table{font-size:12px; text-align: center; }
-.myPagePostWrap .dachBoardWrap div table th{padding:2% 0;}
-.myPagePostWrap .dachBoardWrap div table td{padding:2% 0;}
-
-.myPagePick .goods{position:relative;}
-.myPagePick .fundingClose{position:absolute; top:1%; left:1%; text-align:center; width:98%; line-height:340px; background:#1e29389c; color:#fff; font-family: 'Oswald', sans-serif;}
-
-.myPageGoodsWrap {padding:0 10% 10%; height:100%;}
-.myPageGoodsWrap .whiteBar{background:none; transition:1s;}
-.myPageGoodsWrap .targetBar{position:relative; border-top:1px dashed red; color:red; text-align: center; transition:1s;}
-.myPageGoodsWrap .targetBar span{position: absolute; top:-15px; left:110%; color:red;}
-.myPageGoodsWrap .fundingBar{position:absolute; bottom:0; width:100%; margin:0; background:#ffc90094; box-shadow: 1px 1px 3px #5a5a5a; transition:1s;}
-.myPageGoodsWrap .fundingBar.fundingFail{background:#ccc;}
-.myPageGoodsWrap .fundingBar a{position:absolute; top:0; left:0; z-index: 9;}
-
-#myGoodsDetail{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
-#myGoodsDetail.openMypageGoodsView{ margin:-250px 0 0 -300px;  padding:5% 0; width:600px; height:500px; background:#fff; border:2px solid #f1bf04; transition:.5s;}
-#myGoodsDetail th { padding: 2% 0;}
-#myGoodsDetail .thumnail{width:40%; float:left; padding:2%;}
-#myGoodsDetail .thumnail img{float:left; width:100%;}
-#myGoodsDetail .goodsInfo{width:60%; float:left; font-size: 12px; text-align: left;}
-#myGoodsDetail .interestWrap{width:95%; height:200px;  margin:20px 2.5%; font-size: 12px; padding:5% 2% 2%; overflow: scroll; border-top: 1px solid #e2e2e2;}
-#myGoodsDetail .interestWrap table{width:95%; float:left; text-align: center;}
-#myGoodsDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
-#myGoodsDetail .interestWrap table td{padding:2%; text-align: center;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

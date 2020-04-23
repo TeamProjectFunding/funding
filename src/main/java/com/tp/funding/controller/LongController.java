@@ -94,13 +94,17 @@ public class LongController {
 		return "message/goodsCommentReplyList";
 	}
 	//펀딩 코멘트 답글쓰기 버튼
-	@RequestMapping(value = "goodsCommentWriteView")
-	public String goodsCommentWriteView(int fgCommentsNumber,Model model,HttpSession session) {
+	@RequestMapping(value = "goodsCommentReplyWriteView")
+	public String goodsCommentReplyWriteView(int fgCommentsNumber,Model model,HttpSession session) {
 		Users user = (Users) session.getAttribute("user");
 		model.addAttribute("user", user);
 		return "message/goodsCommentWriteView";
 	}
-	
+	//펀딩 코멘트 답글 작성
+//	@RequestMapping(value = "goodsCommentReplyWrite")
+//	public String goodsCommentReplyWrite(int fgCommentsNumber,Model model,HttpSession session) {
+//		return "message/goodsCommentWriteView";
+//	}
 	
 	
 	//상품 상세보기 info 네비게이션

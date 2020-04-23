@@ -11,6 +11,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/yourcode.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -41,7 +43,12 @@
 				</c:if>	
 				
 				<c:if test="${not empty sessionScope.user || not empty sessionScope.company || not empty admin }">
-					<li><a href="mypage.do" class="mypageButton"><img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" ></a></li>
+					<li>
+						<a href="#none" class="mypageButton">
+							<i class="material-icons">account_circle</i>
+					<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
+						</a>
+					</li>
 					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
 				</c:if>	
 				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
@@ -58,7 +65,7 @@
 						$('#searchWrap').slideDown();
 					});
 					$('.mypageButton').click(function(){
-						$('#mypagehWrap').slideDown();
+						$('#mypageWrap').slideToggle();
 					});
 					$('.alarmButton').click(function(){
 						$('#alarmWrap').slideDown();

@@ -13,7 +13,7 @@
 	function noUser(){
 		alert('로그인 이후에 가능합니다.');
 	}
-	/* goodsViewDebate 페이지 */
+	/* 코멘트 답글 보기 */
 	function commentReplyView(fgCommentsNumber){
 		var content = $('.ReplyList'+fgCommentsNumber).html().trim();
 		if(content == ''){
@@ -29,11 +29,12 @@
 			$('.ReplyList'+fgCommentsNumber).html('');
 		}
 	}
+	/* 코멘트 답글 쓰기 뷰 나오기 */
 	function commentReplyWriteView(fgCommentsNumber){
 		var content = $('.ReplyWrite'+fgCommentsNumber).html().trim();
 		if(content == ''){
 			$.ajax({
-				url : '${conPath}/goodsCommentWriteView.do',
+				url : '${conPath}/goodsCommentReplyWriteView.do',
 				datatype : 'html',
 				data : "fgCommentsNumber="+fgCommentsNumber,
 				success : function(data, status){
@@ -44,6 +45,20 @@
 			$('.ReplyWrite'+fgCommentsNumber).html('');
 		}
 	}
+	/* 코멘트 답글 쓰기  */
+	function fgCommentsReplyWrite(fgCommentsNumber){
+		var fgCommentsReplyContent = $('.textarea'+fgCommentsNumber).html().trim();
+		$.ajax({
+			url : '${conPath}/goodsCommentWriteView.do',
+			datatype : 'html',
+			data : "fgCommentsReplyContent="+fgCommentsReplyContent,
+			success : function(data, status){
+				$('.ReplyWrite'+fgCommentsNumber).html(data);
+			}
+		});
+	}
+	
+	
 	
 	function goodsInfoNavigation(infoType){
 		$('.goodsInfoNavigation').children().children().removeClass('goodInfoActive');
