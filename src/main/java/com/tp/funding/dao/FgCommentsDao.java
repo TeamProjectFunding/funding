@@ -8,4 +8,5 @@ public interface FgCommentsDao {
 	public int fundingCommentWrite(FundingGoodsComments fundingGoodsComments);
 	public List<FundingGoodsComments> fundingCommentList(FundingGoodsComments fundingGoodsComments); //페이징
 	public FundingGoodsComments fundingCommentDetail(int fgCommentsNumber);
+	public int fundingCommentCount(int fundingCode);
 }

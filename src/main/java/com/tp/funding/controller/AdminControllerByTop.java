@@ -203,7 +203,7 @@ public class AdminControllerByTop {
 		event.setEventNumber(eventNumber);
 		// 2단계
 		eService.eventColseStep2(event);
-		event = eService.eventDetail(eventNumber);
+		event = eService.eventDetail(eventNumber); 
 		// 3단계 추첨
 		Random random = new Random();
 		int eventPrizeCount = event.getEventPrizeCount(); // eventPrizecount
@@ -280,5 +280,12 @@ public class AdminControllerByTop {
 			fService.fundraizingFailure(fundingCode); //펀딩 굿즈 2 실패 계좌잔고 0 세팅
 			return "redirect:adminMain.do";
 		}
+	}
+	@RequestMapping(value="adminGoodsModifyForm")
+	public String adminGoodsModify(Model model, int fundingCode) {
+		//System.out.println("펀딩코드 잘넘어 와뜨나?"+fundingCode);
+		FundingGoods fundingGoods = fService.fundingDetail(fundingCode);
+		model.addAttribute("fundingGoods", fundingGoods); 
+		return "admin/goods/modify";
 	}
 }

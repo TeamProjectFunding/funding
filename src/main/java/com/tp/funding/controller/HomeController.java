@@ -49,11 +49,11 @@ public class HomeController {
 //		return "admin/goods/list";
 //	}
 	//admin goods modify
-	@RequestMapping(value="adminGoodsModify")
-	public String adminGoodsModify() {
-		return "admin/goods/modify";
-	}
-	
+//	@RequestMapping(value="adminGoodsModify")
+//	public String adminGoodsModify() {
+//		return "admin/goods/modify";
+//	}
+//	
 		
 	//admin apply list
 //	@RequestMapping(value="adminApplyList")
@@ -384,9 +384,9 @@ public class HomeController {
 //		return "notice/noticeList";
 //	}
 		
-	//공지 view
-	@RequestMapping(value ="noticeView")
-	public String noticeView() {
-		return "notice/noticeView";
-	}
+//	//공지 view
+//	@RequestMapping(value ="noticeView")
+//	public String noticeView() {
+//		return "notice/noticeView";
+//	}
 }

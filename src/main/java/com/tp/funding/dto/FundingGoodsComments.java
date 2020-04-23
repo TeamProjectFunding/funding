@@ -105,10 +105,4 @@ public class FundingGoodsComments {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 }

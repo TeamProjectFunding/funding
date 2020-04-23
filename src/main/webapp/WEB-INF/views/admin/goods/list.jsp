@@ -62,7 +62,7 @@
 						<li class="deadline">${endDate - nowDate}일 남았지롱</li>
 						<li id="buttonWrap">
 							<a href="#none" class="button" onClick="location.href='${conPath}/adminFundingClose.do?fundingCode=${adminGoodsList.fundingCode }'">마감</a>
-							<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModify.do'">수정</a>
+							<a href="#none" class="button" onClick="location.href='${conPath}/adminGoodsModifyForm.do?fundingCode=${adminGoodsList.fundingCode }'">수정</a>
 						</li>
 					</ul>
 				</div>
