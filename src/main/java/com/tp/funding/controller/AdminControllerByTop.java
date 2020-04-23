@@ -212,7 +212,7 @@ public class AdminControllerByTop {
 		event.setEventNumber(eventNumber);
 		// 2단계
 		eService.eventColseStep2(event);
-		event = eService.eventDetail(eventNumber);
+		event = eService.eventDetail(eventNumber); 
 		// 3단계 추첨
 		Random random = new Random();
 		int eventPrizeCount = event.getEventPrizeCount(); // eventPrizecount
