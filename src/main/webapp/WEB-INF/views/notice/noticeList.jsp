@@ -36,7 +36,7 @@
 				<c:forEach var="noticeS" items="${noticeSearchList}">
 				<tr class="boardInfo">
 					<td>${noticeS.noticeNumber }</td>
-					<td><a href="${conPath }/noticeView.do?">${noticeS.noticeTilte}</a></td>
+					<td><a href="${conPath }/noticeView.do?noticeNumber=${noticeS.noticeNumber }">${noticeS.noticeTilte}</a></td>
 					<td>${noticeS.adminId }</td>
 					<td>${noticeS.noticeDate }</td>
 					<td>${noticeS.noticeHit }</td>
