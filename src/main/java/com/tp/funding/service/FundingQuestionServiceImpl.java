@@ -16,7 +16,7 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 	
 	@Override
 	public List<FundingQuestion> fundingQuestionList(String pageNum) {
-		int fundingQuestionTotalCount = fundingQuestionDao.totfundingQuestion();
+		int fundingQuestionTotalCount = totfundingQuestion();
 		Paging paging = new Paging(fundingQuestionTotalCount, pageNum, 5, 5);
 		FundingQuestion fundingQuestion = new FundingQuestion();
 		fundingQuestion.setStartRow(paging.getStartRow());
@@ -37,6 +37,21 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 	@Override
 	public int totfundingQuestion() {
 		return fundingQuestionDao.totfundingQuestion();
+	}
+
+	@Override
+	public int totGoodsQuesttionList(int fundingCode) {
+		return fundingQuestionDao.totGoodsQuesttionList(fundingCode);
+	}
+
+	@Override
+	public List<FundingQuestion> goodsQuesttionList(String pageNum, int fundingCode) {
+		Paging paging = new Paging(totGoodsQuesttionList(fundingCode), pageNum, 5, 5);
+		FundingQuestion fundingQuestion = new FundingQuestion();
+		fundingQuestion.setStartRow(paging.getStartRow());
+		fundingQuestion.setEndRow(paging.getEndRow());
+		fundingQuestion.setFundingCode(fundingCode);
+		return fundingQuestionDao.goodsQuesttionList(fundingQuestion);
 	}
 
 }
