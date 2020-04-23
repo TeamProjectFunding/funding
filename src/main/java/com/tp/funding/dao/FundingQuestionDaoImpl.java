@@ -33,4 +33,14 @@ public class FundingQuestionDaoImpl implements FundingQuestionDao {
 		return sessionTemplate.selectOne("totfundingQuestion");
 	}
 
+	@Override
+	public List<FundingQuestion> goodsQuesttionList(FundingQuestion fundingQuestion) {
+		return sessionTemplate.selectList("goodsQuesttionList", fundingQuestion);
+	}
+
+	@Override
+	public int totGoodsQuesttionList(int fundingCode) {
+		return sessionTemplate.selectOne("totGoodsQuesttionList", fundingCode);
+	}
+
 }
