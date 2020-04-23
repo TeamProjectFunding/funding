@@ -15,7 +15,9 @@
 
 </head>
 <body>
-	<jsp:include page="../admin/adminMenu.jsp" />
+	<%-- <jsp:include page="../admin/adminMenu.jsp" /> --%>
+	
+	<jsp:include page="../main/header.jsp" />
 	
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="qnaWrap">

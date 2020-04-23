@@ -16,18 +16,28 @@
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageMainWrap" >
 		<h1>MYPAGE</h1>
+		
 		<div class="myPageProfile">
-			<i class="material-icons">account_circle</i>
+		
+			<c:if test="${not empty sessionScope.user.userProfileImage || not empty sessionScope.company.companyProfileImage}">
+				<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
+			</c:if>							
+							
+			<c:if test="${sessionScope.user.userProfileImage eq null && sessionScope.company.companyProfileImage eq null}">
+				<i class="material-icons">account_circle</i>
+			</c:if>				
+			
 		</div>
+		
 		<table>
 			<tr>
-				<td>USER NAME</td>
+				<td>${userDetail.userName}${companyDetail.companyName}</td>
 			</tr>
 			<tr>
-				<td>010-0000-0000</td>
+				<td>${userDetail.userPhone}${companyDetail.companyPhone}</td>
 			</tr>
 			<tr>
-				<td>email@ email.com</td>
+				<td>${userDetail.userId}${companyDetail.companyId}</td>
 			</tr>
 			<tr>
 				<td id="buttonWrap">
