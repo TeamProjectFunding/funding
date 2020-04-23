@@ -26,9 +26,16 @@
 						<li>
 							<ol>
 								<li class="debateContent">${comment.fgCommentsContent }</li>
-								<li id="buttonWrap"><a href="#none" class="button replyButton">REPLY</a>
+								<li id="buttonWrap">
+									<c:if test="${not empty sessionScope.user }">
+										<a href="#none" class="button replyButton" onclick="commentReplyWriteView(${comment.fgCommentsNumber})">REPLY</a>
+									</c:if>
+									<c:if test="${empty sessionScope.user }">
+										<a href="#none" class="button replyButton" onclick="noUser()">REPLY</a>
+									</c:if>
+								
 								<c:if test="${comment.fgcommentsReplyCount > 0 }">
-								<a href="#none" class="button replyListButton">
+								<a href="#none" class="button replyListButton" onclick="commentReplyView(${comment.fgCommentsNumber})">
 								댓글${comment.fgcommentsReplyCount }
 								</a>
 								</c:if>
@@ -36,9 +43,9 @@
 							</ol>
 						</li>
 					</ul>
-				<div class="debateReplyArea">
+				<div class="debateReplyArea ReplyWrite${comment.fgCommentsNumber }">
 				</div>
-				<div class="debateReplyList">
+				<div class="debateReplyList ReplyList${comment.fgCommentsNumber }">
 				</div>
 			</div>
 			</c:forEach>
@@ -76,22 +83,7 @@
 					</li>
 				</ul>
 				<div class="debateReplyArea">
-					<form action="">
-						<table>
-							<tr>
-								<th><img src="" alt="userProfile"> userName</th>
-								<td></td>
-							</tr>
-							<tr>
-								<th>
-									<textarea></textarea>
-								</th>
-								<td id="buttonWrap" rowspan="2">
-									<input type="submit" value="SUBMIT" class="button">
-								</td>
-							</tr>
-						</table>
-					</form>
+					
 				</div>
 				<div class="debateReplyList">
 					<ul>

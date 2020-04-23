@@ -23,8 +23,8 @@ public class FgCommentsReplyServiceImpl implements FgCommentsReplyService {
 	}
 
 	@Override
-	public List<FundingGoodsCommentsReply> fundingCommentReplyList() {
-		return fgCommentsReplyDao.fundingCommentReplyList();
+	public List<FundingGoodsCommentsReply> fundingCommentReplyList(int fgCommentsNumber) {
+		return fgCommentsReplyDao.fundingCommentReplyList(fgCommentsNumber);
 	}
 
 }

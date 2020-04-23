@@ -13,12 +13,15 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
+import com.tp.funding.service.FgCommentsReplyService;
 import com.tp.funding.service.FgCommentsService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingNewsService;
+import com.tp.funding.service.NoticeService;
 import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UserPickService;
 import com.tp.funding.service.UsersService;
@@ -40,6 +43,10 @@ public class LongController {
 	private FundingNewsService fundingNewsService;
 	@Autowired
 	private FgCommentsService fgCommentsService;
+	@Autowired
+	private FgCommentsReplyService fgCommentsReplyService;
+	@Autowired
+	private NoticeService noticeService;
 	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
@@ -79,6 +86,22 @@ public class LongController {
 		}
 		return "goods/goodsViewCoreInfomation";
 	}
+	//펀딩 코멘트 답글보기 버튼
+	@RequestMapping(value = "goodsCommentReplyView")
+	public String goodsCommentReplyView(int fgCommentsNumber,Model model) {
+		model.addAttribute("commentReplyList", fgCommentsReplyService.fundingCommentReplyList(fgCommentsNumber));
+		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
+		return "message/goodsCommentReplyList";
+	}
+	//펀딩 코멘트 답글쓰기 버튼
+	@RequestMapping(value = "goodsCommentWriteView")
+	public String goodsCommentWriteView(int fgCommentsNumber,Model model,HttpSession session) {
+		Users user = (Users) session.getAttribute("user");
+		model.addAttribute("user", user);
+		return "message/goodsCommentWriteView";
+	}
+	
+	
 	
 	//상품 상세보기 info 네비게이션
 	@RequestMapping(value = "goodsInfoNavigation")
@@ -96,6 +119,7 @@ public class LongController {
 	public String main(Model model) {
 		model.addAttribute("investmentTop3", fundingGoodsService.investmentAllList(null, null));
 		model.addAttribute("rewardTop3", fundingGoodsService.rewardAllList(null, null));
+		model.addAttribute("noticeList", noticeService.noticeList());
 		return "main/main";
 	}
 

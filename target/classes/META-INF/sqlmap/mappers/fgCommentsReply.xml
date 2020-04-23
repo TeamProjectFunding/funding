@@ -15,10 +15,10 @@ SELECT FGCR.*,u.username,u.userprofileimage FROM
 		WHERE fgcr.fgcommentsnumber=#{fgCommentsNumber} AND U.USERID=FGCR.USERID
 </select>
 
-<select id="fundingCommentReplyList" resultType="FundingGoodsCommentsReply">
+<select id="fundingCommentReplyList"  parameterType="int" resultType="FundingGoodsCommentsReply">
 SELECT F.*, U.userProfileImage, U.userName FROM 
 	FundingGoodsCommentsReply F, USERS U 
-		WHERE F.USERID=U.USERID ORDER BY f.fgcommentsreplydate DESC
+		WHERE F.USERID=U.USERID and f.fgcommentsnumber=#{fgCommentsNumber} ORDER BY f.fgcommentsreplydate DESC
 </select>
 
 </mapper>
