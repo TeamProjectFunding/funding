@@ -54,4 +54,14 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 		return fundingQuestionDao.goodsQuesttionList(fundingQuestion);
 	}
 
+	@Override
+	public int fundingReplyUpdate(int fundingQuestionNumber) {
+		return fundingQuestionDao.fundingReplyUpdate(fundingQuestionNumber);
+	}
+
+	@Override
+	public List<FundingQuestion> fundingQustionAdminList() {
+		return fundingQuestionDao.fundingQustionAdminList();
+	}
+	
 }

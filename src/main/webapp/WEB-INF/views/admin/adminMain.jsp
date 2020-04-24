@@ -93,36 +93,14 @@
 			<div class="dashBoard">
 				<h3>상품문의</h3>
 				<div class="dashBoardList">
+				<c:forEach var="question" items="${fundingQustionAdminList}">
 					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
+						<li><a href="${conPath }/goodsQnaView.do">[${question.fundingCode}]&nbsp;${question.fundingQuestionTitle } </a><span>${question.userId } ${question.fundingQuestionDate}</span></li>
 						<li id="buttonWrap">
-							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
+							<a href="${conPath }/goodsQnaReplyForm.do?fundingQuestionNumber=${question.fundingQuestionNumber }" class="button">답변</a>
 						</li>
 					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
-						</li>
-					</ul>
-					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[goodsTitle] goodsQ&ATitle </a><span>wirterName 2020.04.14</span></li>
-						<li id="buttonWrap">
-							<a href="${conPath }/adminGoddsQnaReplyForm.do" class="button">답변</a>
-						</li>
-					</ul>
+				</c:forEach>
 				</div>
 			</div>
 			<div class="dashBoard">

@@ -74,7 +74,7 @@ public class AdminControllerByTop {
 			model.addAttribute("noticeList", nService.noticeList()); // 공지사항리스트 전체
 			model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트
 			model.addAttribute("fundingDeadlineList", fService.fundingDeadlineList());
-
+			model.addAttribute("fundingQustionAdminList", fqService.fundingQustionAdminList()); //답변안단 리스트 전체
 			model.addAttribute("result", "성공");
 
 			if (result == 1) {

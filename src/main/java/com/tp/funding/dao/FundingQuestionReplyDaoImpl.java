@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tp.funding.dto.FundingQuestion;
+import com.tp.funding.dto.FundingQuestionReply;
 @Repository
 public class FundingQuestionReplyDaoImpl implements FundingQuestionReplyDao {
 
@@ -17,8 +18,8 @@ public class FundingQuestionReplyDaoImpl implements FundingQuestionReplyDao {
 	}
 
 	@Override
-	public int fundingQuestionReplyWrite(FundingQuestion fundingQuestion) {
-		return sessionTemplate.insert("fundingQuestionReplyWrite", fundingQuestion);
+	public int fundingQuestionReplyWrite(FundingQuestionReply fundingQuestionReply) {
+		return sessionTemplate.insert("fundingQuestionReplyWrite", fundingQuestionReply);
 	}
 
 }

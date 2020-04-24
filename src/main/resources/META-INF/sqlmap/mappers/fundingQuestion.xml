@@ -7,7 +7,7 @@
 
 <select id="fundingQuestionList" parameterType="FundingQuestion" resultType="FundingQuestion">
 SELECT * FROM (SELECT ROWNUM RN, A.* 
-	FROM (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID ORDER BY FUNDINGQUESTIONDATE DESC) A)
+	FROM (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID  ORDER BY FUNDINGQUESTIONDATE DESC) A)
  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 
@@ -17,8 +17,8 @@ SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE
 </select>
 
 <insert id="fundingQuestionWrite" parameterType="FundingQuestion">
-INSERT INTO FundingQuestion VALUES 
-	(FUNDINGQUESTIONNUMBER.nextval,#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
+INSERT INTO FUNDINGQUESTION VALUES 
+	(FUNDINGQUESTIONNUMBER.NEXTVAL,#{fundingQuestionTitle},#{fundingQuestionContent}, SYSDATE, 0, #{fundingCode}, #{userId})
 </insert>
 <select id="totfundingQuestion" resultType="int">
 SELECT COUNT(*) FROM FUNDINGQUESTION
@@ -30,5 +30,11 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 </select>
 <select id="totGoodsQuesttionList" parameterType="int" resultType="int">
 select count(*) from (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID AND FUNDINGCODE=#{fundingCode})
+</select>
+<update id="fundingReplyUpdate" parameterType="int">
+UPDATE FUNDINGQUESTION SET FUNDINGQUESTIONEXISTREPLY = 1 WHERE FUNDINGQUESTIONNUMBER=#{fundingQuestionNumber}
+</update>
+<select id="fundingQustionAdminList" resultType="FundingQuestion">
+SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID AND FUNDINGQUESTIONEXISTREPLY=0 ORDER BY FUNDINGQUESTIONDATE DESC
 </select>
 </mapper>
