@@ -6,85 +6,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link href="${conPath}/css/style.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title></title>
+	<link href="${conPath}/css/common.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
+	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
-		<div id="contentWrap" class="boardWrap">
-		<section class="boardListWrap">
-			<h1>GOODS Q&A</h1>
-			<form action="">
-				<table>
-					<tr>
-						<th>
-							<input type ="text" name="qnaTitle" placeholder="제목을 입력하세요.">
-							<input type ="submit" value="SEARCH" class="button">
-						</th>
-					</tr>
-				</table>
-			</form>
+	<div id="contentWrap" class="fundingWrap">
+		<section id="applyWrap">
+			<h1>GOODS Q&A LIST</h1>
 			<table>
 				<tr>
 					<th>NO</th>
-					<th>TITLE</th>
-					<th>WRITER</th>
+					<th>GOODS TITLE</th>
+					<th>ExistReply</th>
 					<th>DATE</th>
-					<th>HIT</th>
-					<th>ADMIN</th>
+					<th>USERID</th>
 				</tr>
-				<tr class="boardInfo">
-					<td>2</td>
-					<td><a href="${conPath }/goodsQnaView.do">[Q] Q&A TITLE 2</a></td>
-					<td>USER</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-					<td><a href="goodsQnaReplyForm.do" class="button">REPLY</a></td>
+				<c:forEach var="fundingQuestion" items="${fundingQuestionList }">
+				<tr class="userInfo">
+					<td>${fundingQuestion.fundingQuestionNumber }</td>
+					<td><a href="${conPath }/adminQnaView.do?fundingQuestionNumber=${fundingQuestion.fundingQuestionNumber}">${fundingQuestion.fundingQuestionTitle}</a></td>
+					<td>
+						<c:if test="${fundingQuestion.fundingQuestionExistReply==0}">
+						답글 없음
+						</c:if>
+						<c:if test="${fundingQuestion.fundingQuestionExistReply==1}">
+						답글 있음
+						</c:if>
+					</td>
+					<td>${fundingQuestion.fundingQuestionDate }</td>
+					<td>${fundingQuestion.userId }</td>
 				</tr>
-				<tr class="boardInfo">
-					<td>2-1</td>
-					<td><a href="${conPath }/goodsQnaView.do">[A] Q2 REPLY TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-					<td><a href="adminGoodsQnaModifyForm.do" class="button">MODIFY</a></td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1</td>
-					<td><a href="${conPath }/goodsQnaView.do">[Q] Q&A TITLE 1</a></td>
-					<td>USER</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-					<td><a href="adminGoodsQnaReplyForm.do" class="button">REPLY</a></td>
-				</tr>
-				<tr class="boardInfo">
-					<td>1-1</td>
-					<td><a href="${conPath }/goodsQnaView.do">[A] Q1 REPLY TITLE</a></td>
-					<td>ADMIN</td>
-					<td>2020-04-19</td>
-					<td>0</td>
-					<td><a href="adminGoodsQnaModifyForm.do" class="button">MODIFY</a></td>
-				</tr>
-				<tr>
-					<th id="buttonWrap" colspan="6">
-						<a href="goodsQnaWriteForm.do" class="button">WRITE</a>
-					</th>
-				</tr>
-				
+				</c:forEach>
 			</table>
 			<div class="paging">
-				<a href="" class="prev">PREV</a>
-				<a href="" class="current">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a href="" class="next">NEXT</a> 
+				<c:if test="${paging.startPage>paging.blockSize }">
+				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+				</c:if>
+				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }">
+						<a href="#none" class="current">${i }</a>  
+					</c:if>
+					<c:if test="${paging.currentPage!=i }">
+						<a href="${conPath }/goodsQnaList.do?pageNum=${i}"> ${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+				</c:if>
 			</div>
+			<jsp:include page="../main/footer.jsp" />
 		</section>
 	</div>
-	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

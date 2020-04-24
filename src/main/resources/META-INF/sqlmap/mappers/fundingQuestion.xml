@@ -23,4 +23,12 @@ INSERT INTO FundingQuestion VALUES
 <select id="totfundingQuestion" resultType="int">
 SELECT COUNT(*) FROM FUNDINGQUESTION
 </select>
+<select id="goodsQuesttionList" parameterType="FundingQuestion" resultType="FundingQuestion">
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+(SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID AND FUNDINGCODE=#{fundingCode}  ORDER BY FUNDINGQUESTIONDATE DESC) A)
+ 		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+<select id="totGoodsQuesttionList" parameterType="int" resultType="int">
+select count(*) from (SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHERE U.USERID=FQ.USERID AND FUNDINGCODE=#{fundingCode})
+</select>
 </mapper>

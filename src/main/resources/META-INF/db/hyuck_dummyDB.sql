@@ -28,30 +28,30 @@ INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', 'ADMINIMAGE');
 
 
 -- 유저 등록
-INSERT INTO Users VALUES ('user1@naver.com','123','profile.jpg','박지영','010-4898-8848','서울시 목동','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user1@naver.com','123',null,'박지영','010-4898-8848','서울시 목동','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
     
-INSERT INTO Users VALUES ('user2@naver.com','123','profile2.jpg','지단','010-4898-8848','서울시 동대문','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user2@naver.com','123','park.jpg','지단','010-4898-8848','서울시 동대문','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
     
-INSERT INTO Users VALUES ('user3@google.com','123','profile.jpg','오유석','010-4898-8848','일산시','유석빌딩 302호', 
+INSERT INTO Users VALUES ('user3@google.com','123','kim.jpg','오유석','010-4898-8848','일산시','유석빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 2);    
 
-INSERT INTO Users VALUES ('user4@google.com','123','profile2.jpg','제라드','010-4898-8848','서울시','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user4@google.com','123','lim.jpg','제라드','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 2);
 
-INSERT INTO Users VALUES ('user5@naver.com','123','profile.jpg','손흥민','010-4898-8848','서울시','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user5@naver.com','123','park.jpg','손흥민','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
 
-INSERT INTO Users VALUES ('user6@google.com','123','profile2.jpg','차범근','010-4898-8848','서울시','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user6@google.com','123','son.jpg','차범근','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
     
-INSERT INTO Users VALUES ('user7@naver.com','123','profile.jpg','김병지','010-4898-8848','서울시','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('user7@naver.com','123','song.jpg','김병지','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);   
     
-INSERT INTO Users VALUES ('wogur698@naver.com','123','profile2.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('wogur698@naver.com','123','lim.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
-INSERT INTO Users VALUES ('kha0213@naver.com','123','profile.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
+INSERT INTO Users VALUES ('kha0213@naver.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
 
   
@@ -238,4 +238,6 @@ INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답
 INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답글이드아아내용','2020-04-09',8,'user2@naver.com');
 INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답글이드아아내용','2020-04-09',8,'user2@naver.com');
 INSERT INTO FundingGoodsCommentsReply VALUES (FGCOMMENTSREPLYNUMBER.nextval,'답글이드아아내용','2020-04-09',1,'user2@naver.com');
-commit;
+
+
+

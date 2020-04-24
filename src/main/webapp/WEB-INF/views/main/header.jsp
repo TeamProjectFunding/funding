@@ -32,34 +32,49 @@
 				<c:if test="${empty admin}">	
 					<li><a href="adminLogin.do">ADMIN LOG-IN</a></li>
 				</c:if>
-				<c:if test="${not empty admin}">
+				
+				<%-- <c:if test="${not empty admin}">
 					<li><a href="adminMain.do">ADMIN</a></li>
-				</c:if>
+				</c:if> --%>
 				
 				<c:if test="${empty sessionScope.user && empty sessionScope.company && empty admin }">
 					<li><a href="loginView.do">LOG-IN</a></li>
 					<li><a href="join.do">JOIN</a></li>
 				</c:if>	
 				
-				<c:if test="${not empty sessionScope.user || not empty sessionScope.company || not empty admin }">
+				<c:if test="${not empty sessionScope.user || not empty sessionScope.company}">
 					<li>
 						<a href="#none" class="mypageButton">
-
 							
-					<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
-
-						
-							<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}${admin.adminProfileImage}" alt="profile" >
+							<c:if test="${not empty sessionScope.user.userProfileImage || not empty sessionScope.company.companyProfileImage}">
+								<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
+							</c:if>							
 							
-							<c:if test="${sessionScope.user.userProfileImage eq null || sessionScope.company.companyProfileImage eq null || admin.adminProfileImage eq null }">
+							<c:if test="${sessionScope.user.userProfileImage eq null && sessionScope.company.companyProfileImage eq null}">
 								<i class="material-icons">account_circle</i>
-							</c:if>	
-							
+							</c:if>			
 
 						</a>
 					</li>
 					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
-				</c:if>					
+				</c:if>
+				
+				<c:if test="${not empty admin}">
+					<li>
+						<a href="adminMain.do" class="mypageButton">
+							
+							<c:if test="${not empty admin.adminProfileImage}">
+								<img src="${conPath}/images/profile/${admin.adminProfileImage}" alt="profile">
+							</c:if>							
+							
+							<c:if test="${admin.adminProfileImage eq null}">
+								<i class="material-icons">account_circle</i>
+							</c:if>						
+
+						</a>
+					</li>
+					<li><a href="${conPath}/logout.do">LOG_OUT</a></li>
+				</c:if>									
 				
 				<c:if test="${not empty sessionScope.user && empty sessionScope.company}">
 					<li><a href="#none" class="alarmButton"><!-- img src="" alt="alarm" -->alarm<c:if test="${user.notificationCount >= 1}"><span class="alarm"></span></c:if></a></li>

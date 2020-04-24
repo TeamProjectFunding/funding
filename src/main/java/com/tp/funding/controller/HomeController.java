@@ -390,10 +390,10 @@ public class HomeController {
 //		return "notice/noticeView";
 //	}
 	//마이페이지 main
-		@RequestMapping(value="myPageMain")
-		public String myPageMain() {
-			return "myPage/myPageMain";
-		}
+//		@RequestMapping(value="myPageMain")
+//		public String myPageMain() {
+//			return "myPage/myPageMain";
+//		}
 		
 		//마이페이지 회원정보수정 폼 
 		@RequestMapping(value="myPageModifyForm")
