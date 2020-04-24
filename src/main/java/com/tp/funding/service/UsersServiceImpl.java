@@ -26,10 +26,9 @@ import com.tp.funding.util.FileCopy;
 public class UsersServiceImpl implements UsersService {
 	@Autowired
 	private UsersDao userDao;
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
-	
 
 	@Override
 	public List<Users> userList() {
@@ -65,7 +64,8 @@ public class UsersServiceImpl implements UsersService {
 					System.out.println("서버에 저장된 파일 : " + uploadPath + userProfileImage);
 					System.out.println("백업위해 복사할 파일 : " + backupPath + userProfileImage);
 					FileCopy filecopyClass = new FileCopy();
-					int fileResult = filecopyClass.filecopy(uploadPath + userProfileImage, backupPath + userProfileImage);
+					int fileResult = filecopyClass.filecopy(uploadPath + userProfileImage,
+							backupPath + userProfileImage);
 					if (fileResult == 1) {
 						System.out.println("복사성공");
 					} else {
@@ -83,7 +83,11 @@ public class UsersServiceImpl implements UsersService {
 		return userDao.userJoin(user);
 	}
 
-	
+	@Override
+	public int userInfoModify(MultipartHttpServletRequest mRequest, Users user) {
+		return userDao.userInfoModify(user);
+	}
+
 	@Override
 	public int userLoginCheck(Users user) {
 		return userDao.userLoginCheck(user);
@@ -95,15 +99,9 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public int userInfoModify(Users user) {
-		return userDao.userInfoModify(user);
-	}
-
-	@Override
 	public int userOutSite(String userId) {
 		return userDao.userOutSite(userId);
 	}
-
 
 	@Override
 	public int userGradeUp(String userId) {
@@ -141,11 +139,11 @@ public class UsersServiceImpl implements UsersService {
 		user.setUserBankName(userBankName);
 		user.setUserAccountNumber(userAccountNumber);
 		return userDao.userAccountModify(user);
-	}	
+	}
 
 	@Override
 	public int tempPasswordChange(final Users user) {
-		
+
 		String tempPassword = "";
 		for (int i = 0; i < 8; i++) {
 			char lowerStr = (char) (Math.random() * 26 + 97);
@@ -155,24 +153,22 @@ public class UsersServiceImpl implements UsersService {
 				tempPassword += lowerStr;
 			}
 		}
-		
+
 		user.setUserPassword(tempPassword);
 		MimeMessagePreparator tempPasswordMsg = new MimeMessagePreparator() {
-			
-			String content ="<h1>"+user.getUserName()+"님의 임시비밀번호 안내입니다.</h1>"+
-					 "<div> 임시 비밀번호는 : "+user.getUserPassword()+"입니다.<br>"+
-					 "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";
-			
-			
+
+			String content = "<h1>" + user.getUserName() + "님의 임시비밀번호 안내입니다.</h1>" + "<div> 임시 비밀번호는 : "
+					+ user.getUserPassword() + "입니다.<br>" + "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";
+
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getUserId()));
 				mimeMessage.setFrom(new InternetAddress("wogur698@gmail.com"));
-				mimeMessage.setSubject(user.getUserName()+"님 비밀번호 안내 메일입니다.");
+				mimeMessage.setSubject(user.getUserName() + "님 비밀번호 안내 메일입니다.");
 				mimeMessage.setText(content, "utf-8", "html");
 			}
 		};
-		
+
 		mailSender.send(tempPasswordMsg);
 		return userDao.tempPasswordChange(user);
 	}
@@ -186,6 +182,5 @@ public class UsersServiceImpl implements UsersService {
 	public int fundraisingFailureReturnMoney(Users user) {
 		return userDao.fundraisingFailureReturnMoney(user);
 	}
-
 
 }

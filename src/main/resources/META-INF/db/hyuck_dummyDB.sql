@@ -24,7 +24,7 @@ INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
 
 
 --관리자 등록
-INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', 'ADMINIMAGE');
+INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 
 
 -- 유저 등록
@@ -328,13 +328,10 @@ INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 9);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 11); 
 
-
-commit;
-
-
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 7);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 8);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 9);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 11);
 
+commit;

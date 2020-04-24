@@ -31,21 +31,21 @@
 			
 			<c:if test="${not empty user}">
 				<tr>
-					<td colspan="2"><a href="myPageMain.do?userId=${user.userId}">My Page</a></td>					
-					<td colspan="2"><a href="myPageModifyForm.do">프로필 수정</a></td>			
+					<td colspan="2"><a href="myPageMain.do?userId=${user.userId}">${user.userName}님</a></td>					
+					<td colspan="2"><a href="myPageModifyForm.do?userId=${user.userId}">프로필 수정</a></td>			
 				</tr>
 				<tr>
-					<td><a href="myPageFunding.do">My Funding</a></td>	
-					<td><a href="myPagePick.do">My Pick</a></td>
-					<td><a href="myPagePost.do">My Post</a></td>
+					<td><a href="myPageFunding.do">FUNDING</a></td>	
+					<td><a href="myPagePick.do?userId=${user.userId}">PICK</a></td>
+					<td><a href="myPagePost.do">POST</a></td>
 					<td><a href="myPageEvent.do">EVENT</a></td>			
 				</tr>			
 			</c:if>
 			
 			<c:if test="${not empty company}">			
 				<tr>
-					<td colspan="2"><a href="myPageMain.do?companyId=${company.companyId}">My Page</a></td>						
-					<td colspan="2"><a href="myPageModifyForm.do">프로필 수정</a></td>
+					<td colspan="2"><a href="myPageMain.do?companyId=${company.companyId}">${company.companyName}</a></td>						
+					<td colspan="2"><a href="myPageModifyForm.do?companyId=${company.companyId}">프로필 수정</a></td>
 				</tr>
 				<tr>
 					<td colspan="2"><a href="myPageGoods.do">My Goods</a></td>

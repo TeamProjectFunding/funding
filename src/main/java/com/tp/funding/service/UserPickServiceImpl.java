@@ -22,10 +22,8 @@ public class UserPickServiceImpl implements UserPickService {
 	}
 
 	@Override
-	public int userPickDelete(String userId,int fundingCode) {
-		UserPick userPick = new UserPick();
-		userPick.setUserId(userId);
-		userPick.setFundingCode(fundingCode);
+	public int userPickDelete(UserPick userPick) {
+		
 		return userPickdao.userPickDelete(userPick);
 	}
 
