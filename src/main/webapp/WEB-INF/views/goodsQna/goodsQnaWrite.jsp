@@ -23,6 +23,7 @@
 				<table>
 					<tr>
 						<th>USERNAME</th>
+<<<<<<< HEAD
 						<td><input type="text" name="userId" value="${user.userId }" readonly="readonly"></td>
 					</tr>
 					<tr>
@@ -40,9 +41,25 @@
 						</td>
 					</tr>
 					<tr>
+=======
+						<td>user name</td>
+					</tr>
+					<tr>
+						<th>GOODS NAME</th>
+						<td>goods name</td>
+					</tr>
+					<tr>
+						<th>CONTENT</th>
+						<td>
+							<textarea name="goodsQnaContent"></textarea>
+						</td>
+					</tr>
+					<tr>
+>>>>>>> 16f5af78cdf3afab26fedafd7a162ca6f7f65b84
 						<th id="buttonWrap" colspan="2">
 							<input type="submit" value="SUBMIT" class="button">
 							<input type="reset" value="RESET" class="button">
+							<input type="button" value="LIST" class="button" onClick="location.href='${conPath }/goodsQnaList.do'">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
 						</th>
 					</tr>

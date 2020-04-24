@@ -11,9 +11,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-		<div id="goodsViewContentWrap"  class="debateWrap">
 		
-			<h3>토론</h3>
+			<h3>토론
+			<c:if test="${empty sessionScope.user }">
+					<a href="#none" class="button" onclick="noUser()">comment</a>
+			</c:if>
+			<c:if test="${not empty sessionScope.user }">
+					<a href="#none" class="button" onclick="commentWriteView()">comment</a>
+			</c:if>
+			</h3>
+			<div class="debateReplyArea" id="debateArea"></div>
 			<c:forEach var="comment" items="${commentList }">
 				<div class="debateListWrap">
 					<ul>
@@ -64,6 +71,5 @@
 				<a href="#none" onclick="goodsCommentPage('${paging.endPage+1 }');"  class="next">NEXT</a>
 				</c:if>
 			</div>
-	</div>
 </body>
 </html>
