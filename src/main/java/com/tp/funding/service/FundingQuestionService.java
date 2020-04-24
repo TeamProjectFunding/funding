@@ -17,4 +17,8 @@ public interface FundingQuestionService {
 	public int totGoodsQuesttionList(int fundingCode);
 	
 	public List<FundingQuestion> goodsQuesttionList(String pageNum, int fundingCode);
+	
+	public int fundingReplyUpdate(int fundingQuestionNumber);
+	
+	public List<FundingQuestion> fundingQustionAdminList();
 }

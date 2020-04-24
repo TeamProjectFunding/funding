@@ -23,23 +23,26 @@
 				<table>
 					<tr>
 						<th>USERNAME</th>
-						<td>user name</td>
+						<td><input type="text" name="userId" value="${user.userId }" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th>GOODS NAME</th>
-						<td>goods name</td>
+						<th>FUNDINGCODE</th>
+						<td><input type="number" name="fundingCode" value="${fundingCode }" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<th>QUESTION TITLE</th>
+						<td><input type="text" name="fundingQuestionTitle" required="required" ></td>
 					</tr>
 					<tr>
 						<th>CONTENT</th>
 						<td>
-							<textarea name="goodsQnaContent"></textarea>
+							<textarea name="fundingQuestionContent"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<th id="buttonWrap" colspan="2">
 							<input type="submit" value="SUBMIT" class="button">
 							<input type="reset" value="RESET" class="button">
-							<input type="button" value="LIST" class="button" onClick="location.href='${conPath }/goodsQnaList.do'">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
 						</th>
 					</tr>

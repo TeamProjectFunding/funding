@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="FundingGoodsDetail">
+<mapper namespace="FundingGoodsDetail">		
 
 <insert id="fundingGoodsDetailWrite" parameterType="FundingGoodsDetail">
 INSERT INTO FundingGoodsDetail VALUES 
@@ -37,7 +37,32 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 <select id="doFundingGoodTotalCount" parameterType="int" resultType="int">
 SELECT COUNT(*) FROM FUNDINGGOODSDETAIL FGD, USERS U WHERE FGD.USERID=U.USERID AND fgd.fundingcode=#{fundingCode}
 </select>
+
 <select id="fundingGoodsAdminDeadline" parameterType="int" resultType="FundingGoodsDetail">
 SELECT * FROM FUNDINGGOODSDETAIL WHERE FUNDINGCODE=#{fundingCode}
 </select>
+
+<select id="myFundingTotalCount" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM FUNDINGGOODSDETAIL WHERE USERID=#{userId}
+</select>
+
+<select id="userFundingAndGoodsInfoList" parameterType="FundingGoodsDetail" resultType="FundingGoodsDetail">
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+	(SELECT FGD.*, FG.FundingThumbnailImage, FG.FundingTargetRate, FG.FUNDINGNAME FROM FUNDINGGOODSDETAIL FGD, FUNDINGGOODS FG WHERE FGD.FUNDINGCODE = FG.FUNDINGCODE AND USERID=#{userId} ORDER BY FUNDINGDATE DESC) A)
+		WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

@@ -20,4 +20,8 @@ public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> fundingGoodsAdminDeadline(int fundingCode);
 	
+	public int myFundingTotalCount(String userId);
+	
+	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail);
+	
 }

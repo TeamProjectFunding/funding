@@ -17,4 +17,8 @@ public interface FundingQuestionDao {
 	public List<FundingQuestion> goodsQuesttionList(FundingQuestion fundingQuestion);
 	
 	public int totGoodsQuesttionList(int fundingCode);
+	
+	public int fundingReplyUpdate(int fundingQuestionNumber);
+	
+	public List<FundingQuestion> fundingQustionAdminList();
 }

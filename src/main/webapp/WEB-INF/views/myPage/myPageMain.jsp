@@ -45,31 +45,37 @@
 				</td>
 			</tr>
 		</table>
-		<!-- table class="userActivity">
-			<tr>
-				<th>FUNDING</th>
-				<th>PICK</th>
-				<th>POST</th>
-				<th>EVENT</th>
-			</tr>
-			<tr>
-				<td><a href="">0</a></td>
-				<td><a href="">0</a></td>
-				<td><a href="">0</a></td>
-				<td><a href="">0</a></td>
-			</tr>
-		</table -->
 		
-		<table class="companyActivity">
-			<tr>
-				<th>GOODS</th>
-				<th>APPLY</th>
-			</tr>
-			<tr>
-				<td><a href="">0</a></td>
-				<td><a href="">0</a></td>
-			</tr>
-		</table>
+		<c:if test="${not empty user}">
+			<table class="userActivity">
+				<tr>
+					<th>My FUNDING</th>
+					<th>PICK</th>
+					<th>POST</th>
+					<th>EVENT</th>
+				</tr>
+				<tr>
+					<td><a href="${conPath}/userFundingList.do?userId=${userDetail.userId}">${userFundingTotalCnt}</a></td>
+					<td><a href="">${userDetail.userPickCount}</a></td>
+					<td><a href="">0</a></td>
+					<td><a href="">0</a></td>
+				</tr>
+			</table>
+		</c:if>
+		
+		<c:if test="${not empty company}">
+			<table class="companyActivity">
+				<tr>
+					<th>My GOODS</th>
+					<th>APPLY</th>
+				</tr>
+				<tr>
+					<td><a href="">0</a></td>
+					<td><a href="">0</a></td>
+				</tr>
+			</table>
+		</c:if>
+		
 	</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />
