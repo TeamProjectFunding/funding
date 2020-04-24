@@ -22,7 +22,6 @@ public class GoodsQnaControllerByTop {
 		Paging fundingQuestion = new Paging(fundingQuestionService.totGoodsQuesttionList(fundingCode), pageNum, 5, 5);
 		model.addAttribute("paging", fundingQuestion);
 		model.addAttribute("fundingQuestionList", fundingQuestionService.goodsQuesttionList(pageNum, fundingCode));
-		System.out.println(fundingQuestionService.fundingQuestionList(pageNum).size());
 		return "goodsQna/goodsQnaList";
 	}
 	@RequestMapping(value="goodsQnaWriteForm")
