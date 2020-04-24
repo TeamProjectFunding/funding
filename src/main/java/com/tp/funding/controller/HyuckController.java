@@ -11,10 +11,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
@@ -44,6 +46,9 @@ public class HyuckController {
 	
 	@Autowired
 	private RewardService rewardService;
+	
+	@Autowired
+	private FundingDetailService fundingDetailService;
 	
 
 	// 회원가입 입력 폼
@@ -369,14 +374,37 @@ public class HyuckController {
 			if(userId != null) {
 				
 				model.addAttribute("userDetail", usersService.userDetail(userId));
+				model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));			
 				
 			}else if(companyId != null) {
 				
-				model.addAttribute("companyDetail", companyService.companyDetail(companyId));
+				model.addAttribute("companyDetail", companyService.companyDetail(companyId));				
 			}
 			
 			return "myPage/myPageMain";
 		}
+		
+		@RequestMapping(value="userFundingList")
+		public String userFundingList(FundingGoodsDetail fundingGoodsDetail, String pageNum, Model model) {
+						
+			Paging paging = new Paging(fundingDetailService.myFundingTotalCount(fundingGoodsDetail.getUserId()), pageNum, 6, 5);
+			fundingGoodsDetail.setStartRow(paging.getStartRow());
+			fundingGoodsDetail.setEndRow(paging.getEndRow());			
+			
+			model.addAttribute("userFundingAndGoodsInfoList", fundingDetailService.userFundingAndGoodsInfoList(fundingGoodsDetail));		
+			model.addAttribute("paging", paging);
+			
+			return "myPage/myPageMyFundingList";
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 
 }

@@ -7,15 +7,21 @@
 	<insert id="userPickAdd" parameterType="UserPick">
 		INSERT INTO UserPick VALUES (USERPICKNUMBER.nextval,#{userId},#{fundingCode})
 	</insert>
+	
 	<insert id="userPickDelete" parameterType="UserPick">
 		DELETE FROM UserPick WHERE userId=#{userId} AND fundingCode=#{fundingCode}
 	</insert>
+	
 	<select id="userPickList" parameterType="UserPick" resultType="UserPick">
 		SELECT UP.*,F.fundingName,F.fundingCategory,F.fundingTargetDate,F.fundingThumbnailImage 
 		FROM UserPick UP, FundingGoods F WHERE UP.fundingCode = F.fundingCode AND UP.UserId = #{userId})
 		ORDER BY userPickNumber DESC
 	</select>
+	
 	<select id="userPickCheck" parameterType="UserPick" resultType="int">
 		SELECT COUNT(*) FROM USERPICK WHERE USERID=#{userId} AND FUNDINGCODE=#{fundingCode}
 	</select>
+	
+		
+	
 </mapper>

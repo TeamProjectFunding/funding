@@ -58,4 +58,14 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 		return fundingDetailDao.fundingGoodsAdminDeadline(fundingCode);
 	}
 
+	@Override
+	public int myFundingTotalCount(String userId) {
+		return fundingDetailDao.myFundingTotalCount(userId);
+	}
+
+	@Override
+	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail) {
+		return fundingDetailDao.userFundingAndGoodsInfoList(fundingGoodsDetail);
+	}
+
 }
