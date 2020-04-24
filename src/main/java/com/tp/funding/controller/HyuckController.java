@@ -101,7 +101,7 @@ public class HyuckController {
 
 			session.setAttribute("user", usersService.userDetail(id));
 			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
-			model.addAttribute("result", "성공");
+			model.addAttribute("result", "성공");			
 
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
@@ -362,5 +362,21 @@ public class HyuckController {
 			model.addAttribute("adminRejectMsg", "reject 완료");
 			return "forward:adminMain.do";
 		}
+		
+		@RequestMapping(value="myPageMain")
+		public String myPageMain(String userId, String companyId, Model model) {
+			
+			if(userId != null) {
+				
+				model.addAttribute("userDetail", usersService.userDetail(userId));
+				
+			}else if(companyId != null) {
+				
+				model.addAttribute("companyDetail", companyService.companyDetail(companyId));
+			}
+			
+			return "myPage/myPageMain";
+		}
+		
 
 }

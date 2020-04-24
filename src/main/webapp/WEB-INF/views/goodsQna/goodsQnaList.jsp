@@ -40,18 +40,18 @@
 			</table>
 			<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">
-				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.startPage-1 }&fundingCode=${Question.fundingCode}" class="prev">PREV</a>
+				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.startPage-1 }&fundingCode=${param.fundingCode}" class="prev">PREV</a>
 				</c:if>
 				<c:forEach var="i" begin="${paging.startPage }"	end="${paging.endPage }">
 					<c:if test="${paging.currentPage==i }">
 						<a href="#none" class="current">${i }</a>  
 					</c:if>
 					<c:if test="${paging.currentPage!=i }">
-						<a href="${conPath }/goodsQnaList.do?pageNum=${i}&fundingCode=${Question.fundingCode}"> ${i }</a>
+						<a href="${conPath }/goodsQnaList.do?pageNum=${i}&fundingCode=${param.fundingCode}"> ${i }</a>
 					</c:if>
 				</c:forEach>
 				<c:if test="${paging.endPage<paging.pageCnt }">
-				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.endPage+1 }&fundingCode=${Question.fundingCode}" class="next">NEXT</a>
+				<a href="${conPath }/goodsQnaList.do?pageNum=${paging.endPage+1 }&fundingCode=${param.fundingCode}" class="next">NEXT</a>
 				</c:if>
 			</div>
 		</section>

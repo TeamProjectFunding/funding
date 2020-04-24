@@ -83,7 +83,7 @@
 						</li>
 						
 						<li id="buttonWrap">
-							<a href="${conPath }/adminFundingClose.do?fundingCode=${fundingDeadlineList.fundingCode}" class="button">마감</a>
+							<a href="${conPath}/adminFundingClose.do?fundingCode=${fundingDeadlineList.fundingCode}" class="button">마감</a>
 						</li>
 					</ul>
 					

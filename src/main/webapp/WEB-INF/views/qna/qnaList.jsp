@@ -63,13 +63,26 @@
 						</c:if>
 						
 						<c:if test="${qna.qnARef eq 0}">
+						
 							<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">${qna.qnATitle}</a></td>
+														
 						</c:if>
+						
 						<c:if test="${qna.qnARef != 0}">
-							<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">RE - ${qna.qnATitle}</a></td>
-						</c:if>
 						
-						
+							<td><a href="${conPath }/qnaView.do?qnANumber=${qna.qnANumber}&pageNum=${paging.currentPage}">
+							
+							<c:forEach var="i" begin="0" end="${qna.qnAIndent}">
+								<c:if test="${i == qna.qnAIndent}">
+									<img src="${conPath}/images/re.jpg" alt="re" width="30px"> - 
+								</c:if>
+								<c:if test="${i != qna.qnAIndent }">
+									&nbsp; &nbsp; &nbsp; &nbsp;
+								</c:if>							
+							</c:forEach>							
+							${qna.qnATitle}</a></td>
+							
+						</c:if>						
 						
 						<td>${qna.writer}</td>
 						<td>${qna.qnADate}</td>

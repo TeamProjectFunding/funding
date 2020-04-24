@@ -251,6 +251,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 
 #contentWrap.boardWrap table .boardContent{line-height:30px;}
 #contentWrap.boardWrap table textarea{width:100%; height:200px;}
+#contentWrap.boardWrap .boardInfo td:nth-child(2){text-align: left;}
 
 /** myPage **/
 .myPageMainWrap{padding:0 20%; }
