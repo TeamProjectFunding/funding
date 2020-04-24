@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.FundingGoodsComments;
+import com.tp.funding.dto.FundingGoodsCommentsReply;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Reward;
@@ -93,18 +95,37 @@ public class LongController {
 		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
 		return "message/goodsCommentReplyList";
 	}
-	//펀딩 코멘트 답글쓰기 버튼
+	//펀딩 코멘트 답글쓰기 뷰 
 	@RequestMapping(value = "goodsCommentReplyWriteView")
 	public String goodsCommentReplyWriteView(int fgCommentsNumber,Model model,HttpSession session) {
 		Users user = (Users) session.getAttribute("user");
 		model.addAttribute("user", user);
+		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
+		return "message/goodsCommentReplyWriteView";
+	}
+	//펀딩 코멘트 쓰기 뷰 
+	@RequestMapping(value = "goodsCommentWriteView")
+	public String goodsCommentWriteView(Model model,HttpSession session) {
+		Users user = (Users) session.getAttribute("user");
+		model.addAttribute("user", user);
 		return "message/goodsCommentWriteView";
 	}
+	//펀딩 코멘트 쓰기 
+	@RequestMapping(value = "goodsCommentWrite")
+	public String goodsCommentWrite(FundingGoodsComments fundingGoodsComments) {
+		fgCommentsService.fundingCommentWrite(fundingGoodsComments);
+		return "message/noMessage"; //뿌릴 메세지 없음
+	}
 	//펀딩 코멘트 답글 작성
-//	@RequestMapping(value = "goodsCommentReplyWrite")
-//	public String goodsCommentReplyWrite(int fgCommentsNumber,Model model,HttpSession session) {
-//		return "message/goodsCommentWriteView";
-//	}
+	@RequestMapping(value = "goodsCommentReplyWrite")
+	public String goodsCommentReplyWrite(FundingGoodsCommentsReply fundingGoodsCommentsReply) {
+		int fgCommentsNumber = fundingGoodsCommentsReply.getFgCommentsNumber();
+		int result = fgCommentsReplyService.fundingCommentsReplyWrite(fundingGoodsCommentsReply); // 답글작성
+		if(result==1) {
+			fgCommentsService.fundingCommentReplyCountUp(fgCommentsNumber); //답글 갯수 증가
+		}
+		return "message/noMessage"; //뿌릴 메세지 없음
+	}
 	
 	
 	//상품 상세보기 info 네비게이션
@@ -114,6 +135,10 @@ public class LongController {
 			model.addAttribute("newsList", fundingNewsService.fundingNewsList(pageNum, fundingCode, model));
 		}else if(infoType.equals("goodsViewDebate")) {//토론
 			model.addAttribute("commentList", fgCommentsService.fundingCommentList(fundingCode, pageNum, model));
+		}else if(infoType.equals("goodsViewInfo")) {//투자정보
+			model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
+		}else if(infoType.equals("goodsViewInvestor")) {//투자자
+			model.addAttribute("doFundingUserList", fundingDetailService.doFundingUserList(pageNum, fundingCode));
 		}
 		return "goods/"+infoType;
 	}

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="conPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -16,9 +19,10 @@
 					개발된 제품을 상용화하여 다수의 납품실적을 보유하고 있고 연구개발 과 마케팅이 조화를 이룬 물류로봇 전문기업입니다. 2021년 까지 세계 최고의 물류이송로봇 전문기업으로 성장 하고자 합니다.
 				</p>
 			</div>
-			<div class='detail'>
+			<div class="detail">
 				<h3>상세내용</h3>
 				<img src="${conPath }/images/goods/${good.fundingExplanationFile}" alt="투자설명서">
+				<p>${good.fundingDescription }</p>
 			</div>
 </body>
 </html>

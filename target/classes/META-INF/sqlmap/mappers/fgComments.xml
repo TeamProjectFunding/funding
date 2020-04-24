@@ -7,7 +7,7 @@
 
 <insert id="fundingCommentWrite" parameterType="FundingGoodsComments">
 INSERT INTO FundingGoodsComments VALUES 
-	(FGCOMMENTSNUMBER.nextval, #{fgCommentsContent}, SYSDATE, 0, #{fundingCode}, #{userId});	
+	(FGCOMMENTSNUMBER.nextval, #{fgCommentsContent}, SYSDATE, 0, #{fundingCode}, #{userId})
 </insert>
 
 <select id="fundingCommentList" parameterType="FundingGoodsComments" resultType="FundingGoodsComments">
@@ -26,5 +26,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 SELECT FGC.*,U.USERNAME, U.USERPROFILEIMAGE FROM 
 	FundingGoodsComments FGC, USERS U WHERE FGC.FGCOMMENTSNUMBER=#{fgCommentsNumber} AND U.USERID=FGC.USERID
 </select>
-
+<update id="fundingCommentReplyCountUp" parameterType="int">
+UPDATE fundinggoodscomments SET fgcommentsreplycount = fgcommentsreplycount+1 WHERE fgcommentsnumber=#{fgCommentsNumber}
+</update>
 </mapper>

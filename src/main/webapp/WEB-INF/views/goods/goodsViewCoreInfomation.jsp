@@ -45,15 +45,49 @@
 			$('.ReplyWrite'+fgCommentsNumber).html('');
 		}
 	}
-	/* 코멘트 답글 쓰기  */
-	function fgCommentsReplyWrite(fgCommentsNumber){
-		var fgCommentsReplyContent = $('.textarea'+fgCommentsNumber).html().trim();
+	/* 코멘트 쓰기 뷰 나오기 */
+	function commentWriteView(fundingCode){
+		var content = $('#debateArea').html().trim();
+		if(content == ''){
+			$.ajax({
+				url : '${conPath}/goodsCommentWriteView.do',
+				datatype : 'html',
+				success : function(data, status){
+					$('#debateArea').html(data);
+				}
+			});
+		}else{
+			$('#debateArea').html('');
+		}
+	}
+	/* 코멘트 쓰기 실행 */
+	function fgCommentsWrite(){
+		var fundingCode = ${param.fundingCode};
+		var userId = '${user.userId}';
+		var fgCommentsContent = $('.fgCommentsContent').val();
+		
 		$.ajax({
-			url : '${conPath}/goodsCommentWriteView.do',
+			url : '${conPath}/goodsCommentWrite.do',
 			datatype : 'html',
-			data : "fgCommentsReplyContent="+fgCommentsReplyContent,
+			data : "userId="+userId+"&fundingCode="+fundingCode+"&fgCommentsContent="+fgCommentsContent,
 			success : function(data, status){
-				$('.ReplyWrite'+fgCommentsNumber).html(data);
+				goodsInfoNavigation('goodsViewDebate');
+			}
+		});
+		
+	}
+	/* 코멘트 답글 쓰기 실행 */
+	function fgCommentsReplyWrite(fgCommentsNumber){
+		var fgCommentsReplyContent = $('.textarea'+fgCommentsNumber).val();
+		var userId = '${user.userId}';
+		$.ajax({
+			url : '${conPath}/goodsCommentReplyWrite.do',
+			datatype : 'html',
+			data : "userId="+userId+"&fgCommentsNumber="+fgCommentsNumber+"&fgCommentsReplyContent="+fgCommentsReplyContent,
+			success : function(data, status){
+				$('.ReplyList'+fgCommentsNumber).html('');
+				$('.ReplyWrite'+fgCommentsNumber).html('');
+				commentReplyView(fgCommentsNumber);
 			}
 		});
 	}
@@ -97,14 +131,6 @@
 	}
 	$(function(){
 		var fundingCode = ${param.fundingCode}; 
-		$.ajax({
-			url : '${conPath}/goodsInfoNavigation.do',
-			datatype : 'html',
-			data : "infoType=goodsViewInfo&fundingCode="+fundingCode,
-			success : function(data, status){
-				$('#goodsViewContentWrap').html(data);
-			}
-		});
 		$('#userPick').click(function(){
 			if($(this).html() == '♡'){
 				$(this).html('♥');
@@ -200,9 +226,10 @@
 					개발된 제품을 상용화하여 다수의 납품실적을 보유하고 있고 연구개발 과 마케팅이 조화를 이룬 물류로봇 전문기업입니다. 2021년 까지 세계 최고의 물류이송로봇 전문기업으로 성장 하고자 합니다.
 				</p>
 			</div>
-			<div class='detail'>
+			<div class="detail">
 				<h3>상세내용</h3>
 				<img src="${conPath }/images/goods/${good.fundingExplanationFile}" alt="투자설명서">
+				<p>${good.fundingDescription }</p>
 			</div>
 		</div>
 		<div>

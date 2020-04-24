@@ -11,4 +11,5 @@ public interface FgCommentsService {
 	public List<FundingGoodsComments> fundingCommentList(int fundingCode,String pageNum,Model model); //페이징
 	public FundingGoodsComments fundingCommentDetail(int fgCommentsNumber);
 	public int fundingCommentCount(int fundingCode);
+	public int fundingCommentReplyCountUp(int fgCommentsNumber);
 }
