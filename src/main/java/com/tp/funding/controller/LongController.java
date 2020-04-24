@@ -95,21 +95,7 @@ public class LongController {
 		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
 		return "message/goodsCommentReplyList";
 	}
-	//펀딩 코멘트 답글쓰기 뷰 
-	@RequestMapping(value = "goodsCommentReplyWriteView")
-	public String goodsCommentReplyWriteView(int fgCommentsNumber,Model model,HttpSession session) {
-		Users user = (Users) session.getAttribute("user");
-		model.addAttribute("user", user);
-		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
-		return "message/goodsCommentReplyWriteView";
-	}
-	//펀딩 코멘트 쓰기 뷰 
-	@RequestMapping(value = "goodsCommentWriteView")
-	public String goodsCommentWriteView(Model model,HttpSession session) {
-		Users user = (Users) session.getAttribute("user");
-		model.addAttribute("user", user);
-		return "message/goodsCommentWriteView";
-	}
+
 	//펀딩 코멘트 쓰기 
 	@RequestMapping(value = "goodsCommentWrite")
 	public String goodsCommentWrite(FundingGoodsComments fundingGoodsComments) {
@@ -135,6 +121,7 @@ public class LongController {
 			model.addAttribute("newsList", fundingNewsService.fundingNewsList(pageNum, fundingCode, model));
 		}else if(infoType.equals("goodsViewDebate")) {//토론
 			model.addAttribute("commentList", fgCommentsService.fundingCommentList(fundingCode, pageNum, model));
+			model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
 		}else if(infoType.equals("goodsViewInfo")) {//투자정보
 			model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
 		}else if(infoType.equals("goodsViewInvestor")) {//투자자

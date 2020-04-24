@@ -23,10 +23,7 @@
 			checkBoolean = $('input:checkbox[name="fundingCheck"]:checked').length == $('input:checkbox[name="fundingCheck"]').length;
 
 			if(checkBoolean == false){
-
-				$('#messageWrap').html('1');
-				$('#messageWrap').slideDown();
-				
+				alert('체크를 다 하셔야합니다');
 				return false;
 			}
 		});

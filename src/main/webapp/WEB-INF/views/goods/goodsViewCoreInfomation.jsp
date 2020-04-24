@@ -13,53 +13,24 @@
 	function noUser(){
 		alert('로그인 이후에 가능합니다.');
 	}
+	/* 코멘트 쓰기 뷰 나오기 */
+	function commentWriteView(){
+		$('.commentContentArea').slideToggle('1000','swing');		
+	};
 	/* 코멘트 답글 보기 */
 	function commentReplyView(fgCommentsNumber){
-		var content = $('.ReplyList'+fgCommentsNumber).html().trim();
-		if(content == ''){
-			$.ajax({
-				url : '${conPath}/goodsCommentReplyView.do',
-				datatype : 'html',
-				data : "fgCommentsNumber="+fgCommentsNumber,
-				success : function(data, status){
-					$('.ReplyList'+fgCommentsNumber).html(data);
-				}
-			});
-		}else{
-			$('.ReplyList'+fgCommentsNumber).html('');
-		}
+		$.ajax({
+			url : '${conPath}/goodsCommentReplyView.do',
+			datatype : 'html',
+			data : "fgCommentsNumber="+fgCommentsNumber,
+			success : function(data, status){
+				$('.ReplyList'+fgCommentsNumber).html(data);
+			}
+		});
+		$('.ReplyList'+fgCommentsNumber).slideToggle('1000','swing');	
 	}
-	/* 코멘트 답글 쓰기 뷰 나오기 */
-	function commentReplyWriteView(fgCommentsNumber){
-		var content = $('.ReplyWrite'+fgCommentsNumber).html().trim();
-		if(content == ''){
-			$.ajax({
-				url : '${conPath}/goodsCommentReplyWriteView.do',
-				datatype : 'html',
-				data : "fgCommentsNumber="+fgCommentsNumber,
-				success : function(data, status){
-					$('.ReplyWrite'+fgCommentsNumber).html(data);
-				}
-			});
-		}else{
-			$('.ReplyWrite'+fgCommentsNumber).html('');
-		}
-	}
-	/* 코멘트 쓰기 뷰 나오기 */
-	function commentWriteView(fundingCode){
-		var content = $('#debateArea').html().trim();
-		if(content == ''){
-			$.ajax({
-				url : '${conPath}/goodsCommentWriteView.do',
-				datatype : 'html',
-				success : function(data, status){
-					$('#debateArea').html(data);
-				}
-			});
-		}else{
-			$('#debateArea').html('');
-		}
-	}
+	
+	
 	/* 코멘트 쓰기 실행 */
 	function fgCommentsWrite(){
 		var fundingCode = ${param.fundingCode};
@@ -78,16 +49,14 @@
 	}
 	/* 코멘트 답글 쓰기 실행 */
 	function fgCommentsReplyWrite(fgCommentsNumber){
-		var fgCommentsReplyContent = $('.textarea'+fgCommentsNumber).val();
+		var fgCommentsReplyContent = $('.fgCommentsReplyContent'+fgCommentsNumber).val();
 		var userId = '${user.userId}';
 		$.ajax({
 			url : '${conPath}/goodsCommentReplyWrite.do',
 			datatype : 'html',
 			data : "userId="+userId+"&fgCommentsNumber="+fgCommentsNumber+"&fgCommentsReplyContent="+fgCommentsReplyContent,
 			success : function(data, status){
-				$('.ReplyList'+fgCommentsNumber).html('');
-				$('.ReplyWrite'+fgCommentsNumber).html('');
-				commentReplyView(fgCommentsNumber);
+				goodsInfoNavigation('goodsViewDebate');
 			}
 		});
 	}

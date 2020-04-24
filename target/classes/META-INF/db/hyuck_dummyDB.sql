@@ -52,9 +52,8 @@ INSERT INTO Users VALUES ('user7@naver.com','123','song.jpg','김병지','010-48
 INSERT INTO Users VALUES ('wogur698@naver.com','123','lim.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
 INSERT INTO Users VALUES ('kha0213@naver.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
+    null, null, 1100000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
 
-  
 --펀딩상품    
     -- 승인 대기중인 (투자 / 리워드)
 INSERT INTO FundingGoods VALUES 
