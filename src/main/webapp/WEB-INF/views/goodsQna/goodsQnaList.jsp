@@ -30,7 +30,7 @@
 					<td>${Question.userName}</td>
 					<td>${Question.fundingQuestionDate }</td>
 					<c:if test="${not empty admin}">
-					<td><a href="goodsQnaReplyForm.do" class="button">REPLY</a></td>
+					<td><a href="goodsQnaReplyForm.do?fundingQuestionNumber=${Question.fundingQuestionNumber }" class="button">REPLY</a></td>
 					</c:if>
 				</tr>
 				</c:forEach>

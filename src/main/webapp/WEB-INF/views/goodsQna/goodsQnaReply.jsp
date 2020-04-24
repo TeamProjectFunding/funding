@@ -17,33 +17,44 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="boardWrap">
-		<section class="boardViewWrap">
-		<h1>GOODS Q&A </h1>
+		<section class="boardWriteWrap">
+			<h1>GOODS Q&A</h1>
+			<form action="goodsQnaReplyWrite.do" method="post" enctype="">
+			
 				<table>
 					<tr>
-						<th>USERNAME</th>
-						<td>user name</td>
+						<th>ADMIN</th>
+						<td><input type="text" name="adminId" value="${admin.adminId }" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th>GOODS NAME</th>
-						<td>goods name</td>
+						<th>${goodsQuestion.fundingQuestionNumber }-QUETION</th>
+						<td><input type="number" name="fundingQuestionNumber" value="${goodsQuestion.fundingQuestionNumber }" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<th>CONTENT</th>
+						<th>QUESTION TITLE</th>
+						<td>[Q]${goodsQuestion.fundingQuestionTitle }</td>
+					</tr>
+					<tr>
+						<th>QUESTION CONTENT</th>
 						<td>
-							궁금하다 답변바람
+							<textarea >${goodsQuestion.fundingQuestionContent }</textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>REPLY CONTENT</th>
+						<td>
+							<textarea name="fundingQuestionReplyContent"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<th id="buttonWrap" colspan="2">
-							<input type="button" value="MODIFY" class="button" onClick="location.href='${conPath }/goodsQnaModifyForm.do'">
-							<input type="button" value="REPLY" class="button" onClick="location.href='${conPath }/adminGoodsQnaReplyyForm.do'">
-							<input type="button" value="LIST" class="button" onClick="location.href='${conPath }/goodsQnaList.do'">
+							<input type="submit" value="SUBMIT" class="button">
+							<input type="reset" value="RESET" class="button">
 							<input type="button" value="BACK" class="button" onClick="history.back()">
 						</th>
 					</tr>
-					
 				</table>
+			</form>
 		</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

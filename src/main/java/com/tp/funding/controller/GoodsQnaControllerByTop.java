@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tp.funding.dto.FundingQuestion;
+import com.tp.funding.dto.FundingQuestionReply;
+import com.tp.funding.service.FundingQuestionReplyService;
 import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.util.Paging;
 
@@ -13,6 +15,8 @@ import com.tp.funding.util.Paging;
 public class GoodsQnaControllerByTop {
 	@Autowired
 	FundingQuestionService fundingQuestionService;
+	@Autowired
+	FundingQuestionReplyService fundingQuestionReplyService; 
 	@RequestMapping(value="goodsQnaList")
 	public String goosQnaList(Model model, String pageNum, int fundingCode) {
 		Paging fundingQuestion = new Paging(fundingQuestionService.totGoodsQuesttionList(fundingCode), pageNum, 5, 5);
@@ -31,5 +35,16 @@ public class GoodsQnaControllerByTop {
 		int fundingCode =fundingQuestion.getFundingCode();
 		fundingQuestionService.fundingQuestionWrite(fundingQuestion);
 		return "redirect:goodsQnaList.do?fundingCode="+fundingCode;
+	}
+	@RequestMapping(value="goodsQnaReplyForm")
+	public String goodsQnaReplyForm(Model model, int fundingQuestionNumber) {
+		model.addAttribute("goodsQuestion", fundingQuestionService.fundingQuestionDetail(fundingQuestionNumber));
+		return "goodsQna/goodsQnaReply";
+	}
+	@RequestMapping(value="goodsQnaReplyWrite")
+	public String goodsQna(FundingQuestionReply fundingQuestionReply ) {
+		fundingQuestionService.fundingReplyUpdate(fundingQuestionReply.getFundingQuestionNumber());
+		fundingQuestionReplyService.fundingQuestionReplyWrite(fundingQuestionReply);
+		return "redirect:adminMain.do";
 	}
 }
