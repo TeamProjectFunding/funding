@@ -55,8 +55,8 @@
 					<th>EVENT</th>
 				</tr>
 				<tr>
-					<td><a href="${conPath}/userFundingList.do?userId=${userDetail.userId}">${userFundingTotalCnt}</a></td>
-					<td><a href="">${userDetail.userPickCount}</a></td>
+					<td><a href="${conPath}/myPageFunding.do">${userFundingTotalCnt}</a></td>
+					<td><a href="${conPath}/myPagePick.do?userId=${user.userId}">${userDetail.userPickCount}</a></td>
 					<td><a href="">0</a></td>
 					<td><a href="">0</a></td>
 				</tr>

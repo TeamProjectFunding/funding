@@ -263,6 +263,7 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	}
 
 	@Override
+
 	public List<FundingGoods> companyEndFundingList(String companyId, String pageNum, Model model) { //회사 마이페이지 그래프
 		int companyEndFundingCount = companyEndFundingCount(companyId);
 		Paging paging = new Paging(companyEndFundingCount, pageNum, 5, 1);
@@ -297,5 +298,10 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.companyEndFundingCount(companyId);
 	}
 
+
+	@Override
+	public List<FundingGoods> fundingAdminAllList() {
+		return fundingGoodsDao.fundingAdminAllList();
+	}
 
 }

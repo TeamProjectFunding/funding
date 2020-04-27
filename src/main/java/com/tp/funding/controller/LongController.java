@@ -19,6 +19,7 @@ import com.tp.funding.dto.FundingGoodsCommentsReply;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Reward;
+import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.FgCommentsReplyService;
 import com.tp.funding.service.FgCommentsService;
@@ -143,10 +144,11 @@ public class LongController {
 
 	// 유저 찜
 	@RequestMapping(value = "userPick")
-	public String userPick(int fundingCode, Model model, HttpSession session) {
-		String userId = ((Users) session.getAttribute("user")).getUserId();
+	public String userPick(int fundingCode, Model model, HttpSession session, UserPick userPick) {
+		String userId = ((Users) session.getAttribute("user")).getUserId();		
+		userPick.setUserId(userId);		
 		if (userPickService.userPickCheck(userId, fundingCode) == 1) { // 이미 찜 추가 했으면 찜 삭제
-			userPickService.userPickDelete(userId, fundingCode);
+			userPickService.userPickDelete(userPick);
 			model.addAttribute("userPickResult", false); // 찜 삭제
 		} else {// 찜 추가 안했으면 찜 추가로직
 			userPickService.userPickAdd(userId, fundingCode);

@@ -16,6 +16,8 @@ INSERT INTO COMPANY VALUES ('com6@google.com', '123', 'company.png', '까리한 
     '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');    
 INSERT INTO COMPANY VALUES ('kyl123hanmir@hanmir.com', '123', 'company2.png', '롱롱이 회사입니다.', SYSDATE, '까리회사', '02-1234-5849', 
     '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');    
+INSERT INTO COMPANY VALUES ('topwings7@gmail.com', '123', 'company2.png', '롱롱이 회사입니다.', SYSDATE, '까리회사', '02-1234-5849', 
+    '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');    
 
 -- 유저 등급 설정
 INSERT INTO UserGrade VALUES (1,'NORMAL',0,1000000);
@@ -53,7 +55,9 @@ INSERT INTO Users VALUES ('wogur698@naver.com','123','lim.jpg','임재혁','010-
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
 INSERT INTO Users VALUES ('kha0213@naver.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
     null, null, 1100000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
-
+INSERT INTO Users VALUES ('topwings7@gmail.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
+    null, null, 50000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
+    
 --펀딩상품    
     -- 승인 됨 (투자 / 리워드)
 INSERT INTO FundingGoods VALUES 
@@ -329,14 +333,12 @@ INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 11); 
 
 
-
-
-
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 7);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 8);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 9);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 11);
+
 
 
 

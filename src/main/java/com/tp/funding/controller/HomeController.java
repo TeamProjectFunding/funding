@@ -396,10 +396,10 @@ public class HomeController {
 //		}
 		
 		//마이페이지 회원정보수정 폼 
-		@RequestMapping(value="myPageModifyForm")
-		public String myPageModifyForm() {
-			return "myPage/myPageModify";
-		}
+//		@RequestMapping(value="myPageModifyForm")
+//		public String myPageModifyForm() {
+//			return "myPage/myPageModify";
+//		}
 		
 		//마이페이지 회원정보수정 
 		@RequestMapping(value="myPageModify")
@@ -411,16 +411,17 @@ public class HomeController {
 //		public String myPageFunding() {
 //			return "myPage/myPageFunding";
 //		}
+
 		//마이페이지 작성게시글 리스트
 		@RequestMapping(value="myPagePost")
 		public String myPagePost() {
 			return "myPage/myPagePostDashBoard";
 		}
 		//마이페이지 PICK 리스트
-		@RequestMapping(value="myPagePick")
-		public String myPagePick() {
-			return "myPage/myPagePickList";
-		}
+//		@RequestMapping(value="myPagePick")
+//		public String myPagePick() {
+//			return "myPage/myPagePickList";
+//		}
 		
 //		//마이페이지 펀딩진행 내역
 //		@RequestMapping(value="myPageGoods")
