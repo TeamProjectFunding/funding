@@ -15,57 +15,49 @@
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageFundingWrap" >
 		<h1>MY FUNDING</h1>
+		<p>
+			<a href="${conPath }/myPageFunding.do?userId=${user.userId }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+			<a href="${conPath }/myPageFunding.do?userId=${user.userId }&pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+		</p>
 		<div id="fundingGraphWrap">
 			<div class="graphAxis">
 				<span class="yAxisTitle">금액 [단위 : 만원]</span>
 				<div class="yAxisWrap">
-					<span style="">25</span>
-					<span>20</span>
-					<span>15</span>
-					<span>10</span>
-					<span>5</span>
+					<span style=""><fmt:formatNumber value="${maxFundingAmount/10000}" pattern="" /></span>
+					<span style=""><fmt:formatNumber value="${maxFundingAmount*0.8/10000}" pattern="" /></span>
+					<span style=""><fmt:formatNumber value="${maxFundingAmount*0.6/10000}" pattern="" /></span>
+					<span style=""><fmt:formatNumber value="${maxFundingAmount*0.4/10000}" pattern="" /></span>
+					<span style=""><fmt:formatNumber value="${maxFundingAmount*0.2/10000}" pattern="" /></span>
 				</div>
-				<span class="xAxisTitle">회차</span>
+				<span class="xAxisTitle">결제일</span>
 				<div class="xAxisWrap">
-					<span style="">1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
+					<c:forEach var="user" items="${userFundingList }">
+					<span style=""><fmt:formatDate value="${user.fundingDate }" pattern="yyyy-MM-dd"/></span>
+					</c:forEach>
 				</div>
 				<div class="grabh">
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:80%;"></div>
-						<div class="fundingBar" style="height:20%;">
+					<c:forEach var="fundingDetail" items="${userFundingList }">
+					<c:set var="highRate" value="${fundingDetail.fundingAmount*100/maxFundingAmount }"/>
+					<div class="fundingBarWrap barAnimate" style="" onclick="fundingDetailUserView('${fundingDetail.fundingCode}','${fundingDetail.fundingGoodsDetailNumber}');">
+						<div class="whiteBar" style="height:${100-highRate}%;"></div>
+						<div class="fundingBar" style="height:${highRate}%;">
 							<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
 						</div>
 					</div>
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:60%; "></div>
-						<div class="fundingBar" style="height:40%;">
-							<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-						</div>
-					</div>
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:40%;"></div>
-						<div class="fundingBar" style="height:60%;">
-							<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-						</div>
-					</div>
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:20%;"></div>
-						<div class="fundingBar" style="height:80%;">
-							<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-						</div>
-					</div>
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:0%;"></div>
-						<div class="fundingBar" style="height:100%;">
-							<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
-				
+				<script>
+					function fundingDetailUserView(fundingCode,fundingGoodsDetailNumber){
+						 $.ajax({
+		                     url : '${conPath}/fundingDetailUserView.do',
+		                     datatype : 'html',
+		                     data : "fundingCode="+fundingCode+"&fundingGoodsDetailNumber="+fundingGoodsDetailNumber,
+		                     success : function(data, status){
+		                        $('#myFundingDetail').html(data);
+		                     }
+		                  });
+					}
+				</script>
 				<script>
 					$(function(){
 						$('.fundingBarWrap').removeClass('barAnimate');
@@ -76,10 +68,7 @@
 						$('.myFundingViewClose').click(function(){
 							$('#myFundingDetail').addClass();
 						});
-						$('.closeButton').click(function(){
-							$('#myFundingDetail').removeClass();
-							alert('11');
-						});
+						
 					});
 				</script>
 			</div>

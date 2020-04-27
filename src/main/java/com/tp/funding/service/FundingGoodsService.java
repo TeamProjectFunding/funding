@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.tp.funding.dao.FundingGoodsDao;
 import com.tp.funding.dto.FundingGoods;
 
 public interface FundingGoodsService {
@@ -43,4 +42,6 @@ public interface FundingGoodsService {
 	public int maxRecruitmentAmount(String companyId,String pageNum,Model model); // 회사 마이페이지 그래프 최대 모집금액
 	public int companyEndFundingCount(String companyId); // 회사 마이페이지 펀딩 총 갯수(페이징)
 	public List<FundingGoods>fundingAdminAllList();
+	
+
 }

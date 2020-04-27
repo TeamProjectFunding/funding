@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.FundingGoodsDao;
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.Users;
 import com.tp.funding.util.FileCopy;
 import com.tp.funding.util.Paging;
 @Service
@@ -303,5 +304,7 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	public List<FundingGoods> fundingAdminAllList() {
 		return fundingGoodsDao.fundingAdminAllList();
 	}
+
+
 
 }

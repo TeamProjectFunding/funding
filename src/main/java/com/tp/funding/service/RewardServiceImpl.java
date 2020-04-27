@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.RewardDao;
+import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.util.FileCopy;
 
@@ -87,6 +88,14 @@ public class RewardServiceImpl implements RewardService {
 	@Override
 	public List<Reward> fundingRewardList(int fundingCode) {
 		return rewardDao.fundingRewardList(fundingCode);
+	}
+
+	@Override
+	public Reward userSelectReward(int fundingCode, int fundingGoodsDetailNumber) {
+		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+		fundingGoodsDetail.setFundingCode(fundingCode);
+		fundingGoodsDetail.setFundingGoodsDetailNumber(fundingGoodsDetailNumber);
+		return rewardDao.userSelectReward(fundingGoodsDetail);
 	}
 
 	

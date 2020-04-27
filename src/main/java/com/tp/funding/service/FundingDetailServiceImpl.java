@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.tp.funding.dao.FundingDetailDao;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Users;
 import com.tp.funding.util.Paging;
 @Service
 public class FundingDetailServiceImpl implements FundingDetailService {
@@ -20,10 +22,6 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 		return fundingDetailDao.fundingGoodsDetailWrite(fundingGoodsDetail);
 	}
 
-	@Override
-	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail) {
-		return fundingDetailDao.userFundingList(fundingGoodsDetail);
-	}
 
 	@Override
 	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode) {
@@ -66,6 +64,42 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 	@Override
 	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail) {
 		return fundingDetailDao.userFundingAndGoodsInfoList(fundingGoodsDetail);
+	}
+
+	@Override
+	public List<FundingGoodsDetail> userFundingList(String pageNum, String userId, Model model) {
+		int userFundingListTotalCount = userFundingListTotalCount(userId);
+		Paging paging = new Paging(userFundingListTotalCount, pageNum, 5, 1);
+		if(model !=null) {
+			model.addAttribute("paging", paging);
+		}
+		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+		fundingGoodsDetail.setStartRow(paging.getStartRow());
+		fundingGoodsDetail.setEndRow(paging.getEndRow());
+		fundingGoodsDetail.setUserId(userId);
+		return fundingDetailDao.userFundingList(fundingGoodsDetail);
+	}
+
+	@Override
+	public int userFundingListTotalCount(String userId) {
+		return fundingDetailDao.userFundingListTotalCount(userId);
+	}
+
+	@Override
+	public int userFundingListInMaxFundingAmount(String userId,String pageNum) {
+		int userFundingListTotalCount = userFundingListTotalCount(userId);
+		Paging paging = new Paging(userFundingListTotalCount, pageNum, 5, 1);
+		FundingGoodsDetail fundingGoodsDetail = new FundingGoodsDetail();
+		fundingGoodsDetail.setStartRow(paging.getStartRow());
+		fundingGoodsDetail.setEndRow(paging.getEndRow());
+		fundingGoodsDetail.setUserId(userId);
+		return fundingDetailDao.userFundingListInMaxFundingAmount(fundingGoodsDetail);
+	}
+
+
+	@Override
+	public FundingGoodsDetail fundingGoodsDetailView(int fundingGoodsDetailNumber) {
+		return fundingDetailDao.fundingGoodsDetailView(fundingGoodsDetailNumber);
 	}
 
 }

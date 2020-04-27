@@ -35,7 +35,7 @@
 					<td colspan="2"><a href="myPageModifyForm.do?userId=${user.userId}">프로필 수정</a></td>			
 				</tr>
 				<tr>
-					<td><a href="myPageFunding.do">FUNDING</a></td>	
+					<td><a href="myPageFunding.do?userId=${user.userId }">FUNDING</a></td>	
 					<td><a href="myPagePick.do?userId=${user.userId}">PICK</a></td>
 					<td><a href="myPagePost.do">POST</a></td>
 					<td><a href="myPageEvent.do">EVENT</a></td>			

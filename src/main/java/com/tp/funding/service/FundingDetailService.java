@@ -2,13 +2,14 @@ package com.tp.funding.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.tp.funding.dto.FundingGoodsDetail;
 
 public interface FundingDetailService {
 
 public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	
-	public List<FundingGoodsDetail> userFundingList(FundingGoodsDetail fundingGoodsDetail);
 	
 	public List<FundingGoodsDetail> doFundingUserList(String pageNum, int fundingCode);
 	
@@ -23,5 +24,8 @@ public int fundingGoodsDetailWrite(FundingGoodsDetail fundingGoodsDetail);
 	public int myFundingTotalCount(String userId);
 	
 	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail);
-	
+	public List<FundingGoodsDetail>userFundingList(String pageNum,String userId,Model model); //userId,startRow,endRow 필요
+	public int userFundingListTotalCount(String userId);
+	public int userFundingListInMaxFundingAmount(String userId,String pageNum); //마이페이지 그래프 y축
+	public FundingGoodsDetail fundingGoodsDetailView(int fundingGoodsDetailNumber);
 }

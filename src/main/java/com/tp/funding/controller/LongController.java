@@ -310,12 +310,13 @@ public class LongController {
 	//마이페이지 펀딩내역 그래프
 	@RequestMapping(value="myPageFunding")
 	public String myPageFunding(String userId,Model model,String pageNum) {//유저그래프
+		model.addAttribute("userFundingList",fundingDetailService.userFundingList(pageNum, userId, model));
+		model.addAttribute("maxFundingAmount", fundingDetailService.userFundingListInMaxFundingAmount(userId,pageNum));
 		return "myPage/myPageFunding";
 	}
-	//마이페이지 그래프 속 Detail
+	//회사마이페이지 그래프 속 Detail
 	@RequestMapping(value="fundingDetailView")
 	public String fundingDetailView(int fundingCode,Model model) {
-		System.out.println("fundingDetailView들어옴");
 		FundingGoods good = fundingGoodsService.fundingDetail(fundingCode);
 		model.addAttribute("good", good);
 		if(good.getFundingCategory() == 0) { //투자
@@ -325,6 +326,34 @@ public class LongController {
 		}
 		return "message/myPageGoodsDetaill";
 	}
+	//유저 마이페이지 그래프 속 Detail
+	@RequestMapping(value="fundingDetailUserView")
+	public String fundingDetailUserView(int fundingCode,int fundingGoodsDetailNumber,Model model) {
+		FundingGoods good = fundingGoodsService.fundingDetail(fundingCode);
+		model.addAttribute("good", good);
+		model.addAttribute("goodDetail", fundingDetailService.fundingGoodsDetailView(fundingGoodsDetailNumber));
+		if(good.getFundingCategory() == 0) { //투자
+			model.addAttribute("reward", rewardService.fundingRewardList(fundingCode).get(0));
+		}else {//리워드
+			model.addAttribute("reward", rewardService.userSelectReward(fundingCode, fundingGoodsDetailNumber));
+		}
+		return "message/fundingDetailUserView";
+	}
+//	@RequestMapping(value="myPageMain")
+//	public String myPageMain(String userId, String companyId, Model model) {
+//		
+//		if(userId != null) {
+//			
+//			model.addAttribute("userDetail", usersService.userDetail(userId));
+//			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));			
+//			
+//		}else if(companyId != null) {
+//			
+//			model.addAttribute("companyDetail", companyService.companyDetail(companyId));				
+//		}
+//		
+//		return "myPage/myPageMain";
+//	}
 	
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")

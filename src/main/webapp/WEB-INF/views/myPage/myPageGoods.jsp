@@ -69,7 +69,6 @@
 						$('.fundingBarWrap').removeClass('barAnimate');
 						
 						$('.myFundingViewButton').click(function(){
-							
 							$('#myGoodsDetail').addClass('openMypageGoodsView');
 						});
 						

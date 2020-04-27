@@ -148,5 +148,8 @@ Default :
    
   
   
-
+/////////////////
+20. DepositAndWithdrawal
+Boolean :
+	DNWType(입금,출금) 0 입금 1 출금
 

@@ -1,4 +1,6 @@
 -- DROP TABLE
+DROP TABLE DepositAndWithdrawal;
+
 DROP TABLE QnA;
 
 DROP TABLE Notice;
@@ -38,6 +40,7 @@ DROP TABLE UserGrade;
 DROP TABLE Company;
 
 -- SEQUENCE DROP
+DROP SEQUENCE DepositAndWithdrawalNumber;
 
 DROP SEQUENCE QnANumber;
 
@@ -71,6 +74,10 @@ DROP SEQUENCE FundingCode;
 
 
 -- CREATE SEQUENCE
+CREATE SEQUENCE DepositAndWithdrawalNumber
+    MAXVALUE 9999999
+    NOCYCLE
+    NOCACHE;
 CREATE SEQUENCE NoticeNumber
     MAXVALUE 9999999
     NOCYCLE
@@ -145,6 +152,17 @@ CREATE SEQUENCE QnANumber
     MAXVALUE 9999999
     NOCYCLE
     NOCACHE;
+
+CREATE TABLE DepositAndWithdrawal (
+    DepositAndWithdrawalNumber NUMBER(12) PRIMARY KEY,
+    DNWType NUMBER(1),
+    DNWAmount NUMBER(12),
+    DNWBalance NUMBER(12),
+    DNWContent VARCHAR2(100),
+    DNWDate Date,
+    CompanyId VARCHAR2(100),
+    UserId VARCHAR2(100)
+);
 
 CREATE TABLE Company (
 	CompanyId             VARCHAR2(100)  PRIMARY KEY, -- 회사 id==email
