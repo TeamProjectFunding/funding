@@ -12,7 +12,7 @@ public interface CompanyService {
 	public Company companyDetail(String companyId);
 	public int companyJoin(MultipartHttpServletRequest mRequest, Company company);
 	public int companyLoginCheck(Company company);
-	public int companyInfoModify(Company company);
+	public int companyInfoModify(MultipartHttpServletRequest mRequest, Company company);
 	public int companyOutSite(String companyId);
 	public int companyAccountModify(Company company);
 	public int companyBalanceModify(Company company);

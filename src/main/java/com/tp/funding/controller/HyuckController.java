@@ -39,22 +39,21 @@ public class HyuckController {
 
 	@Autowired
 	private NotificationService notificationService;
-	
+
 	@Autowired
 	private FundingGoodsService fundingGoodsService;
-	
+
 	@Autowired
-	private QnAService qnaService;	
-	
+	private QnAService qnaService;
+
 	@Autowired
 	private RewardService rewardService;
-	
+
 	@Autowired
 	private FundingDetailService fundingDetailService;
-	
+
 	@Autowired
 	private UserPickService userPickService;
-	
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
@@ -111,12 +110,13 @@ public class HyuckController {
 
 			session.setAttribute("user", usersService.userDetail(id));
 			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
-			model.addAttribute("result", "성공");			
+			model.addAttribute("result", "성공");
 
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
 			session.setAttribute("company", companyService.companyDetail(id));
-			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(id));
+			session.setAttribute("notificationUnReadCompanyList",
+					notificationService.notificationUnReadCompanyList(id));
 			model.addAttribute("result", "성공");
 		} else {
 
@@ -168,15 +168,15 @@ public class HyuckController {
 
 	@RequestMapping(value = "findPw")
 	public String findPw(Users user, Company company, Model model) {
-		
+
 		if (usersService.userDetail(user.getUserId()) != null
-				|| companyService.companyDetail(company.getCompanyId()) != null) {			
+				|| companyService.companyDetail(company.getCompanyId()) != null) {
 
 			if (usersService.userDetail(user.getUserId()) != null) {
 				usersService.tempPasswordChange(user);
 				model.addAttribute("findPwMsg", "해당 메일로 임시 비밀번호를 발송했습니다. 메일 확인 요망");
 
-			}else if(companyService.companyDetail(company.getCompanyId()) != null) {
+			} else if (companyService.companyDetail(company.getCompanyId()) != null) {
 				companyService.tempPasswordChange(company);
 				model.addAttribute("findPwMsg", "해당 메일로 임시 비밀번호를 발송했습니다. 메일 확인 요망");
 			}
@@ -187,18 +187,19 @@ public class HyuckController {
 		}
 		return "users/login";
 	}
-	@RequestMapping(value="adminApplyView")
+
+	@RequestMapping(value = "adminApplyView")
 	public String adminApplyView(int fundingCode, Model model) {
-		
+
 		model.addAttribute("fundingDetail", fundingGoodsService.fundingDetail(fundingCode));
-		model.addAttribute("fundingDetailReward", rewardService.fundingRewardList(fundingCode));		
-		
+		model.addAttribute("fundingDetailReward", rewardService.fundingRewardList(fundingCode));
+
 		return "admin/apply/view";
 	}
-	
-	@RequestMapping(value="adminApplyList")
-	public String adminApplyViewList(FundingGoods fundingGoods, String pageNum, Model model) {			
-		
+
+	@RequestMapping(value = "adminApplyList")
+	public String adminApplyViewList(FundingGoods fundingGoods, String pageNum, Model model) {
+
 		Paging paging = new Paging(fundingGoodsService.totCntReadyList(), pageNum, 4, 5);
 		fundingGoods.setStartRow(paging.getStartRow());
 		fundingGoods.setEndRow(paging.getEndRow());
@@ -206,189 +207,210 @@ public class HyuckController {
 		model.addAttribute("paging", paging);
 		return "admin/apply/list";
 	}
-	
+
 	@RequestMapping("adminGoodsList")
 	public String adminGoodsList(FundingGoods fundingGoods, String pageNum, Model model) {
 		Paging paging = new Paging(fundingGoodsService.totCntOpenList(), pageNum, 4, 5);
 		fundingGoods.setStartRow(paging.getStartRow());
-		fundingGoods.setEndRow(paging.getEndRow());		
+		fundingGoods.setEndRow(paging.getEndRow());
 		model.addAttribute("adminGoodsList", fundingGoodsService.fundingOpenList(fundingGoods));
 		model.addAttribute("paging", paging);
-		
+
 		return "admin/goods/list";
 	}
-	
+
 	@RequestMapping("qnaList")
-	public String qnaList(String pageNum, QnA qnA, Model model,String searchWord) {
+	public String qnaList(String pageNum, QnA qnA, Model model, String searchWord) {
 		qnA.setWriter(searchWord); // 검색할 writer
 		Paging paging = new Paging(qnaService.totCntSearchQnA(qnA), pageNum, 6, 5);
 		qnA.setStartRow(paging.getStartRow());
 		qnA.setEndRow(paging.getEndRow());
-		model.addAttribute("qnaList", qnaService.qnAList(qnA));	
+		model.addAttribute("qnaList", qnaService.qnAList(qnA));
 		model.addAttribute("paging", paging);
-		
+
 		return "qna/qnaList";
 	}
-	
-	@RequestMapping(value ="qnaWriteForm")
+
+	@RequestMapping(value = "qnaWriteForm")
 	public String qnaWriteForm() {
 		return "qna/qnaWrite";
 	}
-	
-	@RequestMapping(value ="qnaWrite")
+
+	@RequestMapping(value = "qnaWrite")
 	public String qnaWrite(QnA qnA, Model model) {
-		
+
 		int result = qnaService.qnAWrite(qnA);
-		if(result == 1) {
+		if (result == 1) {
 			model.addAttribute("writeResult", "문의 작성 완료!");
-		}else {
+		} else {
 			model.addAttribute("writeResult", "문의 작성 실패ㅠ");
 		}
-		
+
 		return "forward:qnaList.do";
 	}
-	
-	@RequestMapping(value ="qnaView")
+
+	@RequestMapping(value = "qnaView")
 	public String qnaView(QnA qnA, Model model) {
-		
+
 		qnaService.qnAHitUp(qnA.getQnANumber());
 		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
-		
+
 		return "qna/qnaView";
 	}
-	
-	@RequestMapping(value ="qnaModifyForm")
+
+	@RequestMapping(value = "qnaModifyForm")
 	public String qnaModifyForm(QnA qnA, Model model) {
-		
+
 		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
-		
+
 		return "qna/qnaModify";
 	}
-	
-	@RequestMapping(value ="qnaModify")
+
+	@RequestMapping(value = "qnaModify")
 	public String qnaModify(QnA qnA, Model model) {
-		
+
 		int Result = qnaService.qnAModify(qnA);
-		
-		if(Result == 1) {
+
+		if (Result == 1) {
 			model.addAttribute("qnAModifyResult", "수정 성공");
-		}else {
+		} else {
 			model.addAttribute("qnAModifyResult", "수정 실패");
-		}		
-		
+		}
+
 		return "forward:qnaList.do";
 	}
-	
-	@RequestMapping(value ="adminLogin")
+
+	@RequestMapping(value = "adminLogin")
 	public String adminLogin() {
 		return "admin/adminLogin";
 	}
-	
-	@RequestMapping(value="qnaReplyForm")
+
+	@RequestMapping(value = "qnaReplyForm")
 	public String adminQnaReplyForm(QnA qnA, Model model) {
-		
-		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));		
-		
+
+		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));
+
 		return "qna/qnaReply";
 	}
-	
-	@RequestMapping(value="qnaReplyWrite")
+
+	@RequestMapping(value = "qnaReplyWrite")
 	public String qnaReply(QnA qnA, Model model) {
-		
+
 		int result = qnaService.qnAReplyWrite(qnA);
-		if(result == 1) {
+		if (result == 1) {
 			model.addAttribute("qnaReplyresult", "답글 작성 완료");
 			qnaService.qnAReplyExistUp(qnA.getQnANumber());
-			
-		}else {
+
+		} else {
 			model.addAttribute("qnaReplyresult", "답글 작성 실패");
-		}		
-		
+		}
+
 		return "forward:qnaList.do";
 	}
-	
-	@RequestMapping(value="adminQnaView")
+
+	@RequestMapping(value = "adminQnaView")
 	public String adminQndView(QnA qnA, Model model) {
-		
+
 		qnaService.qnAHitUp(qnA.getQnANumber());
 		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));
-		
+
 		return "admin/qna/view";
-		
+
 	}
-	
-	@RequestMapping(value="adminQnaReplyForm")
+
+	@RequestMapping(value = "adminQnaReplyForm")
 	public String adminQndReplyForm(QnA qnA, Model model) {
-		
+
 		model.addAttribute("qnADetail", qnaService.qnADetail(qnA));
-		
+
 		return "admin/qna/reply";
 	}
-	
-	@RequestMapping(value="adminQnaReply")
+
+	@RequestMapping(value = "adminQnaReply")
 	public String adminQndReply(QnA qnA, Model model) {
-		
+
 		int result = qnaService.qnAReplyWrite(qnA);
-		if(result == 1) {
+		if (result == 1) {
 			model.addAttribute("qnaReplyresult", "답글 작성 완료");
 			qnaService.qnAReplyExistUp(qnA.getQnANumber());
-			
-		}else {
+
+		} else {
 			model.addAttribute("qnaReplyresult", "답글 작성 실패");
-		}		
-		
+		}
+
 		return "forward:adminMain.do";
-	}	
-	
+	}
+
 	@RequestMapping(value = "adminQnaList")
 	public String adminQnaList(QnA qnA, Model model, String pageNum) {
-		
+
 		Paging paging = new Paging(qnaService.totCntSearchQnA(qnA), pageNum, 6, 5);
 		qnA.setStartRow(paging.getStartRow());
 		qnA.setEndRow(paging.getEndRow());
-		model.addAttribute("adminQnaList", qnaService.qnAList(qnA));	
+		model.addAttribute("adminQnaList", qnaService.qnAList(qnA));
 		model.addAttribute("paging", paging);
-		
+
 		return "admin/qna/list";
 	}
-	
-	
-		@RequestMapping(value = "adminApply")
-		public String adminApply(int fundingCode, Model model, Notification notification) {			
-			fundingGoodsService.fundingAdminPermitYes(fundingCode);
-			notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
-			notificationService.notificationWrite(notification);
-			model.addAttribute("adminApplyMsg", "apply 완료");
 
-			return "forward:adminMain.do";
-		}
-		
-		@RequestMapping(value="adminReject")
-		public String adminReject(int fundingCode, Model model, Notification notification) {
-			fundingGoodsService.fundingAdminPermitNo(fundingCode);
-			notification.setNotificationContent("귀사의 투자 신청이 거절 되었습니다.");
-			System.out.println(notification);
-			notificationService.notificationWrite(notification);
-			model.addAttribute("adminRejectMsg", "reject 완료");
-			return "forward:adminMain.do";
-		}
-		
-		@RequestMapping(value="myPageMain")
-		public String myPageMain(String userId, String companyId, Model model) {
-			
-			if(userId != null) {
+	@RequestMapping(value = "adminApply")
+	public String adminApply(int fundingCode, Model model, Notification notification) {
+		fundingGoodsService.fundingAdminPermitYes(fundingCode);
+		FundingGoods fundinggoods = fundingGoodsService.fundingDetail(fundingCode);
+
+		String tempfundingAccountNumber = "110-";
+
+		for (int i = 0; i < 3; i++) {
+
+			if (i == 2) {
+
+				tempfundingAccountNumber += ((int) (Math.random() * 10)) + "-";
+
+			} else {
 				
-				model.addAttribute("userDetail", usersService.userDetail(userId));
-				model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));			
+				tempfundingAccountNumber += (int) (Math.random() * 10);
 				
-			}else if(companyId != null) {
-				
-				model.addAttribute("companyDetail", companyService.companyDetail(companyId));				
 			}
-			
-			return "myPage/myPageMain";
-		}
-		
+
+		}	
+
+		fundinggoods.setFundingCode(fundingCode);
+		fundinggoods.setFundingAccountNumber(tempfundingAccountNumber);
+		fundingGoodsService.fundingAccountAdd(fundinggoods);		
+
+		notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
+		notificationService.notificationWrite(notification);
+		model.addAttribute("adminApplyMsg", "apply 완료");
+
+		return "forward:adminMain.do";
+	}
+
+	@RequestMapping(value = "adminReject")
+	public String adminReject(int fundingCode, Model model, Notification notification) {
+		fundingGoodsService.fundingAdminPermitNo(fundingCode);
+		notification.setNotificationContent("귀사의 투자 신청이 거절 되었습니다.");
+		System.out.println(notification);
+		notificationService.notificationWrite(notification);
+		model.addAttribute("adminRejectMsg", "reject 완료");
+		return "forward:adminMain.do";
+	}
+
+//	@RequestMapping(value = "myPageMain")
+//	public String myPageMain(String userId, String companyId, Model model) {
+//
+//		if (userId != null) {
+//
+//			model.addAttribute("userDetail", usersService.userDetail(userId));
+//			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));
+//
+//		} else if (companyId != null) {
+//
+//			model.addAttribute("companyDetail", companyService.companyDetail(companyId));
+//		}
+//
+//		return "myPage/myPageMain";
+//	}
+
 //		@RequestMapping(value="userFundingList")
 //		public String userFundingList(FundingGoodsDetail fundingGoodsDetail, String pageNum, Model model) {
 //						
@@ -401,81 +423,84 @@ public class HyuckController {
 //			
 //			return "myPage/myPageMyFundingList";
 //		}
-		
-		@RequestMapping(value="myPagePick")
-		public String myPagePick(UserPick userPick, Model model) {
-			
-			model.addAttribute("myPagePickList", userPickService.userPickList(userPick));
-			
-			return "myPage/myPagePickList";
+
+	@RequestMapping(value = "myPagePick")
+	public String myPagePick(UserPick userPick, Model model) {
+
+		model.addAttribute("myPagePickList", userPickService.userPickList(userPick));
+
+		return "myPage/myPagePickList";
+	}
+
+	@RequestMapping(value = "userPickDelete")
+	public String userPickDelete(UserPick userPick, Model model) {
+
+		model.addAttribute("userPickDeleteResult", userPickService.userPickDelete(userPick));
+
+		return "forward:myPagePick.do";
+
+	}
+
+	@RequestMapping(value = "myPageModifyForm")
+	public String myPageModifyForm(String userId, String companyId, Model model) {
+
+		if (userId != null) {
+
+			model.addAttribute("userDetail", usersService.userDetail(userId));
+
+		} else if (companyId != null) {
+
+			model.addAttribute("companyDetail", companyService.companyDetail(companyId));
+
 		}
-		
-		@RequestMapping(value="userPickDelete")
-		public String userPickDelete(UserPick userPick, Model model) {
-			
-			model.addAttribute("userPickDeleteResult", userPickService.userPickDelete(userPick));
-			
-			
-			return "forward:myPagePick.do";
-			
-		}
-		
-		@RequestMapping(value="myPageModifyForm")
-		public String myPageModifyForm(String userId, String companyId, Model model) {
-			
-			if(userId != null) {
-				
-				model.addAttribute("userDetail", usersService.userDetail(userId));
-				
-			}else if(companyId != null) {
-				
-				model.addAttribute("companyDetail", companyService.companyDetail(companyId));
-				
+
+		return "myPage/myPageModify";
+	}
+
+	@RequestMapping(value = "myPageModify")
+	public String myPageModify(HttpSession session, Users user, Company company, MultipartHttpServletRequest mRequest,
+			Model model) {
+
+		if (user.getUserId() != null && company.getCompanyId() == null) {
+
+			int result = usersService.userInfoModify(mRequest, user);
+
+			if (result == 1) {
+
+				model.addAttribute("userModifyResult", "고객(일반)정보 수정 성공");
+				session.setAttribute("user", usersService.userDetail(user.getUserId()));
+				session.setAttribute("notificationUnReadUserList",
+						notificationService.notificationUnReadUserList(user.getUserId()));
+
+				System.out.println(user);
+
+			} else {
+
+				model.addAttribute("userModifyResult", "고객(일반)정보 수정 실패");
+
 			}
-			
-			return "myPage/myPageModify";
+
 		}
-//		
-//		@RequestMapping(value="myPageModify")
-//		public String myPageModify(HttpSession session, Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {			
-//			
-//			if (user.getUserId() != null && company.getCompanyId() == null) {
-//
-//				int result = usersService.userInfoModify(mRequest, user);
-//
-//				if (result == 1) {
-//					
-//					model.addAttribute("userModifyResult", "고객(일반)정보 수정 성공");
-//					session.setAttribute("user", usersService.userDetail(user.getUserId()));		
-//					
-//					System.out.println(user);
-//					
-//				} else {
-//					
-//					model.addAttribute("userJoinResult", "고객(일반)정보 수정 실패");
-//					
-//				}
-//
-//			} 
-			
-//			else if (user.getUserId() == null && company.getCompanyId() != null) {
-//				int result = companyService.companyJoin(mRequest, company);
-//				if (result == 1) {
-//					model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
-//					model.addAttribute("company", companyService.companyDetail(company.getCompanyId()));
-//				} else {
-//					model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
-//				}
-//
-//			}
-			
-			
-			
-//			return "myPage/myPageMain";
-//		}
-		
-		
-		
-		
+
+		else if (user.getUserId() == null && company.getCompanyId() != null) {
+
+			int result = companyService.companyInfoModify(mRequest, company);
+
+			if (result == 1) {
+
+				model.addAttribute("companyModifyResult", "고객(회사)정보 수정 완료");
+				session.setAttribute("company", companyService.companyDetail(company.getCompanyId()));
+				session.setAttribute("notificationUnReadCompanyList",
+						notificationService.notificationUnReadCompanyList(company.getCompanyId()));
+
+			} else {
+
+				model.addAttribute("companyModifyResult", "유저(회사)정보 수정 실패");
+			}
+
+		}
+
+		return "myPage/myPageMain";
+	}
 
 }

@@ -401,11 +401,11 @@ public class HomeController {
 //			return "myPage/myPageModify";
 //		}
 		
-		//마이페이지 회원정보수정 
-		@RequestMapping(value="myPageModify")
-		public String myPageModify() {
-			return "myPage/myPageMain";
-		}
+//		//마이페이지 회원정보수정 
+//		@RequestMapping(value="myPageModify")
+//		public String myPageModify() {
+//			return "myPage/myPageMain";
+//		}
 //		//마이페이지 펀딩내역 그래프
 //		@RequestMapping(value="myPageFunding")
 //		public String myPageFunding() {

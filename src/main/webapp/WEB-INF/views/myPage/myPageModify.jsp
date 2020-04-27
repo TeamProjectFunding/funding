@@ -66,11 +66,7 @@
 				<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 				<script src="${conPath }/js/address.js"></script>
 				
-				<c:if test="${not empty userDetail}">	
-				
-				<input type="hidden" name="dbuserProfileImage" value="${userDetail.userProfileImage}">
-				<input type="hidden" name="dbuserAddressBasic" value="${userDetail.userAddressBasic}">
-				<input type="hidden" name="dbuserAddressDetail" value="${userDetail.userAddressDetail}">					
+				<c:if test="${not empty userDetail}">										
 							
 					<table class="user">
 						<tr>
@@ -112,7 +108,7 @@
 						</tr>
 						<tr>
 						
-							<td><input type="password" name="userPasswordCheck" placeholder="다시한번 새 비밀번호를 입력하세요" required="required" class="pwchk"></td>
+							<td><input type="password" name="userPasswordCheck" placeholder="다시한번 새 비밀번호를 입력하세요." required="required" class="pwchk"></td>
 						</tr>
 						<tr>
 							<td>
@@ -132,7 +128,7 @@
 							<th><h2>추가정보</h2></th>
 						</tr>
 						<tr>
-							<td><input type="file" name="userProfileImage"></td>
+							<td><input type="file" name="file"></td>
 						</tr>
 						<!-- <tr>
 							<td>
@@ -153,7 +149,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="userAdderssDetail" placeholder="상세주소를 입력하세요" required="required"></td>
+							<td><input type="text" name="userAddressDetail" placeholder="상세주소를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
 							<td class="checkBoxWrap">
@@ -163,7 +159,7 @@
 						</tr>
 						<tr>
 							<th id="buttonWrap">
-								<input type="submit" value="JOIN" class="button">
+								<input type="submit" value="MODIFY" class="button">
 								<input type="reset" value="RESET" class="button">
 								<input type="button" value="BACK" class="button">
 							</th>
@@ -177,58 +173,54 @@
 							<th><h2>기업 기본 정보</h2></th>
 						</tr>
 						<tr>
-							<td><input type="email" name="companyId" value="companyId" required="required"></td>
+							<td><input type="email" name="companyId" value="${companyDetail.companyId}" readonly="readonly"></td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td>
 								<p class="idConfirm ">
 									<span class="danger">중복 된 아이디입니다.</span>
 									<span class="safety">사용가능한 아이디입니다.</span>
 								</p>
 							</td>
-						</tr>
+						</tr> -->
 						<tr>
-							<td><input type="password" name="companyPassword" placeholder="기존 비밀번호을 입력하세요." required="required"></td>
-						</tr>
-						<tr>
-							<td><input type="password" name="companyNewPassword" placeholder="새 비밀번호을 입력하세요." required="required"></td>
+							<td><input type="password" name="companyPassword" placeholder="새 비밀번호을 입력하세요." required="required" class="pw"></td>
 						</tr>
 						<tr>
 							<td>
 								<p class="passWordSafety">
-									<span class="danger"> ■□□ 위험 </span>
+									<!-- <span class="danger"> ■□□ 위험 </span>
 									<span class="normal"> ■■□ 중간 </span>
-									<span class="safety"> ■■■ 안전 </span>
+									<span class="safety"> ■■■ 안전 </span> -->
 								</p>
 							</td>
 						</tr>
 						<tr>
-						
-							<td><input type="password" name="companyNewPasswordCheck" placeholder="다시한번 새 비밀번호를 입력하세요" required="required"></td>
+							<td><input type="password" name="companyPasswordCheck" placeholder="다시한번 새 비밀번호를 입력하세요." required="required" class="pwchk"></td>
 						</tr>
 						<tr>
 							<td>
 								<p class="passwordConfirm">
-									<span class="danger">불일치</span>
-									<span class="safety">일치</span>
+									<!-- <span class="danger">불일치</span>
+									<span class="safety">일치</span> -->
 								</p>
 							</td>
-						</tr>
+						</tr>						
 						
 						<tr>
-							<td><input type="text" name="companyNumber" placeholder="사업자 번호를 입력하세요" value="000-0000-0000-000" required="required"></td>
+							<td><input type="text" name="companyBusinessNumber" placeholder="사업자 등록번호 입력(000-00-0000-0)" value="${companyDetail.companyBusinessNumber}" required="required"></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyName" placeholder="이름을 입력하세요." value="companyName" required="required"></td>
+							<td><input type="text" name="companyName" placeholder="이름을 입력하세요." value="${companyDetail.companyName}" required="required"></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyPhone" placeholder="연락처를 입력하세요" value="070-0000-0000" required="required"></td>
+							<td><input type="text" name="companyPhone" placeholder="연락처를 입력하세요" value="${companyDetail.companyPhone}" required="required"></td>
 						</tr>
 						<tr>
 							<th><h2>추가정보</h2></th>
 						</tr>
 						<tr>
-							<td><input type="file" name="companyProfileImage"></td>
+							<td><input type="file" name="file"></td>
 						</tr>
 						<tr>
 							<td>
@@ -244,7 +236,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyAdderssDetail" value="상세주소를 입력하세요" required="required"></td>
+							<td><input type="text" name="companyAddressDetail" value="상세주소를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
 							<td class="checkBoxWrap">
@@ -254,7 +246,7 @@
 						</tr>
 						<tr>
 							<th id="buttonWrap">
-								<input type="submit" value="JOIN" class="button">
+								<input type="submit" value="MODIFY" class="button">
 								<input type="reset" value="RESET" class="button">
 								<input type="button" value="BACK" class="button">
 							</th>

@@ -70,11 +70,19 @@
 		COMPANYPASSWORD = #{companyPassword} AND COMPANYOUTSITE=0
 	</select>
 	<update id="companyInfoModify" parameterType="Company">
-		UPDATE COMPANY SET COMPANYPASSWORD = #{companyPassword},
+		UPDATE COMPANY SET COMPANYPASSWORD = #{companyPassword},		
+		<if test="companyProfileImage!=''">		
 		CompanyProfileImage=#{companyProfileImage},
+		</if>
+		<if test="companyIntroduction!=''">	
 		CompanyIntroduction=#{companyIntroduction},
+		</if>	
+		<if test="companyAddressBasic!=''">
 		CompanyAddressBasic=#{companyAddressBasic},
+		</if>
+		<if test="companyAddressDetail!=''">
 		CompanyAddressDetail=#{companyAddressDetail},
+		</if>
 		CompanyBusinessNumber=#{companyBusinessNumber} WHERE
 		COMPANYID=#{companyId}
 	</update>
