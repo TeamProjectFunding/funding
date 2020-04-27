@@ -14,6 +14,7 @@ import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.QnA;
+import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingDetailService;
@@ -21,6 +22,7 @@ import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.RewardService;
+import com.tp.funding.service.UserPickService;
 import com.tp.funding.service.UsersService;
 import com.tp.funding.util.Paging;
 
@@ -49,6 +51,9 @@ public class HyuckController {
 	
 	@Autowired
 	private FundingDetailService fundingDetailService;
+	
+	@Autowired
+	private UserPickService userPickService;
 	
 
 	// 회원가입 입력 폼
@@ -384,24 +389,90 @@ public class HyuckController {
 			return "myPage/myPageMain";
 		}
 		
-		@RequestMapping(value="userFundingList")
-		public String userFundingList(FundingGoodsDetail fundingGoodsDetail, String pageNum, Model model) {
-						
-			Paging paging = new Paging(fundingDetailService.myFundingTotalCount(fundingGoodsDetail.getUserId()), pageNum, 6, 5);
-			fundingGoodsDetail.setStartRow(paging.getStartRow());
-			fundingGoodsDetail.setEndRow(paging.getEndRow());			
+//		@RequestMapping(value="userFundingList")
+//		public String userFundingList(FundingGoodsDetail fundingGoodsDetail, String pageNum, Model model) {
+//						
+//			Paging paging = new Paging(fundingDetailService.myFundingTotalCount(fundingGoodsDetail.getUserId()), pageNum, 6, 5);
+//			fundingGoodsDetail.setStartRow(paging.getStartRow());
+//			fundingGoodsDetail.setEndRow(paging.getEndRow());			
+//			
+//			model.addAttribute("userFundingAndGoodsInfoList", fundingDetailService.userFundingAndGoodsInfoList(fundingGoodsDetail));		
+//			model.addAttribute("paging", paging);
+//			
+//			return "myPage/myPageMyFundingList";
+//		}
+		
+		@RequestMapping(value="myPagePick")
+		public String myPagePick(UserPick userPick, Model model) {
 			
-			model.addAttribute("userFundingAndGoodsInfoList", fundingDetailService.userFundingAndGoodsInfoList(fundingGoodsDetail));		
-			model.addAttribute("paging", paging);
+			model.addAttribute("myPagePickList", userPickService.userPickList(userPick));
 			
-			return "myPage/myPageMyFundingList";
+			return "myPage/myPagePickList";
 		}
 		
+		@RequestMapping(value="userPickDelete")
+		public String userPickDelete(UserPick userPick, Model model) {
+			
+			model.addAttribute("userPickDeleteResult", userPickService.userPickDelete(userPick));
+			
+			
+			return "forward:myPagePick.do";
+			
+		}
 		
+		@RequestMapping(value="myPageModifyForm")
+		public String myPageModifyForm(String userId, String companyId, Model model) {
+			
+			if(userId != null) {
+				
+				model.addAttribute("userDetail", usersService.userDetail(userId));
+				
+			}else if(companyId != null) {
+				
+				model.addAttribute("companyDetail", companyService.companyDetail(companyId));
+				
+			}
+			
+			return "myPage/myPageModify";
+		}
 		
-		
-		
-		
+		@RequestMapping(value="myPageModify")
+		public String myPageModify(HttpSession session, Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {			
+			
+			if (user.getUserId() != null && company.getCompanyId() == null) {
+
+				int result = usersService.userInfoModify(mRequest, user);
+
+				if (result == 1) {
+					
+					model.addAttribute("userModifyResult", "고객(일반)정보 수정 성공");
+					session.setAttribute("user", usersService.userDetail(user.getUserId()));		
+					
+					System.out.println(user);
+					
+				} else {
+					
+					model.addAttribute("userJoinResult", "고객(일반)정보 수정 실패");
+					
+				}
+
+			} 
+			
+//			else if (user.getUserId() == null && company.getCompanyId() != null) {
+//				int result = companyService.companyJoin(mRequest, company);
+//				if (result == 1) {
+//					model.addAttribute("companyJoinResult", "고객(회사) 가입 성공");
+//					model.addAttribute("company", companyService.companyDetail(company.getCompanyId()));
+//				} else {
+//					model.addAttribute("companyJoinResult", "유저(회사) 가입 실패");
+//				}
+//
+//			}
+			
+			
+			
+			return "myPage/myPageMain";
+		}
 		
 		
 		

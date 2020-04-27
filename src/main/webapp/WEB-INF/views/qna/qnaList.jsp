@@ -74,7 +74,7 @@
 							
 							<c:forEach var="i" begin="0" end="${qna.qnAIndent}">
 								<c:if test="${i == qna.qnAIndent}">
-									<img src="${conPath}/images/re.jpg" alt="re" width="30px"> - 
+									<img src="${conPath}/images/re.jpg" alt="re" width="30px">  
 								</c:if>
 								<c:if test="${i != qna.qnAIndent }">
 									&nbsp; &nbsp; &nbsp; &nbsp;

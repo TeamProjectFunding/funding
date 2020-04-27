@@ -13,7 +13,7 @@ public interface UsersService {
 	public int userJoin(MultipartHttpServletRequest mRequest, Users user);
 	public int userLoginCheck(Users user);
 	public Users userDetail(String userId);
-	public int userInfoModify(Users user);
+	public int userInfoModify(MultipartHttpServletRequest mRequest, Users user);
 	public int userOutSite(String userId);
 	public int userAccountModify(String userId,String userBankName,String userAccountNumber);
 	public int userBalanceModify(String userId,int changeMoneyAmount);
