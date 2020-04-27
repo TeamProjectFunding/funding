@@ -39,5 +39,8 @@ public interface FundingGoodsService {
 	public int fundingSucces(int fundingCode);
 	public int fundraizingFailure(int fundingCode);
 	public int getFundingCode(); // 현재 펀딩코드 가져오기
+	public List<FundingGoods> companyEndFundingList(String companyId,String pageNum,Model model); // 회사 마이페이지 그래프
+	public int maxRecruitmentAmount(String companyId,String pageNum,Model model); // 회사 마이페이지 그래프 최대 모집금액
+	public int companyEndFundingCount(String companyId); // 회사 마이페이지 펀딩 총 갯수(페이징)
 	
 }

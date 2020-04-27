@@ -28,7 +28,11 @@
 		alert('${logoutResult}');
 	</script>
 </c:if>
-
+<c:if test="${not empty fundingApplyResult }">
+	<script>
+		alert('${fundingApplyResult}');
+	</script>
+</c:if>
 <!-- 현재 날짜 -->
 	<jsp:useBean id="today" class="java.util.Date" />
 	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"

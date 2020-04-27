@@ -176,7 +176,7 @@ CREATE TABLE Admin (
 	AdminId       VARCHAR2(100) PRIMARY KEY, -- 관리자ID
 	AdminPassword VARCHAR2(100) NOT NULL,     -- 관리자비번
 	AdminName     VARCHAR2(100) NOT NULL,      -- 관리자이름
-    AdminProfileImage VARCHAR2(100) NOT NULL
+    AdminProfileImage VARCHAR2(100) NULL
 );
 
 

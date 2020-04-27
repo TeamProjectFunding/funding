@@ -24,7 +24,7 @@ INSERT INTO UserGrade VALUES (3,'VIP',100000000,10000000000);
 
 
 --관리자 등록
-INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', 'ADMINIMAGE');
+INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 
 
 -- 유저 등록
@@ -298,7 +298,7 @@ INSERT INTO FundingGoodsDetail VALUES
 	(FUNDINGGOODSDETAILNUMBER.nextval, 50000, 20000, SYSDATE, '20-05-25', 7, 'user2@naver.com');
 
 INSERT INTO FundingGoodsDetail VALUES 
-	(FUNDINGGOODSDETAILNUMBER.nextval, 20000, 10000, SYSDATE, '20-05-25', 7, 'user@naver.com');
+	(FUNDINGGOODSDETAILNUMBER.nextval, 20000, 10000, SYSDATE, '20-05-25', 7, 'user1@naver.com');
     
 INSERT INTO FundingGoodsDetail VALUES 
 	(FUNDINGGOODSDETAILNUMBER.nextval, 50000, 0, SYSDATE, '20-05-25', 8, 'user2@naver.com');
@@ -329,7 +329,7 @@ INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user1@naver.com', 11); 
 
 
-commit;
+
 
 
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 7);
@@ -338,3 +338,40 @@ INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 9);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 10);
 INSERT INTO USERPICK VALUES (UserPickNumber.NEXTVAL, 'user3@google.com', 11);
 
+
+
+
+
+-- 펀딩 종료 상품(투자)
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 18000000, 120, '2020-01-20', '2020-04-20', null, 8, 10, 1, 90, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품2', '투자상품입니다.', 'fundingProduct_02.jpeg', 'fundingProduct_02.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 10000000, 210, '2019-01-20', '2019-05-01', null, 10, 5, 1, 150, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품3', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 1800000, 80, '2020-01-20', '2020-04-20', null, 8, 10, 1, 1000, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품4', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 10000000, 30, '2020-01-20', '2020-04-20', null, 8, 10, 1, 400, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품5', '투자상품입니다.', 'fundingProduct_02.jpeg', 'fundingProduct_02.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 22000000, 350, '2020-01-20', '2020-04-20', null, 8, 10, 1, 271, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품6', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 1700000, 105, '2020-01-20', '2020-04-20', null, 9, 5, 1, 35, 1, 'admin', 'kyl123hanmir@hanmir.com');
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '롱롱투자상품7', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '롱롱은행',
+        '예금주롱롱이', '499120-01-184677', 0, 100000000, 20, '2017-04-01', '2018-01-01', null, 7, 15, 1, 90, 1, 'admin', 'kyl123hanmir@hanmir.com');
+-- 투자 리워드 더미
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,10,10,'2021-02-20',25);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,10,5,5,'2019-10-01',26);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,10,10,'2021-02-20',27);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,10,10,'2021-02-20',28);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,10,10,'2021-02-20',29);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,9,5,5,'2021-02-20',30);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,7,15,15,'2021-02-20',31);
+
+
+commit;

@@ -21,9 +21,10 @@
 			<img src="${conPath }/images/fundingProduct_01.jpeg" alt="thumnail">
 			
 		</div>
+		
 		<table class="goodsInfo">
 			<tr>
-				<th>TYPE</th>
+				<th>${good.fundingCode }TYPEf</th>
 				<td>REWARD</td>
 			</tr>
 			<tr>

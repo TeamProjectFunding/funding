@@ -406,11 +406,11 @@ public class HomeController {
 		public String myPageModify() {
 			return "myPage/myPageMain";
 		}
-		//마이페이지 펀딩내역 그래프
-		@RequestMapping(value="myPageFunding")
-		public String myPageFunding() {
-			return "myPage/myPageFunding";
-		}
+//		//마이페이지 펀딩내역 그래프
+//		@RequestMapping(value="myPageFunding")
+//		public String myPageFunding() {
+//			return "myPage/myPageFunding";
+//		}
 		//마이페이지 작성게시글 리스트
 		@RequestMapping(value="myPagePost")
 		public String myPagePost() {
@@ -422,9 +422,9 @@ public class HomeController {
 			return "myPage/myPagePickList";
 		}
 		
-		//마이페이지 펀딩진행 내역
-		@RequestMapping(value="myPageGoods")
-		public String myPageGoods() {
-			return "myPage/myPageGoods";
-		}
+//		//마이페이지 펀딩진행 내역
+//		@RequestMapping(value="myPageGoods")
+//		public String myPageGoods() {
+//			return "myPage/myPageGoods";
+//		}
 }

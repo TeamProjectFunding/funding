@@ -16,95 +16,72 @@
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageGoodsWrap" >
 		<h1>MY GOODS</h1>
+		<p>
+			<a href="${conPath }/myPageGoods.do?companyId=${company.companyId }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+			<a href="${conPath }/myPageGoods.do?companyId=${company.companyId }&pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+		</p>
 		<div id="fundingGraphWrap">
 			<div class="graphAxis">
 				<span class="yAxisTitle">금액 [단위 : 만원]</span>
 				<div class="yAxisWrap">
-					<span style="">2500</span>
-					<span>2000</span>
-					<span>1500</span>
-					<span>1000</span>
-					<span>500</span>
+					<span style=""><fmt:formatNumber value="${maxRecruitmentAmount/10000}" pattern="" /></span>
+					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.8/10000}" pattern="" /></span>
+					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.6/10000}" pattern="" /></span>
+					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.4/10000}" pattern="" /></span>
+					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.2/10000}" pattern="" /></span>
 				</div>
 				<span class="xAxisTitle">회차</span>
 				<div class="xAxisWrap">
-					<span style="">1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
+
+				<c:forEach var="fundingCount" begin="1" end="${doFundingCount }">
+					<span>${fundingCount }</span>
+				</c:forEach>
 				</div>
 				<div class="grabh">
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:80%;"></div>
-						<div class="targetBar" style="height:20%;">
-							<span>500</span>
+					<c:forEach var="good" items="${companyEndFundingList }">
+					<c:set var="highRate" value="${good.fundingTargetRate*good.fundingTargetAmount/maxRecruitmentAmount }"/>
+					<div class="fundingBarWrap barAnimate" style="" onclick="fundingDetailView('${good.fundingCode}');">
+						<div class="whiteBar" style="height:${100-highRate}%;"></div>
+						<div class="targetBar" style="height:${highRate}%;">
+							<span>${good.fundingTargetAmount }</span>
 							<div class="fundingBar" style="height:100%;">
-								<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
+								<a href="#none" class="myFundingViewButton fundingCode${good.fundingCode }">FUNDINGTITLE<br/> + DETAIL</a>
 							</div>
 						</div>
 					</div>
-					
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:60%;"></div>
-						<div class="targetBar" style="height:40%;">
-							<span>1000</span>
-							<div class="fundingBar" style="height:100%;">
-								<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:40%;"></div>
-						<div class="targetBar" style="height:60%;">
-							<span>1500</span>
-							<div class="fundingBar fundingFail" style="height:90%;">
-								<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:20%;"></div>
-						<div class="targetBar" style="height:80%;">
-							<span>2000</span>
-							<div class="fundingBar" style="height:120%;">
-								<a href="#none" class="myFundingViewButton">REWARDTITLE<br/> + DETAIL</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="fundingBarWrap barAnimate" style="">
-						<div class="whiteBar" style="height:0%;"></div>
-						<div class="targetBar" style="height:100%;">
-							<span>2500</span>
-							<div class="fundingBar fundingFail" style="height:80%;">
-								<a href="#none" class="myFundingViewButton">FUNDINGTITLE<br/> + DETAIL</a>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
+				<script>
+					function fundingDetailView(fundingCode){
+						 $.ajax({
+		                     url : '${conPath}/fundingDetailView.do',
+		                     datatype : 'html',
+		                     data : "fundingCode="+fundingCode,
+		                     success : function(data, status){
+		                        $('#myGoodsDetail').html(data);
+		                     }
+		                  });
+					}
+				</script>
 				
 				<script>
 					$(function(){
 						$('.fundingBarWrap').removeClass('barAnimate');
 						
 						$('.myFundingViewButton').click(function(){
+							
 							$('#myGoodsDetail').addClass('openMypageGoodsView');
 						});
 						
 						$('.myFundingViewClose').click(function(){
 							$('#myFundingDetail').addClass();
 						});
-						$('.closeButton').click(function(){
-							$('#myGoodsDetail').removeClass();
-						});
+						
 					});
 				</script>
 			</div>
 		</div>
-		<jsp:include page="myPageGoodsDetail.jsp" />
+		<jsp:include page="myPageGoodsDetail.jsp"/>
 	</section>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

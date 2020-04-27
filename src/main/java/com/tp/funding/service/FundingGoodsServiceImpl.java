@@ -130,7 +130,6 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		if(fundingGoods.getFundingExplanationFile()==null) {
 			fundingGoods.setFundingExplanationFile("noImage.png");
 		}
-		System.out.println(fundingGoods);
 		
 		return fundingGoodsDao.fundingRegist(fundingGoods);
 	}
@@ -262,5 +261,41 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 	public int getFundingCode() {
 		return fundingGoodsDao.getFundingCode();
 	}
+
+	@Override
+	public List<FundingGoods> companyEndFundingList(String companyId, String pageNum, Model model) { //회사 마이페이지 그래프
+		int companyEndFundingCount = companyEndFundingCount(companyId);
+		Paging paging = new Paging(companyEndFundingCount, pageNum, 5, 1);
+		// 페이징 처리
+		if(model !=null) {
+			model.addAttribute("paging", paging);
+		}
+		FundingGoods fundingGoods = new FundingGoods();
+		fundingGoods.setCompanyId(companyId);
+		fundingGoods.setStartRow(paging.getStartRow());
+		fundingGoods.setEndRow(paging.getEndRow());
+		return fundingGoodsDao.companyEndFundingList(fundingGoods);
+	}
+
+	@Override
+	public int maxRecruitmentAmount(String companyId, String pageNum, Model model) {
+		int companyEndFundingCount = companyEndFundingCount(companyId);
+		Paging paging = new Paging(companyEndFundingCount, pageNum, 5, 1);
+		// 페이징 처리
+		if(model !=null) {
+			model.addAttribute("paging", paging);
+		}
+		FundingGoods fundingGoods = new FundingGoods();
+		fundingGoods.setCompanyId(companyId);
+		fundingGoods.setStartRow(paging.getStartRow());
+		fundingGoods.setEndRow(paging.getEndRow());
+		return fundingGoodsDao.maxRecruitmentAmount(fundingGoods);
+	}
+
+	@Override
+	public int companyEndFundingCount(String companyId) {
+		return fundingGoodsDao.companyEndFundingCount(companyId);
+	}
+
 
 }

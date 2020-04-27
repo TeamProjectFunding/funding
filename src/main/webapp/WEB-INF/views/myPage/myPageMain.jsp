@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<td id="buttonWrap">
-					<a href="" class="button">계좌등록</a>
+					<a href="" class="button acountEnrollmentButton">계좌등록</a>
 					<a href="" class="button">프로필수정</a>
 				</td>
 			</tr>
@@ -75,9 +75,165 @@
 				</tr>
 			</table>
 		</c:if>
-		
+		<script>
+			$(function(){
+				$('.acountEnrollmentButton').click(function(){
+					$('#myAcountEnrollment').addClass('openAcountEnrollment');
+				});
+				$('.closeButton').click(function(){
+					$('#myAcountEnrollment').removeClass('openAcountEnrollment');
+				});
+				
+			});
+		</script>
+		<div class="myAccountWrap">
+			<h1>MY ACCOUNT</h1>
+			<table>
+				<tr>
+					<th>GRADE</th>
+					<td>일반투자자</td>
+				</tr>
+				<tr>
+					<th>BANK</th>
+					<td>카카오뱅크</td>
+				</tr>
+				<tr>
+					<th>ACCOUNT NUMBER</th>
+					<td>3333-33333-3333</td>
+				</tr>
+				<tr>
+					<th>BALANCE</th>
+					<td>1,000,000 원</td>
+				</tr>
+				<tr>
+					<th colspan="2" id="buttonWrap">
+						<a href="#none" class="button dipositFormButton">입금하기</a>
+						<a href="#none" class="button withdrawFormButton">출금하기</a>
+					</th>
+				</tr>
+				
+				<tr class="dipositForm accountForm">
+					<td><input type="number" name="diposit" placeholder="금액을 입력하세요."></td>
+					<th id="buttonWrap">
+						<a href="#none" class="button">입금</a>
+					</th>
+				</tr>
+				<tr class="withdrawForm accountForm">
+					<td><input type="number" name="withdraw" placeholder="금액을 입력하세요."></td>
+					<th id="buttonWrap">
+						<a href="#none" class="button">출금</a>
+					</th>
+				</tr>
+				<tr class="accountFormMessege ">
+					<th class="accountMessege">100,000 원 입금되었습니다.</th>
+				</tr>
+			</table>
+			
+			<div class="dispositWithdrawal">
+				<table>
+					<tr>
+						<th>DATE</th>
+						<th>CONTENT</th>
+						<th>AMOUNT</th>
+						<th>TYPE</th>
+						<th>BALANCE</th>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					<tr>
+						<td>2020-04-24</td>
+						<td> 1번 펀딩 상품 이자지급</td>
+						<td>200 원</td>
+						<td>입금</td>
+						<td>100,200 원</td>
+					</tr>
+					
+				</table>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$('.dipositFormButton').click(function(){
+					$('.dipositForm').slideDown();
+					$('.withdrawForm').hide();
+				});
+				$('.withdrawFormButton').click(function(){
+					$('.dipositForm').hide();
+					$('.withdrawForm').slideDown();
+				});
+			});
+		</script>
 	</section>
 	</div>
+	<jsp:include page="myAcountEnrollment.jsp" />
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

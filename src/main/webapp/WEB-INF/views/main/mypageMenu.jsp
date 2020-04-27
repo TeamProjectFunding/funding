@@ -48,7 +48,7 @@
 					<td colspan="2"><a href="myPageModifyForm.do">프로필 수정</a></td>
 				</tr>
 				<tr>
-					<td colspan="2"><a href="myPageGoods.do">My Goods</a></td>
+					<td colspan="2"><a href="myPageGoods.do?companyId=${company.companyId}">My Goods</a></td>
 					<td colspan="2"><a href="fundingApplyForm.do">Goods Apply</a></td>		
 				</tr>			
 			</c:if>

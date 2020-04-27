@@ -81,6 +81,13 @@ public class Paging {
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+
+	@Override
+	public String toString() {
+		return "Paging [currentPage=" + currentPage + ", pageSize=" + pageSize + ", blockSize=" + blockSize
+				+ ", startRow=" + startRow + ", endRow=" + endRow + ", total=" + total + ", pageCnt=" + pageCnt
+				+ ", startPage=" + startPage + ", endPage=" + endPage + "]";
+	}
 	
 	
 	

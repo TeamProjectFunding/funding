@@ -270,22 +270,42 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .myPageMainWrap i.material-icons{color:#1e2938; font-size: 100px;}
 .myPageMainWrap table{width:60%; float:left;}
 .myPageMainWrap td{padding:2%; text-align: center;}
-.myPageMainWrap .userActivity{margin-top:50px; width:100%; float:left; font-size: 16px;}
+.myPageMainWrap .userActivity{margin-top:50px; width:100%; float:left; font-size: 16px; border-bottom: 1px solid #ccc;}
 .myPageMainWrap .userActivity th{width:25%;  }
 .myPageMainWrap .userActivity td a{font-size: 30px;}
 .myPageMainWrap .userActivity td a:hover{color:#f1bf04; transition:.3s;}
 
-.myPageMainWrap .companyActivity{margin-top:50px; width:100%; float:left; font-size: 16px;}
+.myPageMainWrap .companyActivity{margin-top:50px; width:100%; float:left; font-size: 16px; border-bottom: 1px solid #ccc;}
 .myPageMainWrap .companyActivity th{width:50%;  }
 .myPageMainWrap .companyActivity td a{font-size: 30px;}
 .myPageMainWrap .companyActivity td a:hover{color:#f1bf04; transition:.3s;}
 
+.myPageMainWrap .myAccountWrap{width:100%; float:left; margin-bottom:50px; font-size: 12px;}
+.myAccountWrap table{float:left; width:40%; text-align: left;}
+.myAccountWrap table th{padding:2% 2% 5%; text-align: left;}
+.myAccountWrap table #buttonWrap{padding:5%;}
+.myAccountWrap table .accountForm{display:none; border-bottom: 1px solid #ccc;}
+.myAccountWrap table .accountForm td{width:60%;}
+.myAccountWrap table .accountForm td input{width:100%; padding:2%; border: 1px solid #e8e8e8;}
+.myPageMainWrap .dispositWithdrawal{width:60%; overflow:scroll; height:300px; float:left; padding:0 2%; border-left:1px solid #ccc;}
+.dispositWithdrawal table{width:100%;  font-size: 10px;}
+.dispositWithdrawal table th{padding:2% 1%;text-align: center;}
+.dispositWithdrawal table td{padding:2% 1%;text-align: center;}
+
+#myAcountEnrollment{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
+#myAcountEnrollment.openAcountEnrollment{ margin:-125px 0 0 -200px;  padding:5% 0; width:400px; height:250px; background:#fff; border:2px solid #131a23; transition:.5s;}
+#myAcountEnrollment th { padding: 2%; text-align: left; font-size: 14px;}
+#myAcountEnrollment .acountInfo table{width:95%; float:left; }
+#myAcountEnrollment .acountInfo table th{padding:2%; width:33%; text-align: left;}
+#myAcountEnrollment .acountInfo table td{padding:2%; text-align: center;}
+#myAcountEnrollment th#buttonWrap{text-align: center;}
+
 .myPageModifyWrap{padding: 0 20% 0;}
 .myPageModifyWrap table {margin:50px 0 ;}
 .myPageModifyWraptable th{padding:5%;}
-.myPageModifyWrap table td {text-align: center; font-size: 12px; text-align: center;padding:2%;}
+.myPageModifyWrap table td {text-align: center; font-size: 12px; text-align: center;padding:2%; }
 .myPageModifyWrap table td input{width:80%; padding:2%; text-align: center; border:1px solid #e8e8e8; font-size:12px;}
-.myPageModifyWrap table td .postBox{width:50%;}
+.myPageModifyWrap table td .postBox{width:60%;}
 .myPageModifyWrap table td .postButton{width:30%}
 .myPageModifyWrap table td input[type='checkbox']{width:10px;}
 
@@ -355,6 +375,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #myGoodsDetail .interestWrap table{width:95%; float:left; text-align: center;}
 #myGoodsDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
 #myGoodsDetail .interestWrap table td{padding:2%; text-align: center;}
+
 
 
 

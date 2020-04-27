@@ -1,6 +1,8 @@
 package com.tp.funding.controller;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -169,9 +171,18 @@ public class LongController {
 	// 펀딩(리워드) 신청
 	@RequestMapping(value = "fundingApply")
 	public String fundingApply(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest, Model model) {
-		System.out.println(fundingGoods);
+		System.out.println("fundingGoods:"+fundingGoods);
 		if(repeatF5) {
 			if(fundingGoods.getFundingCategory()==0) { // 투자일 때
+				fundingGoodsService.fundingRegist(fundingGoods, mRequest); //펀딩 상품 등록
+				int fundingCode = fundingGoodsService.getFundingCode(); //펀딩 코드 가져오기
+				Reward reward = new Reward();
+				reward.setFundingCode(fundingCode);
+				reward.setRewardGrade(0);
+				reward.setRewardName(mRequest.getParameter("fundRewardName"));
+				reward.setRewardInterst(Integer.parseInt(mRequest.getParameter("fundingInvestmentProfitRate")));
+				reward.setFundingInvestmentPeriod(Integer.parseInt(mRequest.getParameter("fundingInvestmentPeriod")));
+				rewardService.investmentWrite(reward); // 리워드 등록
 			}else { //리워드 일 때
 				Date fundingRewardDeliveryDate = Date.valueOf(mRequest.getParameter("fundingTargetDate"));
 				fundingGoods.setFundingRewardDeliveryDate(fundingRewardDeliveryDate);
@@ -187,14 +198,14 @@ public class LongController {
 					reward[i].setRewardGrade(1);
 					reward[i].setFundingRewardDeliveryDate(fundingRewardDeliveryDate);
 					reward[i].setFundingCode(fundingCode);
-					System.out.println("i번째"+reward[i]);
 				}
 				rewardService.rewardWrite(reward,mRequest);
 			}
+			model.addAttribute("fundingApplyResult", "펀딩 신청에 성공하셨습니다. 지원해주셔서 감사드립니다.");
 		}
 		
 		repeatF5 = false;
-		return "funding/applyNext";
+		return "forward:main.do";
 	}
 
 	// 펀딩하기 Step1
@@ -246,9 +257,6 @@ public class LongController {
 		if (fundingCategory == 0) { // 투자
 			rewardCode = rewardService.fundingRewardList(fundingCode).get(0).getRewardCode();
 			usersService.userInvestmentAmountModify(userId, changeMoneyAmount); // 유저 누적투자금 증가
-			
-			
-			
 		} else if (fundingCategory == 1) { // 리워드
 			rewardCode = Integer.parseInt(request.getParameter("rewardCode"));
 			Reward reward = rewardService.rewardDetail(rewardCode);
@@ -263,7 +271,7 @@ public class LongController {
 		fundingGoodsService.fundingTargetRateModify(fundingCode); // 펀딩 달성 % 변경
 		usersService.userBalanceModify(userId, changeMoneyAmount * -1); // 유저 계좌잔액 감소
 		Users user = usersService.userDetail(userId);
-		if(user.getUserGradeNo() != usersService.userCurrentGrade(userId)) {// 등급업 기준 확인
+		if(user.getUserGradeNo() < usersService.userCurrentGrade(userId)) {// 등급업 기준 확인
 			usersService.userGradeUp(userId); //등급 업
 		}
 		session.setAttribute("user", usersService.userDetail(userId)); //session에 유저 다시 추가
@@ -273,7 +281,49 @@ public class LongController {
 		model.addAttribute("fundingGoodsDetail", fundingGoodsDetail);
 		return "funding/fundingComplate";
 	}
-
+	
+	
+	//마이페이지 펀딩진행 내역
+	@RequestMapping(value="myPageGoods")
+	public String myPageGoods(String companyId,Model model,String pageNum) {//회사 그래프
+		System.out.println("pageNum="+pageNum);
+		List<FundingGoods> companyEndFundingList = fundingGoodsService.companyEndFundingList(companyId,pageNum,model);
+		model.addAttribute("companyEndFundingList", companyEndFundingList);
+		for(FundingGoods c : companyEndFundingList) {
+			System.out.println(c);
+		}
+		for(int i=0;i<companyEndFundingList.size();i++) {
+			int fundingCode = companyEndFundingList.get(i).getFundingCode();
+			model.addAttribute("reward"+fundingCode, rewardService.fundingRewardList(fundingCode));
+			System.out.println("i="+i);
+			for(Reward r : rewardService.fundingRewardList(fundingCode)) {
+				System.out.println(r);
+			}
+		}
+		model.addAttribute("doFundingCount", companyEndFundingList.size());
+		model.addAttribute("maxRecruitmentAmount", fundingGoodsService.maxRecruitmentAmount(companyId,pageNum,model));
+		System.out.println("doFundingCount:"+companyEndFundingList.size());
+		return "myPage/myPageGoods";
+	}
+	//마이페이지 펀딩내역 그래프
+	@RequestMapping(value="myPageFunding")
+	public String myPageFunding(String userId,Model model,String pageNum) {//유저그래프
+		return "myPage/myPageFunding";
+	}
+	//마이페이지 그래프 속 Detail
+	@RequestMapping(value="fundingDetailView")
+	public String fundingDetailView(int fundingCode,Model model) {
+		System.out.println("fundingDetailView들어옴");
+		FundingGoods good = fundingGoodsService.fundingDetail(fundingCode);
+		model.addAttribute("good", good);
+		if(good.getFundingCategory() == 0) { //투자
+			model.addAttribute("reward", rewardService.fundingRewardList(fundingCode).get(0));
+		}else {//리워드
+			model.addAttribute("rewardList", rewardService.fundingRewardList(fundingCode));
+		}
+		return "message/myPageGoodsDetaill";
+	}
+	
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
 	public String naverCollback() {
