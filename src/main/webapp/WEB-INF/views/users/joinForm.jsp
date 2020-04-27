@@ -200,7 +200,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyNumber" placeholder="사업자 번호를 입력하세요" required="required"></td>
+							<td><input type="text" name="companyBusinessNumber" placeholder="사업자 번호를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
 							<td><input type="text" name="companyName" placeholder="이름을 입력하세요." required="required"></td>
@@ -228,7 +228,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyAdderssDetail" placeholder="상세주소를 입력하세요"></td>
+							<td><input type="text" name="companyAddressDetail" placeholder="상세주소를 입력하세요"></td>
 						</tr>						
 						<tr>
 							<th id="buttonWrap">

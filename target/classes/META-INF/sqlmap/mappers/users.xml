@@ -32,9 +32,18 @@ SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERI
             WHERE U.USERGRADENO = UG.USERGRADENO AND USERID = #{userId}
 	</select>
 	<update id="userInfoModify" parameterType="Users">
-		UPDATE USERS SET userPassword = #{userPassword}, userProfileImage=#{userProfileImage}, userPhone=#{userPhone},
-		userAddressBasic=#{userAddressBasic}, userAddressDetail=#{userAddressDetail}, userBirthday=#{userBirthday},
-		userAdPhone=#{userAdPhone}, userAdEmail=#{userAdEmail} WHERE USERID = #{userId}
+		UPDATE USERS SET userPassword = #{userPassword}, 
+		<if test="userProfileImage!=''">
+		userProfileImage=#{userProfileImage},
+		</if>
+		userPhone=#{userPhone},	
+		<if test="userAddressBasic!=''">
+		userAddressBasic=#{userAddressBasic},
+		</if>
+		<if test="userAddressDetail!=''"> 
+		userAddressDetail=#{userAddressDetail}, 
+		</if>
+		userBirthday=#{userBirthday}, userAdPhone=#{userAdPhone}, userAdEmail=#{userAdEmail} WHERE USERID = #{userId}
 	</update>
 	<update id="userTempPassword" parameterType="Users">
 		UPDATE USERS SET userPassword = #{userPassword} WHERE USERID = #{userId}
@@ -44,7 +53,7 @@ SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERI
 	</update>
 	<update id="userAccountModify" parameterType="Users">
 		UPDATE USERS SET userBankName=#{userBankName}, userAccountNumber=#{userAccountNumber}
-WHERE USERID = #{userId}
+		WHERE USERID = #{userId}
 	</update>
 	
 	<update id="userBalanceModify" parameterType="Users">

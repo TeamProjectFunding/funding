@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DepositAndWithdrawal">
+<insert id="writeDepositAndWithdrawal" parameterType="DepositAndWithdrawal">
+INSERT INTO DepositAndWithdrawal VALUES (DepositAndWithdrawalNumber.NEXTVAL,#{dNWType},#{dNWAmount},#{dNWBalance},#{dNWContent},#{dNWDate},#{companyId},#{userId})
+</insert>
+<select id="userDNWList" parameterType="String" resultType="DepositAndWithdrawal">
+SELECT * from DepositAndWithdrawal WHERE userId=#{userId} ORDER BY dNWDate DESC
+</select>
+<select id="companyDNWList" parameterType="String" resultType="DepositAndWithdrawal">
+SELECT * from DepositAndWithdrawal WHERE companyId=#{companyId} ORDER BY dNWDate DESC
+</select>
+</mapper>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Users;
 @Repository
 public class FundingDetailDaoImpl implements FundingDetailDao {
 	
@@ -56,6 +57,22 @@ public class FundingDetailDaoImpl implements FundingDetailDao {
 	@Override
 	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail) {
 		return sessionTemplate.selectList("userFundingAndGoodsInfoList", fundingGoodsDetail);
+	}
+
+
+	@Override
+	public int userFundingListTotalCount(String userId) {
+		return sessionTemplate.selectOne("userFundingListTotalCount", userId);
+	}
+
+	@Override
+	public int userFundingListInMaxFundingAmount(FundingGoodsDetail fundingGoodsDetail) {
+		return sessionTemplate.selectOne("userFundingListInMaxFundingAmount", fundingGoodsDetail);
+	}
+
+	@Override
+	public FundingGoodsDetail fundingGoodsDetailView(int fundingGoodsDetailNumber) {
+		return sessionTemplate.selectOne("fundingGoodsDetailView", fundingGoodsDetailNumber);
 	}
 
 

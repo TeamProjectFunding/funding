@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Reward;
 @Repository
 public class RewardDaoImpl implements RewardDao {
@@ -28,8 +29,15 @@ public class RewardDaoImpl implements RewardDao {
 	}
 
 	@Override
-	public List<Reward> fundingRewardList(int fundingcode) {
-		return sessionTemplate.selectList("fundingRewardList", fundingcode);
+	public List<Reward> fundingRewardList(int fundingCode) {
+		return sessionTemplate.selectList("fundingRewardList", fundingCode);
 	}
+
+	@Override
+	public Reward userSelectReward(FundingGoodsDetail fundingGoodsDetail) {
+		return sessionTemplate.selectOne("userSelectReward", fundingGoodsDetail);
+	}
+
+
 
 }

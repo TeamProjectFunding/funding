@@ -3,6 +3,7 @@ package com.tp.funding.dao;
 import java.util.List;
 
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Users;
 
 public interface FundingDetailDao {
 	
@@ -23,5 +24,7 @@ public interface FundingDetailDao {
 	public int myFundingTotalCount(String userId);
 	
 	public List<FundingGoodsDetail> userFundingAndGoodsInfoList(FundingGoodsDetail fundingGoodsDetail);
-	
+	public int userFundingListTotalCount(String userId); //페이징 위한
+	public int userFundingListInMaxFundingAmount(FundingGoodsDetail fundingGoodsDetail); //마이페이지 그래프 y축
+	public FundingGoodsDetail fundingGoodsDetailView(int fundingGoodsDetailNumber);
 }

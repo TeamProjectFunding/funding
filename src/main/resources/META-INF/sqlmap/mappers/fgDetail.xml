@@ -53,16 +53,18 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 </select>
 
 
+<select id="userFundingListTotalCount" parameterType="FundingGoodsDetail" resultType="int">
+	SELECT COUNT(*) FROM fundingGoodsDetail fd,fundingGoods f where fd.fundingCode=f.fundingCode and fd.userId=#{userId}
+</select>
+<select id="userFundingListInMaxFundingAmount" parameterType="FundingGoodsDetail" resultType="int">
+	SELECT maxInFundingAmount FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT max(fd.fundingamount) maxInFundingAmount FROM fundingGoodsDetail fd where fd.userId=#{userId} ) A)
+			WHERE RN BETWEEN #{startRow} AND #{endRow}
+</select>
 
-
-
-
-
-
-
-
-
-
-
+<select id="fundingGoodsDetailView" parameterType="int" resultType="FundingGoodsDetail">
+	SELECT f.fundingThumbnailImage,f.fundingName,f.fundingTargetRate ,fd.*,u.userprofileimage,u.userName 
+		FROM fundingGoodsDetail fd,fundinggoods f, users u where f.fundingCode=fd.fundingCode and fd.userId=u.userId and fundingGoodsDetailNumber=#{fundingGoodsDetailNumber}
+</select>
 
 </mapper>

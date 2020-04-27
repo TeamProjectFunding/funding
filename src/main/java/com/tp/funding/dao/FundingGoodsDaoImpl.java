@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tp.funding.dto.FundingGoods;
+import com.tp.funding.dto.Users;
 @Repository
 public class FundingGoodsDaoImpl implements FundingGoodsDao {
 
@@ -177,5 +178,7 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	public List<FundingGoods> fundingAdminAllList() {
 		return sessionTemplate.selectList("fundingAdminAllList");
 	}
+
+
 
 }

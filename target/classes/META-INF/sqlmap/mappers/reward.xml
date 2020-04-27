@@ -18,5 +18,9 @@
 	<select id="fundingRewardList" parameterType="int" resultType="Reward">
 		SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingcode}
 	</select>
-	
+	<select id="userSelectReward" parameterType="FundingGoodsDetail" resultType="Reward">
+	SELECT R.*,F.FUNDINGNAME,f.fundingtargetdate,f.fundingthumbnailimage FROM Reward R, FundingGoods F 
+		WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingCode} AND r.rewardcondition=
+			(SELECT fundingAmount FROM fundinggoodsdetail WHERE fundingCode=#{fundingCode} AND fundingGoodsDetailNumber=#{fundingGoodsDetailNumber})
+	</select>
 </mapper>

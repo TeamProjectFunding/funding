@@ -29,6 +29,7 @@
 		<typeAlias type="com.tp.funding.dto.UserGrade" alias="UserGrade"/>
 		<typeAlias type="com.tp.funding.dto.UserPick" alias="UserPick"/>
 		<typeAlias type="com.tp.funding.dto.Users" alias="Users"/>
+		<typeAlias type="com.tp.funding.dto.DepositAndWithdrawal" alias="DepositAndWithdrawal"/>
 	</typeAliases>
 	
 	<mappers>
@@ -50,6 +51,7 @@
 		<mapper resource="META-INF/sqlmap/mappers/reward.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/userPick.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/users.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/depositAndWithdrawal.xml"/>
 	</mappers>	
 
 </configuration>
