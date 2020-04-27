@@ -11,6 +11,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
+<c:if test="${not empty userModifyResult}">
+	<script>
+		alert('${userModifyResult}');
+	</script>
+</c:if>
+<c:if test="${not empty companyModifyResult}">
+	<script>
+		alert('${companyModifyResult}');
+	</script>
+</c:if>
+
+
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageMainWrap" >
@@ -41,7 +53,7 @@
 			<tr>
 				<td id="buttonWrap">
 					<a href="" class="button acountEnrollmentButton">계좌등록</a>
-					<a href="" class="button">프로필수정</a>
+					<a href="${conPath}/myPageModifyForm.do?userId=${user.userId}&companyId=${company.companyId}" class="button">프로필수정</a>
 				</td>
 			</tr>
 		</table>

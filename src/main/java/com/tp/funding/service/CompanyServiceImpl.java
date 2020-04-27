@@ -25,10 +25,10 @@ import com.tp.funding.dto.Company;
 public class CompanyServiceImpl implements CompanyService {
 	@Autowired
 	private CompanyDao companyDao;
-	
+
 	@Autowired
 	private JavaMailSender mailSender;
-	
+
 	@Override
 	public List<Company> companyList() {
 		return companyDao.companyList();
@@ -46,11 +46,11 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public int companyJoin(MultipartHttpServletRequest mRequest, Company company) {
-		
-		String uploadPath = mRequest.getRealPath("companyProfileUpload/");
-		String backupPath = "D:/mega_IT/teamProject/funding/src/main/webapp/companyProfileUpload/";		
+
+		String uploadPath = mRequest.getRealPath("images/profile/");
+		String backupPath = "D:/mega_IT/teamProject/funding/src/main/webapp/images/profile/";
 		String companyProfileImage = null;
-		
+
 		Iterator<String> params = mRequest.getFileNames(); // file
 		if (params.hasNext()) {
 			String param = params.next();
@@ -81,14 +81,14 @@ public class CompanyServiceImpl implements CompanyService {
 			}
 
 		}
-		
+
 		company.setCompanyProfileImage(companyProfileImage);
 		return companyDao.companyJoin(company);
 	}
 
 	private int filecopy(String serverFile, String backupFile) {
 		int result = 0;
-		
+
 		FileInputStream is = null;
 		FileOutputStream os = null;
 
@@ -121,19 +121,55 @@ public class CompanyServiceImpl implements CompanyService {
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
-		}		
-		
+		}
+
 		return result;
+	}
+
+	@Override
+	public int companyInfoModify(MultipartHttpServletRequest mRequest, Company company) {
+		String uploadPath = mRequest.getRealPath("images/profile/");
+		String backupPath = "D:/mega_IT/teamProject/funding/src/main/webapp/images/profile/";
+		String companyProfileImage = null;
+
+		Iterator<String> params = mRequest.getFileNames(); // file
+		if (params.hasNext()) {
+			String param = params.next();
+			MultipartFile mFile = mRequest.getFile(param); // 파라미터의 파일 객체
+
+			String originalFileName = mFile.getOriginalFilename(); // 업로드 했을 때, 원래 파일 이름
+			companyProfileImage = originalFileName;
+
+			if (companyProfileImage != null && !companyProfileImage.equals("")) {
+				if (new File(uploadPath + companyProfileImage).exists()) { // 첨부파일과 같은 이름의 파일이 서버에 존재하는 경우 변경~
+					companyProfileImage = System.currentTimeMillis() + companyProfileImage;
+				} // if 파일이름 변경
+
+				try {
+					mFile.transferTo(new File(uploadPath + companyProfileImage));
+					System.out.println("서버에 저장된 파일 : " + uploadPath + companyProfileImage);
+					System.out.println("백업위해 복사할 파일 : " + backupPath + companyProfileImage);
+					int fileResult = filecopy(uploadPath + companyProfileImage, backupPath + companyProfileImage);
+					if (fileResult == 1) {
+						System.out.println("복사성공");
+					} else {
+						System.out.println("복사실패");
+					}
+
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+
+		}
+
+		company.setCompanyProfileImage(companyProfileImage);
+		return companyDao.companyInfoModify(company);
 	}
 
 	@Override
 	public int companyLoginCheck(Company company) {
 		return companyDao.companyLoginCheck(company);
-	}
-
-	@Override
-	public int companyInfoModify(Company company) {
-		return companyDao.companyInfoModify(company);
 	}
 
 	@Override
@@ -158,7 +194,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public int tempPasswordChange(final Company company) {
-		
+
 		String tempPassword = "";
 		for (int i = 0; i < 8; i++) {
 			char lowerStr = (char) (Math.random() * 26 + 97);
@@ -167,27 +203,26 @@ public class CompanyServiceImpl implements CompanyService {
 			} else {
 				tempPassword += lowerStr;
 			}
-		}		
-		
+		}
+
 		company.setCompanyPassword(tempPassword);
 		MimeMessagePreparator tempPasswordMsg = new MimeMessagePreparator() {
-			
-			String content ="<h1>"+company.getCompanyId()+"님의 임시비밀번호 안내입니다.</h1><br>"+
-					 "<div> 임시 비밀번호는 : "+company.getCompanyPassword()+" 입니다.<br>"+
-					 "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";			
-			
+
+			String content = "<h1>" + company.getCompanyId() + "님의 임시비밀번호 안내입니다.</h1><br>" + "<div> 임시 비밀번호는 : "
+					+ company.getCompanyPassword() + " 입니다.<br>" + "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";
+
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
-				
+
 				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(company.getCompanyId()));
 				mimeMessage.setFrom(new InternetAddress("wogur698@gmail.com"));
-				mimeMessage.setSubject(company.getCompanyId()+"님 비밀번호 안내 메일입니다.");
+				mimeMessage.setSubject(company.getCompanyId() + "님 비밀번호 안내 메일입니다.");
 				mimeMessage.setText(content, "utf-8", "html");
-				
+
 			}
 		};
-		
-		mailSender.send(tempPasswordMsg);		
+
+		mailSender.send(tempPasswordMsg);
 		return companyDao.tempPasswordChange(company);
 	}
 

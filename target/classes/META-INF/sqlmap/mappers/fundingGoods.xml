@@ -86,7 +86,7 @@
         #{fundingRewardDeliveryDate}, #{fundingInvestmentProfitRate}, #{fundingInvestmentPeriod}, 0, 0, 0, null, #{companyId})	
 	</insert>
 	<update id="fundingAccountAdd" parameterType="FundingGoods">
-	UPDATE FUNDINGGOODS SET FundingBankName =#{fundingBankName}, FundingBankDepositor=#{fundingBankDepositor}, FundingAccountNumber=#{fundingAccountNumber}
+	UPDATE FUNDINGGOODS SET FundingBankName = '신한은행', FundingBankDepositor='(주)Masters', FundingAccountNumber=#{fundingAccountNumber}||fundingAccountNumberSEQ.nextval
     	WHERE FUNDINGCODE = #{fundingCode}		
 	</update>
 	
