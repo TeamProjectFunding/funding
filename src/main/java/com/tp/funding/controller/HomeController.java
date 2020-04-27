@@ -413,10 +413,10 @@ public class HomeController {
 //		}
 
 		//마이페이지 작성게시글 리스트
-		@RequestMapping(value="myPagePost")
-		public String myPagePost() {
-			return "myPage/myPagePostDashBoard";
-		}
+//		@RequestMapping(value="myPagePost")
+//		public String myPagePost() {
+//			return "myPage/myPagePostDashBoard";
+//		}
 		//마이페이지 PICK 리스트
 //		@RequestMapping(value="myPagePick")
 //		public String myPagePick() {

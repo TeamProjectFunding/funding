@@ -14,4 +14,8 @@ INSERT INTO FundingQuestionReply VALUES
 	(FUNDINGQUESTIONREPLYNUMBER.nextval, #{fundingQuestionReplyContent} , SYSDATE , #{fundingQuestionNumber} , #{adminId})
 </insert>
 
+<select id="myFGQuestionReplyDetail" parameterType="int" resultType="fundingQuestionReply">
+SELECT * FROM FUNDINGQUESTIONREPLY WHERE FUNDINGQUESTIONNUMBER = #{fundingQuestionNumber}
+</select>
+
 </mapper>

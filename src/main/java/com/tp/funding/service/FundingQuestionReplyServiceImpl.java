@@ -14,13 +14,18 @@ public class FundingQuestionReplyServiceImpl implements FundingQuestionReplyServ
 	
 	
 	@Override
-	public FundingQuestion fundingQuestionReplyDetail(int fundingQuestionReplyNumber) {
+	public FundingQuestionReply fundingQuestionReplyDetail(int fundingQuestionReplyNumber) {
 		return fundingQuestionReplyDao.fundingQuestionReplyDetail(fundingQuestionReplyNumber);
 	}
 
 	@Override
 	public int fundingQuestionReplyWrite(FundingQuestionReply fundingQuestionReply) {
 		return fundingQuestionReplyDao.fundingQuestionReplyWrite(fundingQuestionReply);
+	}
+
+	@Override
+	public FundingQuestionReply myFGQuestionReplyDetail(int fundingQuestionNumber) {
+		return fundingQuestionReplyDao.myFGQuestionReplyDetail(fundingQuestionNumber);
 	}
 
 }

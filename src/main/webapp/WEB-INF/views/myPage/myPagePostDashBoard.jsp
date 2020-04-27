@@ -27,13 +27,24 @@
 						<th>REPLY</th>
 						<th>HIT</th>
 					</tr>
-					<tr>
-						<td>NO</td>
-						<td>Q&A TITLE</td>
-						<td>2020-04-22</td>
-						<td><a href="" class="button">답글</a></td>
-						<td>10</td>
-					</tr>
+					
+					<c:forEach var="myQnaList" items="${myQnaList}">
+						<tr>
+							<td>${myQnaList.qnANumber}</td>
+							<td>${myQnaList.qnATitle}</td>
+							<td>${myQnaList.qnADate}</td>
+							
+							<c:if test="${myQnaList.qnAReplyExist==1}">
+								<td><a href="${conPath}/myQnaAnswerView.do?qnAGroup=${myQnaList.qnAGroup}&qnARef=${myQnaList.qnARef}" class="button">답글보기</a></td>
+							</c:if>
+							<c:if test="${myQnaList.qnAReplyExist==0}">
+								<td><!-- <a href="#none" class="button"></a> --></td>
+							</c:if>						
+							
+							<td>${myQnaList.qnAHit}</td>
+						</tr>
+					</c:forEach>
+					
 				</table>
 			</div>
 		</div>	
@@ -46,15 +57,24 @@
 						<th>TITLE</th>
 						<th>DATE</th>
 						<th>REPLY</th>
-						<th>HIT</th>
+						<!-- <th>HIT</th> -->
 					</tr>
-					<tr>
-						<td>NO</td>
-						<td>Q&A TITLE</td>
-						<td>2020-04-22</td>
-						<td><a href="" class="button">답글</a></td>
-						<td>10</td>
-					</tr>
+					
+					<c:forEach var="myFundingGoodsQnaList" items="${myFundingGoodsQnaList}">				
+						<tr>
+							<td>${myFundingGoodsQnaList.fundingQuestionNumber}</td>
+							<td>${myFundingGoodsQnaList.fundingQuestionTitle}</td>
+							<td>${myFundingGoodsQnaList.fundingQuestionDate}</td>
+							
+							<c:if test="${myFundingGoodsQnaList.fundingQuestionExistReply==1}">
+								<td><a href="${conPath}/myFGQnaAnswerView.do?fundingQuestionNumber=${myFundingGoodsQnaList.fundingQuestionNumber}" class="button">답글보기</a></td>
+							</c:if>
+							<c:if test="${myFundingGoodsQnaList.fundingQuestionExistReply==0}">
+								<td><!-- <a href="#none" class="button"></a> --></td>
+							</c:if>	
+							<%-- <td>${myFundingGoodsQnaList. }</td> --%>
+						</tr>
+					</c:forEach>	
 				</table>
 			</div>
 		</div>

@@ -61,4 +61,14 @@ public class QnADaoImpl implements QnADao {
 		return sessionTemplate.update("qnAReplyExistUp", qnANumber);
 	}
 
+	@Override
+	public int getAnswerQnanumber(QnA qnA) {
+		return sessionTemplate.selectOne("getAnswerQnanumber", qnA);
+	}
+
+	@Override
+	public List<QnA> myQnaList(QnA qnA) {
+		return sessionTemplate.selectList("myQnaList", qnA);
+	}
+
 }

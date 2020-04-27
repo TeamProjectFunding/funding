@@ -15,4 +15,6 @@ public interface QnADao {
 	public int totCntSearchQnA(QnA qnA);
 	public int qnAModify(QnA qnA);
 	public int qnAReplyExistUp(int qnANumber);
+	public int getAnswerQnanumber(QnA qnA);
+	public List<QnA> myQnaList(QnA qnA);
 }

@@ -32,15 +32,18 @@
 					<td>${qna.qnANumber }</td>
 					<td><a href="${conPath}/adminQnaView.do?qnANumber=${qna.qnANumber}">
 					
-					<c:forEach var="i" begin="0" end="${qna.qnAIndent}">
-						<c:if test="${i == qna.qnAIndent}">
-							<img src="${conPath}/images/re.jpg" alt="re" width="30px">  
-						</c:if>
-						<c:if test="${i != qna.qnAIndent }">
-							&nbsp; &nbsp; &nbsp; &nbsp;
-						</c:if>							
-					</c:forEach>					
-					${qna.qnATitle }</a></td>
+					<c:if test="${qna.qnARef != 0}">
+						<c:forEach var="i" begin="0" end="${qna.qnAIndent}">
+							<c:if test="${i == qna.qnAIndent}">
+								<img src="${conPath}/images/re.jpg" alt="re" width="30px">  
+							</c:if>
+							<c:if test="${i != qna.qnAIndent }">
+								&nbsp; &nbsp; &nbsp; &nbsp;
+							</c:if>							
+						</c:forEach>	
+					</c:if>					
+						${qna.qnATitle }</a></td>
+					
 					
 					<td>${qna.userId }${qna.companyId}${qna.adminId}</td>
 					<td>${qna.qnADate }</td>
