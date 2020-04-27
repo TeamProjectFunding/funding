@@ -159,4 +159,9 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 		return sessionTemplate.selectOne("getFundingCode");
 	}
 
+	@Override
+	public List<FundingGoods> fundingAdminAllList() {
+		return sessionTemplate.selectList("fundingAdminAllList");
+	}
+
 }

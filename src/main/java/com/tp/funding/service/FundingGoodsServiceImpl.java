@@ -263,4 +263,9 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.getFundingCode();
 	}
 
+	@Override
+	public List<FundingGoods> fundingAdminAllList() {
+		return fundingGoodsDao.fundingAdminAllList();
+	}
+
 }

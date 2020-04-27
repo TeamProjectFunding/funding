@@ -10,63 +10,108 @@
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="${conPath}/css/style.css" rel="stylesheet">
+<script src="${conPath }/js/address.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(document).ready(function(){		
+		
+		/* 아이디 중복 체크 ajax+ 정규표현식 */
+		$('.confirmKeyUp').keyup(function(){
+		      var idPattern = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		      if(idPattern.test($(this).val()) == false){
+		    	  $('.idConfirm').html("<span class='danger'>이메일 형식에 맞게 입력하세요.</span>");
+		      }else{
+				$.ajax({
+					url : '${conPath}/idConfirm.do',
+					datatype : 'html',
+					data : "userId="+$(this).val()+"&companyId="+$(this).val(),
+					success : function(data, status){
+						$('.idConfirm').html(data);
+					}
+				});
+		      }
+		});
+		
+		/* 비밀번호 체크 정규표현식 */
+		$('.pwchk').keyup(function(){
+			var pwDegreeSafety = 0;
+			var pwPatternNumber = /[0-9]/;
+    		var pwPatternEnglish = /[a-zA-Z]/;
+			var pwPatternSymbol = /[!@#$%^*+=-]/;
+			/* 안전도 */
+			
+			
+			var pw = $('.pw').val();
+			var pwchk = $('.pwchk').val();
+			if(pw != pwchk){
+				$('.passwordConfirm').html('<span class="danger">불일치</span>');	
+				$('.passWordSafety').html('');
+			}else{
+				if(pwPatternNumber.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwPatternEnglish.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwPatternSymbol.test($(this).val())){
+					pwDegreeSafety++;
+				}
+				if(pwDegreeSafety < 2){
+					$('.passWordSafety').html('<span class="danger"> ■□□ 위험 </span>');					
+				}else if(pwDegreeSafety == 2){
+					$('.passWordSafety').html('<span class="normal"> ■■□ 중간 </span>');					
+				}else if(pwDegreeSafety > 2){
+					$('.passWordSafety').html('<span class="safety"> ■■■ 안전 </span>');					
+				}
+				
+				$('.passwordConfirm').html('<span class="safety">일치</span>');
+			}			
+		});
+		
+		
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageModifyWrap">
 		<h1>PROFILE MODIFY</h1>
-		<form action="">
+		<form action="${conPath }/myPageModify.do" method="post" enctype="multipart/form-data">
 				<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 				<script src="${conPath }/js/address.js"></script>
 				<!-- user join form -->
+				<c:if test="${not empty user }">
 				<table class="user">
 					<tr>
 						<th><h2>회원 기본 정보</h2></th>
 					</tr>
 					<tr>
-						<td><input type="email" name="userId" value="userId" required="required" readonly="readonly"></td>
+						<td><input type="email" name="userId" value="${user.userId }" required="required" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<td>
 							<p class="idConfirm ">
-								<span class="danger">중복 된 아이디입니다.</span>
-								<span class="safety">사용가능한 아이디입니다.</span>
 							</p>
 						</td>
 					</tr>
 					<tr>
-						<td><input type="password" name="userPassword" placeholder="기존 비밀번호을 입력하세요." required="required"></td>
+						<td><input type="password" name="userPassword" placeholder="새로운 비밀번호" required="required"></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="useNewPassword" placeholder="새 비밀번호을 입력하세요." required="required"></td>
+						<td><input type="password" name="useNewPassword" placeholder="비밀 번호 확인 " required="required"></td>
 					</tr>
 					<tr>
 						<td>
 							<p class="passWordSafety">
-								<span class="danger"> ■□□ 위험 </span>
-								<span class="normal"> ■■□ 중간 </span>
-								<span class="safety"> ■■■ 안전 </span>
 							</p>
 						</td>
 					</tr>
 					<tr>
-					
-						<td><input type="password" name="userNewPasswordCheck" placeholder="다시한번 새 비밀번호를 입력하세요" required="required"></td>
+						<td><input type="text" name="userName" value="${user.userName}" required="required" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<td>
-							<p class="passwordConfirm">
-								<span class="danger">불일치</span>
-								<span class="safety">일치</span>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="text" name="userName" value="userName" required="required" readonly="readonly"></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="userPhone" value="010-000-0000" placeholder="연락처를 입력하세요." required="required"></td>
+						<td><input type="text" name="userPhone" value="${user.userPhone }" required="required"></td>
 					</tr>
 					<tr>
 						<th><h2>추가정보</h2></th>
@@ -76,7 +121,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="date" name="userBirthDay">
+							<input type="date" name="userBirthDay"  >
 						</td>
 					</tr>
 					<tr>
@@ -95,22 +140,50 @@
 					<tr>
 						<td><input type="text" name="userAdderssDetail" placeholder="상세주소를 입력하세요" required="required"></td>
 					</tr>
+					<c:if test="${user.userAdPhone == 0 and user.userAdEmail == 0 }">
 					<tr>
 						<td class="checkBoxWrap">
 							휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" value="ok">
 							이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" value="ok">
 						</td>
 					</tr>
+					</c:if>
+					<c:if test="${user.userAdPhone == 0 and user.userAdEmail == 1 }">
+					<tr>
+						<td class="checkBoxWrap">
+							휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" value="ok">
+							이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" checked="checked">
+						</td>
+					</tr>
+					</c:if>
+					<c:if test="${user.userAdPhone == 1 and user.userAdEmail == 0 }">
+					<tr>
+						<td class="checkBoxWrap">
+							휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" checked="checked">
+							이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" value="ok">
+						</td>
+					</tr>
+					</c:if>
+					<c:if test="${user.userAdPhone == 1 and user.userAdEmail == 1 }">
+					<tr>
+						<td class="checkBoxWrap">
+							휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" value="ok" checked="checked">
+							이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" value="ok" checked="checked">
+						</td>
+					</tr>
+					</c:if>
 					<tr>
 						<th id="buttonWrap">
-							<input type="submit" value="JOIN" class="button">
+							<input type="submit" value="MODIFY" class="button">
 							<input type="reset" value="RESET" class="button">
 							<input type="button" value="BACK" class="button">
 						</th>
 					</tr>
 				</table>
+				</c:if>
 				
 				<!-- company join form -->
+				<c:if test="${not empty company }">
 				<table class="company">
 					<tr>
 						<th><h2>기업 기본 정보</h2></th>
@@ -199,6 +272,7 @@
 						</th>
 					</tr>
 				</table>
+				</c:if>
 			</form>
 	</section>
 	</div>

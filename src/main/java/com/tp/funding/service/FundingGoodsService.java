@@ -39,5 +39,5 @@ public interface FundingGoodsService {
 	public int fundingSucces(int fundingCode);
 	public int fundraizingFailure(int fundingCode);
 	public int getFundingCode(); // 현재 펀딩코드 가져오기
-	
+	public List<FundingGoods>fundingAdminAllList();
 }

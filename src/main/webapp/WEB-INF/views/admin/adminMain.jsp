@@ -66,11 +66,11 @@
 			<div class="dashBoard">
 				<h3>투자마감</h3>
 				<div class="dashBoardList">
-				<c:forEach var="fundingDeadlineList" items="${fundingDeadlineList}">
-					<fmt:parseNumber value="${fundingDeadlineList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
+				<c:forEach var="fundingAdminAllList" items="${fundingAdminAllList}">
+					<fmt:parseNumber value="${fundingAdminAllList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
 				
 					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">${fundingDeadlineList.fundingName}</a>
+						<li><a href="${conPath }/goodsViewCoreInfomation.do">${fundingAdminAllList.fundingName}</a>
 						<c:if test="${endDate < nowDate }">
 							<span>${nowDate-endDate}일 지남</span>
 						</c:if>
@@ -83,7 +83,7 @@
 						</li>
 						
 						<li id="buttonWrap">
-							<a href="${conPath}/adminFundingClose.do?fundingCode=${fundingDeadlineList.fundingCode}" class="button">마감</a>
+							<a href="${conPath}/adminFundingClose.do?fundingCode=${fundingAdminAllList.fundingCode}" class="button">마감</a>
 						</li>
 					</ul>
 					
@@ -95,7 +95,7 @@
 				<div class="dashBoardList">
 				<c:forEach var="question" items="${fundingQustionAdminList}">
 					<ul>
-						<li><a href="${conPath }/goodsQnaView.do">[${question.fundingCode}]&nbsp;${question.fundingQuestionTitle } </a><span>${question.userId } ${question.fundingQuestionDate}</span></li>
+						<li><a href="#none">[${question.fundingCode}]&nbsp;${question.fundingQuestionTitle } </a><span>${question.userId } ${question.fundingQuestionDate}</span></li><%-- ${conPath }/goodsQnaView.do --%>
 						<li id="buttonWrap">
 							<a href="${conPath }/goodsQnaReplyForm.do?fundingQuestionNumber=${question.fundingQuestionNumber }" class="button">답변</a>
 						</li>
@@ -108,7 +108,7 @@
 				<div class="dashBoardList">
 				<c:forEach var="qna" items="${qnAAdminList}">
 					<ul>
-						<li><a href="${conPath}/adminQnaView.do?qnANumber=${qna.qnANumber}">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId}${qna.qnADate}</span></li>
+						<li><a href="#none">${qna.qnATitle }</a><span>${qna.userId }${qna.companyId}${qna.qnADate}</span></li><%-- ${conPath}/adminQnaView.do?qnANumber=${qna.qnANumber} --%>
 						<li id="buttonWrap">
 							<a href="${conPath}/adminQnaReplyForm.do?qnANumber=${qna.qnANumber}" class="button">답변</a>
 						</li>
@@ -121,7 +121,7 @@
 				<div class="dashBoardList">
 				<c:forEach var="event" items="${eventAllList}">
 					<ul>
-						<li><a href="${conPath }/eventView.do">${event.eventTilte}</a><span>${event.eventStartDate}</span></li>
+						<li><a href="#none">${event.eventTilte}</a><span>${event.eventStartDate}</span></li><%-- ${conPath }/eventView.do --%>
 						<li id="buttonWrap">
 							<a href="${conPath }/eventClose.do?eventNumber=${event.eventNumber}" class="button">마감</a>
 							<a href="${conPath }/eventParticipants.do" class="button">참여자</a>
@@ -135,7 +135,7 @@
 				<div class="dashBoardList">
 				<c:forEach var="notice" items="${noticeList}">
 					<ul>
-						<li><a href="${conPath }/noticeView.do">${notice.noticeTilte}</a><span>${notice.noticeDate}</span></li>
+						<li><a href="#none">${notice.noticeTilte}</a><span>${notice.noticeDate}</span></li>
 						<li id="buttonWrap">
 							<a href="${conPath }/noticeAdminModifyForm.do?noticeNumber=${notice.noticeNumber}" class="button">수정</a>
 							<a href="${conPath }/noticeAdminDelete.do?noticeNumber=${notice.noticeNumber}" class="button">삭제</a>

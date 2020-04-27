@@ -73,7 +73,7 @@ public class AdminControllerByTop {
 			model.addAttribute("eventAllList", eService.eventAllList()); // 이벤트리스트 전체
 			model.addAttribute("noticeList", nService.noticeList()); // 공지사항리스트 전체
 			model.addAttribute("fundingReadyList", fService.fundingReadyList(fundingGoods)); // 승인 대기중인 리스트
-			model.addAttribute("fundingDeadlineList", fService.fundingDeadlineList());
+			model.addAttribute("fundingAdminAllList", fService.fundingAdminAllList());
 			model.addAttribute("fundingQustionAdminList", fqService.fundingQustionAdminList()); //답변안단 리스트 전체
 			model.addAttribute("result", "성공");
 
@@ -199,7 +199,7 @@ public class AdminControllerByTop {
 	@RequestMapping(value = "eventClose")
 	public String eventClose(Model model, int eventNumber) {
 		// 1단계
-		int eventParticipateCount = eService.eventColseStep1(eventNumber);
+		int eventParticipateCount = eService.eventColseStep1(eventNumber); // 응모인원 검색 
 		Event event = new Event();
 		event.setEventParticipateCount(eventParticipateCount);
 		event.setEventNumber(eventNumber);
@@ -283,7 +283,7 @@ public class AdminControllerByTop {
 			return "redirect:adminMain.do";
 		}
 	}
-	//펀딩 상품 수정 예정
+	//펀딩 상품 수정 실패
 //	@RequestMapping(value="adminGoodsModifyForm")
 //	public String adminGoodsModify(Model model, int fundingCode) {
 //		FundingGoods fundingGoods = fService.fundingDetail(fundingCode); //펀딩 상품 가져감
