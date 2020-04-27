@@ -13,13 +13,18 @@ public class FundingQuestionReplyDaoImpl implements FundingQuestionReplyDao {
 	private SqlSession sessionTemplate;
 	
 	@Override
-	public FundingQuestion fundingQuestionReplyDetail(int fundingQuestionReplyNumber) {
+	public FundingQuestionReply fundingQuestionReplyDetail(int fundingQuestionReplyNumber) {
 		return sessionTemplate.selectOne("fundingQuestionReplyDetail", fundingQuestionReplyNumber);
 	}
 
 	@Override
 	public int fundingQuestionReplyWrite(FundingQuestionReply fundingQuestionReply) {
 		return sessionTemplate.insert("fundingQuestionReplyWrite", fundingQuestionReply);
+	}
+
+	@Override
+	public FundingQuestionReply myFGQuestionReplyDetail(int fundingQuestionNumber) {
+		return sessionTemplate.selectOne("myFGQuestionReplyDetail", fundingQuestionNumber);
 	}
 
 }

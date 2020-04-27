@@ -63,4 +63,14 @@ public class QnAServiceImpl implements QnAService {
 		return qnADao.qnAReplyExistUp(qnANumber);
 	}
 
+	@Override
+	public int getAnswerQnanumber(QnA qnA) {
+		return qnADao.getAnswerQnanumber(qnA);
+	}
+
+	@Override
+	public List<QnA> myQnaList(QnA qnA) {
+		return qnADao.myQnaList(qnA);
+	}
+
 }

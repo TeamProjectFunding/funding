@@ -5,8 +5,10 @@ import com.tp.funding.dto.FundingQuestionReply;
 
 public interface FundingQuestionReplyService {
 
-	public FundingQuestion fundingQuestionReplyDetail(int fundingQuestionReplyNumber);
+	public FundingQuestionReply fundingQuestionReplyDetail(int fundingQuestionReplyNumber);
 	
 	public int fundingQuestionReplyWrite(FundingQuestionReply fundingQuestionReply);
+	
+	public FundingQuestionReply myFGQuestionReplyDetail(int fundingQuestionNumber);
 	
 }

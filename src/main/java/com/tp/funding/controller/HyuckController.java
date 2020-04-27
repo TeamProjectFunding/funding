@@ -19,6 +19,8 @@ import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
+import com.tp.funding.service.FundingQuestionReplyService;
+import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.RewardService;
@@ -54,6 +56,12 @@ public class HyuckController {
 
 	@Autowired
 	private UserPickService userPickService;
+	
+	@Autowired
+	private FundingQuestionService fundingQuestionService;
+	
+	@Autowired
+	private FundingQuestionReplyService fundingQuestionReplyService;
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
@@ -502,5 +510,34 @@ public class HyuckController {
 
 		return "myPage/myPageMain";
 	}
+	
+	@RequestMapping(value="myPagePost")
+	public String myPagePost(QnA qnA, Model model) {		
+		
+		model.addAttribute("myQnaList", qnaService.myQnaList(qnA));
+		model.addAttribute("myFundingGoodsQnaList", fundingQuestionService.myFundingGoodsQnaList(qnA.getUserId()));
+		
+		return "myPage/myPagePostDashBoard";
+	}
+	
+	@RequestMapping(value="myQnaAnswerView")
+	public String myQnaAnswerView(QnA qnA, Model model) {
+				
+		int qnANumber = qnaService.getAnswerQnanumber(qnA);	
+		
+		qnA.setQnANumber(qnANumber);
+		model.addAttribute("qnaDetail", qnaService.qnADetail(qnA));	
+		
+		return "myPage/myQnaAnswerView";
+	}
+	
+	@RequestMapping(value="myFGQnaAnswerView")
+	public String myFGQnaAnswerView(int fundingQuestionNumber, Model model) {
+		
+		model.addAttribute("myFGQuestionReplyDetail", fundingQuestionReplyService.myFGQuestionReplyDetail(fundingQuestionNumber));
+				
+		return "myPage/myFGQnaAnswerView";
+	}
+	
 
 }

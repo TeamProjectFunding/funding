@@ -53,4 +53,9 @@ public class FundingQuestionDaoImpl implements FundingQuestionDao {
 		return sessionTemplate.selectList("fundingQustionAdminList");
 	}
 
+	@Override
+	public List<FundingQuestion> myFundingGoodsQnaList(String userId) {
+		return sessionTemplate.selectList("myFundingGoodsQnaList", userId);
+	}
+
 }

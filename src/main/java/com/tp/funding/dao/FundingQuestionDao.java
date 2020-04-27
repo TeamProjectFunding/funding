@@ -21,4 +21,6 @@ public interface FundingQuestionDao {
 	public int fundingReplyUpdate(int fundingQuestionNumber);
 	
 	public List<FundingQuestion> fundingQustionAdminList();
+	
+	public List<FundingQuestion> myFundingGoodsQnaList(String userId);
 }

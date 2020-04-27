@@ -37,7 +37,7 @@
 				<tr>
 					<td><a href="myPageFunding.do?userId=${user.userId }">FUNDING</a></td>	
 					<td><a href="myPagePick.do?userId=${user.userId}">PICK</a></td>
-					<td><a href="myPagePost.do">POST</a></td>
+					<td><a href="myPagePost.do?userId=${user.userId}">POST</a></td>
 					<td><a href="myPageEvent.do">EVENT</a></td>			
 				</tr>			
 			</c:if>
