@@ -27,4 +27,14 @@ public class DepositAndWithdrawalDaoImpl implements DepositAndWithdrawalDao {
 		return sessionTemplate.selectList("companyDNWList", companyId);
 	}
 
+	@Override
+	public List<DepositAndWithdrawal> userRewardDNWList(DepositAndWithdrawal depositAndWithdrawal) {
+		return sessionTemplate.selectList("userRewardDNWList", depositAndWithdrawal);
+	}
+
+	@Override
+	public List<DepositAndWithdrawal> companyRewardDNWList(DepositAndWithdrawal depositAndWithdrawal) {
+		return sessionTemplate.selectList("companyRewardDNWList", depositAndWithdrawal);
+	}
+
 }

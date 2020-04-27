@@ -11,6 +11,37 @@ public class DepositAndWithdrawal {
 	private Date dNWDate;
 	private String companyId;
 	private String userId;
+	private int rewardCode;
+	
+	//JOIN해서 출력
+	private int investmentReceiveCount; //이자 받은 횟수
+	private int fundingInvestmentPeriod; //총 이자 받는 기간
+	private int rewardInterst; //이자율
+	
+	public int getRewardCode() {
+		return rewardCode;
+	}
+	public void setRewardCode(int rewardCode) {
+		this.rewardCode = rewardCode;
+	}
+	public int getInvestmentReceiveCount() {
+		return investmentReceiveCount;
+	}
+	public void setInvestmentReceiveCount(int investmentReceiveCount) {
+		this.investmentReceiveCount = investmentReceiveCount;
+	}
+	public int getFundingInvestmentPeriod() {
+		return fundingInvestmentPeriod;
+	}
+	public void setFundingInvestmentPeriod(int fundingInvestmentPeriod) {
+		this.fundingInvestmentPeriod = fundingInvestmentPeriod;
+	}
+	public int getRewardInterst() {
+		return rewardInterst;
+	}
+	public void setRewardInterst(int rewardInterst) {
+		this.rewardInterst = rewardInterst;
+	}
 	public int getDepositAndWithdrawalNumber() {
 		return depositAndWithdrawalNumber;
 	}
@@ -66,8 +97,11 @@ public class DepositAndWithdrawal {
 	public String toString() {
 		return "DepositAndWithdrawal [depositAndWithdrawalNumber=" + depositAndWithdrawalNumber + ", dNWType=" + dNWType
 				+ ", dNWAmount=" + dNWAmount + ", dNWBalance=" + dNWBalance + ", dNWContent=" + dNWContent
-				+ ", dNWDate=" + dNWDate + ", companyId=" + companyId + ", userId=" + userId + "]";
+				+ ", dNWDate=" + dNWDate + ", companyId=" + companyId + ", userId=" + userId + ", rewardCode="
+				+ rewardCode + ", investmentReceiveCount=" + investmentReceiveCount + ", fundingInvestmentPeriod="
+				+ fundingInvestmentPeriod + ", rewardInterst=" + rewardInterst + "]";
 	}
+	
 	
 	
 	

@@ -30,11 +30,14 @@
 		
 		<div class="myPageProfile">
 		
-			<c:if test="${not empty sessionScope.user.userProfileImage || not empty sessionScope.company.companyProfileImage}">
-				<img src="${conPath}/images/profile/${user.userProfileImage}${company.companyProfileImage}" alt="profile" >
+			<c:if test="${not empty sessionScope.user && sessionScope.user.userProfileImage ne null}">
+				<img src="${conPath}/images/profile/${user.userProfileImage}" alt="profile" >
+			</c:if>							
+			<c:if test="${not empty sessionScope.company && sessionScope.company.companyProfileImage ne null}">
+				<img src="${conPath}/images/profile/${company.companyProfileImage}" alt="profile" >
 			</c:if>							
 							
-			<c:if test="${sessionScope.user.userProfileImage eq null && sessionScope.company.companyProfileImage eq null}">
+			<c:if test="${(not empty sessionScope.user && sessionScope.user.userProfileImage eq null) || (not empty sessionScope.company && sessionScope.company.companyProfileImage eq null)}">
 				<i class="material-icons">account_circle</i>
 			</c:if>				
 			
@@ -42,23 +45,23 @@
 		
 		<table>
 			<tr>
-				<td>${userDetail.userName}${companyDetail.companyName}</td>
+				<td>${user.userName}${company.companyName}</td>
 			</tr>
 			<tr>
-				<td>${userDetail.userPhone}${companyDetail.companyPhone}</td>
+				<td>${user.userPhone}${company.companyPhone}</td>
 			</tr>
 			<tr>
-				<td>${userDetail.userId}${companyDetail.companyId}</td>
+				<td>${user.userId}${company.companyId}</td>
 			</tr>
 			<tr>
 				<td id="buttonWrap">
-					<a href="" class="button acountEnrollmentButton">계좌등록</a>
+					<a href="#none" class="button acountEnrollmentButton">계좌등록</a>
 					<a href="${conPath}/myPageModifyForm.do?userId=${user.userId}&companyId=${company.companyId}" class="button">프로필수정</a>
 				</td>
 			</tr>
 		</table>
 		
-		<c:if test="${not empty user}">
+		<c:if test="${not empty sessionScope.user}">
 			<table class="userActivity">
 				<tr>
 					<th>My FUNDING</th>
@@ -67,22 +70,22 @@
 					<th>EVENT</th>
 				</tr>
 				<tr>
-					<td><a href="${conPath}/myPageFunding.do">${userFundingTotalCnt}</a></td>
-					<td><a href="${conPath}/myPagePick.do?userId=${user.userId}">${userDetail.userPickCount}</a></td>
+					<td><a href="${conPath}/myPageFunding.do?userId=${user.userId}">${userFundingTotalCnt}</a></td>
+					<td><a href="${conPath}/myPagePick.do?userId=${user.userId}">${user.userPickCount}</a></td>
 					<td><a href="">0</a></td>
 					<td><a href="">0</a></td>
 				</tr>
 			</table>
 		</c:if>
 		
-		<c:if test="${not empty company}">
+		<c:if test="${not empty sessionScope.company}">
 			<table class="companyActivity">
 				<tr>
 					<th>My GOODS</th>
 					<th>APPLY</th>
 				</tr>
 				<tr>
-					<td><a href="">0</a></td>
+					<td><a href="myPageGoods.do?companyId=${company.companyId}">0</a></td>
 					<td><a href="">0</a></td>
 				</tr>
 			</table>
@@ -103,19 +106,33 @@
 			<table>
 				<tr>
 					<th>GRADE</th>
-					<td>일반투자자</td>
+					<td><c:if test="${not empty sessionScope.company }">회사 회원</c:if>
+					<c:if test="${not empty sessionScope.user}">${user.userGradeName }</c:if></td>
 				</tr>
+				<c:if test="${company.companyBankName eq null && user.userBankName eq null}">
+				<tr>
+					<td rowspan="7" colspan="2">계좌 등록 먼저 해주세요.</td>
+				</tr>
+				</c:if>
+				<c:if test="${company.companyBankName ne null || user.userBankName ne null}">
 				<tr>
 					<th>BANK</th>
-					<td>카카오뱅크</td>
+					<td>${user.userBankName }${company.companyBankName }</td>
+				</tr>
+				<tr>
+					<th>DEPOSITER</th>
+					<td>${user.userName }${company.companyBankDepositor }</td>
 				</tr>
 				<tr>
 					<th>ACCOUNT NUMBER</th>
-					<td>3333-33333-3333</td>
+					<td>${user.userAccountNumber }${company.companyAccountNumber }</td>
 				</tr>
 				<tr>
 					<th>BALANCE</th>
-					<td>1,000,000 원</td>
+					<td>
+					<c:if test="${not empty sessionScope.company }"><fmt:formatNumber value="${company.companyAccountBalance }" currencySymbol="true" /></c:if>
+					<c:if test="${not empty sessionScope.user }"><fmt:formatNumber value="${user.userAccountBalance }" currencySymbol="true" /></c:if>
+					원</td>
 				</tr>
 				<tr>
 					<th colspan="2" id="buttonWrap">
@@ -127,18 +144,19 @@
 				<tr class="dipositForm accountForm">
 					<td><input type="number" name="diposit" placeholder="금액을 입력하세요."></td>
 					<th id="buttonWrap">
-						<a href="#none" class="button">입금</a>
+						<a href="#none" class="button" id="dipositButton">입금</a>
 					</th>
 				</tr>
 				<tr class="withdrawForm accountForm">
 					<td><input type="number" name="withdraw" placeholder="금액을 입력하세요."></td>
 					<th id="buttonWrap">
-						<a href="#none" class="button">출금</a>
+						<a href="#none" class="button" id="withdrawButton">출금</a>
 					</th>
 				</tr>
 				<tr class="accountFormMessege ">
-					<th class="accountMessege">100,000 원 입금되었습니다.</th>
+					<th class="accountMessege"></th>
 				</tr>
+				</c:if>
 			</table>
 			
 			<div class="dispositWithdrawal">
@@ -150,89 +168,22 @@
 						<th>TYPE</th>
 						<th>BALANCE</th>
 					</tr>
+					<c:forEach var="DNM" items="${DNMList }">
 					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
+						<td><fmt:formatDate value="${DNM.dNWDate }" pattern="yyyy-MM-dd"/></td>
+						<td>${DNM.dNWContent}</td>
+						<td><fmt:formatNumber value="${DNM.dNWAmount }" currencySymbol="true"/>원</td>
+						<td><c:if test="${DNM.dNWType eq 0}">입금</c:if><c:if test="${DNM.dNWType eq 1}">출금</c:if></td>
+						<td><fmt:formatNumber value="${DNM.dNWBalance }" currencySymbol="true"/>원</td>
 					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					<tr>
-						<td>2020-04-24</td>
-						<td> 1번 펀딩 상품 이자지급</td>
-						<td>200 원</td>
-						<td>입금</td>
-						<td>100,200 원</td>
-					</tr>
-					
+					</c:forEach>
 				</table>
 			</div>
 		</div>
 		<script>
 			$(function(){
+				$('.dipositForm').hide();
+				$('.withdrawForm').hide();
 				$('.dipositFormButton').click(function(){
 					$('.dipositForm').slideDown();
 					$('.withdrawForm').hide();
@@ -241,6 +192,45 @@
 					$('.dipositForm').hide();
 					$('.withdrawForm').slideDown();
 				});
+				$('#dipositButton').click(function(){
+					var userId = '${user.userId}';
+					var companyId = '${company.companyId}';
+					var dNWAmount = Number($('input[name="diposit"]').val());
+					var dNWType = 0;
+					var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
+					 $.ajax({
+	                     url : '${conPath}/depositMypage.do',
+	                     datatype : 'html',
+	                     data : "companyId="+companyId+"&userId="+userId+"&dNWBalance="+dNWBalance+"&dNWAmount="+dNWAmount
+	                     +"&dNWType="+dNWType,
+	                     success : function(data, status){
+	                        $('.accountMessege').html(data);
+	                     }
+	                  });
+					 setTimeout(function(){
+						 location.reload();
+					 },1000);
+				});
+				/* $('#withdrawButton').click(function(){
+					var userId = '${user.userId}';
+					var companyId = '${company.companyId}';
+					var dNWAmount = Number($('input[name="diposit"]').val());
+					var dNWType = 0;
+					var dNWBalance = Number(${user.userAccountBalance}${company.companyAccountBalance});
+					 $.ajax({
+	                     url : '${conPath}/depositMypage.do',
+	                     datatype : 'html',
+	                     data : "companyId="+companyId+"&userId="+userId+"&dNWBalance="+dNWBalance+"&dNWAmount="+dNWAmount
+	                     +"&dNWType="+dNWType,
+	                     success : function(data, status){
+	                        $('.accountMessege').html(data);
+	                     }
+	                  });
+					 setTimeout(function(){
+						 location.reload();
+					 },1000);
+				}); */
+				
 			});
 		</script>
 	</section>

@@ -5,8 +5,14 @@
 
 <mapper namespace="DepositAndWithdrawal">
 <insert id="writeDepositAndWithdrawal" parameterType="DepositAndWithdrawal">
-INSERT INTO DepositAndWithdrawal VALUES (DepositAndWithdrawalNumber.NEXTVAL,#{dNWType},#{dNWAmount},#{dNWBalance},#{dNWContent},#{dNWDate},#{companyId},#{userId})
+INSERT INTO DepositAndWithdrawal VALUES (DepositAndWithdrawalNumber.NEXTVAL,#{dNWType},#{dNWAmount},#{dNWBalance},#{dNWContent},SYSDATE,#{companyId},#{userId},0)
 </insert>
+<select id="userRewardDNWList" parameterType="DepositAndWithdrawal" resultType="DepositAndWithdrawal">
+SELECT * FROM depositandwithdrawal d,reward r WHERE userId=#{userId} and d.rewardCode=r.rewardCode and r.rewardCode=#{rewardCode} ORDER BY dNWDate DESC
+</select>
+<select id="companyRewardDNWList" parameterType="DepositAndWithdrawal" resultType="DepositAndWithdrawal">
+SELECT * FROM depositandwithdrawal d,reward r WHERE companyId=#{companyId} and d.rewardCode=r.rewardCode and r.rewardCode=#{rewardCode} ORDER BY dNWDate DESC
+</select>
 <select id="userDNWList" parameterType="String" resultType="DepositAndWithdrawal">
 SELECT * from DepositAndWithdrawal WHERE userId=#{userId} ORDER BY dNWDate DESC
 </select>

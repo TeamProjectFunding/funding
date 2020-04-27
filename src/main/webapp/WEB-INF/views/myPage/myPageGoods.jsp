@@ -17,8 +17,12 @@
 	<section class="myPageGoodsWrap" >
 		<h1>MY GOODS</h1>
 		<p>
+			<c:if test="${paging.startPage > 1 }">
 			<a href="${conPath }/myPageGoods.do?companyId=${company.companyId }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+			</c:if>
+			<c:if test="${paging.endPage < paging.pageCnt }">
 			<a href="${conPath }/myPageGoods.do?companyId=${company.companyId }&pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+			</c:if>
 		</p>
 		<div id="fundingGraphWrap">
 			<div class="graphAxis">
@@ -30,33 +34,40 @@
 					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.4/10000}" pattern="" /></span>
 					<span><fmt:formatNumber value="${maxRecruitmentAmount*0.2/10000}" pattern="" /></span>
 				</div>
-				<span class="xAxisTitle">회차</span>
+				<span class="xAxisTitle">날짜</span>
 				<div class="xAxisWrap">
-
-				<c:forEach var="fundingCount" begin="1" end="${doFundingCount }">
-					<span>${fundingCount }</span>
+				<c:forEach var="good" items="${companyEndFundingList }">
+					<span><fmt:formatDate value="${good.fundingStartDate }" pattern="yyyy-MM-dd"/></span>
 				</c:forEach>
 				</div>
 				<div class="grabh">
 					<c:forEach var="good" items="${companyEndFundingList }">
-					<c:set var="highRate" value="${good.fundingTargetRate*good.fundingTargetAmount/maxRecruitmentAmount }"/>
+					<c:set var="highRate" value="${good.fundingTargetAmount*good.fundingTargetRate/maxRecruitmentAmount }"/>
 					<div class="fundingBarWrap barAnimate" style="" onclick="fundingDetailView('${good.fundingCode}');">
 						<div class="whiteBar" style="height:${100-highRate}%;"></div>
 						<div class="targetBar" style="height:${highRate}%;">
-							<span>${good.fundingTargetAmount }</span>
-							<div class="fundingBar" style="height:100%;">
+							<span><fmt:parseNumber value="${good.fundingTargetAmount*good.fundingTargetRate/1000000 }" integerOnly="true"/> </span>
+							<c:if test="${good.fundingTargetRate >= 100 }">
+							<div class="fundingBar" style="height:${good.fundingTargetRate}%;">
 								<a href="#none" class="myFundingViewButton fundingCode${good.fundingCode }">FUNDINGTITLE<br/> + DETAIL</a>
 							</div>
+							</c:if>
+							<c:if test="${good.fundingTargetRate < 100 }">
+							<div class="fundingBar fundingFail" style="height:${good.fundingTargetRate}%;">
+								<a href="#none" class="myFundingViewButton fundingCode${good.fundingCode }">FUNDINGTITLE<br/> + DETAIL</a>
+							</div>
+							</c:if>
 						</div>
 					</div>
 					</c:forEach>
 				</div>
 				<script>
 					function fundingDetailView(fundingCode){
+						 var companyId = '${company.companyId}';
 						 $.ajax({
 		                     url : '${conPath}/fundingDetailView.do',
 		                     datatype : 'html',
-		                     data : "fundingCode="+fundingCode,
+		                     data : "companyId="+companyId+"&fundingCode="+fundingCode,
 		                     success : function(data, status){
 		                        $('#myGoodsDetail').html(data);
 		                     }

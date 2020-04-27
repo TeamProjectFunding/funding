@@ -16,8 +16,12 @@
 	<section class="myPageFundingWrap" >
 		<h1>MY FUNDING</h1>
 		<p>
+			<c:if test="${paging.startPage > 1 }">
 			<a href="${conPath }/myPageFunding.do?userId=${user.userId }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
+			</c:if>
+			<c:if test="${paging.endPage < paging.pageCnt }">
 			<a href="${conPath }/myPageFunding.do?userId=${user.userId }&pageNum=${paging.endPage+1 }" class="next">NEXT</a>
+			</c:if>
 		</p>
 		<div id="fundingGraphWrap">
 			<div class="graphAxis">
@@ -48,10 +52,11 @@
 				</div>
 				<script>
 					function fundingDetailUserView(fundingCode,fundingGoodsDetailNumber){
-						 $.ajax({
+						var userId = '${user.userId}'; 
+						$.ajax({
 		                     url : '${conPath}/fundingDetailUserView.do',
 		                     datatype : 'html',
-		                     data : "fundingCode="+fundingCode+"&fundingGoodsDetailNumber="+fundingGoodsDetailNumber,
+		                     data : "userId="+userId+"&fundingCode="+fundingCode+"&fundingGoodsDetailNumber="+fundingGoodsDetailNumber,
 		                     success : function(data, status){
 		                        $('#myFundingDetail').html(data);
 		                     }

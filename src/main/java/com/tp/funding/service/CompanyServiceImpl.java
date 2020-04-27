@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dao.CompanyDao;
 import com.tp.funding.dto.Company;
+import com.tp.funding.util.FileCopy;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -68,7 +69,8 @@ public class CompanyServiceImpl implements CompanyService {
 					mFile.transferTo(new File(uploadPath + companyProfileImage));
 					System.out.println("서버에 저장된 파일 : " + uploadPath + companyProfileImage);
 					System.out.println("백업위해 복사할 파일 : " + backupPath + companyProfileImage);
-					int fileResult = filecopy(uploadPath + companyProfileImage, backupPath + companyProfileImage);
+					FileCopy filecopy = new FileCopy();
+					int fileResult = filecopy.filecopy(uploadPath + companyProfileImage, backupPath + companyProfileImage);
 					if (fileResult == 1) {
 						System.out.println("복사성공");
 					} else {
@@ -84,46 +86,6 @@ public class CompanyServiceImpl implements CompanyService {
 
 		company.setCompanyProfileImage(companyProfileImage);
 		return companyDao.companyJoin(company);
-	}
-
-	private int filecopy(String serverFile, String backupFile) {
-		int result = 0;
-
-		FileInputStream is = null;
-		FileOutputStream os = null;
-
-		File file = new File(serverFile);
-
-		try {
-
-			is = new FileInputStream(serverFile);
-			os = new FileOutputStream(backupFile);
-			byte[] buff = new byte[(int) file.length()];
-			while (true) {
-				int nReadyByte = is.read(buff);
-				if (nReadyByte == -1)
-					break;
-				os.write(buff, 0, nReadyByte);
-			}
-
-			result = 1;
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-
-				if (os != null)
-					os.close();
-				if (is != null)
-					is.close();
-
-			} catch (Exception e2) {
-				System.out.println(e2.getMessage());
-			}
-		}
-
-		return result;
 	}
 
 	@Override
@@ -149,7 +111,8 @@ public class CompanyServiceImpl implements CompanyService {
 					mFile.transferTo(new File(uploadPath + companyProfileImage));
 					System.out.println("서버에 저장된 파일 : " + uploadPath + companyProfileImage);
 					System.out.println("백업위해 복사할 파일 : " + backupPath + companyProfileImage);
-					int fileResult = filecopy(uploadPath + companyProfileImage, backupPath + companyProfileImage);
+					FileCopy filecopy = new FileCopy();
+					int fileResult = filecopy.filecopy(uploadPath + companyProfileImage, backupPath + companyProfileImage);
 					if (fileResult == 1) {
 						System.out.println("복사성공");
 					} else {

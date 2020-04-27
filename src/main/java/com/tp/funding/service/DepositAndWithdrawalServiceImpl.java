@@ -27,4 +27,20 @@ public class DepositAndWithdrawalServiceImpl implements DepositAndWithdrawalServ
 		return depositAndWithdrawalDao.companyDNWList(companyId);
 	}
 
+	@Override
+	public List<DepositAndWithdrawal> userRewardDNWList(String userId, int rewardCode) {
+		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal();
+		depositAndWithdrawal.setUserId(userId);
+		depositAndWithdrawal.setRewardCode(rewardCode);
+		return depositAndWithdrawalDao.userRewardDNWList(depositAndWithdrawal);
+	}
+
+	@Override
+	public List<DepositAndWithdrawal> companyRewardDNWList(String companyId, int rewardCode) {
+		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal();
+		depositAndWithdrawal.setCompanyId(companyId);
+		depositAndWithdrawal.setRewardCode(rewardCode);
+		return depositAndWithdrawalDao.companyRewardDNWList(depositAndWithdrawal);
+	}
+
 }

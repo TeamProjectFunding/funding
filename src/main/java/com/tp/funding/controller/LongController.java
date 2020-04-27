@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.tp.funding.dto.Company;
+import com.tp.funding.dto.DepositAndWithdrawal;
 import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsComments;
 import com.tp.funding.dto.FundingGoodsCommentsReply;
@@ -21,6 +23,8 @@ import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
+import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.DepositAndWithdrawalService;
 import com.tp.funding.service.FgCommentsReplyService;
 import com.tp.funding.service.FgCommentsService;
 import com.tp.funding.service.FundingDetailService;
@@ -52,6 +56,10 @@ public class LongController {
 	private FgCommentsReplyService fgCommentsReplyService;
 	@Autowired
 	private NoticeService noticeService;
+	@Autowired
+	private CompanyService companyService;
+	@Autowired
+	private DepositAndWithdrawalService depositAndWithdrawalService;
 	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
@@ -288,23 +296,14 @@ public class LongController {
 	//마이페이지 펀딩진행 내역
 	@RequestMapping(value="myPageGoods")
 	public String myPageGoods(String companyId,Model model,String pageNum) {//회사 그래프
-		System.out.println("pageNum="+pageNum);
 		List<FundingGoods> companyEndFundingList = fundingGoodsService.companyEndFundingList(companyId,pageNum,model);
 		model.addAttribute("companyEndFundingList", companyEndFundingList);
-		for(FundingGoods c : companyEndFundingList) {
-			System.out.println(c);
-		}
 		for(int i=0;i<companyEndFundingList.size();i++) {
 			int fundingCode = companyEndFundingList.get(i).getFundingCode();
 			model.addAttribute("reward"+fundingCode, rewardService.fundingRewardList(fundingCode));
-			System.out.println("i="+i);
-			for(Reward r : rewardService.fundingRewardList(fundingCode)) {
-				System.out.println(r);
-			}
 		}
 		model.addAttribute("doFundingCount", companyEndFundingList.size());
 		model.addAttribute("maxRecruitmentAmount", fundingGoodsService.maxRecruitmentAmount(companyId,pageNum,model));
-		System.out.println("doFundingCount:"+companyEndFundingList.size());
 		return "myPage/myPageGoods";
 	}
 	//마이페이지 펀딩내역 그래프
@@ -316,11 +315,13 @@ public class LongController {
 	}
 	//회사마이페이지 그래프 속 Detail
 	@RequestMapping(value="fundingDetailView")
-	public String fundingDetailView(int fundingCode,Model model) {
+	public String fundingDetailView(int fundingCode,String companyId,Model model) {
 		FundingGoods good = fundingGoodsService.fundingDetail(fundingCode);
 		model.addAttribute("good", good);
 		if(good.getFundingCategory() == 0) { //투자
-			model.addAttribute("reward", rewardService.fundingRewardList(fundingCode).get(0));
+			Reward reward = rewardService.fundingRewardList(fundingCode).get(0);
+			model.addAttribute("reward", reward);
+			model.addAttribute("companyDNWList", depositAndWithdrawalService.companyRewardDNWList(companyId, reward.getRewardCode()));
 		}else {//리워드
 			model.addAttribute("rewardList", rewardService.fundingRewardList(fundingCode));
 		}
@@ -328,33 +329,55 @@ public class LongController {
 	}
 	//유저 마이페이지 그래프 속 Detail
 	@RequestMapping(value="fundingDetailUserView")
-	public String fundingDetailUserView(int fundingCode,int fundingGoodsDetailNumber,Model model) {
+	public String fundingDetailUserView(int fundingCode,int fundingGoodsDetailNumber,String userId,Model model) {
 		FundingGoods good = fundingGoodsService.fundingDetail(fundingCode);
 		model.addAttribute("good", good);
 		model.addAttribute("goodDetail", fundingDetailService.fundingGoodsDetailView(fundingGoodsDetailNumber));
 		if(good.getFundingCategory() == 0) { //투자
-			model.addAttribute("reward", rewardService.fundingRewardList(fundingCode).get(0));
+			Reward reward = rewardService.fundingRewardList(fundingCode).get(0);
+			model.addAttribute("reward", reward);
+			model.addAttribute("userRewardDNWList", depositAndWithdrawalService.userRewardDNWList(userId, reward.getRewardCode()));
 		}else {//리워드
 			model.addAttribute("reward", rewardService.userSelectReward(fundingCode, fundingGoodsDetailNumber));
 		}
 		return "message/fundingDetailUserView";
 	}
-//	@RequestMapping(value="myPageMain")
-//	public String myPageMain(String userId, String companyId, Model model) {
-//		
-//		if(userId != null) {
-//			
-//			model.addAttribute("userDetail", usersService.userDetail(userId));
-//			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));			
-//			
-//		}else if(companyId != null) {
-//			
-//			model.addAttribute("companyDetail", companyService.companyDetail(companyId));				
-//		}
-//		
-//		return "myPage/myPageMain";
-//	}
-	
+	@RequestMapping(value="myPageMain")
+	public String myPageMain(String userId, String companyId, Model model,HttpSession session) {
+		
+		if(userId != null) {
+			session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
+			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
+			model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
+		}else if(companyId != null) {
+			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
+			model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
+		}
+		
+		return "myPage/myPageMain";
+	}
+	// 유저&회사 입금
+	@RequestMapping(value = "depositMypage")
+	public String balanceModify(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
+		System.out.println("depositAndWithdrawal"+depositAndWithdrawal);
+		depositAndWithdrawal.setdNWContent("마이페이지 입금");
+		depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
+		String userId = depositAndWithdrawal.getUserId();
+		String companyId = depositAndWithdrawal.getCompanyId();
+		int dNWAmount = depositAndWithdrawal.getdNWAmount();
+		if(userId != null& !userId.equals("")) {//유저
+			usersService.userBalanceModify(userId, dNWAmount);
+			session.setAttribute("user", usersService.userDetail(userId));
+		}else if(companyId != null& !companyId.equals("")) {//회사
+			Company company = new Company();
+			company.setCompanyId(companyId);
+			company.setChangeAccountBalance(dNWAmount);
+			companyService.companyBalanceModify(company);
+			session.setAttribute("company", companyService.companyDetail(companyId));
+		}
+		model.addAttribute("dNWAmount", dNWAmount);
+		return "message/depositMypage";
+	}
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
 	public String naverCollback() {

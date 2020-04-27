@@ -69,13 +69,12 @@ $(function(){
 					<th>지급일</th>
 					<th>금액</th>
 				</tr>
-				<c:forEach var="i" begin="1" end="${reward.investmentReceiveCount }">
+				<c:forEach var="DNW" items="${userRewardDNWList }">
 				<tr>
-					<td>${i }회차</td>
-					<td>2020-05-22</td>
-					<td>1,000 원</td>
+					<td>${DNW.investmentReceiveCount }회차</td>
+					<td><fmt:formatDate value="${DNW.dNWDate }" pattern="yyyy-MM-dd"/></td>
+					<td><fmt:formatNumber value="${DNW.dNWDate }" currencySymbol="true"/>원</td>
 				</tr>
-				
 				</c:forEach>
 			</table>
 			</c:if>

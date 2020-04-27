@@ -8,4 +8,6 @@ public interface DepositAndWithdrawalDao {
 	public int writeDepositAndWithdrawal(DepositAndWithdrawal depositAndWithdrawal);
 	public List<DepositAndWithdrawal> userDNWList(String userId);
 	public List<DepositAndWithdrawal> companyDNWList(String companyId);
+	public List<DepositAndWithdrawal> userRewardDNWList(DepositAndWithdrawal depositAndWithdrawal);
+	public List<DepositAndWithdrawal> companyRewardDNWList(DepositAndWithdrawal depositAndWithdrawal);
 }
