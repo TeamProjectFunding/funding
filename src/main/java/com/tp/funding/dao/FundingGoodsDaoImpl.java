@@ -172,6 +172,7 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 	@Override
 	public int companyEndFundingCount(String companyId) {
 		return sessionTemplate.selectOne("companyEndFundingCount", companyId);
+	}
 	@Override
 	public List<FundingGoods> fundingAdminAllList() {
 		return sessionTemplate.selectList("fundingAdminAllList");

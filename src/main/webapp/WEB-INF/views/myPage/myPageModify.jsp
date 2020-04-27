@@ -54,65 +54,7 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <script src="${conPath }/js/address.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script>
-	$(document).ready(function(){		
-		
-		/* 아이디 중복 체크 ajax+ 정규표현식 */
-		$('.confirmKeyUp').keyup(function(){
-		      var idPattern = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-		      if(idPattern.test($(this).val()) == false){
-		    	  $('.idConfirm').html("<span class='danger'>이메일 형식에 맞게 입력하세요.</span>");
-		      }else{
-				$.ajax({
-					url : '${conPath}/idConfirm.do',
-					datatype : 'html',
-					data : "userId="+$(this).val()+"&companyId="+$(this).val(),
-					success : function(data, status){
-						$('.idConfirm').html(data);
-					}
-				});
-		      }
-		});
-		
-		/* 비밀번호 체크 정규표현식 */
-		$('.pwchk').keyup(function(){
-			var pwDegreeSafety = 0;
-			var pwPatternNumber = /[0-9]/;
-    		var pwPatternEnglish = /[a-zA-Z]/;
-			var pwPatternSymbol = /[!@#$%^*+=-]/;
-			/* 안전도 */
-			
-			
-			var pw = $('.pw').val();
-			var pwchk = $('.pwchk').val();
-			if(pw != pwchk){
-				$('.passwordConfirm').html('<span class="danger">불일치</span>');	
-				$('.passWordSafety').html('');
-			}else{
-				if(pwPatternNumber.test($(this).val())){
-					pwDegreeSafety++;
-				}
-				if(pwPatternEnglish.test($(this).val())){
-					pwDegreeSafety++;
-				}
-				if(pwPatternSymbol.test($(this).val())){
-					pwDegreeSafety++;
-				}
-				if(pwDegreeSafety < 2){
-					$('.passWordSafety').html('<span class="danger"> ■□□ 위험 </span>');					
-				}else if(pwDegreeSafety == 2){
-					$('.passWordSafety').html('<span class="normal"> ■■□ 중간 </span>');					
-				}else if(pwDegreeSafety > 2){
-					$('.passWordSafety').html('<span class="safety"> ■■■ 안전 </span>');					
-				}
-				
-				$('.passwordConfirm').html('<span class="safety">일치</span>');
-			}			
-		});
-		
-		
-	});
-</script>
+
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />

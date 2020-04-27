@@ -435,28 +435,28 @@ public class HyuckController {
 			
 			return "myPage/myPageModify";
 		}
-		
-		@RequestMapping(value="myPageModify")
-		public String myPageModify(HttpSession session, Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {			
-			
-			if (user.getUserId() != null && company.getCompanyId() == null) {
-
-				int result = usersService.userInfoModify(mRequest, user);
-
-				if (result == 1) {
-					
-					model.addAttribute("userModifyResult", "고객(일반)정보 수정 성공");
-					session.setAttribute("user", usersService.userDetail(user.getUserId()));		
-					
-					System.out.println(user);
-					
-				} else {
-					
-					model.addAttribute("userJoinResult", "고객(일반)정보 수정 실패");
-					
-				}
-
-			} 
+//		
+//		@RequestMapping(value="myPageModify")
+//		public String myPageModify(HttpSession session, Users user, Company company, MultipartHttpServletRequest mRequest, Model model) {			
+//			
+//			if (user.getUserId() != null && company.getCompanyId() == null) {
+//
+//				int result = usersService.userInfoModify(mRequest, user);
+//
+//				if (result == 1) {
+//					
+//					model.addAttribute("userModifyResult", "고객(일반)정보 수정 성공");
+//					session.setAttribute("user", usersService.userDetail(user.getUserId()));		
+//					
+//					System.out.println(user);
+//					
+//				} else {
+//					
+//					model.addAttribute("userJoinResult", "고객(일반)정보 수정 실패");
+//					
+//				}
+//
+//			} 
 			
 //			else if (user.getUserId() == null && company.getCompanyId() != null) {
 //				int result = companyService.companyJoin(mRequest, company);
@@ -471,8 +471,8 @@ public class HyuckController {
 			
 			
 			
-			return "myPage/myPageMain";
-		}
+//			return "myPage/myPageMain";
+//		}
 		
 		
 		
