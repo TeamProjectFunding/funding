@@ -53,7 +53,7 @@
 					<div class="dashBoardList">
 						<c:forEach var="fundingReadyList" items="${fundingReadyList}">						
 							<ul>
-								<li><a href="${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode}">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li>
+								<li><a href="#none">${fundingReadyList.fundingName}</a><span>${fundingReadyList.fundingTargetDate}</span></li><%-- ${conPath}/adminApplyView.do?fundingCode=${fundingReadyList.fundingCode} --%>
 								<li id="buttonWrap">
 									<a href="${conPath}/adminApply.do?fundingCode=${fundingReadyList.fundingCode}&companyId=${fundingReadyList.companyId}&adminId=admin" class="button">승인</a>
 									<a href="${conPath }/adminReject.do?fundingCode=${fundingReadyList.fundingCode}&companyId=${fundingReadyList.companyId}&adminId=admin" class="button">반려</a>
@@ -70,7 +70,7 @@
 					<fmt:parseNumber value="${fundingAdminAllList.fundingTargetDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
 				
 					<ul>
-						<li><a href="${conPath }/goodsViewCoreInfomation.do">${fundingAdminAllList.fundingName}</a>
+						<li><a href="#none">${fundingAdminAllList.fundingName}</a><%-- ${conPath }/goodsViewCoreInfomation.do --%>
 						<c:if test="${endDate < nowDate }">
 							<span>${nowDate-endDate}일 지남</span>
 						</c:if>
