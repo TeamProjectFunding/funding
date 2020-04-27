@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.tp.funding.dao.FundingGoodsDao;
 import com.tp.funding.dto.FundingGoods;
 
 public interface FundingGoodsService {
