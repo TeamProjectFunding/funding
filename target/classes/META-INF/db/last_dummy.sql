@@ -60,8 +60,20 @@ INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL, '안정성이
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL, '원금 회수가능한가요', '6', SYSDATE, 0, 1 ,'topwings7@gmail.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL, '투자 회사가 궁금해요', '재무재표가 보고싶어요', SYSDATE, 0, 1 ,'topwings7@gmail.com');
 
---QnA 더미
+--공지사항 더미--
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'금주 펀딩 이벤트', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'수익률 상승 비법', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'선별 투자 비법', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'좋은 회사 고르는 방법', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'마음을 다스리는 방법', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+INSERT INTO NOTICE VALUES (NoticeNumber.NEXTVAL,'기대수익 평가 방법', '긍정적인 마음을 가집시다', SYSDATE, 0 ,'admin');
+--QnA 더미 관리자, 유저, 회사
+--1유저가 질문함
+INSERT INTO QnA VALUES (QnANumber.nextval,'계좌등록은 어디서 하나요','버튼이 안보입니다',0,0,QnANumber.currval,0,0,0,1,sysdate,'wogur698@naver.com',null,null);
+--2관리자답변
+INSERT INTO QnA VALUES (QnANumber.nextval,'계좌등록방법','마이페이지의 이름을 클릭하시면 버튼이 생성됩니다',0,2,1,1,1,0,sysdate,null, null,'admin');
+select * from qna;
 
 
-
+select * from QnA;
 commit;
