@@ -38,6 +38,11 @@ public class RewardDaoImpl implements RewardDao {
 		return sessionTemplate.selectOne("userSelectReward", fundingGoodsDetail);
 	}
 
+	@Override
+	public int interestPaymentDayModify(int rewardCode) {
+		return sessionTemplate.update("interestPaymentDayModify", rewardCode);
+	}
+
 
 
 }

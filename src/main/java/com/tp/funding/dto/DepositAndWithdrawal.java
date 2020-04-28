@@ -18,6 +18,19 @@ public class DepositAndWithdrawal {
 	private int fundingInvestmentPeriod; //총 이자 받는 기간
 	private int rewardInterst; //이자율
 	
+	
+	
+	public DepositAndWithdrawal(int dNWType, int dNWAmount, int dNWBalance,
+			String dNWContent, String companyId, String userId, int rewardCode) {
+		super();
+		this.dNWType = dNWType;
+		this.dNWAmount = dNWAmount;
+		this.dNWBalance = dNWBalance;
+		this.dNWContent = dNWContent;
+		this.companyId = companyId;
+		this.userId = userId;
+		this.rewardCode = rewardCode;
+	}
 	public int getRewardCode() {
 		return rewardCode;
 	}

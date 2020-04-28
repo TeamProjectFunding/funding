@@ -98,6 +98,11 @@ public class RewardServiceImpl implements RewardService {
 		return rewardDao.userSelectReward(fundingGoodsDetail);
 	}
 
+	@Override
+	public int interestPaymentDayModify(int rewardCode) {
+		return rewardDao.interestPaymentDayModify(rewardCode);
+	}
+
 	
 
 }

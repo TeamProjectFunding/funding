@@ -69,8 +69,11 @@ public class HyuckController {
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
-	public String joinForm(String method, Model model) {
+	public String joinForm(String method,String loginApiId,Model model) {
 		repeatF5 = true;
+		if(loginApiId != null) {
+			model.addAttribute("loginApiId", loginApiId);
+		}
 		model.addAttribute("method", method);
 		return "users/joinForm";
 	}
@@ -120,15 +123,14 @@ public class HyuckController {
 
 		if (usersService.userLoginCheck(user) == 1) {
 
-			session.setAttribute("user", usersService.userDetail(id));
-			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(id));
+			session.setAttribute("user", usersService.userDetail(user.getUserId()));
+			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(user.getUserId()));
 			model.addAttribute("result", "성공");
 
 		} else if (companyService.companyLoginCheck(company) == 1) {
 
-			session.setAttribute("company", companyService.companyDetail(id));
-			session.setAttribute("notificationUnReadCompanyList",
-					notificationService.notificationUnReadCompanyList(id));
+			session.setAttribute("company", companyService.companyDetail(company.getCompanyId()));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(company.getCompanyId()));
 			model.addAttribute("result", "성공");
 		} else {
 
@@ -160,9 +162,13 @@ public class HyuckController {
 	public String naverLogin(Model model, String loginApiId, HttpSession session) {
 		if (usersService.userDetail(loginApiId) != null) {// 이미 가입된 ID 유저인 경우 로그인
 			session.setAttribute("user", usersService.userDetail(loginApiId));
+			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(loginApiId));
+			model.addAttribute("result", "성공");
 			return "forward:main.do";
 		} else if (companyService.companyDetail(loginApiId) != null) {// 이미 회사 유저인 경우 로그인
 			session.setAttribute("company", companyService.companyDetail(loginApiId));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(loginApiId));
+			model.addAttribute("result", "성공");
 			return "forward:main.do";
 		} else {// API 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
 			model.addAttribute("loginApiId", loginApiId);
@@ -387,10 +393,12 @@ public class HyuckController {
 		}	
 
 		fundinggoods.setFundingCode(fundingCode);
-		fundinggoods.setFundingAccountNumber(tempfundingAccountNumber);
+		fundinggoods.setFundingAccountNumber(tempfundingAccountNumber);	
 		fundingGoodsService.fundingAccountAdd(fundinggoods);		
 
 		notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
+		notification.setCompanyId(fundinggoods.getCompanyId());
+		System.out.println(notification);
 		notificationService.notificationWrite(notification);
 		model.addAttribute("adminApplyMsg", "apply 완료");
 
@@ -400,8 +408,10 @@ public class HyuckController {
 	@RequestMapping(value = "adminReject")
 	public String adminReject(int fundingCode, Model model, Notification notification) {
 		fundingGoodsService.fundingAdminPermitNo(fundingCode);
+		FundingGoods fundinggoods = fundingGoodsService.fundingDetail(fundingCode);
+		
 		notification.setNotificationContent("귀사의 투자 신청이 거절 되었습니다.");
-		System.out.println(notification);
+		notification.setCompanyId(fundinggoods.getCompanyId());
 		notificationService.notificationWrite(notification);
 		model.addAttribute("adminRejectMsg", "reject 완료");
 		return "forward:adminMain.do";
@@ -521,9 +531,7 @@ public class HyuckController {
 		model.addAttribute("myQnaList", qnaService.myQnaList(qnA));
 		model.addAttribute("myFundingGoodsQnaList", fundingQuestionService.myFundingGoodsQnaList(qnA.getUserId()));
 		model.addAttribute("myFundingCommentsList", fgCommentsService.myFundingCommentsList(qnA.getUserId()));
-		
-		System.out.println(fgCommentsService.myFundingCommentsList(qnA.getUserId()));
-		
+				
 		return "myPage/myPagePostDashBoard";
 	}
 	

@@ -2,7 +2,6 @@ package com.tp.funding.controller;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,7 +18,6 @@ import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsComments;
 import com.tp.funding.dto.FundingGoodsCommentsReply;
 import com.tp.funding.dto.FundingGoodsDetail;
-import com.tp.funding.dto.Notice;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
@@ -428,7 +426,7 @@ public class LongController {
 		return "message/withdrawMypage";
 	}
 	
-	//회사마이페이지 
+	//회사마이페이지 심사중 펀딩
 	@RequestMapping(value="auditFunding")
 	public String auditFunding(String companyId,Model model) {
 		FundingGoods good = fundingGoodsService.auditFunding(companyId);
@@ -444,8 +442,40 @@ public class LongController {
 		return "message/myPageGoodsDetaill";
 	}
 	
-	
-	
+	//회사마이페이지 진행중 펀딩
+	@RequestMapping(value="ongoingFunding")
+	public String ongoingFunding(String companyId,Model model) {
+		FundingGoods good = fundingGoodsService.ongoingFunding(companyId);
+		int fundingCode = good.getFundingCode();
+		model.addAttribute("good", good);
+		if(good.getFundingCategory() == 0) { //투자
+			Reward reward = rewardService.fundingRewardList(fundingCode).get(0);
+			model.addAttribute("reward", reward);
+			model.addAttribute("companyDNWList", depositAndWithdrawalService.companyRewardDNWList(companyId, reward.getRewardCode()));
+		}else {//리워드
+			model.addAttribute("rewardList", rewardService.fundingRewardList(fundingCode));
+		}
+		return "message/ongoingFunding";
+	}
+	//회사가 이자지급하기 클릭
+	@RequestMapping(value="doInterestPayment")
+	public String doInterestPayment(String companyId,int changeMoney,int rewardCode,Model model) {
+		Company company = new Company();
+		company.setCompanyId(companyId);
+		company.setChangeAccountBalance(changeMoney*-1);
+		companyService.companyBalanceModify(company); //회사 잔액 감소
+		Reward reward = rewardService.rewardDetail(rewardCode);
+		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(1, changeMoney*-1, companyService.companyDetail(companyId).getCompanyAccountBalance(), reward.getRewardName()+" 상품 이자 지급", companyId, null, rewardCode);
+		depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal); //입출금 정보 등록
+		rewardService.rewardInvestmentReceiveCountUp(rewardCode); //이자 지급 횟수 증가
+		if(reward.getInvestmentReceiveCount()+1==reward.getFundingInvestmentPeriod()) {//마지막 이자받음 원금 지급
+			
+		}else {
+			rewardService.interestPaymentDayModify(rewardCode); //다음 이자 지급 예정일 30일 증가
+		}
+		
+		return "forward:myPageMain.do?companyId="+companyId;
+	}
 	
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")

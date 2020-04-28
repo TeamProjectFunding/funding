@@ -95,17 +95,30 @@
 					<td>
 						<c:if test="${company.companyInFunding eq 0 }"><a href="fundingApplyForm.do">Do it</a></c:if>
 						<c:if test="${company.companyInFunding eq 1 }"><a href="#none" onclick="auditFunding()">심사중</a></c:if>
-						<c:if test="${company.companyInFunding eq 2 }"><a href="#none" onclick="">진행중</a></c:if>
+						<c:if test="${company.companyInFunding eq 2 }"><a href="#none" onclick="ongoingFunding()">진행중</a></c:if>
 					</td>
 				</tr>
 			</table>
 		</c:if>
 		<script>
-		/*  */
+		/*심사중 펀딩 보기*/
 		function auditFunding(){
 			 var companyId = '${company.companyId}';
 			 $.ajax({
-                 url : '${conPath}/auditFunding.do',
+                url : '${conPath}/auditFunding.do',
+                datatype : 'html',
+                data : "companyId="+companyId,
+                success : function(data, status){
+                   $('#myGoodsDetail').html(data);
+                }
+             });
+			 $('#myGoodsDetail').addClass('openMypageGoodsView');
+		}
+		/*진행중 펀딩 보기*/
+		function ongoingFunding(){
+			 var companyId = '${company.companyId}';
+			 $.ajax({
+                 url : '${conPath}/ongoingFunding.do',
                  datatype : 'html',
                  data : "companyId="+companyId,
                  success : function(data, status){

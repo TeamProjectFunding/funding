@@ -85,7 +85,15 @@
 							<th><h2>회원 기본 정보</h2></th>
 						</tr>
 						<tr>
-							<td><input type="email" name="userId" placeholder="아이디(이메일)를 입력하세요" required="required" class="confirmKeyUp"></td>
+							<td>
+								<c:if test="${not empty loginApiId }">
+								<input type="email" name="userId" placeholder="아이디(이메일)를 입력하세요" readonly="readonly" value="${loginApiId }" class="confirmKeyUp">
+								</c:if>
+								<c:if test="${empty loginApiId }">
+								<input type="email" name="userId" placeholder="아이디(이메일)를 입력하세요" required="required" class="confirmKeyUp">
+								</c:if>
+							
+							</td>
 						</tr>
 						<tr>
 							<td>

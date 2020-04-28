@@ -51,12 +51,14 @@ INSERT INTO Users VALUES ('user6@google.com','123','son.jpg','차범근','010-48
 INSERT INTO Users VALUES ('user7@naver.com','123','song.jpg','김병지','010-4898-8848','서울시','영롱빌딩 302호', 
     null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);   
     
-INSERT INTO Users VALUES ('wogur698@naver.com','123','lim.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
-INSERT INTO Users VALUES ('kha0213@naver.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
-    null, null, 1100000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
-INSERT INTO Users VALUES ('topwings7@gmail.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
-    null, null, 50000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
+INSERT INTO Users VALUES ('hyuck@naver.com','123','lim.jpg','임재혁','010-4898-8848','서울시','영롱빌딩 302호', 
+    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);
+    
+INSERT INTO Users VALUES ('yustone@naver.com','123','park.jpg','오유석','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
+    null, null, 1100000, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
+    
+INSERT INTO Users VALUES ('top7@gmail.com','123','park.jpg','임상훈','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
+    null, null, 50000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);
     
 --펀딩상품    
     -- 승인 됨 (투자 / 리워드)
@@ -373,6 +375,7 @@ INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,8,10,10,'2021-02-20',29);
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,9,5,5,'2021-02-20',30);
 INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,7,15,15,'2021-02-20',31);
+INSERT INTO Reward VALUES (REWARDCODE.nextval,'롱롱리워드',0,0,NULL,NULL,10,15,0,'2020-04-27',21);
 
 
 commit;
