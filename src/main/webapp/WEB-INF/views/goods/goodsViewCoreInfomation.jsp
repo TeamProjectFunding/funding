@@ -102,8 +102,8 @@
 		var fundingCode = ${param.fundingCode}; 
 		$('#userPick').click(function(){
 			if($(this).html() == '♡'){
-				$(this).html('♥');
-			}else if($(this).html() == '♥'){
+				$(this).html('<span class="userPick">♥</span>');
+			}else if($(this).html() == '<span class="userPick">♥</span>'){
 				$(this).html('♡');
 			}
 			var fundingCode = ${param.fundingCode};
@@ -112,9 +112,6 @@
 				url : '${conPath}/userPick.do',
 				datatype : 'html',
 				data : "fundingCode="+fundingCode,
-				success : function(data, status){
-					$('#userPickResult').html(data);
-				}
 			});
 			
 			
@@ -168,7 +165,7 @@
 				 	</c:if>
 					<a href="${conPath }/goodsQnaList.do?fundingCode=${param.fundingCode }" class="button">Q&A</a>
 					<c:if test="${not empty sessionScope.user}">
-					<a href="#none" class="button" id="userPick"><c:if test="${not empty userAlreadyPick }">♥</c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
+					<a href="#none" class="button" id="userPick"><c:if test="${not empty userAlreadyPick }"><span class="userPick">♥</span></c:if><c:if test="${empty userAlreadyPick }">♡</c:if></a>
 					</c:if>
 					<c:if test="${empty sessionScope.user }">
 					<a href="#none" onclick="noUser()" class="button">♡</a>

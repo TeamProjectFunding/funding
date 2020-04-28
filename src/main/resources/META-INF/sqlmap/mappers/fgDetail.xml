@@ -66,5 +66,8 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 	SELECT f.fundingThumbnailImage,f.fundingName,f.fundingTargetRate ,fd.*,u.userprofileimage,u.userName 
 		FROM fundingGoodsDetail fd,fundinggoods f, users u where f.fundingCode=fd.fundingCode and fd.userId=u.userId and fundingGoodsDetailNumber=#{fundingGoodsDetailNumber}
 </select>
+<select id="interestPaymentList" parameterType="int" resultType="FundingGoodsDetail">
+select fd.* from fundingGoodsDetail fd,reward r where fd.fundingcode=r.fundingcode and r.rewardgrade=0 and r.fundingcode=#{fundingCode}
+</select>
 
 </mapper>

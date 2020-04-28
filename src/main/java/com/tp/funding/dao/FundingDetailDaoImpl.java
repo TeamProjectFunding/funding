@@ -75,5 +75,10 @@ public class FundingDetailDaoImpl implements FundingDetailDao {
 		return sessionTemplate.selectOne("fundingGoodsDetailView", fundingGoodsDetailNumber);
 	}
 
+	@Override
+	public List<FundingGoodsDetail> interestPaymentList(int fundingCode) {
+		return sessionTemplate.selectList("interestPaymentList", fundingCode);
+	}
+
 
 }

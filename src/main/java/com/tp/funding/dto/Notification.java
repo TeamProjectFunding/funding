@@ -8,9 +8,9 @@ public class Notification {
 	private String notificationContent;
 	private Date notificationDate;
 	private int notificationRead;
-	private String userId;
 	private String adminId;
 	private String companyId;
+	private String userId;
 	public int getNotificationNumber() {
 		return notificationNumber;
 	}
@@ -53,16 +53,13 @@ public class Notification {
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
-	public Notification(int notificationNumber, String notificationContent, Date notificationDate, int notificationRead,
-			String userId, String adminId, String companyId) {
+	
+	public Notification(String notificationContent,	String adminId, String companyId, String userId) {
 		super();
-		this.notificationNumber = notificationNumber;
 		this.notificationContent = notificationContent;
-		this.notificationDate = notificationDate;
-		this.notificationRead = notificationRead;
-		this.userId = userId;
 		this.adminId = adminId;
 		this.companyId = companyId;
+		this.userId = userId;
 	}
 	public Notification() {
 		super();

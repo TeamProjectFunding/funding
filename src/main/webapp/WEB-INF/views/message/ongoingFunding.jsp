@@ -54,7 +54,7 @@ $(function(){
 			</c:if>
 			<tr>
 				<th> AMOUNT</th>
-				<td><fmt:formatNumber value="${good.fundingTargetAmount }" currencySymbol="true" /> 원</td>
+				<td><fmt:formatNumber value="${good.fundingTargetAmount*good.fundingTargetRate/100 }" currencySymbol="true" /> 원</td>
 			</tr>
 			<tr>
 				<th>PARTICIPANTS</th>
@@ -68,25 +68,27 @@ $(function(){
 				<th>계좌 잔액</th>
 				<td>${company.companyAccountBalance }원</td>
 				<th>1회당 이자지급액</th>
-				<td><fmt:parseNumber value="${good.fundingTargetAmount*good.fundingInvestmentProfitRate/1200 }" integerOnly="true"/>원</td>
+				<td><fmt:parseNumber value="${good.fundingTargetAmount*good.fundingTargetRate*good.fundingInvestmentProfitRate/120000 }" integerOnly="true"/>원</td>
 			</tr>
 			<tr>
 				<th>다음 이자 지급 일</th>
 				<td><fmt:formatDate value="${reward.lastInterestReceivedDate }" pattern="yyyy-MM-dd"/> </td>
-				<td colspan="2"><a href="#{conPath }/doInterestPayment.do?rewardCode=${reward.rewardCode }&companyId=${company.companyId}&changeMoney=${good.fundingTargetAmount*good.fundingInvestmentProfitRate/1200 }" class="button">이자 지급하기</a></td>
+				<td colspan="2"><a href="${conPath }/doInterestPayment.do?adminId=admin&rewardCode=${reward.rewardCode }&companyId=${company.companyId}&changeMoneyDouble=${good.fundingTargetAmount*good.fundingTargetRate*good.fundingInvestmentProfitRate/120000 }" class="button">이자 지급하기</a></td>
 			</tr>
 			
 			</table>
 			<table>
 				<tr>
+					<th>회차</th>
 					<th>지급일</th>
 					<th>금액</th>
 				</tr>
+				<c:set var="receiveCount" value="${companyDNWList[0].investmentReceiveCount }"/>
 				<c:forEach var="DNW" items="${companyDNWList }">
 				<tr>
-					<td>${DNW.investmentReceiveCount }회차</td>
+					<td>${receiveCount }회차 <c:set var="receiveCount" value="${receiveCount-1 }"/></td>
 					<td><fmt:formatDate value="${DNW.dNWDate }" pattern="yyyy-MM-dd"/></td>
-					<td><fmt:formatNumber value="${DNW.dNWDate }" currencySymbol="true"/>원</td>
+					<td><fmt:formatNumber value="${DNW.dNWAmount }" currencySymbol="true"/>원</td>
 				</tr>
 				</c:forEach>
 			</table>
