@@ -193,8 +193,8 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 
 #goodsViewContentWrap.debateWrap{padding:5% 10%;}
 
-.commentWrap table{width:100%; text-align: left; font-size:12px; margin-bottom:30px; border-bottom:1px solid #e8e8e8;}
-.commentWrap table img{width:50px; height:50px; border-radius: 50%; float:left;}
+.commentWrap table{width:100%; text-align: left; font-size:12px; border-bottom:1px solid #e8e8e8;}
+.commentWrap table img{width:50px; height:50px; border-radius: 50%; float:left; margin-right:10px;}
 .commentWrap table th{line-height: 50px;}
 .commentWrap table th, .commentWrap table td {padding: 2% 2% 3%; width:20%;}
 .commentWrap table .commentContent{width:40%;}
@@ -203,11 +203,17 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .commentWrap table .userArea #buttonWrap .button{padding:5%;}
 .commentWrap table textarea{width:100%; padding:2%;}
 .commentWrap .replyWrap textarea{width:100%;}
-.commentWrap .replyWrap{display:none; background: #e8e8e8; transition:1s;}
+.commentWrap .replyWrap .userArea td{width:60%;}
+.commentWrap .replyWrap{display:none; background:#ffc10778; transition:1s;}
 .commentWrap .commentContentArea{display: none;}
-.commentWrap i.material-icons{float:left; font-size: 35px; color:#031424;}
+.commentWrap i.material-icons{float:left; font-size: 35px; color:#031424; margin-right:20px;}
 
 #goodsViewContentWrap.debateWrap .debateReplyList{float:left; width:100%; background: #f1f1f1;}
+
+.investorWrap table{width:100%; text-align: left; font-size:12px; border-bottom:5px solid #fff; font-weight: bold; background: #ffdc75;}
+.investorWrap table img{width:50px; height:50px; border-radius: 50%; float:left; margin-right:10px;}
+.investorWrap table th{line-height: 50px; padding: 2% 2% 3%; width:20%;}
+.investorWrap table .investorContent{width:40%;}
 
 /** funding **/
 /* step */
