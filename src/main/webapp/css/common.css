@@ -12,7 +12,7 @@ h1{padding:5% 0; width:100%; float:left;}
 #contentWrap{max-width:1200px; height:100%; position:relative;}
 section{width:100%; float:left;}
 #buttonWrap{float:left; width:100%; padding:2%; text-align: center;}
-.button{ padding:1% 2% 1%; width:20%; background: #131a23; color:#fff; font-family: 'Oswald', sans-serif;}
+.button{ padding:1% 2% 1%; margin:.5%; width:18%; background: #131a23; color:#fff; font-family: 'Oswald', sans-serif;}
 table #buttonWrap{float:none;}
 .button:hover{color:#f1bf04;}
 .button:active{background:#f1bf04; color:#fff;}
@@ -51,11 +51,11 @@ header #headerWrap{width:100%; max-width:1200px; height:100%; }
 .closeButton span{display:block; position:absolute; top:14px; width:100%; height:2px; border-radius: 1px; transform:rotate(45deg); background:#f1bf04;}
 .closeButton span:last-child{transform:rotate(-45deg);}
 
-#searchWrap  #contentWrap form{width:100%; padding:10%;}
+#searchWrap  #contentWrap form{width:100%; padding:10% 10% 5%;}
 #searchWrap  #contentWrap table th{text-align: center;}
 #searchWrap  #contentWrap table th input{width:50%; padding:2%; border-bottom:1px solid #f1bf04; text-align: center; font-size: 25px;}
-#searchWrap  #contentWrap .searchResualt{padding:0;}
-#searchWrap  #contentWrap .goodsWrap{width:1250px; height:350px; overflow: scroll;}
+#searchWrap  #contentWrap .goodsWrap .searchResult{width:100%; height:auto; padding:5% 0 0;}
+#searchWrap  #contentWrap .goodsWrap{width:1250px; height:45%; overflow: scroll;}
 #searchWrap  #contentWrap .goodsWrap .goodsName{color:#fff;}
 
 #alarmWrap #contentWrap{padding:5% 20% 0;}
@@ -124,7 +124,6 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.userWrap table{width:100%; font-size: 12px;}
 #contentWrap.userWrap td{padding:2%; text-align: center;}
 #contentWrap.userWrap td input{width:80%; padding:2%; text-align: center; border:1px solid #e8e8e8; font-size:12px;}
-#contentWrap.userWrap th .button{ width:19%;}
 
 #findWrap{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
 #findWrap.openfindWrapView{ margin:-100px 0 0 -300px;  padding:3% 0; width:600px; height:200px; background:#fff; border:2px solid #f1bf04; transition:.5s;}
@@ -164,6 +163,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .infomationTextSection ul{width:100%; float:left;}
 .infomationTextSection li{float:left; width:100%; padding:2% 0; font-weight: bold;}
 .infomationTextSection li p {float:left; width:100%;}
+.infomationTextSection li p .material-icons{color:#021323;}
 .infomationTextSection li p span{font-size:12px; color:#808080; float:right;}
 .infomationTextSection #buttonWrap{padding:10% 0 0;}
 
@@ -193,18 +193,27 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 
 #goodsViewContentWrap.debateWrap{padding:5% 10%;}
 
-.commentWrap table{width:100%; text-align: left; font-size:12px; margin-bottom:30px; border-bottom:1px solid #e8e8e8;}
-.commentWrap table img{width:50px; height:50px;}
-.commentWrap table th, .commentWrap table td {padding: 2% 2% 3%;}
+.commentWrap table{width:100%; text-align: left; font-size:12px; border-bottom:1px solid #e8e8e8;}
+.commentWrap table img{width:50px; height:50px; border-radius: 50%; float:left; margin-right:10px;}
+.commentWrap table th{line-height: 50px;}
+.commentWrap table th, .commentWrap table td {padding: 2% 2% 3%; width:20%;}
+.commentWrap table .commentContent{width:40%;}
 .commentWrap table .userArea th{width:20%;}
 .commentWrap table .userArea #buttonWrap{width:20%;}
 .commentWrap table .userArea #buttonWrap .button{padding:5%;}
 .commentWrap table textarea{width:100%; padding:2%;}
 .commentWrap .replyWrap textarea{width:100%;}
-.commentWrap .replyWrap{display:none; background: #e8e8e8; transition:1s;}
+.commentWrap .replyWrap .userArea td{width:60%;}
+.commentWrap .replyWrap{display:none; background:#ffc10778; transition:1s;}
 .commentWrap .commentContentArea{display: none;}
+.commentWrap i.material-icons{float:left; font-size: 35px; color:#031424; margin-right:20px;}
 
 #goodsViewContentWrap.debateWrap .debateReplyList{float:left; width:100%; background: #f1f1f1;}
+
+.investorWrap table{width:100%; text-align: left; font-size:12px; border-bottom:5px solid #fff; font-weight: bold; background: #ffdc75;}
+.investorWrap table img{width:50px; height:50px; border-radius: 50%; float:left; margin-right:10px;}
+.investorWrap table th{line-height: 50px; padding: 2% 2% 3%; width:20%;}
+.investorWrap table .investorContent{width:40%;}
 
 /** funding **/
 /* step */
@@ -218,8 +227,9 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #contentWrap.fundingWrap table input[type='checkbox']{float:left; margin:4px 10px 0;}
 #contentWrap.fundingWrap .fundingStep2 form {width:100%; float:left; border:1px solid #f1f1f1;}
 #contentWrap.fundingWrap .fundingStep2 table {text-align: center;} 
-#contentWrap.fundingWrap .fundingStep2 table th{padding:5%;}
+#contentWrap.fundingWrap .fundingStep2 table th{padding:5%; width:30%;}
 #contentWrap.fundingWrap .fundingStep2 table td{padding:3%;}
+#contentWrap.fundingWrap .fundingStep2 table td img{width:30%;}
 #contentWrap.fundingWrap .fundingStep2 table input[type='number']{padding:2%; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap .fundingStep2 table select{width:70%; height:30px; background:#fff; border: 1px solid  #e8e8e8;}
 #contentWrap.fundingWrap #fundingWrap{margin-bottom:100px;}
@@ -288,12 +298,12 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .dispositWithdrawal table th{padding:2% 1%;text-align: center;}
 .dispositWithdrawal table td{padding:2% 1%;text-align: center;}
 
-#myAcountEnrollment{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
+#myAcountEnrollment{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s; font-size:12px;}
 #myAcountEnrollment.openAcountEnrollment{ margin:-125px 0 0 -200px;  padding:5% 0; width:400px; height:250px; background:#fff; border:2px solid #131a23; transition:.5s;}
-#myAcountEnrollment th { padding: 2%; text-align: left; font-size: 14px;}
-#myAcountEnrollment .acountInfo table{width:95%; float:left; }
-#myAcountEnrollment .acountInfo table th{padding:2%; width:33%; text-align: left;}
-#myAcountEnrollment .acountInfo table td{padding:2%; text-align: center;}
+#myAcountEnrollment .acountInfo{width:95%; float:left; }
+#myAcountEnrollment .acountInfo th{padding:2%; width:40%; text-align: left;}
+#myAcountEnrollment .acountInfo td{padding:2%; text-align: center;}
+#myAcountEnrollment .acountInfo td input{padding:2%; width:100%; border: 1px solid #e8e8e8;}
 #myAcountEnrollment th#buttonWrap{text-align: center;}
 
 .myPageModifyWrap{padding: 0 20% 0;}
@@ -338,7 +348,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #myFundingDetail .thumnail{width:40%; float:left; padding:2%;}
 #myFundingDetail .thumnail img{float:left; width:100%;}
 #myFundingDetail .goodsInfo{width:60%; float:left; font-size: 12px; text-align: left;}
-#myFundingDetail .interestWrap{width:95%; height:200px;  margin:50px 2.5%; float:left; font-size: 12px; padding:5% 2% 2%; border-top: 1px solid #e2e2e2; overflow: scroll;}
+#myFundingDetail .interestWrap{width:95%; height:200px;  margin:50px 2.5%; float:left; font-size: 12px; padding:5% 2% 5%; border-top: 1px solid #e2e2e2; overflow: scroll;}
 #myFundingDetail .interestWrap table{width:95%; float:left; text-align: center;}
 #myFundingDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
 #myFundingDetail .interestWrap table td{padding:2%; text-align: center;}
@@ -376,7 +386,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #myGoodsDetail .interestWrap table td{padding:2%; text-align: center;}
 
 
-
+.eventListWrap input[type="text"]{width:30%; padding:1%; border-bottom:1px solid #ccc; text-align: center;}
 
 
 

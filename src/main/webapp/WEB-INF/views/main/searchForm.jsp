@@ -51,7 +51,7 @@
 				</table>
 			</form>
 			<section class="goodsWrap">
-				<div class="goodsListWrap searchResult">
+				<div class="searchResult">
 					
 				</div>
 			</section>

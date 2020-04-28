@@ -148,8 +148,15 @@
 						<p>${endDate-nowDate }일 남음 <span><fmt:formatDate value="${good.fundingTargetDate }" pattern="yyyy.MM.dd"/> 00:00 마감</span></p>
 					</li>
 					<li>
-						<p><c:forEach var="user" items="${userList }" begin="0" end="5"><img src="${conPath }/image/profile/${user.userProfileImage}" alt="investorProfile"></c:forEach>
-						<span>+${userList.size() }명 펀딩성공</span></p> 
+						<p>
+							<c:forEach var="user" items="${userList }" begin="0" end="5">
+								 <c:if test="${not empty sessionScope.user.userProfileImage || not empty sessionScope.company.companyProfileImage}">
+									<img src="${conPath }/image/profile/${user.userProfileImage}" alt="investorProfile">
+								</c:if>
+								<i class="material-icons">account_circle</i>
+							</c:forEach>
+						<span>+${userList.size() }명 펀딩성공</span>
+						</p> 
 					</li>
 				</ul>
 				 <div id="buttonWrap">
