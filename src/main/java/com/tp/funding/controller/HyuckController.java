@@ -69,8 +69,11 @@ public class HyuckController {
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
-	public String joinForm(String method, Model model) {
+	public String joinForm(String method,String loginApiId,Model model) {
 		repeatF5 = true;
+		if(loginApiId != null) {
+			model.addAttribute("loginApiId", loginApiId);
+		}
 		model.addAttribute("method", method);
 		return "users/joinForm";
 	}
@@ -159,9 +162,13 @@ public class HyuckController {
 	public String naverLogin(Model model, String loginApiId, HttpSession session) {
 		if (usersService.userDetail(loginApiId) != null) {// 이미 가입된 ID 유저인 경우 로그인
 			session.setAttribute("user", usersService.userDetail(loginApiId));
+			session.setAttribute("notificationUnReadUserList", notificationService.notificationUnReadUserList(loginApiId));
+			model.addAttribute("result", "성공");
 			return "forward:main.do";
 		} else if (companyService.companyDetail(loginApiId) != null) {// 이미 회사 유저인 경우 로그인
 			session.setAttribute("company", companyService.companyDetail(loginApiId));
+			session.setAttribute("notificationUnReadCompanyList", notificationService.notificationUnReadCompanyList(loginApiId));
+			model.addAttribute("result", "성공");
 			return "forward:main.do";
 		} else {// API 로그인했지만 유저가 아닌경우 join화면으로 넘어가는 대신 파라미터값 가지고 가기
 			model.addAttribute("loginApiId", loginApiId);

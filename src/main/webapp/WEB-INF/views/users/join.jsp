@@ -13,12 +13,21 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<div id="contentWrap" class="userWrap">
+		<c:if test="${not empty loginApiId }">
+			<h3>SNS 연동 회원가입입니다.</h3>
+		</c:if>
 		<section class="joinSelectWrap">
 			<table>
-				<tr >
+				<tr>
 					<th id="buttonWrap">
-						<a href="${conPath }/joinForm.do?method=user" class="button">USER JOIN</a>
-						<a href="${conPath }/joinForm.do?method=company" class="button">COMPANY JOIN</a>
+						<c:if test="${not empty loginApiId }">
+							<a href="${conPath }/joinForm.do?method=user&loginApiId=${loginApiId}" class="button">USER JOIN</a>
+							<a href="${conPath }/joinForm.do?method=company&loginApiId=${loginApiId}" class="button">COMPANY JOIN</a>
+						</c:if>
+						<c:if test="${empty loginApiId }">
+							<a href="${conPath }/joinForm.do?method=user" class="button">USER JOIN</a>
+							<a href="${conPath }/joinForm.do?method=company" class="button">COMPANY JOIN</a>
+						</c:if>
 					</th>
 				</tr>
 			</table>
