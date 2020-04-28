@@ -109,4 +109,8 @@
    FROM QNA Q WHERE USERID = #{userId} or COMPANYID = #{companyId} ORDER BY QNADATE 	
 	</select>
 	
+	<select id="myTotQna" parameterType="String" resultType="int">
+	SELECT COUNT(*) FROM QNA WHERE USERID = #{userId}
+	</select>
+	
 </mapper>

@@ -36,4 +36,14 @@ public class FgCommentsDaoImpl implements FgCommentsDao {
 		return sessionTemplate.update("fundingCommentReplyCountUp", fgCommentsNumber);
 	}
 
+	@Override
+	public List<FundingGoodsComments> myFundingCommentsList(String userId) {
+		return sessionTemplate.selectList("myFundingCommentsList", userId);
+	}
+
+	@Override
+	public int myFundingTotComments(String userId) {
+		return sessionTemplate.selectOne("myFundingTotComments", userId);
+	}
+
 }

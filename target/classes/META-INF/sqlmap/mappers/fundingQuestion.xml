@@ -44,9 +44,12 @@ SELECT FQ.*, U.USERNAME, U.USERPROFILEIMAGE FROM FUNDINGQUESTION FQ, USERS U WHE
 </select>
 
 <select id="myFundingGoodsQnaList" parameterType="String" resultType="FundingQuestion">
-	SELECT * FROM FUNDINGQUESTION WHERE USERID = #{userId} ORDER BY FUNDINGQUESTIONDATE DESC
+SELECT * FROM FUNDINGQUESTION WHERE USERID = #{userId} ORDER BY FUNDINGQUESTIONDATE DESC
 </select>
 
+<select id="myFundingtotQna" parameterType="String" resultType="int">
+SELECT COUNT(*) FROM FUNDINGQUESTION WHERE USERID = #{userId}	
+</select>
 
 
 

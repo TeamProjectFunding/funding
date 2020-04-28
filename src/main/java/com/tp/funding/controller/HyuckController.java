@@ -17,6 +17,7 @@ import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.FgCommentsService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingQuestionReplyService;
@@ -62,6 +63,9 @@ public class HyuckController {
 	
 	@Autowired
 	private FundingQuestionReplyService fundingQuestionReplyService;
+	
+	@Autowired
+	private FgCommentsService fgCommentsService;
 
 	// 회원가입 입력 폼
 	@RequestMapping(value = "joinForm")
@@ -516,6 +520,9 @@ public class HyuckController {
 		
 		model.addAttribute("myQnaList", qnaService.myQnaList(qnA));
 		model.addAttribute("myFundingGoodsQnaList", fundingQuestionService.myFundingGoodsQnaList(qnA.getUserId()));
+		model.addAttribute("myFundingCommentsList", fgCommentsService.myFundingCommentsList(qnA.getUserId()));
+		
+		System.out.println(fgCommentsService.myFundingCommentsList(qnA.getUserId()));
 		
 		return "myPage/myPagePostDashBoard";
 	}

@@ -78,7 +78,7 @@
 				<tr>
 					<td><a href="${conPath}/myPageFunding.do?userId=${user.userId}">${userFundingTotalCnt}</a></td>
 					<td><a href="${conPath}/myPagePick.do?userId=${user.userId}">${user.userPickCount}</a></td>
-					<td><a href="">0</a></td>
+					<td><a href="${conPath}/myPagePost.do?userId=${user.userId}">${myPostTotalCnt}</a></td>
 					<td><a href="">0</a></td>
 				</tr>
 			</table>

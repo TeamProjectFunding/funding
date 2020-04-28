@@ -51,4 +51,14 @@ public class FgCommentsServiceImpl implements FgCommentsService {
 		return fgCommentsDao.fundingCommentReplyCountUp(fgCommentsNumber);
 	}
 
+	@Override
+	public List<FundingGoodsComments> myFundingCommentsList(String userId) {
+		return fgCommentsDao.myFundingCommentsList(userId);
+	}
+
+	@Override
+	public int myFundingTotComments(String userId) {
+		return fgCommentsDao.myFundingTotComments(userId);
+	}
+
 }

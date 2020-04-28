@@ -12,4 +12,6 @@ public interface FgCommentsService {
 	public FundingGoodsComments fundingCommentDetail(int fgCommentsNumber);
 	public int fundingCommentCount(int fundingCode);
 	public int fundingCommentReplyCountUp(int fgCommentsNumber);
+	public List<FundingGoodsComments> myFundingCommentsList(String userId);
+	public int myFundingTotComments(String userId);
 }

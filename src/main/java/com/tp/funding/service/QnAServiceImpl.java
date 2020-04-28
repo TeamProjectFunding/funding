@@ -73,4 +73,9 @@ public class QnAServiceImpl implements QnAService {
 		return qnADao.myQnaList(qnA);
 	}
 
+	@Override
+	public int myTotQna(String userId) {
+		return qnADao.myTotQna(userId);
+	}
+
 }

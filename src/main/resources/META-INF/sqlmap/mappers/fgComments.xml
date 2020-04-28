@@ -16,6 +16,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 		FROM FUNDINGGOODSCOMMENTS f,USERS u WHERE u.userId=f.userId AND f.fundingCode=#{fundingCode} ORDER BY f.FGCOMMENTSDATE DESC) A) 
 			WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
+
 <select id="fundingCommentCount" parameterType="int" resultType="int">
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
 	(SELECT count(*)
@@ -26,7 +27,17 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 SELECT FGC.*,U.USERNAME, U.USERPROFILEIMAGE FROM 
 	FundingGoodsComments FGC, USERS U WHERE FGC.FGCOMMENTSNUMBER=#{fgCommentsNumber} AND U.USERID=FGC.USERID
 </select>
+
 <update id="fundingCommentReplyCountUp" parameterType="int">
-UPDATE fundinggoodscomments SET fgcommentsreplycount = fgcommentsreplycount+1 WHERE fgcommentsnumber=#{fgCommentsNumber}
+UPDATE FundingGoodsComments SET FGCOMMENTSREPLYCOUNT = FGCOMMENTSREPLYCOUNT+1 WHERE FGCOMMENTSNUMBER=#{fgCommentsNumber}
 </update>
+
+<select id="myFundingCommentsList" parameterType="String" resultType="FundingGoodsComments">
+SELECT * FROM FundingGoodsComments WHERE USERID = #{userId} ORDER BY FGCOMMENTSDATE DESC
+</select>
+
+<select id="myFundingTotComments" parameterType="String" resultType="int">
+SELECT COUNT(*) FROM FundingGoodsComments WHERE USERID = #{userId}
+</select>
+
 </mapper>
