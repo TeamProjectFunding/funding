@@ -16,14 +16,14 @@
 	<jsp:useBean id="today" class="java.util.Date" />
    	<fmt:parseNumber value="${today.time / (1000*60*60*24)}"
       integerOnly="true" var="nowDate" />
-	<div id="contentWrap" class="eventWrap">
+	<div id="contentWrap" >
 		<section id="eventWrap" class="eventListWrap">
 				<h1>EVENT</h1>
 				<form action="">
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="doingEventSearchWord" value="${param.doingEventSearchWord}" placeholder="제목 검색">
+							<input type ="text" name="eventSearch" value="${param.doingEventSearchWord}" placeholder="제목 검색">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
