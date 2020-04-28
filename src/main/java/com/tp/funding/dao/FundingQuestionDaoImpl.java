@@ -58,4 +58,9 @@ public class FundingQuestionDaoImpl implements FundingQuestionDao {
 		return sessionTemplate.selectList("myFundingGoodsQnaList", userId);
 	}
 
+	@Override
+	public int myFundingtotQna(String userId) {
+		return sessionTemplate.selectOne("myFundingtotQna", userId);
+	}
+
 }

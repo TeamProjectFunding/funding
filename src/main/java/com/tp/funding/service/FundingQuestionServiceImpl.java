@@ -68,5 +68,10 @@ public class FundingQuestionServiceImpl implements FundingQuestionService {
 	public List<FundingQuestion> myFundingGoodsQnaList(String userId) {
 		return fundingQuestionDao.myFundingGoodsQnaList(userId);
 	}
+
+	@Override
+	public int myFundingtotQna(String userId) {
+		return fundingQuestionDao.myFundingtotQna(userId);
+	}
 	
 }

@@ -17,4 +17,5 @@ public interface QnADao {
 	public int qnAReplyExistUp(int qnANumber);
 	public int getAnswerQnanumber(QnA qnA);
 	public List<QnA> myQnaList(QnA qnA);
+	public int myTotQna(String userId);
 }

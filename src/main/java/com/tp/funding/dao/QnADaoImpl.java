@@ -71,4 +71,9 @@ public class QnADaoImpl implements QnADao {
 		return sessionTemplate.selectList("myQnaList", qnA);
 	}
 
+	@Override
+	public int myTotQna(String userId) {
+		return sessionTemplate.selectOne("myTotQna", userId);
+	}
+
 }

@@ -87,15 +87,23 @@
 						<th>TITLE</th>
 						<th>DATE</th>
 						<th>REPLY</th>
-						<th>HIT</th>
+						<th>Reply</th>
 					</tr>
-					<tr>
-						<td>NO</td>
-						<td>Q&A TITLE</td>
-						<td>2020-04-22</td>
-						<td><a href="" class="button">답글</a></td>
-						<td>10</td>
-					</tr>
+					
+					<c:forEach var="myFundingCommentsList" items="${myFundingCommentsList}">
+						<tr>
+							<td>${myFundingCommentsList.fgCommentsNumber}</td>
+							<td>${myFundingCommentsList.fgCommentsContent}</td>
+							<td>${myFundingCommentsList.fgCommentsDate}</td>
+							<c:if test="${myFundingCommentsList.fgcommentsReplyCount > 0}">
+								<td><a href="#none" class="button">답글보기</a></td>
+							</c:if>
+							<c:if test="${myFundingCommentsList.fgcommentsReplyCount == 0}">
+								<td><!-- <a href="#none" class="button"></a> --></td>
+							</c:if>	
+							<td>${myFundingCommentsList.fgcommentsReplyCount}</td>						
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 		</div>			

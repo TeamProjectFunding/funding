@@ -23,4 +23,6 @@ public interface FundingQuestionService {
 	public List<FundingQuestion> fundingQustionAdminList();
 	
 	public List<FundingQuestion> myFundingGoodsQnaList(String userId);
+	
+	public int myFundingtotQna(String userId);
 }
