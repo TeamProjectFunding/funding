@@ -13,13 +13,18 @@
 <body>
 	<h3>현재 이 펀딩에 <span>1명</span>이 참여하였습니다.</h3>
 	<c:forEach var="user" items="${doFundingUserList }">
-		<img alt="userImage" src="${user.userProfileImage }">
-		<p>유저이름 : ${user.userName }</p>
-		<p>펀딩날짜 : <fmt:formatDate value="${user.fundingDate }" pattern="yyyy-MM-dd"/></p>
-		<p>펀딩금액 : ${user.fundingAmount }</p>
-		<c:if test="${user.fundingRewardAddDonation ne 0 }">
-		<p>추가후원금 : ${user.fundingRewardAddDonation }</p>
-		</c:if>
+		<table>
+			<tr>
+				<td><img alt="userImage" src="${user.userProfileImage }"></td>
+				<td>${user.userName } 님이  ${user.fundingAmount }원 투자 
+					<c:if test="${user.fundingRewardAddDonation ne 0 }">
+						${user.fundingRewardAddDonation } 후원
+					</c:if>
+					하셨습니다. </td>
+				<td><fmt:formatDate value="${user.fundingDate }" pattern="yyyy-MM-dd"/></td>
+			</tr>
+		</table>
+		
 	</c:forEach>
 </body>
 </html>

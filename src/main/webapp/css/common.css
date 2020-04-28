@@ -119,12 +119,12 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .bannerList .noticeList li  a{color:#fff;}
 /** user **/
 
-#contentWrap.userWrap{padding:10% 20%;  }
+#contentWrap.userWrap{padding:10% 15%;  }
 #contentWrap.userWrap h1{text-align: center; padding:50px 0;}
 #contentWrap.userWrap table{width:100%; font-size: 12px;}
 #contentWrap.userWrap td{padding:2%; text-align: center;}
 #contentWrap.userWrap td input{width:80%; padding:2%; text-align: center; border:1px solid #e8e8e8; font-size:12px;}
-#contentWrap.userWrap th .button{ width:20%;}
+#contentWrap.userWrap th .button{ width:19%;}
 
 /* login */
 #contentWrap.userWrap .button.naverButton{background:#04cf5c;}
@@ -198,9 +198,10 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #goodsViewContentWrap.debateWrap .debateReplyArea th textarea{ float:left; width:100%; height:50px;}
 #goodsViewContentWrap.debateWrap .debateReplyArea td{width:30%;}
 #goodsViewContentWrap.debateWrap .debateReplyArea td .button{width:100%; float:left; height:50px} */
+
 .commentWrap table{width:100%; text-align: left; font-size:12px; margin-bottom:30px; border-bottom:1px solid #e8e8e8;}
 .commentWrap table img{width:50px; height:50px;}
-.commentWrap table th, td {padding: 2% 2% 3%;}
+.commentWrap table th, .commentWrap table td {padding: 2% 2% 3%;}
 .commentWrap table .userArea th{width:20%;}
 .commentWrap table .userArea #buttonWrap{width:20%;}
 .commentWrap table .userArea #buttonWrap .button{padding:5%;}
@@ -330,8 +331,8 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .fundingBarWrap div{width:50%; margin:0 25%; float:left;}
 .fundingBarWrap .whiteBar{background: #fff; transition:1s;}
 .fundingBar{position:relative; background:#f1bf04; box-sizing:content-box;position:relative; left:-2px; box-shadow: 1px 1px 3px #5a5a5a; transition:1s;}
-.myFundingViewButton{position: absolute;  color:#f1bf05;top:0; text-align: center; width:100%; height:100%; opacity: 0;}
-.fundingBar:hover .myFundingViewButton{ top: -50px;  transition:1s; color: #131a23; opacity: 1;}
+.myFundingViewButton{position: absolute;  color:#f1bf05; bottom:0; text-align: center; width:100%; height:100%; opacity: 0;}
+.fundingBar:hover .myFundingViewButton{ height:120%;  transition:1s; color: #131a23; opacity: 1;}
 .fundingBar:hover{ background:#f1bf0473;  height:100%; transition:.1s; box-shadow: none;}
 
 .barAnimate .whiteBar{height:100% !important;}
@@ -365,7 +366,9 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 .myPageGoodsWrap .targetBar span{position: absolute; top:-15px; left:110%; color:red;}
 .myPageGoodsWrap .fundingBar{position:absolute; bottom:0; width:100%; margin:0; background:#ffc90094; box-shadow: 1px 1px 3px #5a5a5a; transition:1s;}
 .myPageGoodsWrap .fundingBar.fundingFail{background:#ccc;}
-.myPageGoodsWrap .fundingBar a{position:absolute; top:0; left:0; z-index: 9;}
+.myPageGoodsWrap .fundingBar .myFundingViewButton{position:absolute; bottom:0; height:100%; left:0;  z-index: 9;}
+.fundingBar:hover .myFundingViewButton{ height:120%;  transition:1s; color: #131a23; opacity: 1;}
+.fundingBar:hover{ background:#f1bf0473;  height:100%; transition:.1s; box-shadow: none;}
 
 #myGoodsDetail{position:fixed; top:50%; left:50%; margin:0; overflow: hidden; width:0; height:0; background:#fff; z-index: 999; transition:.3s;}
 #myGoodsDetail.openMypageGoodsView{ margin:-250px 0 0 -300px;  padding:5% 0; width:600px; height:500px; background:#fff; border:2px solid #f1bf04; transition:.5s;}
