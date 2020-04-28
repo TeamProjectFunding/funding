@@ -15,10 +15,8 @@
 		<c:forEach var="commentReply" items="${commentReplyList }">
 			<tr class="userArea">
 				<th><img src="${conPath}/images/profile/${commentReply.userProfileImage}" alt="userProfile"><span>${commentReply.userName}</span></th>
-				<td colspan="2"><fmt:formatDate value="${commentReply.fgCommentsReplyDate}" pattern="yyyy-MM-dd" /></td>
-			</tr>
-			<tr>
-				<td colspan="3">${commentReply.fgCommentsReplyContent }</td>
+				<td>${commentReply.fgCommentsReplyContent }</td>
+				<td><fmt:formatDate value="${commentReply.fgCommentsReplyDate}" pattern="yyyy-MM-dd" /></td>
 			</tr>
 		</c:forEach>
 </body>

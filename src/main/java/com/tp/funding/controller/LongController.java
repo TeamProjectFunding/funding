@@ -355,16 +355,17 @@ public class LongController {
 				companyService.companyAccountModify(company);
 				session.setAttribute("company", companyService.companyDetail(companyId));
 			}
-		}else {
-			if(userId != null) {
-				session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
-				model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
-				model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
-			}else if(companyId != null) {
-				session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
-				model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
-			}
 		}
+		if(userId != null && !userId.equals("")) {
+			session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
+			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
+			model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
+		}else if(companyId != null && !companyId.equals("")) {
+			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
+			model.addAttribute("companyEndFundingCount",fundingGoodsService.companyEndFundingCount(companyId)); //회사가 총 펀딩한 갯수
+			model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
+		}
+		
 		
 		return "myPage/myPageMain";
 	}
@@ -429,4 +430,6 @@ public class LongController {
 	public String loginPOSTNaver(HttpSession session) {
 		return "users/loginPostNaver";
 	}
+	
+	
 }
