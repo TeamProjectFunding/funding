@@ -157,12 +157,10 @@ public class LongController {
 		userPick.setUserId(userId);		
 		if (userPickService.userPickCheck(userId, fundingCode) == 1) { // 이미 찜 추가 했으면 찜 삭제
 			userPickService.userPickDelete(userPick);
-			model.addAttribute("userPickResult", false); // 찜 삭제
 		} else {// 찜 추가 안했으면 찜 추가로직
 			userPickService.userPickAdd(userId, fundingCode);
-			model.addAttribute("userPickResult", true);
 		}
-		return "message/userPickResult";
+		return "message/noMessage";
 	}
 
 	//카카오 로그인
