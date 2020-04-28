@@ -91,8 +91,12 @@
 					<th>APPLY</th>
 				</tr>
 				<tr>
-					<td><a href="myPageGoods.do?companyId=${company.companyId}">0</a></td>
-					<td><a href="">0</a></td>
+					<td><a href="myPageGoods.do?companyId=${company.companyId}">${companyEndFundingCount }</a></td>
+					<td>
+						<c:if test="${company.companyInFunding eq 0 }"><a href="fundingApplyForm.do">Do it</a></c:if>
+						<c:if test="${company.companyInFunding eq 1 }"><a href="#none" class="myFundingViewButtonNoCss" onclick="">심사중</a></c:if>
+						<c:if test="${company.companyInFunding eq 2 }"><a href="#none" class="myFundingViewButtonNoCss">진행중</a></c:if>
+					</td>
 				</tr>
 			</table>
 		</c:if>
@@ -247,10 +251,17 @@
 					}
 				});
 				
+				/*  */
+				$('.myFundingViewButtonNoCss').click(function(){
+					$('#myGoodsDetail').addClass('openMypageGoodsView');
+				});
+				
+				
 			});
 		</script>
 	</section>
 	</div>
+	<jsp:include page="myPageGoodsDetail.jsp"/>
 	<jsp:include page="myAcountEnrollment.jsp" />
 	<jsp:include page="../main/footer.jsp" />
 </body>
