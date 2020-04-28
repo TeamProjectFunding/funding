@@ -157,12 +157,10 @@ public class LongController {
 		userPick.setUserId(userId);		
 		if (userPickService.userPickCheck(userId, fundingCode) == 1) { // 이미 찜 추가 했으면 찜 삭제
 			userPickService.userPickDelete(userPick);
-			model.addAttribute("userPickResult", false); // 찜 삭제
 		} else {// 찜 추가 안했으면 찜 추가로직
 			userPickService.userPickAdd(userId, fundingCode);
-			model.addAttribute("userPickResult", true);
 		}
-		return "message/userPickResult";
+		return "message/noMessage";
 	}
 
 	//카카오 로그인
@@ -343,32 +341,49 @@ public class LongController {
 		return "message/fundingDetailUserView";
 	}
 	@RequestMapping(value="myPageMain")
-	public String myPageMain(String userId, String companyId, Model model,HttpSession session) {
-		
-		if(userId != null) {
-			session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
-			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
-			model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
-		}else if(companyId != null) {
-			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
-			model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
+	public String myPageMain(String bank,String accountHolder,String accountNumber,String userId, String companyId, Model model,HttpSession session) {
+		if(bank!=null) {
+			if(!userId.equals("")) {//유저인 경우
+				usersService.userAccountModify(userId, bank, accountNumber);
+				session.setAttribute("user", usersService.userDetail(userId));
+			}else if(!companyId.equals("")) {//회사인 경우
+				Company company = new Company();
+				company.setCompanyId(companyId);
+				company.setCompanyBankDepositor(accountHolder);
+				company.setCompanyBankName(bank);
+				company.setCompanyAccountNumber(accountNumber);
+				companyService.companyAccountModify(company);
+				session.setAttribute("company", companyService.companyDetail(companyId));
+			}
+		}else {
+			if(userId != null) {
+				session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
+				model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
+				model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
+			}else if(companyId != null) {
+				session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
+				model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
+			}
 		}
 		
 		return "myPage/myPageMain";
 	}
 	// 유저&회사 입금
 	@RequestMapping(value = "depositMypage")
-	public String balanceModify(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
+	public String depositMypage(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
 		System.out.println("depositAndWithdrawal"+depositAndWithdrawal);
 		depositAndWithdrawal.setdNWContent("마이페이지 입금");
-		depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
 		String userId = depositAndWithdrawal.getUserId();
 		String companyId = depositAndWithdrawal.getCompanyId();
 		int dNWAmount = depositAndWithdrawal.getdNWAmount();
 		if(userId != null& !userId.equals("")) {//유저
+			depositAndWithdrawal.setdNWBalance(usersService.userDetail(userId).getUserAccountBalance()+depositAndWithdrawal.getdNWAmount());
+			depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
 			usersService.userBalanceModify(userId, dNWAmount);
 			session.setAttribute("user", usersService.userDetail(userId));
 		}else if(companyId != null& !companyId.equals("")) {//회사
+			depositAndWithdrawal.setdNWBalance(companyService.companyDetail(companyId).getCompanyAccountBalance()+depositAndWithdrawal.getdNWAmount());
+			depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
 			Company company = new Company();
 			company.setCompanyId(companyId);
 			company.setChangeAccountBalance(dNWAmount);
@@ -377,6 +392,31 @@ public class LongController {
 		}
 		model.addAttribute("dNWAmount", dNWAmount);
 		return "message/depositMypage";
+	}
+	// 유저&회사 출금
+	@RequestMapping(value = "withdrawMypage")
+	public String withdrawMypage(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
+		System.out.println("depositAndWithdrawal"+depositAndWithdrawal);
+		depositAndWithdrawal.setdNWContent("마이페이지 출금");
+		String userId = depositAndWithdrawal.getUserId();
+		String companyId = depositAndWithdrawal.getCompanyId();
+		int dNWAmount = depositAndWithdrawal.getdNWAmount();
+		if(userId != null& !userId.equals("")) {//유저
+			depositAndWithdrawal.setdNWBalance(usersService.userDetail(userId).getUserAccountBalance()+depositAndWithdrawal.getdNWAmount());
+			depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
+			usersService.userBalanceModify(userId, dNWAmount);
+			session.setAttribute("user", usersService.userDetail(userId));
+		}else if(companyId != null& !companyId.equals("")) {//회사
+			depositAndWithdrawal.setdNWBalance(companyService.companyDetail(companyId).getCompanyAccountBalance()+depositAndWithdrawal.getdNWAmount());
+			depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal);
+			Company company = new Company();
+			company.setCompanyId(companyId);
+			company.setChangeAccountBalance(dNWAmount);
+			companyService.companyBalanceModify(company);
+			session.setAttribute("company", companyService.companyDetail(companyId));
+		}
+		model.addAttribute("dNWAmount", dNWAmount);
+		return "message/withdrawMypage";
 	}
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")

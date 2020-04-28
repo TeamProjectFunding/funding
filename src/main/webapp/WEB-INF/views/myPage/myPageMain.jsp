@@ -55,7 +55,13 @@
 			</tr>
 			<tr>
 				<td id="buttonWrap">
-					<a href="#none" class="button acountEnrollmentButton">계좌등록</a>
+					<a href="#none" class="button acountEnrollmentButton">계좌
+					<c:if test="${(not empty sessionScope.user && user.userBankName == '') || (not empty sessionScope.company && company.companyBankName == '')}">
+					등록
+					</c:if>
+					<c:if test="${(not empty sessionScope.user && user.userBankName != '') || (not empty sessionScope.company && company.companyBankName != '') }">
+					수정
+					</c:if></a>
 					<a href="${conPath}/myPageModifyForm.do?userId=${user.userId}&companyId=${company.companyId}" class="button">프로필수정</a>
 				</td>
 			</tr>
@@ -193,43 +199,53 @@
 					$('.withdrawForm').slideDown();
 				});
 				$('#dipositButton').click(function(){
-					var userId = '${user.userId}';
-					var companyId = '${company.companyId}';
 					var dNWAmount = Number($('input[name="diposit"]').val());
-					var dNWType = 0;
-					var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
-					 $.ajax({
-	                     url : '${conPath}/depositMypage.do',
-	                     datatype : 'html',
-	                     data : "companyId="+companyId+"&userId="+userId+"&dNWBalance="+dNWBalance+"&dNWAmount="+dNWAmount
-	                     +"&dNWType="+dNWType,
-	                     success : function(data, status){
-	                        $('.accountMessege').html(data);
-	                     }
-	                  });
-					 setTimeout(function(){
-						 location.reload();
-					 },1000);
+					if(dNWAmount < 1){
+						alert('0원 이상을 입력해주세요');
+					}else{
+						var userId = '${user.userId}';
+						var companyId = '${company.companyId}';
+						var dNWType = 0;
+						var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
+						 $.ajax({
+	                	     url : '${conPath}/depositMypage.do',
+		                     datatype : 'html',
+		                     data : "companyId="+companyId+"&userId="+userId+"&dNWAmount="+dNWAmount
+	    	                 +"&dNWType="+dNWType,
+	        	             success : function(data, status){
+	            	            $('.accountMessege').html(data);
+	                	     }
+		                  });
+						 setTimeout(function(){
+							 location.reload();
+						 },1000);
+					}
 				});
-				/* $('#withdrawButton').click(function(){
-					var userId = '${user.userId}';
-					var companyId = '${company.companyId}';
-					var dNWAmount = Number($('input[name="diposit"]').val());
-					var dNWType = 0;
-					var dNWBalance = Number(${user.userAccountBalance}${company.companyAccountBalance});
-					 $.ajax({
-	                     url : '${conPath}/depositMypage.do',
-	                     datatype : 'html',
-	                     data : "companyId="+companyId+"&userId="+userId+"&dNWBalance="+dNWBalance+"&dNWAmount="+dNWAmount
-	                     +"&dNWType="+dNWType,
-	                     success : function(data, status){
-	                        $('.accountMessege').html(data);
-	                     }
-	                  });
-					 setTimeout(function(){
-						 location.reload();
-					 },1000);
-				}); */
+				$('#withdrawButton').click(function(){
+					var dNWAmount = Number($('input[name="withdraw"]').val())*-1;
+					var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
+					if(dNWAmount>0){
+						alert('0원 이상을 입력해주세요');
+					}else if(dNWAmount > dNWBalance){
+						alert('계좌 잔액보다 작은 값을 입력해주세요');
+					}else{
+						var userId = '${user.userId}';
+						var companyId = '${company.companyId}';
+						var dNWType = 1;
+						 $.ajax({
+	            	         url : '${conPath}/withdrawMypage.do',
+	                	     datatype : 'html',
+		                     data : "companyId="+companyId+"&userId="+userId+"&dNWAmount="+dNWAmount
+		                     +"&dNWType="+dNWType,
+	    	                 success : function(data, status){
+	        	                $('.accountMessege').html(data);
+	            	         }
+	                	  });
+						 setTimeout(function(){
+							 location.reload();
+						 },1000);
+					}
+				});
 				
 			});
 		</script>

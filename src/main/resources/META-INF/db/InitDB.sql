@@ -72,6 +72,7 @@ DROP SEQUENCE FundingNewsNumber;
 
 DROP SEQUENCE FundingCode;
 
+DROP SEQUENCE fundingAccountNumberSEQ;
 
 -- CREATE SEQUENCE
 CREATE SEQUENCE DepositAndWithdrawalNumber
@@ -152,6 +153,12 @@ CREATE SEQUENCE QnANumber
     MAXVALUE 9999999
     NOCYCLE
     NOCACHE;
+    
+CREATE SEQUENCE fundingAccountNumberSEQ    
+    START WITH 100000
+    MAXVALUE 9999999
+    NOCYCLE
+    NOCACHE;     
 
 CREATE TABLE DepositAndWithdrawal (
     DepositAndWithdrawalNumber NUMBER(12) PRIMARY KEY,
@@ -161,7 +168,8 @@ CREATE TABLE DepositAndWithdrawal (
     DNWContent VARCHAR2(100),
     DNWDate Date,
     CompanyId VARCHAR2(100),
-    UserId VARCHAR2(100)
+    UserId VARCHAR2(100),
+    RewardCode NUMBER(12)
 );
 
 CREATE TABLE Company (
