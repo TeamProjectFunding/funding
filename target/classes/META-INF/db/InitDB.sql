@@ -168,7 +168,8 @@ CREATE TABLE DepositAndWithdrawal (
     DNWContent VARCHAR2(100),
     DNWDate Date,
     CompanyId VARCHAR2(100),
-    UserId VARCHAR2(100)
+    UserId VARCHAR2(100),
+    RewardCode NUMBER(12)
 );
 
 CREATE TABLE Company (
