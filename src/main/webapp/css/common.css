@@ -370,8 +370,8 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #myGoodsDetail .thumnail{width:40%; float:left; padding:2%;}
 #myGoodsDetail .thumnail img{float:left; width:100%;}
 #myGoodsDetail .goodsInfo{width:60%; float:left; font-size: 12px; text-align: left;}
-#myGoodsDetail .interestWrap{width:95%; height:200px;  margin:20px 2.5%; font-size: 12px; padding:5% 2% 2%; overflow: scroll; border-top: 1px solid #e2e2e2;}
-#myGoodsDetail .interestWrap table{width:95%; float:left; text-align: center;}
+#myGoodsDetail .interestWrap{width:95%; height:200px;  margin:20px 2.5%; font-size: 12px; padding:5% 2% 2%; overflow: scroll; }
+#myGoodsDetail .interestWrap table{width:95%; float:left; text-align: center; border-top: 1px solid #e2e2e2;}
 #myGoodsDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
 #myGoodsDetail .interestWrap table td{padding:2%; text-align: center;}
 

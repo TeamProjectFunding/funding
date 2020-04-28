@@ -43,5 +43,6 @@ public interface FundingGoodsService {
 	public int companyEndFundingCount(String companyId); // 회사 마이페이지 펀딩 총 갯수(페이징)
 	public List<FundingGoods>fundingAdminAllList();
 	public FundingGoods auditFunding(String companyId); // 심사중 펀딩
+	public FundingGoods ongoingFunding(String companyId); //진행 중인 펀딩 가져오기
 
 }

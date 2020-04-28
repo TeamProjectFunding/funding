@@ -41,6 +41,7 @@ public interface FundingGoodsDao {
 	public int maxRecruitmentAmount(FundingGoods fundingGoods); // 회사 마이페이지 그래프 최대 모집금액
 	public int companyEndFundingCount(String companyId); // 회사 마이페이지 펀딩 총 갯수(페이징)
 	public List<FundingGoods>fundingAdminAllList();
-	public FundingGoods auditFunding(String companyId);
+	public FundingGoods auditFunding(String companyId); //심사 중인 펀딩 가져오기
+	public FundingGoods ongoingFunding(String companyId); //진행 중인 펀딩 가져오기
 
 }
