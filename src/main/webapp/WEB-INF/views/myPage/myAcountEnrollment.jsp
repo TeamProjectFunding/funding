@@ -18,18 +18,22 @@
 			<span></span>	
 		</div>
 		<form action="">
+		<input type="hidden" name="userId" value="${user.userId }">
+		<input type="hidden" name="companyId" value="${company.companyId }">
 		<table class="acountInfo">
 			<tr>
 				<th>BANK</th>
-				<td><input type="text" name="bank" placeholder="은행명을 입력하세요."></td>
+				<td><input type="text" name="bank" placeholder="은행명을 입력하세요." required="required"></td>
 			</tr>
+			<c:if test="${not empty sessionScope.company }">
 			<tr>
-				<th>ACOUNT HOLDER</th>
-				<td><input type="text" name="acountHolder" placeholder="예금주 이름을 입력하세요."></td>
+				<th>ACCOUNT HOLDER</th>
+				<td><input type="text" name="accountHolder" placeholder="예금주 이름을 입력하세요." required="required"></td>
 			</tr>
+			</c:if>
 			<tr>
-				<th>ACOUNT HOLDER</th>
-				<td><input type="number" name="acountNumber" placeholder="계좌번호를 입력하세요."></td>
+				<th>ACCOUNT NUMBER</th>
+				<td><input type="text" name="accountNumber" placeholder="계좌번호를 입력하세요." required="required"></td>
 			</tr>
 			<tr>
 				<th id="buttonWrap" colspan='2'><input type="submit" value="SUBMIT" class="button"></th>
