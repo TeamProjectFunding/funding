@@ -42,6 +42,6 @@ public interface FundingGoodsService {
 	public int maxRecruitmentAmount(String companyId,String pageNum,Model model); // 회사 마이페이지 그래프 최대 모집금액
 	public int companyEndFundingCount(String companyId); // 회사 마이페이지 펀딩 총 갯수(페이징)
 	public List<FundingGoods>fundingAdminAllList();
-	
+	public FundingGoods auditFunding(String companyId); // 심사중 펀딩
 
 }

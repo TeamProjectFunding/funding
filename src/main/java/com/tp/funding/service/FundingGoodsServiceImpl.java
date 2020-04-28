@@ -305,6 +305,11 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.fundingAdminAllList();
 	}
 
+	@Override
+	public FundingGoods auditFunding(String companyId) {
+		return fundingGoodsDao.auditFunding(companyId);
+	}
+
 
 
 }

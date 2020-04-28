@@ -23,7 +23,6 @@ public class Reward {
 	private String fundingName;
 	private Date fundingTargetDate;
 	private String fundingThumbnailImage;
-	
 	// 투자 원금 환불일 서브쿼리
 	private Date investmentMaturityDate;
 	//투자일 때
@@ -42,6 +41,7 @@ public class Reward {
 		this.fundingRewardDeliveryDate = fundingRewardDeliveryDate;
 		this.fundingCode = fundingCode;
 	}
+	
 	public Date getInvestmentMaturityDate() {
 		return investmentMaturityDate;
 	}
