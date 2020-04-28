@@ -38,7 +38,8 @@
 							<li class="alarmContent">${notification.notificationContent}</li>
 							<li class="date">${notification.notificationDate}<a href="#none" class="readButton">읽음</a></li>
 						</ul>
-					</c:forEach>				
+					</c:forEach>	
+								
 				</div>
 			</c:if>	
 			
