@@ -40,18 +40,24 @@
 			<c:forEach var="comment" items="${commentList }">
 			<table class="commentContentWrap">
 				<tr class="userArea">
-					<th><img src="${conPath}/images/profile/${comment.userProfileImage}" alt="userProfile">${comment.userName}</th>
-					<td>${comment.fgCommentsContent }</td>
+					<th>
+						<c:if test="${not empty comment.userProfileImage}">
+                        	<img src="${conPath}/images/profile/${comment.userProfileImage}" alt="userProfile">
+	                     </c:if>                     
+	                     <c:if test="${comment.userProfileImage eq null }">
+	                        <i class="material-icons">account_circle</i>
+	                     </c:if>
+	                     
+						${comment.userName}</th>
+					<td class='commentContent'>${comment.fgCommentsContent }</td>
 					<td><fmt:formatDate value="${comment.fgCommentsDate}" pattern="yyyy-MM-dd"/></td>
-				</tr>
-				<tr>
-					<th colspan="3" id="buttonWrap">
+					<td id="buttonWrap">
 						<a href="#none" class="button replyButton" onclick="commentReplyView('${comment.fgCommentsNumber}')">REPLY
 						<c:if test="${comment.fgcommentsReplyCount ne 0 }">
 							 ${comment.fgcommentsReplyCount }
 						</c:if>
 						 </a>
-					</th>
+					</td>
 				</tr>
 			</table>
 			
