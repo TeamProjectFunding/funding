@@ -30,7 +30,9 @@ import com.tp.funding.service.FgCommentsService;
 import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingNewsService;
+import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
+import com.tp.funding.service.QnAService;
 import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UserPickService;
 import com.tp.funding.service.UsersService;
@@ -60,6 +62,11 @@ public class LongController {
 	private CompanyService companyService;
 	@Autowired
 	private DepositAndWithdrawalService depositAndWithdrawalService;
+	@Autowired
+    private QnAService qnAService;
+    @Autowired
+    private FundingQuestionService fundingQuestionService;
+	
 	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
@@ -359,6 +366,7 @@ public class LongController {
 		if(userId != null && !userId.equals("")) {
 			session.setAttribute("user", usersService.userDetail(userId)); //세션에 유저 다시 넣기
 			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId)); //펀딩 총 갯수	
+			model.addAttribute("myPostTotalCnt", qnAService.myTotQna(userId)+fundingQuestionService.myFundingtotQna(userId)+fgCommentsService.myFundingTotComments(userId));
 			model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
 		}else if(companyId != null && !companyId.equals("")) {
 			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
@@ -419,6 +427,26 @@ public class LongController {
 		model.addAttribute("dNWAmount", dNWAmount);
 		return "message/withdrawMypage";
 	}
+	
+	//회사마이페이지 
+	@RequestMapping(value="auditFunding")
+	public String auditFunding(String companyId,Model model) {
+		FundingGoods good = fundingGoodsService.auditFunding(companyId);
+		int fundingCode = good.getFundingCode();
+		model.addAttribute("good", good);
+		if(good.getFundingCategory() == 0) { //투자
+			Reward reward = rewardService.fundingRewardList(fundingCode).get(0);
+			model.addAttribute("reward", reward);
+			model.addAttribute("companyDNWList", depositAndWithdrawalService.companyRewardDNWList(companyId, reward.getRewardCode()));
+		}else {//리워드
+			model.addAttribute("rewardList", rewardService.fundingRewardList(fundingCode));
+		}
+		return "message/myPageGoodsDetaill";
+	}
+	
+	
+	
+	
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
 	public String naverCollback() {

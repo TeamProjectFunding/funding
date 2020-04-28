@@ -23,7 +23,7 @@ $(function(){
 			<span></span>	
 		</div>
 		<div class="thumnail">
-			<img src="${conPath }/images/${good.fundingThumbnailImage}" alt="thumnail">
+			<img src="${conPath }/images/goods/${good.fundingThumbnailImage}" alt="thumnail">
 			
 		</div>
 		
@@ -81,15 +81,15 @@ $(function(){
 			<c:if test="${good.fundingCategory eq 1 }">
 			<table><!-- REWARD -->
 				<tr>
+					<th>리워드</th>
 					<th>리워드 옵션명</th>
-					<th>투자금액</th>
-					<th>참여인원</th>
+					<th>금액</th>
 				</tr>
 				<c:forEach var="reward" items="${rewardList }">
 				<tr>
-					<td>${reward.rewardName }</td>
-					<td><fmt:formatNumber value="${reward.rewardCondition }" currencySymbol="true"/>원 </td>
-					<td>50</td>
+					<td><img alt="rewardImage" src="${conPath }/images/reward/${reward.rewardImage}"></td>
+					<td>${reward.rewardName } </td>
+					<td><fmt:formatNumber value="${reward.rewardCondition }" currencySymbol="true"/>원</td>
 				</tr>
 				</c:forEach>
 			</table>

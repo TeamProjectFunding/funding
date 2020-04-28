@@ -179,6 +179,11 @@ public class FundingGoodsDaoImpl implements FundingGoodsDao {
 		return sessionTemplate.selectList("fundingAdminAllList");
 	}
 
+	@Override
+	public FundingGoods auditFunding(String companyId) {
+		return sessionTemplate.selectOne("auditFunding", companyId);
+	}
+
 
 
 }

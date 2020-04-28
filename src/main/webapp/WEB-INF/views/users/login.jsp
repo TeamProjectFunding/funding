@@ -40,17 +40,27 @@ function getUserId(){
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="button" value="FIND ID/PW" class="button" onclick="getUserId();">
+							<input type="button" value="FIND ID/PW" class="button findButton" ">
 							<input type="button" value="NAVER" class="button naverButton">
 							<div id="naver_id_login" style="display: none"></div>
 							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton" style="background-color: #FFE500">
 						</th>
 					</tr>
-					
 				</table>
 			</form>
 		</section>
 	</div>
+	<script>
+		$(function(){
+			$('.findButton').click(function(){
+				$('#findWrap').addClass('openfindWrapView');
+			});
+			$('.closeButton').click(function(){
+				$('#findWrap').removeClass('openfindWrapView');
+			});
+				
+		});
+	</script>
 	                
 <script src="${conPath }/js/kakao.js"></script>
 <script>
@@ -95,6 +105,7 @@ function getUserId(){
      naver_id_login.setPopup();
      naver_id_login.init_naver_id_login();
   </script>
+  	<jsp:include page="findWrap.jsp" />
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>
