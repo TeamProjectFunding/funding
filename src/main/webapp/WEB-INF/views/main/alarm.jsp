@@ -36,7 +36,7 @@
 					<c:forEach var="notification" items="${notificationUnReadUserList}">
 						<ul >
 							<li class="alarmContent">${notification.notificationContent}</li>
-							<li class="date">${notification.notificationDate}</li>
+							<li class="date">${notification.notificationDate}<a href="#none" class="readButton">읽음</a></li>
 						</ul>
 					</c:forEach>				
 				</div>
@@ -48,7 +48,7 @@
 					<c:forEach var="notification" items="${notificationUnReadCompanyList}">
 						<ul >
 							<li class="alarmContent">${notification.notificationContent}</li>
-							<li class="date">${notification.notificationDate}</li>
+							<li class="date">${notification.notificationDate}<a href="#" class="readButton">읽음</a></li>
 						</ul>
 					</c:forEach>
 				</div>

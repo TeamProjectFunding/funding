@@ -5,7 +5,7 @@
 
 <mapper namespace="Reward">
 	<insert id="rewardWrite" parameterType="Reward">
-		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{LastInterestReceivedDate},#{fundingCode})
+		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{LastInterestReceivedDate}+30,#{fundingCode})
 	</insert>
 	<update id="rewardInvestmentReceiveCountUp" parameterType="int">
 		UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=#{rewardCode}
@@ -23,4 +23,8 @@
 		WHERE r.fundingcode = f.fundingcode and f.fundingcode=#{fundingCode} AND r.rewardcondition=
 			(SELECT fundingAmount FROM fundinggoodsdetail WHERE fundingCode=#{fundingCode} AND fundingGoodsDetailNumber=#{fundingGoodsDetailNumber})
 	</select>
+	<update id="interestPaymentDayModify" parameterType="int">
+	UPDATE REWARD SET lastInterestReceivedDate = lastInterestReceivedDate+30 where rewardcode=#{rewardCode}
+	</update>
+	
 </mapper>

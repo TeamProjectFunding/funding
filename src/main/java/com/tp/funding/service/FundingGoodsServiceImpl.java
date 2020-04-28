@@ -310,6 +310,11 @@ public class FundingGoodsServiceImpl implements FundingGoodsService {
 		return fundingGoodsDao.auditFunding(companyId);
 	}
 
+	@Override
+	public FundingGoods ongoingFunding(String companyId) {
+		return fundingGoodsDao.ongoingFunding(companyId);
+	}
+
 
 
 }

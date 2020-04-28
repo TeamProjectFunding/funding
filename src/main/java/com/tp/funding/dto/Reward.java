@@ -13,7 +13,7 @@ public class Reward {
 	private int rewardInterst;             
 	private int fundingInvestmentPeriod;   
 	private int investmentReceiveCount;    
-	private Date LastInterestReceivedDate; // 최근 이자받은 날
+	private Date lastInterestReceivedDate; // 최근 이자받은 날
 	private int fundingCode;
 	//paging
 		private int startRow;
@@ -25,6 +25,10 @@ public class Reward {
 	private String fundingThumbnailImage;
 	// 투자 원금 환불일 서브쿼리
 	private Date investmentMaturityDate;
+	
+	public Reward() {
+		super();
+	}
 	//투자일 때
 	public Reward(String rewardName,int rewardGrade,int rewardInterst,int fundingInvestmentPeriod,int fundingCode) {
 		this.rewardName = rewardName;
@@ -41,18 +45,16 @@ public class Reward {
 		this.fundingRewardDeliveryDate = fundingRewardDeliveryDate;
 		this.fundingCode = fundingCode;
 	}
-	
-	public Date getInvestmentMaturityDate() {
-		return investmentMaturityDate;
-	}
-	public void setInvestmentMaturityDate(Date investmentMaturityDate) {
-		this.investmentMaturityDate = investmentMaturityDate;
-	}
-	public Date getLastInterestReceivedDate() {
-		return LastInterestReceivedDate;
-	}
-	public void setLastInterestReceivedDate(Date lastInterestReceivedDate) {
-		LastInterestReceivedDate = lastInterestReceivedDate;
+	@Override
+	public String toString() {
+		return "Reward [rewardCode=" + rewardCode + ", rewardName=" + rewardName + ", rewardCondition="
+				+ rewardCondition + ", rewardGrade=" + rewardGrade + ", rewardImage=" + rewardImage
+				+ ", fundingRewardDeliveryDate=" + fundingRewardDeliveryDate + ", rewardInterst=" + rewardInterst
+				+ ", fundingInvestmentPeriod=" + fundingInvestmentPeriod + ", investmentReceiveCount="
+				+ investmentReceiveCount + ", lastInterestReceivedDate=" + lastInterestReceivedDate + ", fundingCode="
+				+ fundingCode + ", startRow=" + startRow + ", endRow=" + endRow + ", fundingName=" + fundingName
+				+ ", fundingTargetDate=" + fundingTargetDate + ", fundingThumbnailImage=" + fundingThumbnailImage
+				+ ", investmentMaturityDate=" + investmentMaturityDate + "]";
 	}
 	public int getRewardCode() {
 		return rewardCode;
@@ -108,6 +110,12 @@ public class Reward {
 	public void setInvestmentReceiveCount(int investmentReceiveCount) {
 		this.investmentReceiveCount = investmentReceiveCount;
 	}
+	public Date getLastInterestReceivedDate() {
+		return lastInterestReceivedDate;
+	}
+	public void setLastInterestReceivedDate(Date lastInterestReceivedDate) {
+		this.lastInterestReceivedDate = lastInterestReceivedDate;
+	}
 	public int getFundingCode() {
 		return fundingCode;
 	}
@@ -144,20 +152,14 @@ public class Reward {
 	public void setFundingThumbnailImage(String fundingThumbnailImage) {
 		this.fundingThumbnailImage = fundingThumbnailImage;
 	}
+	public Date getInvestmentMaturityDate() {
+		return investmentMaturityDate;
+	}
+	public void setInvestmentMaturityDate(Date investmentMaturityDate) {
+		this.investmentMaturityDate = investmentMaturityDate;
+	}
 	
-	public Reward() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "Reward [rewardCode=" + rewardCode + ", rewardName=" + rewardName + ", rewardCondition="
-				+ rewardCondition + ", rewardGrade=" + rewardGrade + ", rewardImage=" + rewardImage
-				+ ", fundingRewardDeliveryDate=" + fundingRewardDeliveryDate + ", rewardInterst=" + rewardInterst
-				+ ", fundingInvestmentPeriod=" + fundingInvestmentPeriod + ", investmentReceiveCount="
-				+ investmentReceiveCount + ", LastInterestReceivedDate=" + LastInterestReceivedDate + ", fundingCode="
-				+ fundingCode + ", startRow=" + startRow + ", endRow=" + endRow + ", fundingName=" + fundingName
-				+ ", fundingTargetDate=" + fundingTargetDate + ", fundingThumbnailImage=" + fundingThumbnailImage + "]";
-	}
+	
 	
 	
 	
