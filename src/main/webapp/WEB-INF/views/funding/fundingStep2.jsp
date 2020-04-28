@@ -87,7 +87,6 @@
 				<input type="hidden" name="fundingCode" value="${good.fundingCode }">
 				<input type="hidden" name="fundingTargetDate" value="${good.fundingTargetDate }">
 				<input type="hidden" name="userId" value="${user.userId}">
-				<p class="rewardCondition"></p>
 				<table>
 					<tr>
 						<th colspan="2">${good.fundingName }</th>
