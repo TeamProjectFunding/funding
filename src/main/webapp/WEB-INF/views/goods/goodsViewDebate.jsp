@@ -41,13 +41,11 @@
 			<table class="commentContentWrap">
 				<tr class="userArea">
 					<th><img src="${conPath}/images/profile/${comment.userProfileImage}" alt="userProfile">${comment.userName}</th>
+					<td>${comment.fgCommentsContent }</td>
 					<td><fmt:formatDate value="${comment.fgCommentsDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr>
-					<td colspan="2">${comment.fgCommentsContent }</td>
-				</tr>
-				<tr>
-					<th colspan="2" id="buttonWrap">
+					<th colspan="3" id="buttonWrap">
 						<a href="#none" class="button replyButton" onclick="commentReplyView('${comment.fgCommentsNumber}')">REPLY
 						<c:if test="${comment.fgcommentsReplyCount ne 0 }">
 							 ${comment.fgcommentsReplyCount }
