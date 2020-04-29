@@ -9,16 +9,21 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <c:if test="${not empty userModifyResult}">
 	<script>
-		alert('${userModifyResult}');
+	swal("${userModifyResult}", {
+		  buttons: false,
+	});
 	</script>
 </c:if>
 <c:if test="${not empty companyModifyResult}">
 	<script>
-		alert('${companyModifyResult}');
+	swal("${companyModifyResult}", {
+		  buttons: false,
+	});	
 	</script>
 </c:if>
 
@@ -231,7 +236,7 @@
 				$('#dipositButton').click(function(){
 					var dNWAmount = Number($('input[name="diposit"]').val());
 					if(dNWAmount < 1){
-						alert('0원 이상을 입력해주세요');
+						swal("0원 이상을 입력해주세요", {buttons: false,});
 					}else{
 						var userId = '${user.userId}';
 						var companyId = '${company.companyId}';
@@ -255,9 +260,9 @@
 					var dNWAmount = Number($('input[name="withdraw"]').val())*-1;
 					var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
 					if(dNWAmount>0){
-						alert('0원 이상을 입력해주세요');
+						swal("0원 이상을 입력해주세요", {buttons: false,});
 					}else if(dNWAmount > dNWBalance){
-						alert('계좌 잔액보다 작은 값을 입력해주세요');
+						swal("계좌 잔액보다 작은 값을 입력해주세요", {buttons: false,});
 					}else{
 						var userId = '${user.userId}';
 						var companyId = '${company.companyId}';

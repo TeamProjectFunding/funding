@@ -8,11 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+function getUserId(){
+	var id = document.getElementsByName("id")[0].value;
+	location.href="${conPath}/findPw.do?userId="+id+"&companyId="+id;
+}
+</script>
 </head>
 <body>
 <c:if test="${not empty findPwMsg}">
 	<script>
-		alert('${findPwMsg}');
+	swal('${findPwMsg}', {buttons: false,});
 	</script>
 </c:if>
 

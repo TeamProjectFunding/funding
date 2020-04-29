@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>JOIN SUCCESS</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -17,13 +18,13 @@
 		
 		<c:if test="${not empty userJoinResult}">
 			<script>
-				alert('${userJoinResult}');
+			swal('${userJoinResult}', {buttons: false,});
 			</script>
 		</c:if>
 		
 		<c:if test="${not empty companyJoinResult}">
 			<script>
-				alert('${companyJoinResult}');
+			swal('${companyJoinResult}', {buttons: false,});
 			</script>
 		</c:if>
 		
@@ -94,7 +95,7 @@
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							${company.companyAddressBasic} ${company.companyAdderssDetail}
+							${company.companyAddressBasic} ${company.companyAddressDetail}
 						</td>
 					</tr>
 					</c:if>					

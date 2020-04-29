@@ -5,7 +5,7 @@
 
 <mapper namespace="Reward">
 	<insert id="rewardWrite" parameterType="Reward">
-		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{LastInterestReceivedDate}+30,#{fundingCode})
+		INSERT INTO Reward VALUES (REWARDCODE.nextval,#{rewardName},#{rewardCondition},#{rewardGrade},#{rewardImage},#{fundingRewardDeliveryDate},#{rewardInterst},#{fundingInvestmentPeriod},0,#{lastInterestReceivedDate}+30,#{fundingCode})
 	</insert>
 	<update id="rewardInvestmentReceiveCountUp" parameterType="int">
 		UPDATE REWARD SET investmentReceiveCount = investmentReceiveCount+1 WHERE REWARDCODE=#{rewardCode}

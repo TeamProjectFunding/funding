@@ -26,7 +26,6 @@ INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '카카오뱅크',
         '관리계좌', '512-06-66324', 12000000, 12000000, 100, '2020-04-01', '2020-05-03', null, 7, 15, 0, 3, 1, 'admin', 'com@naver.com');
-         
         
 --1번 승인투자상품에 투자한 사람 관리자 마감처리 알림 테스트하려고 성공시 회사에 알림 >> 마감치고 회사아이디로그인
 INSERT INTO FundingGoodsDetail VALUES 

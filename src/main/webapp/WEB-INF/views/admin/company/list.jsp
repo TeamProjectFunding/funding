@@ -12,12 +12,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <c:if test="${companyOutSiteResult eq 1}">
 	<script>
-		alert('회사비활성화 성공');
+	swal({
+	  text: "회사비활성화 성공",
+	  icon: "success",
+	});	
 	</script>
 </c:if>
 	<jsp:include page="../adminMenu.jsp"/>
