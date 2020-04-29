@@ -56,10 +56,10 @@
 			<tr>
 				<td id="buttonWrap">
 					<a href="#none" class="button acountEnrollmentButton">계좌
-					<c:if test="${(not empty sessionScope.user && user.userBankName == '') || (not empty sessionScope.company && company.companyBankName == '')}">
+					<c:if test="${company.companyBankName eq null && user.userBankName eq null}">
 					등록
 					</c:if>
-					<c:if test="${(not empty sessionScope.user && user.userBankName != '') || (not empty sessionScope.company && company.companyBankName != '') }">
+					<c:if test="${company.companyBankName ne null || user.userBankName ne null }">
 					수정
 					</c:if></a>
 					<a href="${conPath}/myPageModifyForm.do?userId=${user.userId}&companyId=${company.companyId}" class="button">프로필수정</a>

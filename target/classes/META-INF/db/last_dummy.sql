@@ -65,7 +65,7 @@ INSERT INTO FundingGoods VALUES
         '관리계좌', '511-06-12324', 700000, 1000000, 70, '2020-05-18', '2020-07-20', null, 7, 2, 0, 0, 1, 'admin', 'com@naver.com');
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 30000, 1 , NULL, '2020-07-20',0,0,0,NULL,4);
 
-SELECT * FROM REWARD;
+
 --1번에 대한 상품문의 fundingQuestion  페이징 처리 답변처리 보여주려고  fundingQuestionReply 7번에대한답변은 관리자 단에서 답변버튼으로 해줌
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL, '투자 회사가 궁금해요', '1', SYSDATE, 0, 1 ,'topwings7@gmail.com');
 INSERT INTO fundingquestion VALUES (fundingquestionnumber.NEXTVAL, '회사 지속 년수가 궁금해요', '2', SYSDATE, 0, 1 ,'topwings7@gmail.com');

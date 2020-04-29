@@ -109,7 +109,10 @@ public class LongController {
 	}
 	//펀딩 코멘트 답글보기 버튼
 	@RequestMapping(value = "goodsCommentReplyView")
-	public String goodsCommentReplyView(int fgCommentsNumber,Model model) {
+	public String goodsCommentReplyView(int fgCommentsNumber,Model model,HttpSession session) {
+		if(session.getAttribute("user")==null) { //로그인 안 한 상태냐?
+			model.addAttribute("noUser", true);
+		}
 		model.addAttribute("commentReplyList", fgCommentsReplyService.fundingCommentReplyList(fgCommentsNumber));
 		model.addAttribute("fgCommentsNumber", fgCommentsNumber);
 		return "message/goodsCommentReplyList";
@@ -301,9 +304,9 @@ public class LongController {
 	}
 	
 	
-	//마이페이지 펀딩진행 내역
+	//마이페이지 펀딩진행 내역 회사 그래프
 	@RequestMapping(value="myPageGoods")
-	public String myPageGoods(String companyId,Model model,String pageNum) {//회사 그래프
+	public String myPageGoods(String companyId,Model model,String pageNum) {
 		List<FundingGoods> companyEndFundingList = fundingGoodsService.companyEndFundingList(companyId,pageNum,model);
 		model.addAttribute("companyEndFundingList", companyEndFundingList);
 		for(int i=0;i<companyEndFundingList.size();i++) {
@@ -311,14 +314,20 @@ public class LongController {
 			model.addAttribute("reward"+fundingCode, rewardService.fundingRewardList(fundingCode));
 		}
 		model.addAttribute("doFundingCount", companyEndFundingList.size());
-		model.addAttribute("maxRecruitmentAmount", fundingGoodsService.maxRecruitmentAmount(companyId,pageNum,model));
+		int maxRecruitmentAmount = fundingGoodsService.maxRecruitmentAmount(companyId,pageNum,model);
+		if(maxRecruitmentAmount > 0) {
+			model.addAttribute("maxRecruitmentAmount", maxRecruitmentAmount);
+		}
 		return "myPage/myPageGoods";
 	}
 	//마이페이지 펀딩내역 그래프
 	@RequestMapping(value="myPageFunding")
 	public String myPageFunding(String userId,Model model,String pageNum) {//유저그래프
 		model.addAttribute("userFundingList",fundingDetailService.userFundingList(pageNum, userId, model));
-		model.addAttribute("maxFundingAmount", fundingDetailService.userFundingListInMaxFundingAmount(userId,pageNum));
+		int maxFundingAmount = fundingDetailService.userFundingListInMaxFundingAmount(userId,pageNum);
+		if(maxFundingAmount != 0) {
+			model.addAttribute("maxFundingAmount", maxFundingAmount);
+		}
 		return "myPage/myPageFunding";
 	}
 	//회사마이페이지 그래프 속 Detail
