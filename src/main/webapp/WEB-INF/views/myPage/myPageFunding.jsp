@@ -15,6 +15,10 @@
 	<div id="contentWrap" class="myPageWrap">
 	<section class="myPageFundingWrap" >
 		<h1>MY FUNDING</h1>
+		<c:if test="${empty maxFundingAmount }">
+		<h1>펀딩한 내역이 없습니다.</h1>
+		</c:if>
+		<c:if test="${not empty maxFundingAmount}">
 		<p>
 			<c:if test="${paging.startPage > 1 }">
 			<a href="${conPath }/myPageFunding.do?userId=${user.userId }&pageNum=${paging.startPage-1 }" class="prev">PREV</a>
@@ -78,6 +82,7 @@
 				</script>
 			</div>
 		</div>
+		</c:if>
 		<jsp:include page="myPageFundingDetail.jsp" />
 	</section>
 	</div>

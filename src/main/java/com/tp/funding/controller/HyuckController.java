@@ -109,7 +109,7 @@ public class HyuckController {
 		return "users/joinSuccess";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value = "login")
 	public String login(HttpSession session, String id, String pw, Model model) {
 		Users user = new Users();
 		user.setUserId(id);

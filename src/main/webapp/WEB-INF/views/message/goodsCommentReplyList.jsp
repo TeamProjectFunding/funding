@@ -6,11 +6,18 @@
 <!DOCTYPE html>
 <html>
 <body>
+		<c:if test="${not empty noUser }">
+		<tr class="userArea">
+			<th colspan="3"><a href="${conPath }/login.do">글작성은 로그인 이후 가능합니다</a></th>
+		</tr>
+		</c:if>
+		<c:if test="${empty noUser }">
 		<tr class="userArea">
 			<th><img src="${conPath}/images/profile/${user.userProfileImage}" alt="userProfile"><span>${user.userName }</span></th>
 			<td><textarea name="fgCommentsReplyContent" class="fgCommentsReplyContent${fgCommentsNumber }"></textarea></td>
 			<th id="buttonWrap"><a href="#none" class="button replyWriteButton" onclick="fgCommentsReplyWrite('${fgCommentsNumber }');">REPLY WRITE</a></th>
 		</tr>
+		</c:if>
 
 		<c:forEach var="commentReply" items="${commentReplyList }">
 			<tr class="userArea">
