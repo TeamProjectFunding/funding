@@ -8,6 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+function alreadyFunding(){
+	swal("펀딩 신청은 하나씩만 가능합니다.", {
+		  buttons: false,
+	});
+}
+</script>
 </head>
 <body>
 	<div id="mypageWrap" class="popupWrap mypageMenuWrap">
@@ -49,32 +57,16 @@
 				</tr>
 				<tr>
 					<td colspan="2"><a href="myPageGoods.do?companyId=${company.companyId}">My Goods</a></td>
-					<td colspan="2"><a href="fundingApplyForm.do">Goods Apply</a></td>		
+					<td colspan="2">
+					<c:if test="${company.companyInFunding eq 0 }">
+					<a href="fundingApplyForm.do">Goods Apply</a>
+					</c:if>
+					<c:if test="${company.companyInFunding ne 0 }">
+					<a href="#none" onclick="noCompany();">Goods Apply</a>
+					</c:if>
+					</td>		
 				</tr>			
 			</c:if>
-			
-			
-			<!-- <tr>
-				<td colspan="2"><a href="myPageMain.do">userName</a></td >
-				<td colspan="2"><a href="myPageModifyForm.do">프로필 수정</a></td>
-				
-			</tr>  -->		
-			
-			<!-- <tr>
-				<td><a href="myPageFunding.do">My FUNDING</a></td>
-				<td><a href="myPagePick.do">PICK</a></td>
-				<td><a href="myPagePost.do">POST</a></td>
-				<td><a href="myPageEvent.do">EVENT</a></td>
-			</tr>  -->
-			
-			
-			<%-- <c:if test="${not empty company}">
-				<tr>
-					<td><a href="myPageGoods.do">내 상품 정보</a></td>
-					<td><a href="fundingApplyForm.do">투자 신청</a></td>				
-				</tr>
-			</c:if> --%>
-			
 		</table>
 	</div>
 </body>

@@ -71,7 +71,7 @@ INSERT INTO Users VALUES ('top7@naver.com','123','park.jpg','임상훈','010-234
     -- 승인 됨 (투자 / 리워드)
     
 INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '승인투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '신한은행',
+    (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '신한은행',
         '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', '2020-04-29', null, 7, 3, 0, 20, 1, 'admin', 'com5@naver.com');
         
 INSERT INTO FundingGoods VALUES 
@@ -110,7 +110,7 @@ INSERT INTO FundingGoods VALUES
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 1, '대기리워드상품2', '리워드상품입니다.', 'support.jpg', 'support.jpg', 'fundingDescription.png', null,
         null, null, 0, 5000000, 0, SYSDATE, '2020-10-22', '2020-11-01', 0, 6, 0, 0, 0, 'admin', 'com4@naver.com');        
- 
+ commit;
 
 --리워드 상품 데이터
 INSERT INTO Reward VALUES (REWARDCODE.nextval,null,0,0,null,null,7,3,2,'2020-03-29',1);

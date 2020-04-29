@@ -151,7 +151,10 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public int companyInFundingModify(Company company) {
+	public int companyInFundingModify(int companyInFunding,String companyId) {
+		Company company = new Company();
+		company.setCompanyInFunding(companyInFunding);
+		company.setCompanyId(companyId);
 		return companyDao.companyInFundingModify(company);
 	}
 

@@ -16,7 +16,7 @@ public interface CompanyService {
 	public int companyOutSite(String companyId);
 	public int companyAccountModify(Company company);
 	public int companyBalanceModify(Company company);
-	public int companyInFundingModify(Company company);
+	public int companyInFundingModify(int companyInFunding,String companyId);
 	public int tempPasswordChange(Company company);
 	public int companyFundraisingSuccess(Company company);
 }

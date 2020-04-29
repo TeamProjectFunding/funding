@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tp.funding.dto.Admin;
 import com.tp.funding.dto.Company;
+import com.tp.funding.dto.DepositAndWithdrawal;
 import com.tp.funding.dto.Event;
 import com.tp.funding.dto.EventPrize;
 import com.tp.funding.dto.FundingGoods;
@@ -24,6 +25,7 @@ import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.AdminService;
 import com.tp.funding.service.CompanyService;
+import com.tp.funding.service.DepositAndWithdrawalService;
 import com.tp.funding.service.EventPrizeService;
 import com.tp.funding.service.EventService;
 import com.tp.funding.service.FundingDetailService;
@@ -62,6 +64,8 @@ public class AdminControllerByTop {
 	NotificationService notificationService;
 	@Autowired
 	RewardService rewardService;
+	@Autowired
+	DepositAndWithdrawalService depositAndWithdrawalService; //입출금 정보 서비스
 
 	// 관리자 페이지 이동
 	@RequestMapping(value = "adminMain")
@@ -226,7 +230,7 @@ public class AdminControllerByTop {
 			EventPrize eventPrizeRaffleInsert = new EventPrize();
 			eventPrizeRaffleInsert.setUserId(userId[idx]);
 			eventPrizeRaffleInsert.setEventNumber(eventNumber);
-			eventPrizeService.raffleUserIdEnrollment(eventPrizeRaffleInsert); // 당청 아이디 eventPrize에 인서트함
+			eventPrizeService.raffleUserIdEnrollment(eventPrizeRaffleInsert); // 당첨 아이디 eventPrize에 인서트함
 			Notification notification = new Notification();
 			String notificationContent = userId[idx] + "님 이벤트에 당첨되셨습니다";
 			notification.setNotificationContent(notificationContent);
@@ -249,8 +253,10 @@ public class AdminControllerByTop {
 			company.setChangeAccountBalance(changeAccountBalance);
 			company.setCompanyId(companyId);
 			cService.companyFundraisingSuccess(company); // 모금성공시 회사계좌 입금
+			DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(0, changeAccountBalance, cService.companyDetail(companyId).getCompanyAccountBalance(),fundingGoods.getFundingName()+" 펀딩이 성공되어 ["+changeAccountBalance+"원]을 입금", companyId, null, 0);
+			depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal); // 입출금 정보 등록
 			Notification notification = new Notification();
-			String notificationContent = companyId+"님 모집에 성공하였습니다";
+			String notificationContent = fundingGoods.getFundingName()+" 펀딩이 성공되어 모집금액 ["+changeAccountBalance+"원]을 고객님의 계좌로 입금하였습니다";
 			String adminId = "admin";
 			notification.setNotificationContent(notificationContent);
 			notification.setAdminId(adminId);
@@ -270,15 +276,18 @@ public class AdminControllerByTop {
 				user.setUserId(userId[idx]);
 				user.setChangeMoneyAmount(changeMoneyAmount[idx]);
 				uService.fundraisingFailureReturnMoney(user); //유저에게 환불 
+				DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(0, changeMoneyAmount[idx], uService.userDetail(userId[idx]).getUserAccountBalance(),fundingGoods.getFundingName()+" 펀딩 모금이 실패되어 ["+changeMoneyAmount[idx]+"원]을 환불", null, userId[idx], 0);
+				depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal); // 입출금 정보 등록
 				Notification notification = new Notification();
 				String adminId = "admin"; // 세션갑넣어야함
-				String notificationContent = "모금에 실패하였습니다"+changeMoneyAmount[idx]+"환불합니다";
+				String notificationContent = fundingGoods.getFundingName()+" 펀딩 모금이 실패되어 ["+changeMoneyAmount[idx]+"원]을 환불받았습니다.";
 				notification.setNotificationContent(notificationContent);;
 				notification.setAdminId(adminId);
 				notification.setUserId(userId[idx]);
 				notificationService.usersFundraizingFailureSend(notification); //알람 뿌려
 				idx++;
 			}
+			cService.companyInFundingModify(0, companyId); //기업회원 펀딩 신청중 아니게 바꾸기
 			fService.fundraizingFailure(fundingCode); //펀딩 굿즈 2 실패 계좌잔고 0 세팅
 			return "redirect:adminMain.do";
 		}
