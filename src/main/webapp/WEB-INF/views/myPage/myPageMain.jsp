@@ -94,8 +94,8 @@
 					<td><a href="myPageGoods.do?companyId=${company.companyId}">${companyEndFundingCount }</a></td>
 					<td>
 						<c:if test="${company.companyInFunding eq 0 }"><a href="fundingApplyForm.do">Do it</a></c:if>
-						<c:if test="${company.companyInFunding eq 1 }"><a href="#none" onclick="auditFunding()">심사중</a></c:if>
-						<c:if test="${company.companyInFunding eq 2 }"><a href="#none" onclick="ongoingFunding()">진행중</a></c:if>
+						<c:if test="${company.companyInFunding eq 1 }"><a href="#none" onclick="auditFunding();">심사중</a></c:if>
+						<c:if test="${company.companyInFunding eq 2 }"><a href="#none" onclick="ongoingFunding();">진행중</a></c:if>
 					</td>
 				</tr>
 			</table>

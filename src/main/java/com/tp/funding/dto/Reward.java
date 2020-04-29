@@ -13,7 +13,7 @@ public class Reward {
 	private int rewardInterst;             
 	private int fundingInvestmentPeriod;   
 	private int investmentReceiveCount;    
-	private Date lastInterestReceivedDate; // 최근 이자받은 날
+	private Date lastInterestReceivedDate; // 다음 이자받을 날
 	private int fundingCode;
 	//paging
 		private int startRow;

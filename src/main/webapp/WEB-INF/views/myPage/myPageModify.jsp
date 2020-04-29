@@ -51,7 +51,6 @@
 	});
 </script>
 
-<link href="${conPath}/css/style.css" rel="stylesheet">
 <script src="${conPath }/js/address.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 

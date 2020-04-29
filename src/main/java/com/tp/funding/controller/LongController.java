@@ -18,6 +18,7 @@ import com.tp.funding.dto.FundingGoods;
 import com.tp.funding.dto.FundingGoodsComments;
 import com.tp.funding.dto.FundingGoodsCommentsReply;
 import com.tp.funding.dto.FundingGoodsDetail;
+import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.Reward;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
@@ -30,6 +31,7 @@ import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingNewsService;
 import com.tp.funding.service.FundingQuestionService;
 import com.tp.funding.service.NoticeService;
+import com.tp.funding.service.NotificationService;
 import com.tp.funding.service.QnAService;
 import com.tp.funding.service.RewardService;
 import com.tp.funding.service.UserPickService;
@@ -64,7 +66,8 @@ public class LongController {
     private QnAService qnAService;
     @Autowired
     private FundingQuestionService fundingQuestionService;
-	
+	@Autowired
+	private NotificationService notificationService;
 	
 	// 펀드 리스트
 	@RequestMapping(value = "fundList")
@@ -284,6 +287,8 @@ public class LongController {
 		fundingGoodsService.fundingTargetRateModify(fundingCode); // 펀딩 달성 % 변경
 		usersService.userBalanceModify(userId, changeMoneyAmount * -1); // 유저 계좌잔액 감소
 		Users user = usersService.userDetail(userId);
+		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(1, changeMoneyAmount*-1, user.getUserAccountBalance(), fundingGoodsService.fundingDetail(fundingCode).getFundingName()+" 상품에 "+changeMoneyAmount+"원 펀딩", null, userId, rewardCode);
+		depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal); // 입출금 정보 등록
 		if(user.getUserGradeNo() < usersService.userCurrentGrade(userId)) {// 등급업 기준 확인
 			usersService.userGradeUp(userId); //등급 업
 		}
@@ -378,7 +383,6 @@ public class LongController {
 	// 유저&회사 입금
 	@RequestMapping(value = "depositMypage")
 	public String depositMypage(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
-		System.out.println("depositAndWithdrawal"+depositAndWithdrawal);
 		depositAndWithdrawal.setdNWContent("마이페이지 입금");
 		String userId = depositAndWithdrawal.getUserId();
 		String companyId = depositAndWithdrawal.getCompanyId();
@@ -403,7 +407,6 @@ public class LongController {
 	// 유저&회사 출금
 	@RequestMapping(value = "withdrawMypage")
 	public String withdrawMypage(DepositAndWithdrawal depositAndWithdrawal,Model model,HttpSession session) {
-		System.out.println("depositAndWithdrawal"+depositAndWithdrawal);
 		depositAndWithdrawal.setdNWContent("마이페이지 출금");
 		String userId = depositAndWithdrawal.getUserId();
 		String companyId = depositAndWithdrawal.getCompanyId();
@@ -426,7 +429,7 @@ public class LongController {
 		return "message/withdrawMypage";
 	}
 	
-	//회사마이페이지 심사중 펀딩
+	//회사마이페이지 심사중 펀딩 상품 보기
 	@RequestMapping(value="auditFunding")
 	public String auditFunding(String companyId,Model model) {
 		FundingGoods good = fundingGoodsService.auditFunding(companyId);
@@ -442,10 +445,11 @@ public class LongController {
 		return "message/myPageGoodsDetaill";
 	}
 	
-	//회사마이페이지 진행중 펀딩
+	//회사마이페이지 진행중 펀딩 상품 보기
 	@RequestMapping(value="ongoingFunding")
 	public String ongoingFunding(String companyId,Model model) {
 		FundingGoods good = fundingGoodsService.ongoingFunding(companyId);
+		System.out.println("good"+good);
 		int fundingCode = good.getFundingCode();
 		model.addAttribute("good", good);
 		if(good.getFundingCategory() == 0) { //투자
@@ -459,24 +463,68 @@ public class LongController {
 	}
 	//회사가 이자지급하기 클릭
 	@RequestMapping(value="doInterestPayment")
-	public String doInterestPayment(String companyId,int changeMoney,int rewardCode,Model model) {
+	public String doInterestPayment(String adminId,String companyId,double changeMoneyDouble,int rewardCode,Model model) {
+		int changeMoney = (int) changeMoneyDouble;
 		Company company = new Company();
 		company.setCompanyId(companyId);
 		company.setChangeAccountBalance(changeMoney*-1);
 		companyService.companyBalanceModify(company); //회사 잔액 감소
 		Reward reward = rewardService.rewardDetail(rewardCode);
-		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(1, changeMoney*-1, companyService.companyDetail(companyId).getCompanyAccountBalance(), reward.getRewardName()+" 상품 이자 지급", companyId, null, rewardCode);
+		notificationService.notificationWrite(new Notification(reward.getRewardName()+" 상품 이자 지급(총 "+reward.getFundingInvestmentPeriod()+"회/ "+(reward.getInvestmentReceiveCount()+1)+"회 지급)  지급 금액: "+changeMoney+"원", adminId, companyId, null)); //회사 알림창 증가
+		DepositAndWithdrawal depositAndWithdrawal = new DepositAndWithdrawal(1, changeMoney*-1, companyService.companyDetail(companyId).getCompanyAccountBalance(), reward.getRewardName()+" 상품 고객에게 이자 지급", companyId, null, rewardCode);
 		depositAndWithdrawalService.writeDepositAndWithdrawal(depositAndWithdrawal); //입출금 정보 등록
+		int rewardInterst = reward.getRewardInterst(); //리워드 이자 %
 		rewardService.rewardInvestmentReceiveCountUp(rewardCode); //이자 지급 횟수 증가
+		List<FundingGoodsDetail> fundingDetailList = fundingDetailService.interestPaymentList(reward.getFundingCode()); //투자한 유저 리스트
+		boolean principalPayment = false;
 		if(reward.getInvestmentReceiveCount()+1==reward.getFundingInvestmentPeriod()) {//마지막 이자받음 원금 지급
-			
+			principalPayment = true;
 		}else {
 			rewardService.interestPaymentDayModify(rewardCode); //다음 이자 지급 예정일 30일 증가
 		}
+		int principalTotalSum = 0; //유저 원금 총 합하여 회사계좌에서 감소
+		for(int i=0;i<fundingDetailList.size();i++) {
+			String userId = fundingDetailList.get(i).getUserId();
+			int dNWAmount = fundingDetailList.get(i).getFundingAmount()*rewardInterst/1200; // 투자한금액*이자율/100/12(개월) 이자받을금액
+			usersService.userBalanceModify(userId, dNWAmount); //유저 잔액 추가++
+			int dNWBalance = usersService.userDetail(userId).getUserAccountBalance();
+			DepositAndWithdrawal userBalancePlus = new DepositAndWithdrawal(0, dNWAmount, dNWBalance, reward.getRewardName()+" 상품 이자 지급", null, userId, rewardCode);
+			depositAndWithdrawalService.writeDepositAndWithdrawal(userBalancePlus); //입출금 정보 등록 (유저가 입금받음)
+			notificationService.notificationWrite(new Notification(reward.getRewardName()+" 상품 이자 "+dNWAmount+"원 지급하엿습니다.", adminId, userId, null)); //유저 알림 작성
+			usersService.userInterestAmountModify(userId, dNWAmount); //유저 누적 이자받은 금액 증가
+			if(principalPayment) { //원금 지급로직
+				int fundingAmount = fundingDetailList.get(i).getFundingAmount(); //유저가 투자한 원금
+				principalTotalSum += fundingAmount;
+				usersService.userBalanceModify(userId, fundingAmount); //유저 잔액 추가++
+				int dNWBalanceTemp = usersService.userDetail(userId).getUserAccountBalance();
+				DepositAndWithdrawal userBalancePlusPrincipal = new DepositAndWithdrawal(0, fundingAmount, dNWBalanceTemp, reward.getRewardName()+" 상품 원금 지급", null, userId, rewardCode);
+				depositAndWithdrawalService.writeDepositAndWithdrawal(userBalancePlusPrincipal); //입출금 정보 등록 (유저가 입금받음)
+				notificationService.notificationWrite(new Notification(reward.getRewardName()+" 상품 원금 "+fundingAmount+"원 지급하엿습니다.", adminId, userId, null)); //유저 알림 작성
+			}
+		}
+		if(principalPayment) {// 원금 지급일 때
+			company.setChangeAccountBalance(principalTotalSum*-1); //유저 원금 총 합
+			companyService.companyBalanceModify(company); //회사 잔액 감소
+			notificationService.notificationWrite(new Notification(reward.getRewardName()+" 상품 펀딩 종료로 고객에게 원금 지급 총 금액: "+principalTotalSum+"원이 계좌에서 출금되었습니다.", adminId, companyId, null)); //회사 알림창 증가
+			DepositAndWithdrawal tempDepositAndWithdrawal = new DepositAndWithdrawal(1, principalTotalSum*-1, companyService.companyDetail(companyId).getCompanyAccountBalance(), reward.getRewardName()+" 상품 펀딩 종료로 고객에게 원금 지급", companyId, null, rewardCode);
+			depositAndWithdrawalService.writeDepositAndWithdrawal(tempDepositAndWithdrawal); //입출금 정보 등록
+		}
 		
-		return "forward:myPageMain.do?companyId="+companyId;
+		return "redirect:myPageMain.do?companyId="+companyId;
 	}
-	
+	// 알림 읽음 처리
+	@RequestMapping(value = "readNotification")
+	public String readNotification(int notificationNumber,String userId,String companyId,HttpSession session) {
+		notificationService.notificationRead(notificationNumber); //알림 읽음 처리
+		if(!companyId.equals("")) {//회사 일 때
+			session.setAttribute("company", companyService.companyDetail(companyId));
+		}else if(!userId.equals("")) {// 유저 일 때
+			session.setAttribute("user", usersService.userDetail(userId));
+		}
+		return "message/noMessage";
+	}
+		
+		
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
 	public String naverCollback() {

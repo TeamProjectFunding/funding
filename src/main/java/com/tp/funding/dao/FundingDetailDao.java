@@ -27,4 +27,5 @@ public interface FundingDetailDao {
 	public int userFundingListTotalCount(String userId); //페이징 위한
 	public int userFundingListInMaxFundingAmount(FundingGoodsDetail fundingGoodsDetail); //마이페이지 그래프 y축
 	public FundingGoodsDetail fundingGoodsDetailView(int fundingGoodsDetailNumber);
+	public List<FundingGoodsDetail> interestPaymentList(int fundingCode); //이자지급 위한 펀딩신청한 유저 리스트
 }

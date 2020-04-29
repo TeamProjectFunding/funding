@@ -102,4 +102,10 @@ public class FundingDetailServiceImpl implements FundingDetailService {
 		return fundingDetailDao.fundingGoodsDetailView(fundingGoodsDetailNumber);
 	}
 
+
+	@Override
+	public List<FundingGoodsDetail> interestPaymentList(int fundingCode) {
+		return fundingDetailDao.interestPaymentList(fundingCode);
+	}
+
 }

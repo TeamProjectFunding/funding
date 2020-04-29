@@ -53,9 +53,6 @@ public class HyuckController {
 	private RewardService rewardService;
 
 	@Autowired
-	private FundingDetailService fundingDetailService;
-
-	@Autowired
 	private UserPickService userPickService;
 	
 	@Autowired
@@ -398,7 +395,6 @@ public class HyuckController {
 
 		notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
 		notification.setCompanyId(fundinggoods.getCompanyId());
-		System.out.println(notification);
 		notificationService.notificationWrite(notification);
 		model.addAttribute("adminApplyMsg", "apply 완료");
 
@@ -417,34 +413,6 @@ public class HyuckController {
 		return "forward:adminMain.do";
 	}
 
-//	@RequestMapping(value = "myPageMain")
-//	public String myPageMain(String userId, String companyId, Model model) {
-//
-//		if (userId != null) {
-//
-//			model.addAttribute("userDetail", usersService.userDetail(userId));
-//			model.addAttribute("userFundingTotalCnt", fundingDetailService.myFundingTotalCount(userId));
-//
-//		} else if (companyId != null) {
-//
-//			model.addAttribute("companyDetail", companyService.companyDetail(companyId));
-//		}
-//
-//		return "myPage/myPageMain";
-//	}
-
-//		@RequestMapping(value="userFundingList")
-//		public String userFundingList(FundingGoodsDetail fundingGoodsDetail, String pageNum, Model model) {
-//						
-//			Paging paging = new Paging(fundingDetailService.myFundingTotalCount(fundingGoodsDetail.getUserId()), pageNum, 6, 5);
-//			fundingGoodsDetail.setStartRow(paging.getStartRow());
-//			fundingGoodsDetail.setEndRow(paging.getEndRow());			
-//			
-//			model.addAttribute("userFundingAndGoodsInfoList", fundingDetailService.userFundingAndGoodsInfoList(fundingGoodsDetail));		
-//			model.addAttribute("paging", paging);
-//			
-//			return "myPage/myPageMyFundingList";
-//		}
 
 	@RequestMapping(value = "myPagePick")
 	public String myPagePick(UserPick userPick, Model model) {
@@ -466,11 +434,11 @@ public class HyuckController {
 	@RequestMapping(value = "myPageModifyForm")
 	public String myPageModifyForm(String userId, String companyId, Model model) {
 
-		if (userId != null) {
+		if (userId != null && !userId.equals("")) {
 
 			model.addAttribute("userDetail", usersService.userDetail(userId));
 
-		} else if (companyId != null) {
+		} else if (companyId != null && !companyId.equals("")) {
 
 			model.addAttribute("companyDetail", companyService.companyDetail(companyId));
 

@@ -300,7 +300,7 @@ CREATE TABLE Reward (
 
 CREATE TABLE Notification (
 	NotificationNumber    NUMBER(12)   PRIMARY KEY, -- 알림번호
-	NotificationContent VARCHAR2(100)  NULL,     -- 알림내용
+	NotificationContent VARCHAR2(1000)  NULL,     -- 알림내용
 	NotificationDate    DATE          NULL,     -- 알림 작성날짜
 	NotificationRead    NUMBER(1)    NULL,     -- 알림 읽은지 여부
     AdminId             VARCHAR2(100) REFERENCES Admin(AdminId),    -- 관리자ID
