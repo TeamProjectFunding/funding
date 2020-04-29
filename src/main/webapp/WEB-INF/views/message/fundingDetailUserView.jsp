@@ -73,7 +73,7 @@ $(function(){
 				<tr>
 					<td>${DNW.investmentReceiveCount }회차</td>
 					<td><fmt:formatDate value="${DNW.dNWDate }" pattern="yyyy-MM-dd"/></td>
-					<td><fmt:formatNumber value="${DNW.dNWDate }" currencySymbol="true"/>원</td>
+					<td><fmt:formatNumber value="${DNW.dNWAmount }" currencySymbol="true"/>원</td>
 				</tr>
 				</c:forEach>
 			</table>
