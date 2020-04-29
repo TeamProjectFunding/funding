@@ -104,9 +104,8 @@ INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무�
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '해외납품 수주','6억원 계약성공',date '2020-04-27',null,2,'com@naver.com');
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '매출 10억원 달성','돈마니 벌어요',date '2020-04-29',null,2,'com@naver.com');
 
---찜기능을 보여주려고 만든 더미
+--찜기능 마감 보여주려고 만든 승인된 펀딩상품3
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '신한은행',
-        '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', '2020-04-29', null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com'); 
+        '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', sysdate, null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com');
 commit;
-select * from fundinggoods;

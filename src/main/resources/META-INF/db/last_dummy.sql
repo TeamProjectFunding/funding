@@ -26,10 +26,7 @@ INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '카카오뱅크',
         '관리계좌', '512-06-66324', 12000000, 12000000, 100, '2020-04-01', '2020-05-03', null, 7, 15, 0, 3, 1, 'admin', 'com@naver.com');
-        
-INSERT INTO FundingGoods VALUES 
-    (FundingCode.nextval, 0, '승인투자상품2', '투자상품입니다2', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', null,
-        null, null, 0, 20000000, 0, '2020-04-28', '2020-06-28', null, 7, 2, 0, 0, 0, 'admin', 'com1@naver.com');        
+         
         
 --1번 승인투자상품에 투자한 사람 관리자 마감처리 알림 테스트하려고 성공시 회사에 알림 >> 마감치고 회사아이디로그인
 INSERT INTO FundingGoodsDetail VALUES 
@@ -106,4 +103,10 @@ INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무�
 --새소식 기능 승인된상품2번에서 보여짐 구현x insert하는 곳없음 더미만 작성
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '해외납품 수주','6억원 계약성공',date '2020-04-27',null,2,'com@naver.com');
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '매출 10억원 달성','돈마니 벌어요',date '2020-04-29',null,2,'com@naver.com');
+
+--찜기능을 보여주려고 만든 더미
+INSERT INTO FundingGoods VALUES 
+    (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_01.jpeg', 'fundingProduct_01.jpeg', 'fundingDescription.png', '신한은행',
+        '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', '2020-04-29', null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com'); 
 commit;
+select * from fundinggoods;
