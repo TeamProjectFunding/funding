@@ -265,9 +265,10 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 /** board **/
 #contentWrap.boardWrap {width:1000px;}
 #contentWrap.boardWrap table{text-align: center; font-size:14px;}
-#contentWrap.boardWrap table th{padding:3%;}
+#contentWrap.boardWrap table th{padding:2%;}
 #contentWrap.boardWrap table th input[type="text"]{width:40%; padding:1%; border-bottom:1px solid #e8e8e8; text-align: center;}
 #contentWrap.boardWrap table td{padding:2%; border-bottom:1px solid #e8e8e8;}
+#contentWrap.boardWrap table td:first-child {padding: 2%; width: 10%; border-bottom: 1px solid #e8e8e8;}
 
 #contentWrap.boardWrap table .boardContent{line-height:30px;}
 #contentWrap.boardWrap table textarea{width:100%; height:200px;}
