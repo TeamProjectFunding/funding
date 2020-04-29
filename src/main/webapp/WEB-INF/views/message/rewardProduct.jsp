@@ -5,6 +5,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<img src="${conPath }/images/reward/${rewardProduct }" alt="">
+<img src="${conPath }/images/reward/${rewardProduct }" alt="rewardImage">
 </body>
 </html>
