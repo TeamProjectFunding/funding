@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	$(function(){
 		$('#selectBox').change(function(){
@@ -50,7 +51,9 @@
 				var fundingAmount = Number($('input[name="fundingAmount"]').val());
 				var fundingCode = ${param.fundingCode};
 				if(userAccountBalance<fundingAmount){
-					alert('예치금이 부족합니다. 예치금 입금 후 진행해주세요');
+					swal("예치금이 부족합니다. 예치금 입금 후 진행해주세요", {
+						  buttons: false,
+					});
 					return false;
 				}				
 			}else if(categori == 1){
@@ -61,7 +64,9 @@
 				fundingRewardAddDonation = Number(fundingRewardAddDonation);
 				var rewardCondition = Number($(".rewardCondition").html().trim());
 				if(rewardCondition+fundingRewardAddDonation>userAccountBalance){
-					alert('예치금이 부족합니다. 예치금 입금 후 진행해주세요');
+					swal("예치금이 부족합니다. 예치금 입금 후 진행해주세요", {
+						  buttons: false,
+					});
 					return false;
 				}
 			}

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="investorWrap">
-	<h3>현재 이 펀딩에 <span>1명</span>이 참여하였습니다.</h3>
+	<h3>현재 이 펀딩에 <span>${fundingPeopleCount }명</span>이 참여하였습니다.</h3>
 	<c:forEach var="user" items="${doFundingUserList }">
 		<table>
 			<tr>

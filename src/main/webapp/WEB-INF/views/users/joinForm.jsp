@@ -223,7 +223,7 @@
 							<td><input type="text" name="companyBusinessNumber" placeholder="사업자 번호를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyName" placeholder="이름을 입력하세요." required="required"></td>
+							<td><input type="text" name="companyName" placeholder="회사명을 입력하세요." required="required"></td>
 						</tr>
 						<tr>
 							<td><input type="text" name="companyPhone" placeholder="연락처를 입력하세요" required="required"></td>

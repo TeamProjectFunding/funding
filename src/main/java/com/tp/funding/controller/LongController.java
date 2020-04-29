@@ -147,6 +147,7 @@ public class LongController {
 		}else if(infoType.equals("goodsViewInfo")) {//투자정보
 			model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
 		}else if(infoType.equals("goodsViewInvestor")) {//투자자
+			model.addAttribute("fundingPeopleCount", fundingGoodsService.fundingDetail(fundingCode).getFundingPeopleCount());
 			model.addAttribute("doFundingUserList", fundingDetailService.doFundingUserList(pageNum, fundingCode));
 		}
 		return "goods/"+infoType;
@@ -190,7 +191,6 @@ public class LongController {
 	// 펀딩(리워드) 신청
 	@RequestMapping(value = "fundingApply")
 	public String fundingApply(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest, Model model) {
-		System.out.println("fundingGoods:"+fundingGoods);
 		if(repeatF5) {
 			if(fundingGoods.getFundingCategory()==0) { // 투자일 때
 				fundingGoodsService.fundingRegist(fundingGoods, mRequest); //펀딩 상품 등록
@@ -201,6 +201,7 @@ public class LongController {
 				reward.setRewardName(mRequest.getParameter("fundRewardName"));
 				reward.setRewardInterst(Integer.parseInt(mRequest.getParameter("fundingInvestmentProfitRate")));
 				reward.setFundingInvestmentPeriod(Integer.parseInt(mRequest.getParameter("fundingInvestmentPeriod")));
+				reward.setLastInterestReceivedDate(fundingGoods.getFundingTargetDate());
 				rewardService.investmentWrite(reward); // 리워드 등록
 			}else { //리워드 일 때
 				Date fundingRewardDeliveryDate = Date.valueOf(mRequest.getParameter("fundingTargetDate"));

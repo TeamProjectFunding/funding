@@ -8,9 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>CROWDFUND : MAIN</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	function noCompany(){
-		alert('펀딩 신청은 회사 로그인 이후에 가능합니다.');
+		swal("펀딩 신청은 회사 로그인 이후에 가능합니다.", {
+			  buttons: false,
+			});
 	}
 </script>
 </head>
@@ -18,19 +21,24 @@
 
 <c:if test="${not empty errorMessage}">
 	<script>
-		alert('${errorMessage}');
-		history.back();
+		swal('${errorMessage}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 
 <c:if test="${not empty logoutResult }">
 	<script>
-		alert('${logoutResult}');
+		swal('${logoutResult}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 <c:if test="${not empty fundingApplyResult }">
 	<script>
-		alert('${fundingApplyResult}');
+		swal('${fundingApplyResult}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 <!-- 현재 날짜 -->

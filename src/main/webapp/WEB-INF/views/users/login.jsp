@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 function getUserId(){
 	var id = document.getElementsByName("id")[0].value;
@@ -19,7 +20,7 @@ function getUserId(){
 <body>
 <c:if test="${not empty findPwMsg}">
 	<script>
-		alert('${findPwMsg}');
+	swal('${findPwMsg}', {buttons: false,});
 	</script>
 </c:if>
 
