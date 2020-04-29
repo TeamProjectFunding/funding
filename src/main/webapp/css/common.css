@@ -154,6 +154,8 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 /** goods **/
 /* goodsView */
 .goodsViewWrap{margin-bottom:100px; padding:0 10% 0 }
+.goodsViewWrap .company img{width:100%;}
+.goodsViewWrap .detail img{width:100%;}
 #goodsBasicInfomationWrap {position:relative; width:100%; padding:10% 0 5%; float:left;}
 #goodsBasicInfomationWrap .thumnail{width:50%; float:left;}
 #goodsBasicInfomationWrap .thumnail img{width:100%;}
