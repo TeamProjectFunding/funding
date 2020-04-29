@@ -11,14 +11,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
-import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FgCommentsService;
-import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingQuestionReplyService;
 import com.tp.funding.service.FundingQuestionService;

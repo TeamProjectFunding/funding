@@ -36,10 +36,7 @@
 				<table>
 					<tr>
 						<th colspan='2'>${user.userName}님 가입 성공하였습니다.</th>
-					</tr>
-					<tr>
-						<td colspan='2'><img src="${conpath}/images/profile/${user.userProfileImage}" alt="userProfileImage"></td>
-					</tr>						
+					</tr>										
 					<tr>
 						<td>ID</td>
 						<td>${user.userId}</td>
