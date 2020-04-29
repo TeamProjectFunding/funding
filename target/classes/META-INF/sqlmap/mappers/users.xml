@@ -24,7 +24,7 @@ SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N where U.USERID=N.USERI
 		#{userAddressDetail},null,null,0,#{userBirthday},SYSDATE,#{userAdPhone},#{userAdEmail},0,0,0,1)
 	</insert>
 	<select id="userLoginCheck" parameterType="Users" resultType="int">
-		SELECT COUNT(*) FROM USERS WHERE USERID = #{userId} AND USERPASSWORD = #{userPassword}
+		SELECT COUNT(*) FROM USERS WHERE USERID = #{userId} AND USERPASSWORD = #{userPassword} AND USEROUTSITE=0
 	</select>
 	<select id="userDetail" parameterType="String" resultType="Users">
 	SELECT U.*, (SELECT COUNT(*) FROM USERS U, NOTIFICATION N WHERE U.USERID=N.USERID and n.notificationread=0 and U.USERID=#{userId}) NOTIFICATIONCOUNT, 

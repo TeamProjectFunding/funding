@@ -398,7 +398,10 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #error p a:hover{border: 2px solid #f1bf04; color: #f1bf04; transition:.5s;}
 
 
-
+/*sweet alert*/
+.swal-button--confirm{
+	background-color: #fa9c00;
+}
 
 
 

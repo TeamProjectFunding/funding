@@ -23,7 +23,6 @@
 </script>
 </head>
 <body>
-
 <c:if test="${not empty errorMessage}">
 	<script>
 		swal('${errorMessage}', {

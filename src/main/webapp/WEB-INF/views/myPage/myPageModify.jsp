@@ -9,7 +9,19 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+	function outsiteView(id){
+	swal("정말 탈퇴하시겠습니까?", {
+		  buttons: true,
+		  closeOnClickOutside: false,
+		})
+		.then((value) => {
+			if(value){
+				location.href='${conPath}/outsite.do?id='+id;
+			}
+		});
+	}
 	$(document).ready(function(){			
 		
 		/* 비밀번호 체크 정규표현식 */
@@ -161,6 +173,7 @@
 								<input type="submit" value="MODIFY" class="button">
 								<input type="reset" value="RESET" class="button">
 								<input type="button" value="BACK" class="button">
+								<input type="button" value="OUTSITE" class="button" onclick="outsiteView('${user.userId}')">
 							</th>
 						</tr>
 					</table>
@@ -238,16 +251,11 @@
 							<td><input type="text" name="companyAddressDetail" value="상세주소를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
-							<td class="checkBoxWrap">
-								휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" value="1">
-								이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" value="1">
-							</td>
-						</tr>
-						<tr>
 							<th id="buttonWrap">
 								<input type="submit" value="MODIFY" class="button">
 								<input type="reset" value="RESET" class="button">
 								<input type="button" value="BACK" class="button">
+								<input type="button" value="OUTSITE" class="button" onclick="outsiteView('${company.companyId}')">
 							</th>
 						</tr>
 					</table>

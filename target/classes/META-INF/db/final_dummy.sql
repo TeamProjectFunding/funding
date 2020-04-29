@@ -66,12 +66,6 @@ INSERT INTO COMPANY VALUES ('com7@naver.com', '123', 'company2.png', '(주)이�
 SYSDATE, '꺼리회사', '02-1234-5849', '서울시 중구', '중구빌딩 301호', '기업은행', '(주)꺼리', '584-65296-02-00489', 0, 2, 0,'184-18-8834-2');
 
 
-
-
-
-
-
-
     
 --Admin 더미
 INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
@@ -235,3 +229,4 @@ INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 50000, 2 , 'boo
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 100000, 3 , 'keyboard.jpeg', '2020-07-20',0,0,0,NULL,14);
 
 commit;
+select * from fundinggoods;

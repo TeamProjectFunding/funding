@@ -536,11 +536,23 @@ public class LongController {
 		}
 		return "message/noMessage";
 	}
+	
 		
-		
+	// 회원 탈퇴
+	@RequestMapping(value = "outsite")
+	public String outsite(String id,Model model, HttpSession session) {
+		if(usersService.userDetail(id)!=null) {//유저일 때
+			usersService.userOutSite(id);
+		}else if(companyService.companyDetail(id)!=null) {//회사일 때
+			companyService.companyOutSite(id);
+		}
+		model.addAttribute("errorMsg", "회원 탈퇴 되었습니다. 이용해주셔서 감사드립니다.");
+		session.invalidate();
+		return "redirect:main.do";
+	}
 	// 네이버 로그인 콜백
 	@RequestMapping(value = "naverCallback")
-	public String naverCollback() {
+	public String naverCallback() {
 		return "loginApi/naverLogin";
 	}
 
