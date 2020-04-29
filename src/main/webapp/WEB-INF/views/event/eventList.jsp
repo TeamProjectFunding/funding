@@ -23,7 +23,7 @@
 				<table>
 					<tr>
 						<th>
-							<input type ="text" name="eventSearch" value="${param.doingEventSearchWord}" placeholder="제목 검색">
+							<input type ="text" name="doingEventSearchWord" value="${param.doingEventSearchWord}" placeholder="제목 검색">
 							<input type ="submit" value="SEARCH" class="button">
 						</th>
 					</tr>
