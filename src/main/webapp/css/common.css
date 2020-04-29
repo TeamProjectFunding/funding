@@ -386,11 +386,13 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #myGoodsDetail .interestWrap table th{padding:2%; width:33%; text-align: center;}
 #myGoodsDetail .interestWrap table td{padding:2%; text-align: center;}
 
-
 .eventListWrap input[type="text"]{width:30%; padding:1%; border-bottom:1px solid #ccc; text-align: center;}
 
-
-
+#error{background:url(../images/main.jpg); background-attachment: fixed; background-size: cover; height:100%;}
+#error h1{text-align:center; color:#fff; font-size: 8vw; padding:10% 0 5%;}
+#error p{font-size: 1vw; color:#fff;  font-family: 'Nanum Gothic', sans-serif; text-align: center; font-weight: bold;}
+#error p a{ display: block; width: 80px; line-height: 40px; border: 2px solid #fff; color: #fff;}
+#error p a:hover{border: 2px solid #f1bf04; color: #f1bf04; transition:.5s;}
 
 
 
