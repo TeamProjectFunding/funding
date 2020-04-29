@@ -158,6 +158,7 @@ footer #footerBackground{width:100%; height:100%; background:#00060ed6;}
 #goodsBasicInfomationWrap .thumnail{width:50%; float:left;}
 #goodsBasicInfomationWrap .thumnail img{width:100%;}
 #goodsBasicInfomationWrap .infomationTextSection {position:relative; width:50%; padding:2% 5% 0; float:left;}
+#goodsBasicInfomationWrap .infomationTextSection .userProfileImages p img {display:inline-block; width:40px; height:40px; border-radius: 50%; overflow: hidden;}
 .infomationTextSection h1{width:100%;}
 .infomationTextSection h1 span{font-size:14px; color:#808080;}
 .infomationTextSection ul{width:100%; float:left;}

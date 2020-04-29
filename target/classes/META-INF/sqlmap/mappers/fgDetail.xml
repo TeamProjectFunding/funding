@@ -58,7 +58,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM
 </select>
 <select id="userFundingListInMaxFundingAmount" parameterType="FundingGoodsDetail" resultType="int">
 	SELECT maxInFundingAmount FROM (SELECT ROWNUM RN, A.* FROM 
-		(SELECT max(fd.fundingamount) maxInFundingAmount FROM fundingGoodsDetail fd where fd.userId=#{userId} ) A)
+		(SELECT NVL(max(fd.fundingamount),0) maxInFundingAmount FROM fundingGoodsDetail fd where fd.userId=#{userId} ) A)
 			WHERE RN BETWEEN #{startRow} AND #{endRow}
 </select>
 
