@@ -9,24 +9,8 @@ INSERT INTO Users VALUES ('wogur698@naver.com','123','lim.jpg','임재혁','010-
 INSERT INTO Users VALUES ('kha0213@naver.com','123','park.jpg','김영롱','010-2344-8628','서울시 송파구','영롱빌딩 302호', 
     '기업은행', '010-8787-2525', 100000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
 INSERT INTO Users VALUES ('topwings7@gmail.com','123','park.jpg','임상훈','010-2344-8628','서울시 송파구','TOP빌딩 302호', 
-    '신한은행', '110-194-562340', 500000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 3);
+    '신한은행', '110-194-562340', 500000000, NULL, SYSDATE, 1, 1, 0, 0, 1, 3);
     
-INSERT INTO Users VALUES ('user1@naver.com','123',null,'박지영','010-4898-8848','서울시 목동','지영빌딩 302호', 
-    '국민은행', '110-459-849898', 500000, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
-INSERT INTO Users VALUES ('user2@naver.com','123','park.jpg','지네딘지단','010-4898-8848','서울시 동대문','영롱빌딩 302호', 
-    '기업은행', '110-458-549889', 300000, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
-INSERT INTO Users VALUES ('user3@google.com','123','kim.jpg','일산오유석','010-4898-8848','일산시','유석빌딩 302호', 
-    '신한은행', '110-487-159879', 1000000, NULL, SYSDATE, 1, 1, 0, 0, 0, 2);
-INSERT INTO Users VALUES ('user4@google.com','123','lim.jpg','제라드','010-4898-8848','서울시','영롱빌딩 302호', 
-    '기업은행', '110-459-111118', 3500000, NULL, SYSDATE, 1, 1, 0, 0, 0, 2);
-INSERT INTO Users VALUES ('user5@naver.com','123','park.jpg','손흥민','010-4898-8848','서울시','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 2);
-INSERT INTO Users VALUES ('user6@google.com','123','son.jpg','차범근','010-4898-8848','서울시','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 0, 1);    
-INSERT INTO Users VALUES ('user7@naver.com','123','song.jpg','김병지','010-4898-8848','서울시','영롱빌딩 302호', 
-    null, null, 0, NULL, SYSDATE, 1, 1, 0, 0, 1, 1);    
-
-
 --Company 더미
 INSERT INTO COMPANY VALUES ('com@naver.com', '123', 'company.png', '영롱한 스타트업입니다.', SYSDATE, '영롱회사', '02-2066-5849', 
     '서울시 용산구', '동방빌딩 701호', '기업은행', '(주)영롱', '584-327-26510', 0, 0, 0,'151-24-69870');
@@ -34,27 +18,7 @@ INSERT INTO COMPANY VALUES ('com1@naver.com', '123', 'company.png', '몽롱한 �
     '서울시 종로구', '금호빌딩 501호', '기업은행', '(주)몽롱', '269-543-21875', 0, 0, 0,'191-38-34267');
 INSERT INTO COMPANY VALUES ('com2@naver.com', '123', 'company.png', '새콤한 스타트업입니다.', SYSDATE, '새콤회사', '02-2066-5849', 
     '서울시 송파구', '태성빌딩 801호', '기업은행', '(주)새콤', '584-65296-02-18777', 0, 0, 0,'145-20-68824');
-
-INSERT INTO COMPANY VALUES ('com3@naver.com', '123', 'company.png', '영롱한 스타트업입니다.', SYSDATE, '영롱회사', '02-2066-5849', 
-    '서울시 용산구', '대장빌딩 301호', null, null, null, 0, 0, 0,'191-38-6534-2');
-INSERT INTO COMPANY VALUES ('com4@naver.com', '123', 'company2.png', '몽롱한 스타트업입니다.', SYSDATE, '몽롱회사', '02-2066-5849', 
-    '서울시 강남구', '강남빌딩 301호', null, null, null, 0, 0, 0,'172-28-7831-2');
-INSERT INTO COMPANY VALUES ('com5@google.com', '123', 'company3.png', '상큼한 스타트업입니다.', SYSDATE, '상큼회사', '02-2066-5849', 
-    '서울시 성북구', '성북빌딩 301호', null, null, null, 0, 0, 0,'168-18-5712-2');
-INSERT INTO COMPANY VALUES ('com6@naver.com', '123', 'company.png', '달콤한 스타트업입니다.', SYSDATE, '달콤회사', '02-2066-5849', 
-    '서울시 강북구', '강북빌딩 301호', null, null, null, 0, 0, 0,'158-18-4464-2');
-INSERT INTO COMPANY VALUES ('com7@naver.com', '123', 'company2.png', '매콤한 스타트업입니다.', SYSDATE, '매콤회사', '02-2066-5849', 
-    '서울시 강서구', '강서빌딩 301호', null, null, null, 0, 0, 0,'109-18-7734-2');
-INSERT INTO COMPANY VALUES ('com8@google.com', '123', 'company3.png', '시큼한 스타트업입니다.', SYSDATE, '시큼회사', '02-2066-5849', 
-    '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');
-INSERT INTO COMPANY VALUES ('com9@google.com', '123', 'company.png', '까리한 스타트업입니다.', SYSDATE, '까리회사', '02-2066-5849', 
-    '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');    
-INSERT INTO COMPANY VALUES ('com10@google.com', '123', 'company.png', '까리한 스타트업입니다.', SYSDATE, '까리회사', '02-2066-5849', 
-    '서울시 중구', '중구빌딩 301호', null, null, null, 0, 0, 0,'184-18-8834-2');    
     
-    
-    
-
 --Admin 더미
 INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 
