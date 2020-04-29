@@ -46,7 +46,7 @@
 					<th>DATE</th>
 					<th>HIT</th>
 					
-					<c:if test="${not empty user || not empty company}">
+					<c:if test="${not empty user || not empty company || not empty admin}">
 						<th>REPLY</th>
 					</c:if>
 					
