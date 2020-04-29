@@ -8,18 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>USER LOGIN</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 function getUserId(){
 	var id = document.getElementsByName("id")[0].value;
 	location.href="${conPath}/findPw.do?userId="+id+"&companyId="+id;
 }
 </script>
-
 </head>
 <body>
 <c:if test="${not empty findPwMsg}">
 	<script>
-		alert('${findPwMsg}');
+	swal('${findPwMsg}', {buttons: false,});
 	</script>
 </c:if>
 
@@ -40,7 +40,7 @@ function getUserId(){
 						<th id="buttonWrap">
 							<input type="submit" value="LOGIN" class="button">
 							<input type="button" value="JOIN" class="button" onClick="location.href='${conPath}/join.do'">
-							<input type="button" value="FIND ID/PW" class="button findButton" ">
+							<input type="button" value="FIND PW" class="button findButton">                                               
 							<input type="button" value="NAVER" class="button naverButton">
 							<div id="naver_id_login" style="display: none"></div>
 							<input type="button" value="KAKAO" class="button" id="kakaoLoginButton" style="background-color: #FFE500">

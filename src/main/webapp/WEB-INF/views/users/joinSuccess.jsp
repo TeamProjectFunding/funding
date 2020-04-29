@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>JOIN SUCCESS</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -17,13 +18,13 @@
 		
 		<c:if test="${not empty userJoinResult}">
 			<script>
-				alert('${userJoinResult}');
+			swal('${userJoinResult}', {buttons: false,});
 			</script>
 		</c:if>
 		
 		<c:if test="${not empty companyJoinResult}">
 			<script>
-				alert('${companyJoinResult}');
+			swal('${companyJoinResult}', {buttons: false,});
 			</script>
 		</c:if>
 		
@@ -35,10 +36,7 @@
 				<table>
 					<tr>
 						<th colspan='2'>${user.userName}님 가입 성공하였습니다.</th>
-					</tr>
-					<tr>
-						<td colspan='2'><img src="${conpath}/images/profile/${user.userProfileImage}" alt="userProfileImage"></td>
-					</tr>						
+					</tr>										
 					<tr>
 						<td>ID</td>
 						<td>${user.userId}</td>
@@ -97,7 +95,7 @@
 					<tr>
 						<td>ADDRESS</td>
 						<td>
-							${company.companyAddressBasic} ${company.companyAdderssDetail}
+							${company.companyAddressBasic} ${company.companyAddressDetail}
 						</td>
 					</tr>
 					</c:if>					

@@ -12,12 +12,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <c:if test="${userOutSiteResult eq 1}">
 	<script>
-		alert('회원비활성화 성공');
+		swal("회원비활성화 성공", {
+		  buttons: false,
+		});	
 	</script>
 </c:if>
 

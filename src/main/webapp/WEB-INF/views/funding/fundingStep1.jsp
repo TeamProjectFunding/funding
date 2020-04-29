@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>FUNDING VIEW CORE INFOMATION</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
@@ -23,7 +23,9 @@
 			checkBoolean = $('input:checkbox[name="fundingCheck"]:checked').length == $('input:checkbox[name="fundingCheck"]').length;
 
 			if(checkBoolean == false){
-				alert('체크를 다 하셔야합니다');
+				swal("모든항목에 동의를 해야 진행이 가능합니다", {
+					  buttons: false,
+				});
 				return false;
 			}
 		});

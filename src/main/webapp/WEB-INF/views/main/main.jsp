@@ -8,9 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>CROWDFUND : MAIN</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	function noCompany(){
-		alert('펀딩 신청은 회사 로그인 이후에 가능합니다.');
+		swal("펀딩 신청은 회사 로그인 이후에 가능합니다.", {
+			  buttons: false,
+		});
+	}
+	function alreadyFunding(){
+		swal("펀딩 신청은 하나씩만 가능합니다.", {
+			  buttons: false,
+		});
 	}
 </script>
 </head>
@@ -18,19 +26,24 @@
 
 <c:if test="${not empty errorMessage}">
 	<script>
-		alert('${errorMessage}');
-		history.back();
+		swal('${errorMessage}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 
 <c:if test="${not empty logoutResult }">
 	<script>
-		alert('${logoutResult}');
+		swal('${logoutResult}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 <c:if test="${not empty fundingApplyResult }">
 	<script>
-		alert('${fundingApplyResult}');
+		swal('${fundingApplyResult}', {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 <!-- 현재 날짜 -->
@@ -98,10 +111,15 @@
 				<h4>Introduce your story and meet investors and supporters</h4>
 				<div id="buttonWrap">
 					<c:if test="${not empty sessionScope.company }">
-					<a href="fundingApplyForm.do" class="button">Do it</a>
+						<c:if test="${sessionScope.company.companyInFunding eq 0 }">
+						<a href="fundingApplyForm.do" class="button">Do it</a>
+						</c:if>
+						<c:if test="${sessionScope.company.companyInFunding ne 0 }">
+						<a href="#none" class="button" onclick="alreadyFunding();">Do it</a>
+						</c:if>
 					</c:if>
 					<c:if test="${empty sessionScope.company }">
-					<a href="#none" class="button" onclick="noCompany()">Do it</a>
+					<a href="#none" class="button" onclick="noCompany();">Do it</a>
 					</c:if>
 				</div>
 			</div>

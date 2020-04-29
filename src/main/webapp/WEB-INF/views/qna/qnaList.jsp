@@ -9,16 +9,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <c:if test="${not empty writeResult}">
 	<script>
-		alert('${writeResult}');
+	swal("${writeResult}", {buttons: false,});
 	</script>
 </c:if>
 <c:if test="${not empty qnaReplyresult}">
 	<script>
-		alert('${qnaReplyresult}');
+	swal("${qnaReplyresult}", {buttons: false,});
 	</script>
 </c:if>
 
@@ -46,7 +47,7 @@
 					<th>DATE</th>
 					<th>HIT</th>
 					
-					<c:if test="${not empty user || not empty company}">
+					<c:if test="${not empty user || not empty company || not empty admin}">
 						<th>REPLY</th>
 					</c:if>
 					

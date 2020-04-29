@@ -11,14 +11,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tp.funding.dto.Company;
 import com.tp.funding.dto.FundingGoods;
-import com.tp.funding.dto.FundingGoodsDetail;
 import com.tp.funding.dto.Notification;
 import com.tp.funding.dto.QnA;
 import com.tp.funding.dto.UserPick;
 import com.tp.funding.dto.Users;
 import com.tp.funding.service.CompanyService;
 import com.tp.funding.service.FgCommentsService;
-import com.tp.funding.service.FundingDetailService;
 import com.tp.funding.service.FundingGoodsService;
 import com.tp.funding.service.FundingQuestionReplyService;
 import com.tp.funding.service.FundingQuestionService;
@@ -372,7 +370,8 @@ public class HyuckController {
 	public String adminApply(int fundingCode, Model model, Notification notification) {
 		fundingGoodsService.fundingAdminPermitYes(fundingCode);
 		FundingGoods fundinggoods = fundingGoodsService.fundingDetail(fundingCode);
-
+		String companyId = fundinggoods.getCompanyId();
+		companyService.companyInFundingModify(2, companyId); //펀딩 진행 중으로 변경
 		String tempfundingAccountNumber = "110-";
 
 		for (int i = 0; i < 3; i++) {
@@ -388,13 +387,11 @@ public class HyuckController {
 			}
 
 		}	
-
-		fundinggoods.setFundingCode(fundingCode);
 		fundinggoods.setFundingAccountNumber(tempfundingAccountNumber);	
 		fundingGoodsService.fundingAccountAdd(fundinggoods);		
-
-		notification.setNotificationContent("귀사의 투자 신청이 승인 되었습니다.");
+		notification.setNotificationContent("귀사의 펀딩 신청이 승인 되었습니다.");
 		notification.setCompanyId(fundinggoods.getCompanyId());
+		notification.setAdminId("admin");
 		notificationService.notificationWrite(notification);
 		model.addAttribute("adminApplyMsg", "apply 완료");
 
@@ -405,9 +402,11 @@ public class HyuckController {
 	public String adminReject(int fundingCode, Model model, Notification notification) {
 		fundingGoodsService.fundingAdminPermitNo(fundingCode);
 		FundingGoods fundinggoods = fundingGoodsService.fundingDetail(fundingCode);
-		
-		notification.setNotificationContent("귀사의 투자 신청이 거절 되었습니다.");
+		String companyId = fundinggoods.getCompanyId();
+		companyService.companyInFundingModify(0, companyId); //펀딩 진행 중으로 변경
+		notification.setNotificationContent("귀사의 펀딩 신청이 거절 되었습니다.");
 		notification.setCompanyId(fundinggoods.getCompanyId());
+		notification.setAdminId("admin");
 		notificationService.notificationWrite(notification);
 		model.addAttribute("adminRejectMsg", "reject 완료");
 		return "forward:adminMain.do";

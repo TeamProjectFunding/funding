@@ -147,6 +147,7 @@ public class LongController {
 		}else if(infoType.equals("goodsViewInfo")) {//투자정보
 			model.addAttribute("good", fundingGoodsService.fundingDetail(fundingCode));
 		}else if(infoType.equals("goodsViewInvestor")) {//투자자
+			model.addAttribute("fundingPeopleCount", fundingGoodsService.fundingDetail(fundingCode).getFundingPeopleCount());
 			model.addAttribute("doFundingUserList", fundingDetailService.doFundingUserList(pageNum, fundingCode));
 		}
 		return "goods/"+infoType;
@@ -190,7 +191,6 @@ public class LongController {
 	// 펀딩(리워드) 신청
 	@RequestMapping(value = "fundingApply")
 	public String fundingApply(FundingGoods fundingGoods, MultipartHttpServletRequest mRequest, Model model) {
-		System.out.println("fundingGoods:"+fundingGoods);
 		if(repeatF5) {
 			if(fundingGoods.getFundingCategory()==0) { // 투자일 때
 				fundingGoodsService.fundingRegist(fundingGoods, mRequest); //펀딩 상품 등록
@@ -201,6 +201,7 @@ public class LongController {
 				reward.setRewardName(mRequest.getParameter("fundRewardName"));
 				reward.setRewardInterst(Integer.parseInt(mRequest.getParameter("fundingInvestmentProfitRate")));
 				reward.setFundingInvestmentPeriod(Integer.parseInt(mRequest.getParameter("fundingInvestmentPeriod")));
+				reward.setLastInterestReceivedDate(fundingGoods.getFundingTargetDate());
 				rewardService.investmentWrite(reward); // 리워드 등록
 			}else { //리워드 일 때
 				Date fundingRewardDeliveryDate = Date.valueOf(mRequest.getParameter("fundingTargetDate"));
@@ -220,9 +221,12 @@ public class LongController {
 				}
 				rewardService.rewardWrite(reward,mRequest);
 			}
+			String companyId = fundingGoods.getCompanyId();
+			companyService.companyInFundingModify(1, companyId); //펀딩 심사중으로 변경
+			Notification notification = new Notification(fundingGoods.getFundingName()+" 펀딩신청 되었습니다. 관리자 심사 후 승인여부 안내드립니다. 신청해주셔서 감사드립니다.", "admin", companyId, null);
+			notificationService.notificationWrite(notification); //알림작성
 			model.addAttribute("fundingApplyResult", "펀딩 신청에 성공하셨습니다. 지원해주셔서 감사드립니다.");
 		}
-		
 		repeatF5 = false;
 		return "forward:main.do";
 	}
@@ -381,7 +385,7 @@ public class LongController {
 			model.addAttribute("myPostTotalCnt", qnAService.myTotQna(userId)+fundingQuestionService.myFundingtotQna(userId)+fgCommentsService.myFundingTotComments(userId));
 			model.addAttribute("DNMList",depositAndWithdrawalService.userDNWList(userId)); //입출금 정보 등록
 		}else if(companyId != null && !companyId.equals("")) {
-			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 유저 다시 넣기
+			session.setAttribute("company", companyService.companyDetail(companyId)); //세션에 회사 다시 넣기
 			model.addAttribute("companyEndFundingCount",fundingGoodsService.companyEndFundingCount(companyId)); //회사가 총 펀딩한 갯수
 			model.addAttribute("DNMList",depositAndWithdrawalService.companyDNWList(companyId));
 		}

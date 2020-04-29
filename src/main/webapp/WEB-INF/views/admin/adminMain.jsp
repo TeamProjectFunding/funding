@@ -12,7 +12,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&
 	family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <!-- 현재 날짜 -->
@@ -22,26 +22,33 @@
 
 <c:if test="${not empty adminApplyMsg}">
 	<script>
-		alert('${adminApplyMsg}');
+		swal("${adminApplyMsg}", {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 
 <c:if test="${not empty adminRejectMsg}">
 	<script>
-		alert('${adminRejectMsg}');
+		swal("${adminRejectMsg}", {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 
 <c:if test="${not empty qnaReplyresult }">
 	<script>
-		alert('${qnaReplyresult}');
+		swal("${qnaReplyresult}", {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 
 <c:if test="${result eq '실패' }">
 	<script>
-		alert('ID와 비밀번호를 확인하세요');
-		history.back();
+		swal("ID와 비밀번호를 확인하세요", {
+		  buttons: false,
+		});
 	</script>
 </c:if>
 	
