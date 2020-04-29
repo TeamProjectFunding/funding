@@ -279,6 +279,7 @@ CREATE TABLE Event (
 	EventStartDate           DATE          DEFAULT SYSDATE,     -- 이벤트시작일
 	EventEndDate             DATE          NULL,     -- 이벤트종료일(추첨일)
 	EventProductDeliveryDate DATE          NULL,     -- 이벤트상품배송일
+    EventClose               NUMBER        NULL,     -- 이벤트종료여부    
 	AdminId                  VARCHAR2(100)  REFERENCES Admin(AdminId)      -- 관리자ID
 );
 

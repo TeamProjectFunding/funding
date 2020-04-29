@@ -65,8 +65,8 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	public int eventWrite(Event event,MultipartHttpServletRequest mRequest) {
-		String uploadPath = mRequest.getRealPath("images/event");
-		String backupPath = "D:/mega_IT/team_project/funding/src/main/webapp/images/event";
+		String uploadPath = mRequest.getRealPath("images/event/");
+		String backupPath = "D:/mega_IT/team_project/funding/src/main/webapp/images/event/";
 		String eventThumbnailImage =null, eventDetailImage =null, eventProductImage=null;
 		String[] imagesFile = {"","",""};
 		Iterator<String> params = mRequest.getFileNames();
@@ -144,6 +144,10 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public int eventColseStep2(Event event) {
 		return eventDao.eventColseStep2(event);
+	}
+	@Override
+	public int eventClose(int eventNumber) {
+		return eventDao.eventClose(eventNumber);
 	}
 
 }

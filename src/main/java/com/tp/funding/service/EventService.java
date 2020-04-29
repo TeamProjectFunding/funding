@@ -19,4 +19,5 @@ public interface EventService {
 	public int totEndingEvent();
 	public int eventColseStep1(int eventNumber);
 	public int eventColseStep2(Event event);
+	public int eventClose(int eventNumber);
 }

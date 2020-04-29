@@ -33,7 +33,7 @@
 				<div class="event">
 					<ul>
 						<li class="thumnail">
-							<a href='eventView.do'><img src="${conPath}/images/fundingProduct_01.jpeg "><span>진행중</span></a>
+							<a href='eventView.do?eventNumber=${event.eventNumber}'><img src="${conPath}/images/event/${event.eventThumbnailImage } "><span>진행중</span></a>
 						</li>
 						<li class="eventTitle">${event.eventTilte }</li>
 				 <fmt:parseNumber value="${event.eventEndDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />

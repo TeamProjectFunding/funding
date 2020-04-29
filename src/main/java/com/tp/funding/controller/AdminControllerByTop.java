@@ -239,6 +239,7 @@ public class AdminControllerByTop {
 			notificationService.eventRaffleUserSend(notification);
 			idx++;
 		}
+		eService.eventClose(eventNumber);
 		return "redirect:adminMain.do";
 	}
 	//펀딩 마감

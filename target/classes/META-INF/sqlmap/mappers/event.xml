@@ -16,6 +16,7 @@
     <result property="eventHit" column="eventHit"/>
     <result property="eventStartDate" column="eventStartDate"/>
     <result property="eventEndDate" column="eventEndDate"/>
+    <result property="eventClose" column="eventClose"/>
     <result property="eventProductDeliveryDate" column="eventProductDeliveryDate"/>
     <result property="adminId" column="adminId"/>
     <result property="eventReplyCount" column="eventReplyCount"/>
@@ -24,7 +25,7 @@
     </resultMap>
     <select id="eventAllList" resultMap="EventList">
     SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
-    EVENTREPLYCOUNT FROM EVENT E ORDER BY E.EVENTSTARTDATE DESC
+    EVENTREPLYCOUNT FROM EVENT E where eventClose=0 ORDER BY E.EVENTSTARTDATE DESC
     </select>
     <select id="eventAdminList" parameterType="Event" resultMap="EventList">
     SELECT * FROM ( SELECT ROWNUM RN , F.* FROM (SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
@@ -70,4 +71,8 @@
 	<update id="eventColseStep2" parameterType="Event">
 	UPDATE EVENT SET EVENTPRIZECOUNT =#{eventParticipateCount} WHERE EVENTNUMBER= #{eventNumber}
 	</update>
+	<update id="eventClose" parameterType="int">
+	UPDATE EVENT SET EVENTCLOSE =1 WHERE EVENTNUMBER= #{eventNumber}
+	</update>
+	
     </mapper>
