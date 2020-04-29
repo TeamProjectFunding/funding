@@ -18,7 +18,7 @@
 	<jsp:include page="../adminMenu.jsp"/>
 	<div id="contentWrap" class="adminMainWrap">
 		<section id="userListWrap">
-			<h1>COMPANY LIST</h1>
+			<h1>EVENT LIST</h1>
 			<table>
 				<tr>
 					<th>NUMBER</th>
@@ -31,13 +31,18 @@
 				<c:forEach var="event" items="${eventAdminList}">
 				<tr class="userInfo">
 					<td>${event.eventNumber}</td>
-					<td><a href="${conPath }/adminCompanyView.do">${event.eventTilte}</a></td>
+					<td><a href="${conPath }/eventView.do">${event.eventTilte}</a></td>
 					<td>${event.eventProductName }</td>
 					<td>${event.eventStartDate }</td>
 					<td>${event.eventEndDate }</td>
 					<td>${event.eventHit }</td>
 				</tr>
 				</c:forEach>
+				<tr>
+					<th id="buttonWrap" colspan='6'>
+						<a href="eventWriteForm.do" class="button">WRITE</a>
+					</th>
+				</tr>
 			</table>
 					<div class="paging">
 				<c:if test="${paging.startPage>paging.blockSize }">

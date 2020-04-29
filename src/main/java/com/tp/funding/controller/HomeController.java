@@ -1,11 +1,30 @@
 package com.tp.funding.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.tp.funding.dto.Event;
+import com.tp.funding.service.EventPrizeService;
+import com.tp.funding.service.EventReplyService;
+import com.tp.funding.service.EventService;
 
 @Controller
 public class HomeController {
+	
+	private boolean repeatF5 = false;
+	
+	@Autowired
+	private EventService eventService;
+	
+	@Autowired
+	private EventPrizeService eventPrizeService;
+	
+	@Autowired
+	private EventReplyService eventReplyService;
 	
 	//admin event writeForm
 	@RequestMapping(value="adminEventWriteForm")
@@ -135,9 +154,38 @@ public class HomeController {
 		return "goods/goodsViewInvestor";
 	}
 	
+	//이벤트 write form
+	@RequestMapping(value ="eventWriteForm")
+	public String eventWriteFrom() {
+		repeatF5 = true;
+		return "admin/event/write";
+	}
+	
+	//이벤트 write
+	@RequestMapping(value ="eventWrite", method = RequestMethod.POST)
+	public String eventWrite(Event event, MultipartHttpServletRequest mRequest, Model model) {
+		System.out.println(event);
+		if(repeatF5) {
+			int result = eventService.eventWrite(event, mRequest);
+			
+			if (result == 1) {
+				model.addAttribute("eventWriteResult", "등록 성공");
+				model.addAttribute("event", eventService.eventDetail(event.getEventNumber()));
+			} else {
+				model.addAttribute("eventWriteResult", "등록 실패");
+			}
+			System.out.println(event);
+		}
+		
+		repeatF5 = false;
+		
+		return "redirect:eventList.do";
+	}
+	
 	//이벤트 view
 	@RequestMapping(value ="eventView")
-	public String eventView() {
+	public String eventView(Model model, int eventNumber) {
+		model.addAttribute("event", eventService.eventDetail(eventNumber));
 		return "event/eventView";
 	}
 		

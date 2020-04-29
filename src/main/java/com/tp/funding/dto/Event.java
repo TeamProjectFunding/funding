@@ -18,6 +18,7 @@ public class Event {
 	private Date eventEndDate;                       
 	private Date eventProductDeliveryDate;           
 	private String adminId;
+	private int eventClose;
 	
 	private int eventReplyCount; //이벤트 답글 갯수
 	//검색시 사용
@@ -30,8 +31,9 @@ public class Event {
 	public Event(int eventNumber, String eventTilte, String eventContent, String eventThumbnailImage,
 			String eventDetailImage, String eventProductName, String eventProductImage, int eventPrizeCount,
 			int eventParticipateCount, int eventHit, Date eventStartDate, Date eventEndDate,
-			Date eventProductDeliveryDate, String adminId, int eventReplyCount, String doingEventSearchWord,
-			int startRow, int endRow) {
+			Date eventProductDeliveryDate, String adminId, int eventClose, int eventReplyCount,
+			String doingEventSearchWord, int startRow, int endRow) {
+		super();
 		this.eventNumber = eventNumber;
 		this.eventTilte = eventTilte;
 		this.eventContent = eventContent;
@@ -46,6 +48,7 @@ public class Event {
 		this.eventEndDate = eventEndDate;
 		this.eventProductDeliveryDate = eventProductDeliveryDate;
 		this.adminId = adminId;
+		this.eventClose = eventClose;
 		this.eventReplyCount = eventReplyCount;
 		this.doingEventSearchWord = doingEventSearchWord;
 		this.startRow = startRow;
@@ -135,6 +138,12 @@ public class Event {
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
+	public int getEventClose() {
+		return eventClose;
+	}
+	public void setEventClose(int eventClose) {
+		this.eventClose = eventClose;
+	}
 	public int getEventReplyCount() {
 		return eventReplyCount;
 	}
@@ -166,8 +175,10 @@ public class Event {
 				+ ", eventProductName=" + eventProductName + ", eventProductImage=" + eventProductImage
 				+ ", eventPrizeCount=" + eventPrizeCount + ", eventParticipateCount=" + eventParticipateCount
 				+ ", eventHit=" + eventHit + ", eventStartDate=" + eventStartDate + ", eventEndDate=" + eventEndDate
-				+ ", eventProductDeliveryDate=" + eventProductDeliveryDate + ", adminId=" + adminId
-				+ ", eventReplyCount=" + eventReplyCount + ", doingEventSearchWord=" + doingEventSearchWord
+				+ ", eventProductDeliveryDate=" + eventProductDeliveryDate + ", adminId=" + adminId + ", eventClose="
+				+ eventClose + ", eventReplyCount=" + eventReplyCount + ", doingEventSearchWord=" + doingEventSearchWord
 				+ ", startRow=" + startRow + ", endRow=" + endRow + "]";
 	}
+	
+	
 }

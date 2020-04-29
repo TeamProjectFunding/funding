@@ -100,10 +100,15 @@ INSERT INTO fundinggoodscommentsreply values (2, '저도 투자했습니다 목�
 INSERT INTO fundinggoodscomments VALUES (fgcommentsnumber.nextval, '저도 투자 했습니다', sysdate, 0,2 ,'wogur698@naver.com');
 
 --이벤트 
-INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '이자 추가 지급1%', '이자 마니줘여', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-04-27', DATE '2020-05-02' ,NULL,'admin');
-INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무료', '배송비 무료', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-05-01', DATE '2020-05-06' ,NULL,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '이자 추가 지급1%', '이자 마니줘여', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-04-27', DATE '2020-05-02' ,NULL,0,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무료', '배송비 무료', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-05-01', DATE '2020-05-06' ,NULL,0,'admin');
 
 --새소식 기능 승인된상품2번에서 보여짐 구현x insert하는 곳없음 더미만 작성
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '해외납품 수주','6억원 계약성공',date '2020-04-27',null,2,'com@naver.com');
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '매출 10억원 달성','돈마니 벌어요',date '2020-04-29',null,2,'com@naver.com');
 commit;
+
+select * from event;
+
+SELECT E.*,(SELECT COUNT(*) FROM EVENTREPLY ER WHERE ER.EVENTNUMBER=E.EVENTNUMBER) 
+    EVENTREPLYCOUNT FROM EVENT E where eventClose=1 ORDER BY E.EVENTSTARTDATE DESC;
