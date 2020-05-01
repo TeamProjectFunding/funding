@@ -64,6 +64,7 @@ INSERT INTO COMPANY VALUES ('com7@naver.com', '123', 'company2.png', '(주)이�
 육가공 전문 제조기업입니다. 매출은 2017년 약 85.98억 2018년 83.95억, 당기순이익은 2017년 2.9억 2018년 4.1억입니다. 
 2021년에는 거래처 증가, 구매업체 다변화 및 대량 매입으로 매입단가 경쟁력 확보를 바탕으로 6%대의 순이익률을 달성하기 위해 노력하고 있습니다.',
 SYSDATE, '꺼리회사', '02-1234-5849', '서울시 중구', '중구빌딩 301호', '기업은행', '(주)꺼리', '584-65296-02-00489', 0, 2, 0,'184-18-8834-2');
+
     
 --Admin 더미
 INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
@@ -108,7 +109,7 @@ INSERT INTO Reward VALUES (REWARDCODE.nextval,'투자리워드',null,0,null,null
 --4번 리워드 투자상품 (투자상품테이블 만들고 리워드 테이블 만들어야한다
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 1, '승인리워드상품1', '리워드입니다.', 'badminton.jpg', 'badminton.jpg', 'swingDescription.png', '카카오뱅크',
-        '관리계좌', '511-06-12324', 700000, 1000000, 70, '2020-05-18', '2020-07-20', null, 7, 2, 0, 0, 1, 'admin', 'com@naver.com');
+        '관리계좌', '511-06-12324', 700000, 1000000, 70, '2020-05-18', '2020-07-20', '2020-07-20', 7, 2, 0, 0, 1, 'admin', 'com@naver.com');
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 30000, 1 , 'office.jpg', '2020-07-20',0,0,0,NULL,4);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 50000, 2 , 'book.jpg', '2020-07-20',0,0,0,NULL,4);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 100000, 3 , 'keyboard.jpeg', '2020-07-20',0,0,0,NULL,4);
@@ -221,6 +222,4 @@ INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 30000, 1 , 'off
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 50000, 2 , 'book.jpg', '2020-07-20',0,0,0,NULL,13);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 100000, 3 , 'keyboard.jpeg', '2020-07-20',0,0,0,NULL,13);
 
-select * from fundinggoods;
 commit;
-select * from fundinggoods;

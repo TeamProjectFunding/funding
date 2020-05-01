@@ -10,7 +10,6 @@
     (SELECT COUNT(*) FROM USERS U, USERPICK UP WHERE U.USERID = UP.USERID) USERPICKCOUNT, USERGRADENAME 
         FROM USERS U, USERGRADE UG 
             WHERE U.USERGRADENO = UG.USERGRADENO
-
 	</select>
 	
 	<select id="userSearchList" parameterType="String" resultType="Users">

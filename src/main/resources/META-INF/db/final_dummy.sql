@@ -109,7 +109,7 @@ INSERT INTO Reward VALUES (REWARDCODE.nextval,'투자리워드',null,0,null,null
 --4번 리워드 투자상품 (투자상품테이블 만들고 리워드 테이블 만들어야한다
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 1, '승인리워드상품1', '리워드입니다.', 'badminton.jpg', 'badminton.jpg', 'swingDescription.png', '카카오뱅크',
-        '관리계좌', '511-06-12324', 700000, 1000000, 70, '2020-05-18', '2020-07-20', null, 7, 2, 0, 0, 1, 'admin', 'com@naver.com');
+        '관리계좌', '511-06-12324', 700000, 1000000, 70, '2020-05-18', '2020-07-20', '2020-07-20', 7, 2, 0, 0, 1, 'admin', 'com@naver.com');
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 30000, 1 , 'office.jpg', '2020-07-20',0,0,0,NULL,4);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 50000, 2 , 'book.jpg', '2020-07-20',0,0,0,NULL,4);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 100000, 3 , 'keyboard.jpeg', '2020-07-20',0,0,0,NULL,4);
@@ -160,7 +160,7 @@ INSERT INTO FundingGoods VALUES
     (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'swingDescription.png', '신한은행',
         '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', sysdate, null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com');
 
-select * from 
+
 -- hyuck 상품만 추가
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품4', '투자상품입니다.', 'fullset.jpg', 'fullset.jpg', 'swingDescription.png', '신한은행',
@@ -222,5 +222,4 @@ INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 30000, 1 , 'off
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 50000, 2 , 'book.jpg', '2020-07-20',0,0,0,NULL,13);
 INSERT INTO REWARD VALUES(REWARDCODE.nextval, '상품리워드', 100000, 3 , 'keyboard.jpeg', '2020-07-20',0,0,0,NULL,13);
 
-select * from fundinggoods;
 commit;

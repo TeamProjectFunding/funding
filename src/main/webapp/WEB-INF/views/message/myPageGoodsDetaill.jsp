@@ -87,7 +87,7 @@ $(function(){
 				</tr>
 				<c:forEach var="reward" items="${rewardList }">
 				<tr>
-					<td><img alt="rewardImage" src="${conPath }/images/reward/${reward.rewardImage}"></td>
+					<td><img alt="rewardImage" src="${conPath }/images/reward/${reward.rewardImage}" width="150px"></td>
 					<td>${reward.rewardName } </td>
 					<td><fmt:formatNumber value="${reward.rewardCondition }" currencySymbol="true"/>원</td>
 				</tr>

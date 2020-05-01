@@ -86,7 +86,7 @@ $(function(){
 					<th>지급 예정일</th>
 				</tr>
 				<tr>
-					<td><img src="${conPath }/images/reward/${reward.rewardImage}" alt="리워드 이미지" width="100%"></td>
+					<td><img src="${conPath }/images/reward/${reward.rewardImage}" alt="리워드 이미지" width="150px"></td>
 					<td>${reward.rewardName }</td>
 					<td><fmt:formatDate value="${reward.fundingRewardDeliveryDate }" pattern="yyyy-MM-dd"/></td>
 				</tr>
