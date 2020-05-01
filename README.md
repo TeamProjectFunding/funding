@@ -1,4 +1,4 @@
-프로젝트 명 : Funding (클라우드 펀딩 사이트)<br>
+프로젝트 명 : CROWD FUND (클라우드 펀딩 사이트)<br>
 인 원 : 4 명<br>
 기 간 : 2020.04.09 ~ 2020.05.04<br>
 DBMS : Oracle 11g Express Edition<br>
