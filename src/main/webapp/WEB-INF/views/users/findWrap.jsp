@@ -17,7 +17,7 @@ function getUserId(){
 	if(idPattern.test(id) == false){		
   		alert('이메일 형식 지켜, 입력해 주세요!!!!!!!!');
   	}else{    	
-		location.href="${conPath}/findPw.do?userId="+id+"&companyId="+id;		
+		location.href="${conPath}/findPw.do?findId="+id;		
     }
 }
 </script>

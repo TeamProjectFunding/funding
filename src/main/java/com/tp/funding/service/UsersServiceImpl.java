@@ -197,8 +197,14 @@ public class UsersServiceImpl implements UsersService {
 		user.setUserPassword(tempPassword);
 		MimeMessagePreparator tempPasswordMsg = new MimeMessagePreparator() {
 
-			String content = "<h1>" + user.getUserName() + "님의 임시비밀번호 안내입니다.</h1>" + "<div> 임시 비밀번호는 : "
-					+ user.getUserPassword() + "입니다.<br>" + "임시비밀번호로 로그인 후, 비밀번호를 수정해 주세요.</div>";
+			String content = "<p style='padding:5%; margin:0 auto; text-align:center; font-size:16px; line-height:30px;border: 1px solid #e8e8e8; color:#383838;'>"+
+					"<span style='font-weight:bold'>"+user.getUserName()+"</span>님의 임시 비밀번호는<br/>"+
+					"<span style='font-weight:bold; color:#2080cc;'>"+user.getUserPassword()+"</span> 입니다.<br/>"+
+					"감사합니다.<br/><br/>"+
+					"<a href='http://localhost:8181/funding/loginView.do' style='text-decoration:none; font-weight:bold; color:#176db1; font-size:12px; padding:1.5%; border: 1px solid #d4d4d4; '>CROWD FUND 로그인</a>"
+					+"</p>";
+			
+	
 
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {

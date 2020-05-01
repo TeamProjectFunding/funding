@@ -180,17 +180,17 @@ public class HyuckController {
 	}
 
 	@RequestMapping(value = "findPw")
-	public String findPw(Users user, Company company, Model model) {
+	public String findPw(String findId, Model model) {
+		
+		if (usersService.userDetail(findId) != null
+				|| companyService.companyDetail(findId) != null) {
 
-		if (usersService.userDetail(user.getUserId()) != null
-				|| companyService.companyDetail(company.getCompanyId()) != null) {
-
-			if (usersService.userDetail(user.getUserId()) != null) {
-				usersService.tempPasswordChange(user);
+			if (usersService.userDetail(findId) != null) {//유저일 때
+				usersService.tempPasswordChange(usersService.userDetail(findId));
 				model.addAttribute("findPwMsg", "해당 메일로 임시 비밀번호를 발송했습니다. 메일 확인 요망");
 
-			} else if (companyService.companyDetail(company.getCompanyId()) != null) {
-				companyService.tempPasswordChange(company);
+			} else if (companyService.companyDetail(findId) != null) {//회사 일 때
+				companyService.tempPasswordChange(companyService.companyDetail(findId));
 				model.addAttribute("findPwMsg", "해당 메일로 임시 비밀번호를 발송했습니다. 메일 확인 요망");
 			}
 
