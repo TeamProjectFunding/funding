@@ -160,7 +160,7 @@ INSERT INTO FundingGoods VALUES
     (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'swingDescription.png', '신한은행',
         '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', sysdate, null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com');
 
-
+select * from 
 -- hyuck 상품만 추가
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품4', '투자상품입니다.', 'fullset.jpg', 'fullset.jpg', 'swingDescription.png', '신한은행',
