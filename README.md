@@ -4,6 +4,6 @@
 DBMS : Oracle 11g Express Edition<br>
 언어 : Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript<br>
 프레임워크 : Spring framework, Mybatis framework<br>
-패턴 : MVC 패턴<br>
+패턴 : MVC 패턴 MODEL 2<br>
 오픈 Livrary : jQuery v3.4.1, kakao login API, Naver login API, Daum postcode API,SweetAlert API<br>
 프로젝트 소개 : 회사는 자금을 모집하고 고객은 투자를 한다<br>
