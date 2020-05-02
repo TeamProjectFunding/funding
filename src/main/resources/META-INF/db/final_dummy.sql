@@ -72,7 +72,7 @@ INSERT INTO Admin VALUES ('admin', '123', 'ADMIN', null);
 -- 승인투자상품  1번  계좌있고 목표금액 달성했고 달성률100% 관리자 마감처리와 연동
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품1', '투자상품입니다.', 'fundingProduct_01.jpeg', 'swingDetail.png', 'swingDescription.png', '카카오뱅크',
-        '관리계좌', '512-06-66324', 12000000, 12000000, 100, '2020-04-01', '2020-05-03', null, 7, 15, 0, 3, 1, 'admin', 'com@naver.com');
+        '관리계좌', '512-06-66324', 12000000, 12000000, 100, '2020-04-01', '2020-05-07', null, 7, 15, 0, 3, 1, 'admin', 'com@naver.com');
          
         
 --1번 승인투자상품에 투자한 사람 관리자 마감처리 알림 테스트하려고 성공시 회사에 알림 >> 마감치고 회사아이디로그인
@@ -148,8 +148,8 @@ INSERT INTO fundinggoodscommentsreply values (2, '저도 투자했습니다 목�
 INSERT INTO fundinggoodscomments VALUES (fgcommentsnumber.nextval, '저도 투자 했습니다', sysdate, 0,2 ,'wogur698@naver.com');
 
 --이벤트 
-INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '이자 추가 지급1%', '이자 마니줘여', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-04-27', DATE '2020-05-02' ,NULL, 0,'admin');
-INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무료', '배송비 무료', NULL, NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-05-01', DATE '2020-05-06' ,NULL, 0,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '이자 추가 지급10%', '이자 마니줘여', 'kk.png', NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-04-27', DATE '2020-05-18' ,NULL, 0,'admin');
+INSERT INTO EVENT VALUES (EVENTNUMBER.nextval, '리워드 상품 배송비 무료', '배송비 무료', 'ss.png', NULL, 'MSN-04 JARD DOGA', NULL, 5, 6,0, '2020-05-01', DATE '2020-05-8' ,NULL, 0,'admin');
 
 --새소식 기능 승인된상품2번에서 보여짐 구현x insert하는 곳없음 더미만 작성
 insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '해외납품 수주','6억원 계약성공',date '2020-04-27',null,2,'com1@naver.com');
@@ -158,7 +158,7 @@ insert into fundingnews values (FUNDINGNEWSNUMBER.nextval, '매출 10억원 달�
 --찜기능 마감 보여주려고 만든 승인된 펀딩상품3
 INSERT INTO FundingGoods VALUES 
     (FundingCode.nextval, 0, '승인투자상품3', '투자상품입니다.', 'fundingProduct_03.jpeg', 'fundingProduct_03.jpeg', 'swingDescription.png', '신한은행',
-        '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-01-29', sysdate, null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com');
+        '(주)masters펀딩계좌', '110-459-549878', 24000000, 12000000, 200, '2020-04-29', sysdate, null, 7, 3, 0, 20, 1, 'admin', 'com2@naver.com');
 
 
 -- hyuck 상품만 추가
