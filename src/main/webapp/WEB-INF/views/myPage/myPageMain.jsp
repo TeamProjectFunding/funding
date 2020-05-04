@@ -235,9 +235,11 @@
 				});
 				$('#dipositButton').click(function(){
 					var dNWAmount = Number($('input[name="diposit"]').val());
-					if(dNWAmount < 1){
+					if (isNaN(dNWAmount)) {
+						swal("자연수만 입력가능합니다.", {buttons: false,});
+					} else if (dNWAmount < 1){
 						swal("0원 이상을 입력해주세요", {buttons: false,});
-					}else{
+					} else {
 						var userId = '${user.userId}';
 						var companyId = '${company.companyId}';
 						var dNWType = 0;
@@ -257,9 +259,12 @@
 					}
 				});
 				$('#withdrawButton').click(function(){
-					var dNWAmount = Number($('input[name="withdraw"]').val())*-1;
+					var dNWAmount = Number($('input[name="withdraw"]').val());
 					var dNWBalance = Number('${user.userAccountBalance}${company.companyAccountBalance}');
-					if(dNWAmount>0){
+					
+					if (isNaN(dNWAmount)) {
+						swal("자연수만 입력가능합니다.", {buttons: false,});
+					} else if(dNWAmount<0){
 						swal("0원 이상을 입력해주세요", {buttons: false,});
 					}else if(dNWAmount > dNWBalance){
 						swal("계좌 잔액보다 작은 값을 입력해주세요", {buttons: false,});
@@ -270,7 +275,7 @@
 						 $.ajax({
 	            	         url : '${conPath}/withdrawMypage.do',
 	                	     datatype : 'html',
-		                     data : "companyId="+companyId+"&userId="+userId+"&dNWAmount="+dNWAmount
+		                     data : "companyId="+companyId+"&userId="+userId+"&dNWAmount="+dNWAmount*-1
 		                     +"&dNWType="+dNWType,
 	    	                 success : function(data, status){
 	        	                $('.accountMessege').html(data);
