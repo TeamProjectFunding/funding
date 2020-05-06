@@ -70,11 +70,13 @@ $(function(){
 					<th>금액</th>
 				</tr>
 				<c:forEach var="DNW" items="${userRewardDNWList }">
+				<c:if test="${DNW.investmentReceiveCount>0 }">
 				<tr>
 					<td>${DNW.investmentReceiveCount }회차</td>
 					<td><fmt:formatDate value="${DNW.dNWDate }" pattern="yyyy-MM-dd"/></td>
 					<td><fmt:formatNumber value="${DNW.dNWAmount }" currencySymbol="true"/>원</td>
 				</tr>
+				</c:if>
 				</c:forEach>
 			</table>
 			</c:if>

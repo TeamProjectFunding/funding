@@ -81,9 +81,6 @@
 						<th colspan='2'>${company.companyName}님 가입 성공하였습니다.</th>
 					</tr>
 					<tr>
-						<td colspan='2'><img src="${conpath}/images/profile/${company.companyProfileImage}" alt="userProfileImage"></td>
-					</tr>
-					<tr>
 						<td>ID</td>
 						<td>${company.companyId}</td>
 					</tr>
