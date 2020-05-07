@@ -13,6 +13,8 @@ DBMS : Oracle 11g Express Edition
 Daum postcode API,SweetAlert API
 프로젝트 소개 : 기업 회원, 일반 회원, 관리자로 나누어 실제 펀딩 사이트를 구현하였다.
 </pre>
+![CROWD FUND_MAIN](https://user-images.githubusercontent.com/56239469/81254784-12395580-9067-11ea-98dc-180c596a4e7c.png)
+
 
 #### 작업분할 구조도
 ![작업분할 구조도](https://user-images.githubusercontent.com/56239469/80933584-5a563f00-8dff-11ea-863c-6231f0d35c23.png)
