@@ -1,40 +1,41 @@
-2020.04.09 ~ 2020.05.04 [Team Project]
+CROWD FUND
 =========
+> Team Project by Masters
 
 
-> 프로젝트 명 : CROWD FUND (클라우드 펀딩 사이트) <br>
-> 인 원 : 4 명 <br>
-> 기 간 : 2020.04.09 ~ 2020.05.04 <br>
-> DBMS : Oracle 11g Express Edition <br>
-> 언어 : Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript <br>
-> 프레임워크 : Spring framework, Mybatis framework <br>
-> 오픈 Livrary : jQuery v3.4.1, kakao login API, Naver login API, Daum postcode API,SweetAlert API <br>
-> 프로젝트 소개 : 기업 회원, 일반 회원, 관리자로 나누어 실제 펀딩 사이트를 구현하였다. <br>
+프로젝트 명 : CROWD FUND (클라우드 펀딩 사이트) <br>
+인 원 : 4 명 <br>
+기 간 : 2020.04.09 ~ 2020.05.04 <br>
+DBMS : Oracle 11g Express Edition <br>
+언어 : Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript <br>
+프레임워크 : Spring framework, Mybatis framework <br>
+오픈 Livrary : jQuery v3.4.1, kakao login API, Naver login API, Daum postcode API,SweetAlert API <br>
+프로젝트 소개 : 기업 회원, 일반 회원, 관리자로 나누어 실제 펀딩 사이트를 구현하였다. <br>
 
 ![CROWD FUND_MAIN](https://user-images.githubusercontent.com/56239469/81254784-12395580-9067-11ea-98dc-180c596a4e7c.png)
 
 
-#### 작업분할 구조도
+## 작업분할 구조도
 ![작업분할 구조도](https://user-images.githubusercontent.com/56239469/80933584-5a563f00-8dff-11ea-863c-6231f0d35c23.png)
 
-#### Gantt chart
+## Gantt chart
 <br>
 
 ![Gantt chart](https://user-images.githubusercontent.com/56239469/80933543-24b15600-8dff-11ea-9dc7-ee0e2c7b1c74.png)
-#### Usecase Diagram
+## Usecase Diagram
 ![Usecase Diagram](https://user-images.githubusercontent.com/56239469/80933551-31ce4500-8dff-11ea-9650-22965cae3690.png)
 
-#### eXERD Diagram
+## eXERD Diagram
 ![eXERD Diagram](https://user-images.githubusercontent.com/56239469/80933599-6c37e200-8dff-11ea-9708-e28dae826212.png)
-#### 기능정의서
+## 기능정의서
 <br>
 
 ![기능정의서](https://user-images.githubusercontent.com/56239469/80933569-490d3280-8dff-11ea-8d02-43cc82bbe133.png)
-#### Project Source Explorer
+## Project Source Explorer
 <br>
 
 ![Project Source Explorer](https://user-images.githubusercontent.com/56239469/80933699-d0f33c80-8dff-11ea-8e38-3d0c06cab2c8.png)
-#### 핵심기능 시연
+## 핵심기능 시연
 <br>
 ![기능시연](https://user-images.githubusercontent.com/56239469/81253314-401c9b00-9063-11ea-95eb-d91d7d252dcf.png)
 ![기능시연](https://user-images.githubusercontent.com/56239469/81253322-44e14f00-9063-11ea-9c63-8d472d969cfa.png)
