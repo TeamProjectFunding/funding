@@ -14,13 +14,13 @@ CROWD FUND
 
 ![CROWD FUND_MAIN](https://user-images.githubusercontent.com/56239469/81254784-12395580-9067-11ea-98dc-180c596a4e7c.png)
 ## 목차
-[작업분할 구조도](https://github.com/TeamProjectFunding/funding/blob/master/README.md#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br>
-[Gantt chart](https://github.com/TeamProjectFunding/funding#gantt-chart)<br>
-[Usecase Diagram](https://github.com/TeamProjectFunding/funding#usecase-diagram)<br>
-[eXERD Diagram](https://github.com/TeamProjectFunding/funding#exerd-diagram)<br>
-[기능정의서](https://github.com/TeamProjectFunding/funding#%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98%EC%84%9C)<br>
-[Project Source Explorer](https://github.com/TeamProjectFunding/funding#project-source-explorer)<br>
-[실행화면](https://github.com/TeamProjectFunding/funding#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4)<br>
+[1. 작업분할 구조도](https://github.com/TeamProjectFunding/funding/blob/master/README.md#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0-%EA%B5%AC%EC%A1%B0%EB%8F%84)<br>
+[2. Gantt chart](https://github.com/TeamProjectFunding/funding#gantt-chart)<br>
+[3. Usecase Diagram](https://github.com/TeamProjectFunding/funding#usecase-diagram)<br>
+[4. eXERD Diagram](https://github.com/TeamProjectFunding/funding#exerd-diagram)<br>
+[5. 기능정의서](https://github.com/TeamProjectFunding/funding#%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98%EC%84%9C)<br>
+[6. Project Source Explorer](https://github.com/TeamProjectFunding/funding#project-source-explorer)<br>
+[7. 실행화면](https://github.com/TeamProjectFunding/funding#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4)<br>
 
 ## 작업분할 구조도
 ![작업분할 구조도](https://user-images.githubusercontent.com/56239469/80933584-5a563f00-8dff-11ea-863c-6231f0d35c23.png)
