@@ -1,18 +1,18 @@
 2020.04.09 ~ 2020.05.04 [Team Project]
 =========
-<pre>
-프로젝트 명 : CROWD FUND (클라우드 펀딩 사이트)
-인 원 : 4 명
-기 간 : 2020.04.09 ~ 2020.05.04
-DBMS : Oracle 11g Express Edition
-언어 : Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript
-프레임워크 : Spring framework, Mybatis framework
-패턴 : MVC 패턴 MODEL 2
-오픈 Livrary : jQuery v3.4.1, kakao login API, Naver login API, 
-Daum postcode API,SweetAlert API
-프로젝트 소개 : 기업 회원, 일반 회원, 관리자로 나누어 실제 펀딩 사이트를 구현하였다.
-</pre>
-------
+
+|**프로젝트 명** | CROWD FUND (클라우드 펀딩 사이트) |
+|**인  원** | 4 명 |
+|**기  간** | 2020.04.09 ~ 2020.05.04 |
+|**DBMS** | Oracle 11g Express Edition |
+|**언어** | Java SE 8 Platform, HTML5, CSS, CSS3, JavaScript |
+|**프레임워크** | Spring framework, Mybatis framework |
+|**오픈 Livrary** | jQuery v3.4.1, kakao login API, Naver login API, 
+Daum postcode API,SweetAlert API |
+
+
+
+
 #### 작업분할 구조도
 ![작업분할 구조도](https://user-images.githubusercontent.com/56239469/80933584-5a563f00-8dff-11ea-863c-6231f0d35c23.png)
 
